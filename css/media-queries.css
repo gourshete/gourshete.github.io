@@ -50,8 +50,8 @@
    /* About Section
    ------------------------------------------------------------------- */
    #about .profile-pic {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       margin-left: 12px;
    }
    #about .contact-details { width: 50%; }
