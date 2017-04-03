@@ -326,7 +326,7 @@ ul#nav li.current a { color: #F06000; }
 }
 
 .rubyonrails {
-  	width: 100%;
+  	width: 70%;
   	-moz-animation: rubyonrails 2s ease;
   	-webkit-animation: rubyonrails 2s ease;
 }
