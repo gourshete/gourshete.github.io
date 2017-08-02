@@ -1,0 +1,16 @@
+h1{
+  text-align: center;
+  font-family: "eb garamond", serif;
+  font-style: italic;
+  text-shadow: 2px 2px 0 white, 3px 3px 0 #ddd;
+  font-size: 3.5em;
+
+}
+
+
+.outer-box{
+  text-align: center;
+  background: #f4f6f8;
+  margin: 2.2em -50px;
+  line-height: 1.2em;
+}
