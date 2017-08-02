@@ -4,14 +4,16 @@
 </head>
 <body>
   <h1>Factory Girl</h1>
-  <div class="outer-box">
-    <h2> Factories </h2>
-    <div class="headline"> FactoryGirl.define do <br>
-      <span>factory :user do</span><br>
-        first_name 'Swapnil' <br>
-        last_name  'Gourshete' <br>
-        age 22 <br>
-        city_id { City.find_by(name: 'Pune').id } <br>
+  <div class="container">
+    <div class="outer-box">
+      <h2> Factories </h2>
+      <div class="headline"> FactoryGirl.define do <br>
+        <span>factory :user do</span><br>
+          first_name 'Swapnil' <br>
+          last_name  'Gourshete' <br>
+          age 22 <br>
+          city_id { City.find_by(name: 'Pune').id } <br>
+      </div>
     </div>
   </div>
 </body>
