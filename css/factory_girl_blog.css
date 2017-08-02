@@ -4,20 +4,80 @@ h1{
   font-style: italic;
   text-shadow: 2px 2px 0 white, 3px 3px 0 #ddd;
   font-size: 3.5em;
-
 }
-.outer-box{
+h2{
+  text-align: center;
+}
+.outer-box1{
   text-align: center;
   background: #f4f6f8;
   margin: 2.2em -50px;
   line-height: 1.2em;
+  padding-top: 6;
+}
+.outer-box2{
+  text-align: center;
+  background: #f4f6f8;
+  margin: 2.2em -50px;
+  line-height: 1.2em;
+  padding-top: 6;
+  padding-bottom: 6;
 }
 .container{
   align-items: center;
-  width: 40%;
+  width: 70%;
   justify-content: center;
   flex-direction: column;
   align-content: center;
   margin: 0px auto;
   padding: 10px;
 }
+.para2{
+  margin-left: -98;
+}
+.para1{
+ margin-left: -98;
+}
+.gem-install{
+  margin-left: -720;
+}
+.para2-content{
+  margin-left: -60;
+}
+.city{
+  margin-left: 241;
+}
+.age{
+  margin-left: 48;
+}
+.last-name{
+  margin-left: 101;
+}
+.first-name{
+  margin-left: 86;
+}
+.email{
+  margin-left: 188;
+}
+.email-class{
+  padding-left: 54;
+}
+.end1{
+  margin-left: -69;
+}
+.end2{
+  margin-left: -110;
+}
+.first{
+  padding-left: 20;
+}
+.last{
+  padding-left: 20;
+}
+.age-22{
+  padding-left: 65;
+}
+.city-class{
+  padding-left: 42;
+}
+
