@@ -6,11 +6,18 @@ h1{
   font-size: 3.5em;
 
 }
-
-
 .outer-box{
   text-align: center;
   background: #f4f6f8;
   margin: 2.2em -50px;
   line-height: 1.2em;
+}
+.container{
+  align-items: center;
+  width: 40%;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  margin: 0px auto;
+  padding: 10px;
 }
