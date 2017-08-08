@@ -80,4 +80,13 @@ h2{
 .city-class{
   padding-left: 42;
 }
+.trait1-row{
+  margin-left: 35;
+}
+.trait1-letter{
+  margin-left: 10;
+}
+.end-trait1{
+  margin-left: -42;
+}
 
