@@ -17,12 +17,15 @@
        last_name, age, city, email_id.</strong></p>
     <div class="outer-box2">
       <div class="headline"> FactoryGirl.define do <br>
+      <br>
         <span class="factory-user">factory :user do</span><br>
+        <br>
           <span class="first-name">first_name </span><span class="first"> 'Swapnil'</span><br>
           <span class="last-name">last_name  </span><span class="last">'Gourshete'</span> <br>
           <span class="age">age </span><span class="age-22">22</span> <br>
-          <span class="city">city_id</span><span class="city-class"> { City.find_by(name: 'Pune').id }</span> <br>
+          <span class="city">city</span><span class="city-class"> 'Pune'</span> <br>
           <span class="email">email </span><span class="email-class">example@example.com</span> <br>
+          <br>
           <span class="end1">end</span> <br>
           <span class="end2">end</span> <br>
       </div>
@@ -45,6 +48,24 @@
             <span class="trait1-row">gender </span><span class="trait1-letter"> 'F'</span><br>
             <span class="end-trait1">end</span> <br>
             <br>
+            <span class="end1">end</span> <br>
+            <span class="end2">end</span> <br>
+        </div>
+      </div>
+
+      <p class="para2"><strong> 4.</strong> Writing with associations</p>
+    <p class="para2-content"> Consider table <strong>locations</strong> with attributes <strong>user_id</strong> referencing to users table or User model, <strong>street</strong>, <strong>city</strong>, <strong>country</strong>.</p>
+      <div class="outer-box2">
+        <div class="headline"> FactoryGirl.define do <br>
+        <br>
+          <span class="factory-location">factory :location do</span><br>
+          <br>
+            <span class="association-user">association(:user) </span><br>
+            <span class="street">street  </span><span style="display:inline-block; width: 30px;"></span>
+<span class="">'10 Downstreet'</span> <br>
+            <span class="city-location">city </span><span style="display:inline-block; width: 30px;"></span>'Manhatton'<br>
+            <span class="country">country</span><span style="display:inline-block; width: 30px;"></span>'United States'<br>
+          <br>
             <span class="end1">end</span> <br>
             <span class="end2">end</span> <br>
         </div>
