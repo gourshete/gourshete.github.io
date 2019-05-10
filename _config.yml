@@ -1,0 +1,28 @@
+title: Exploring Rails at Hogwartz
+description: Personal blog
+
+url: http://gryffindor.in
+baseurl: ""
+paginate_path: "blog/page:num/"
+permalink: /blog/:year/:month/:day/:title
+
+markdown: kramdown
+highlighter: rouge
+plugins: [jekyll-paginate]
+paginate: 5
+
+navigation:
+  - title: Home
+    url: /index.html
+  - title: About
+    url: /about
+  - title: Contact
+    url: /contact
+
+social:
+  github: SGourshete
+  twitter: gourshete
+  facebook: swapnil.gourshete.5
+  email: learning.swapnil@gmail.com
+
+google_analytics: ""
