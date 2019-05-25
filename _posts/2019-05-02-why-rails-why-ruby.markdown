@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Why Rails? Why Ruby?"
-date:   2019-05-01
+date:   2019-05-05
 ---
 
 Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has made it so worthy?
