@@ -30,5 +30,6 @@ If you start building API server first Rails app, this will do three main things
 That’s it! A short introduction on Rails APIs. Stay tuned for How to build an Rails API app.
 
 
+<a href='https://medium.com/@swapnilggourshete/apis-in-rails-5-0-a3b3033b4ad' target='_blank'>Medium Blog</a>
 
 
