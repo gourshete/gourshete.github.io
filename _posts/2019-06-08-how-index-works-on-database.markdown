@@ -4,9 +4,10 @@ title:  "How Indexes on database works!"
 date:   2019-06-08
 ---
 
+When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results faster for select and where queries.
+
 <img src="{{ '/assets/img/how_index_works.gif' | prepend: site.baseurl }}" alt="">
 
-When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results faster for select and where queries.
 
 <h4>What is Index ?</h4>
 
