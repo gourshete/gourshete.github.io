@@ -4,13 +4,9 @@ title: Contact Long Haul
 ---
 
 <div id="contact">
-  <h1 class="pageTitle">Contact Me</h1>
-  <div class="contactContent">
-    <p class="intro">This is an example Contact page. If you want to make changes then do so in the <code>contact.html</code> file.</p>
-    <p>The form is provided by <a href="http://formspree.io/">Formspree.</a> Follow the directions on their site to set up the form for use.</p>
-    <p>If you have questions feel free to <a href="mailto:swapnilggourshete@gmail.com">email me</a> or contact on <a href="https://github.com/SGourshete">GitHub</a>. Enjoy!</p>
-  </div>
-  <form action="http://formspree.io/your@mail.com" method="POST">
+  <p class="pageTitle">Contact Me</p>
+  
+  <form action="https://formspree.io/email@domain.tld" method="POST">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" class="full-width"><br>
     <label for="email">Email Address</label>

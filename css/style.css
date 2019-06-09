@@ -696,6 +696,9 @@ body {
 img, video, audio, iframe, object {
   max-width: 100%; }
 
+.img-about {
+  max-width: 110% !important; }
+
 .container {
   max-width: 610px;
   padding: 0 20px; }
