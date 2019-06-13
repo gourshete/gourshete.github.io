@@ -6,7 +6,7 @@ title: Contact Swapnil
 <div id="contact">
   <p class="pageTitle">Contact Me</p>
   
-  <form action="https://formspree.io/email@domain.tld" method="POST">
+  <form action="https://formspree.io/learning.swapnil@gmail.com" method="POST">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" class="full-width"><br>
     <label for="email">Email Address</label>
