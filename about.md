@@ -18,6 +18,20 @@ title: About gryffindor.in
 	  learning.swapnil@gmail.com | 
 	  <a href="https://www.linkedin.com/in/swapnil-gourshete/">linkedin</a>
 	</p>
+	<div id="contactme">
+    <p class="pageTitle">Contact Me</p>
+    
+    <form action="https://formspree.io/learning.swapnil@gmail.com" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" class=""><br>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="_replyto" class=""><br>
+      <label for="message">Message</label>
+      <textarea name="message" id="message" cols="30" rows="10" class=""></textarea><br>
+      <input type="submit" value="Send" class="button">
+    </form>
+  </div>
+
 	<p> Cheers!!!</p>
 	<img class="img-about" src="{{ '/assets/img/harry-potter-always-wallpaper-copy.png' | prepend: site.baseurl }}" alt="">
 </div>
