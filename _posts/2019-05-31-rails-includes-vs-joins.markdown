@@ -35,4 +35,13 @@ It is scalable to any size.
 Isn't it fantastic? Yes, it is. It saves hell lot of time. And it proves to be very efficient, when application
 contains huge data.
 
+- So, does includes always preferred over joins?
+
+Hopefully not, there are some cases when includes does not exceed joins in terms of efficiency.
+
+<img src="{{ '/assets/img/includes_3.png' | prepend: site.baseurl }}" alt="">
+Here, we used tables users and companies, but companies is only for some sort of filter. We did not actually 
+used data from companies later in the code. So no need to bring data from companies along with users. This is
+ why join is efficient in this case.
+ 
 Cheers!!!
