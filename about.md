@@ -6,7 +6,7 @@ title: About gryffindor.in
 <div class="post">
 	<h3 class="pageTitle">About gryffindor.in</h3>
 	<p class="intro"></p>
-	<p> Hey there, I'm Swapnil, Software Engineer at VerticalFox. I primarily work
+	<p> Hey there, I'm Swapnil Gourshete, Software Engineer at VerticalFox. I primarily work
 	on Ruby on Rails.
 	I used to write on <a href="https://medium.com/@swapnilggourshete">medium.com</a> 
 	about technical things that I hustled to get rightly done and
