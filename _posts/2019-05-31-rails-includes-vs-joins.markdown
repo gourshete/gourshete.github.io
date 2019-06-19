@@ -17,7 +17,7 @@ here comes the difference.
 Here, we retrieved users in the first line and data is formatted in the each do loop. Here is interesting thing, to retrieve user.company.name, each time a call to database is made. It means, if there are 10k users then 10k separate queries would be fired up.
 And this will overkill system when scaled up. Isn't there is efficient way? Yes, it is Includes.
 
-And this will overkill system when scaled up. Isn't there is efficient way? Yes, it is Includes.
+And this will overkill system when scaled up. Isn't there a more efficient way? Yes, it is Includes.
 
 <h3>INCLUDES</h3>
 If we go through Rails documenting, it clearly says - 'With includes, Active Record ensures that all of the
