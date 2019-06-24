@@ -19,9 +19,16 @@ Breakdown of request flow -
 
 - Web Browser
 <p> Browser should direct request to a specific destination. For users it is a URL seen on web page, but
- computers need IP addresses, they do not understand these URLs. For this, there is a system in place called 
+ computers need IP addresses, they do not understand these URLs.</p> 
+<p>For this purpose, there is a system in place called 
  Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser then who
- starts finding out IP address. Generally Interner Service Providers(ISP) keeps this information. If not then
+ starts finding out IP address.</p> 
+ <p>Generally Internet Service Providers(ISP) keeps this information. If not then
  it can go up the hierarchy till Root DNS --> Extension wise Name Servers --> Authoritative DNS Server. The
- chase ends here. We got required ip address. Moving to next step... 
+ chase ends here. We got required ip address. </p>
+ 
+<p>
+ <img src="{{ '/assets/img/dig.png' | prepend: site.baseurl }}" alt="">
+ 
+ Moving to next step... 
 </p>
