@@ -20,6 +20,8 @@ Breakdown of request flow -
 - Web Browser
 <p> Browser should direct request to a specific destination. For users it is a URL seen on web page, but
  computers need IP addresses, they do not understand these URLs. For this, there is a system in place called 
- Domain Name System(DNS) which maps URLs to computer understandable IP addresses. We make request for URL and
- get back IP address
+ Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser then who
+ starts finding out IP address. Generally Interner Service Providers(ISP) keeps this information. If not then
+ it can go up the hierarchy till Root DNS --> Extension wise Name Servers --> Authoritative DNS Server. The
+ chase ends here. We got required ip address. Moving to next step... 
 </p>
