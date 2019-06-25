@@ -34,6 +34,23 @@ Breakdown of request flow -
 
 <h3> Web Server </h3>
 
-<p>
-
+<p>By now browser is successfully connected to server. The server here is web server. Some examples are Apache,
+Nginx, Passenger, Puma, Unicorn, Webrick.</p> 
+<p>These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice
+ that request.</p>
+<p>For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any 
+assets then serve it from '/public/assets' folder. There are a list of different web servers you can use for this purpose.
+ With nginx it is like 
 </p>
+<p>
+<script src="https://gist.github.com/SGourshete/8c459576dc82eb38c62deb826e4ae20d.js"></script>
+</p>
+<p>Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,
+for anything else than assets, it will get 404 not found response.</p>
+<p>But what if browser asks the latest 10 blog posts from xyz author with some amazing
+styling and javascript??</p>
+<p> Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be very 
+much complex to put in web server configuration file. So what next?</p>
+<p>There comes Rails! Web server then passes request to Rails application. But there can be many ways the web server passes request
+ to Rails. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we manage this
+ how should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK</p>
