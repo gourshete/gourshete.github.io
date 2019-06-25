@@ -47,10 +47,10 @@ assets then serve it from '/public/assets' folder. There are a list of different
 </p>
 <p>Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,
 for anything else than assets, it will get 404 not found response.</p>
-<p>But what if browser asks the latest 10 blog posts from xyz author with some amazing
-styling and javascript??</p>
-<p> Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be very 
-much complex to put in web server configuration file. So what next?</p>
-<p>There comes Rails! Web server then passes request to Rails application. But there can be many ways the web server passes request
- to Rails. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we manage this
- how should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK</p>
+<p>But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript??</p>
+<p> Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be 
+complex to put it in web server configuration file. So what next?</p>
+<p>There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it.
+ Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed
+ this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion,
+ there is a system in place called RACK</p>
