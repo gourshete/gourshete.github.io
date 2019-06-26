@@ -13,10 +13,10 @@ title: About gryffindor.in
 	things I learnt while exploring Rails!  Take it for a spin.</p>
 	<p> And Yes, no need to mention, a potterhead!!! </p>
 	<p> You can catch me up on 
-	  <a href="https://twitter.com/gourshete/">twiter</a> | 
-	  <a href="https://github.com/SGourshete/">github</a> |
+	  <a href="https://twitter.com/gourshete/" target="_blank">twiter</a> | 
+	  <a href="https://github.com/SGourshete/" target="_blank">github</a> |
 	  learning.swapnil@gmail.com | 
-	  <a href="https://www.linkedin.com/in/swapnil-gourshete/">linkedin</a>
+	  <a href="https://www.linkedin.com/in/swapnil-gourshete/" target="_blank">linkedin</a>
 	</p>
 	<div id="contactme">
     <p class="pageTitle">Contact Me</p>
