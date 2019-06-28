@@ -7,7 +7,8 @@ date:   2019-06-28
 Too many migrations in application makes it painful. Sometimes they are written a long time back, that 
 now you do not even remember. At the point you might want to replace them with something simple and compact.
 
-<p>Rails have a gem for this utility, called <a href="https://github.com/jalkoby/squasher#readme">squasher</a>.
+<p>Rails have a gem for this utility, called <a href="https://github.com/jalkoby/squasher#readme" target="_blank"
+>squasher</a>.
 It eventually scans all the migrations in application and converts them into a single migration named InitSchema.
  Let's see by example.</p>
 
