@@ -4,11 +4,11 @@ title:  "Squasher: Replacing old migrations"
 date:   2019-06-28
 ---
 
-Too many migrations in application makes it less interesting. Sometimes they are written a long time back, that 
-now you do not even remember. At the point you might want to replace them with a new migrations.
+Too many migrations in application makes it painful. Sometimes they are written a long time back, that 
+now you do not even remember. At the point you might want to replace them with something simple and compact.
 
 <p>Rails have a gem for this utility, called <a href="https://github.com/jalkoby/squasher#readme">squasher</a>.
-It eventually scans all the migrations in application and converts them into a single migration called SquashClean.
+It eventually scans all the migrations in application and converts them into a single migration named SquasherClean.
  Let's see by example.</p>
 
 - Installation
@@ -26,12 +26,15 @@ and squasher will create single migration for all the migrations before 2018 and
 redundent migrations.</p>
 <p> Yes it is that simple!</p>
 <br>
+
 <h4>Let's go down some depth</h4><br>
 <p>Does Rails versioning affect our way?<br>
 --> Yes. By default squasher will not generate any rails versioning for newly generated migration.</p>
 <img src="{{ '/assets/img/squasher1.png' | prepend: site.baseurl }}" alt="">
+
 <p>So there are high chances it may break during migrations.<br>
 Simply squash comes with option - <br>
  -m, --migration=VERSION  define the rails migration version(since Rails 5)<br>
  It will rails versioning to the migration </p>
- <img src="{{ '/assets/img/squasher2.png' | prepend: site.baseurl }}" alt="">
+ 
+<img src="{{ '/assets/img/squasher2.png' | prepend: site.baseurl }}" alt="">
