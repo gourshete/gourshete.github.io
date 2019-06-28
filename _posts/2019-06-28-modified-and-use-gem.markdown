@@ -4,11 +4,8 @@ title:  "Modify a gem and use it in Rails"
 date:   2019-06-28
 ---
 
-<!-- TODO - Use following heading instead of title -->
-<!--<h3>Modify a gem and Use in Rails Project</h3>-->
-
-<p>Sometimes a situation arises where we need to modify a gem according to our requirement and then 
-successfully integrate into our project. Let's find out!</p>
+Sometimes a situation arises where we need to modify a gem according to our requirement and then 
+successfully integrate into our project. Let's find out!
 
 <p>1. Download the repository of required gem from github.</p>
 
