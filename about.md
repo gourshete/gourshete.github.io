@@ -10,7 +10,7 @@ title: About gryffindor.in
 	on Ruby on Rails.
 	I used to write on <a href="https://medium.com/@swapnilggourshete" href="_blank">medium.com</a> 
 	about technical things.</p>
-	<p>Exploring Rails!!  Take it for a spin.</p>
+	<p>Here, exploring Rails!!  Take it for a spin.</p>
 	<p> And Yes, no need to mention, a potterhead!!! </p>
 	<p> You can catch me up on 
 	  <a href="https://twitter.com/gourshete/" target="_blank">twiter</a> | 
