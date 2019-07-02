@@ -103,12 +103,14 @@ config/routes.rb -
 This will ultimately generate these seven routes
 <script src="https://gist.github.com/SGourshete/6909e997f7d11ed2b9ddb4b046d50c58.js"></script>
 
-From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go 
-to 'BooksController#show' and likewise!
+From here, most of us know how it works. 
+
+If request is for `'/books'` and is of kind GET, it will go to `BooksController#index` action. Request GET for `'/books/:id'` will go 
+to `BooksController#show` and likewise!
 
 That's it from the Rails Request Lifecycle.
 
-Cheers!!! 
+>Cheers!!! 
 
 {% if page.comments %}
   <div id="disqus_thread"></div>
