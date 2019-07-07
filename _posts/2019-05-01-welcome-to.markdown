@@ -2,6 +2,7 @@
 layout: post
 title:  "Welcome"
 date:   2019-05-01
+description: "rails github gryffindor learning"
 ---
 
 <p class="intro"><span class="dropcap"></span>Welcome to the world of blogging.</p>

@@ -3,6 +3,9 @@ layout: post
 title:  "Rails Request Lifecycle..."
 date:   2019-06-12
 comments: true
+description: "Request lifecycle. How request passes through each stage. From Browser to Web server to Application server to
+controller's action and back to browser. rails github gryffindor learning request lifecycle http browser webserver application server
+nginx routes controller action rack app"
 ---
 
 Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? 
@@ -81,8 +84,8 @@ In code it just looks like
 Web server creates env hash to pass it to Rack's call method. This env hash has information like http_verb, 
  http_method, parameters, rack_app_version, etc.
 
-And the call method responds in three variables - status, header and body. Status to tell about request completed
-successfully or not. Body has actual response.
+And the call method responds in three variables - status, header and body. Status is http status, to tell about request completed
+successfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response.
 
 
 Coming to rails, the config.ru file will look something like 

@@ -2,6 +2,7 @@
 layout: post
 title:  "APIs in Rails 5.0"
 date:   2019-06-04
+description: "API in rails 5. rails github gryffindor learning api"
 ---
 
 Have you ever wonder how APIs work in the world of convention over configuration, specifically in Rails 5.0?
