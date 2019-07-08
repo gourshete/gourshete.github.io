@@ -46,5 +46,24 @@ Hopefully not, there are some cases when includes does not exceed joins in terms
 Here, we used tables users and companies, but companies is only for some sort of filter. We did not actually 
 used data from companies later in the code. So no need to bring data from companies along with users. This is
  why join is efficient in this case.
- 
+
+...
+
+
+<h4>Eager Loading</h4>
+It joins everything in a single query. Sometimes the query may result in a huge sql call with too many joins 
+left joins.
+
+`User.eager_load(:posts)`<br>
+
+...
+
+
+<h4>Pre Loading</h4>
+Preload works in same way as Includes. It brings up the data normally in two queries.<br>
+`User.pre_load(:posts)`<br>
+--> `SELECT "users".* FROM "users"
+ SELECT "posts".* FROM "posts"  WHERE "posts"."user_id" IN (1)` 
+
+
 Cheers!!!
