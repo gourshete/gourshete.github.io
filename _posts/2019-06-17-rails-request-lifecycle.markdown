@@ -3,7 +3,7 @@ layout: post
 title:  "Rails Request Lifecycle..."
 date:   2019-06-12
 comments: true
-description: "Request lifecycle. How request passes through each stage. From Browser to Web server to Application server to
+keywords: "Request lifecycle. How request passes through each stage. From Browser to Web server to Application server to
 controller's action and back to browser. rails github gryffindor learning request lifecycle http browser webserver application server
 nginx routes controller action rack app"
 ---

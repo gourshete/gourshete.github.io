@@ -2,7 +2,7 @@
 layout: post
 title:  "Squasher: Replacing old migrations"
 date:   2019-06-28
-description: "Getting rid of old lengthy migration list is easy now. Squash all migrations into single one using
+keywords: "Getting rid of old lengthy migration list is easy now. Squash all migrations into single one using
 squasher gem. Let's see by example. Gem squasher rails github gryffindor learning activerecord migrations"
 ---
 
