@@ -5,7 +5,10 @@ date:   2019-07-07
 keywords: "rails github gryffindor learning ruby string comparison eql equal StringInquirer"
 ---
 
-Normally we use `==/===/eql?/equal?` for string comparison in Rails.
+Generally we use `==/===/eql?/equal?` for string comparison in Rails.
+It does work in all scenarios we needed. But we often tend to look how same things can be done in more clean ways or how other developers in Rails
+community would have done that.
+
 
 ``` ruby
 str = 'x'
@@ -15,8 +18,6 @@ str.equal?'X'
 str=='X'
 str==='X'
 ```
-It does work in all scenarios we needed. But we often tend to look how same things can be done in more clean ways or how other developers in Rails
-community would have done that.
 
 The best place to look for such examples, in my opinion, is Rails repository on github itself. 
 
