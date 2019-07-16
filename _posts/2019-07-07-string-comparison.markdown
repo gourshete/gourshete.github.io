@@ -22,7 +22,7 @@ The best place to look for such examples, in my opinion, is Rails repository on 
 
 Let's see how string comparison is done by Rails community inside Rails core code.
 
-There is a class in place called `StringInquirer`.
+There is a class in place called <a href="https://github.com/rails/rails/blob/master/activesupport/lib/active_support/string_inquirer.rb" target="_blank">`StringInquirer`</a>.
 
 Wrapping a string in this class gives you a prettier way to test for equality. The value returned by <tt>Rails.env</tt> is wrapped in a 
 StringInquirer object, so instead of calling this:
