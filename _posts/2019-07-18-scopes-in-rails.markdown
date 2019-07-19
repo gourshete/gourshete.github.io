@@ -23,7 +23,12 @@ the provided foreign_key_id was not present in the associated table. My first gu
         end
       end
 
+The object returned by scope is always an `ActiveRecord::Relation` not `Array`. And this is the greatest benefit, you can call all
+the queries on this object just like any other `Relation` object.
 
+      Vehicle.red
+      Vehicle.red.count
+      Vehicle.red.where(type: 'Hatchback')
 
 `You should always pass a callable object to the scopes defined with #scope. This ensures that the scope is re-evaluated each
 time it is called.`
