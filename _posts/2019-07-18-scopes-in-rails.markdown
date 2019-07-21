@@ -6,7 +6,9 @@ keywords: "rails github gryffindor learning ruby scopes class method"
 ---
 
 Recently I was calling create method on an active-record model object. But it failed in validation, because 
-the provided foreign_key_id was not present in the associated table. My first guess was it might be a dangling reference.
+the provided foreign_key_id was not present in the associated table.
+ 
+My first guess was it might be a dangling reference.
  But I was wrong. There was a record with this foreign_key_id in its table. So what went wrong? It was a problem with 
  `default scope` defined on an associated model.
  
@@ -80,7 +82,24 @@ It will result `Vehicle.count` by removing default clause `where(drive_type: 'ge
 
 ...
 
-Now let's move towards effect of scopes on associations. Default scope will have effect on inherited classes.
+### How associations work with Scopes
+
+Now let's move towards effect of scopes on associations. Default scope will have effect on inherited classes. The default scope
+will take effect when a parent class will make query to the following class. Just like
+
+      class Klass < ActiveRecord::Base
+        has_many :vehicles
+      end
+
+      class Vehicle < ActiveRecord::Base
+        belongs_to :klass
+        default_scope {where(drive_type: 'gear')}
+      end
+
+When a query is made from `klass` object to `vehicles`, the default scope   `drive_type: 'gear'` will be auto considered.
+
+
+
 Let's assume data for more clear picture
 
 <img src="{{ '/assets/img/scopes_1.png' | prepend: site.baseurl }}" alt="">
