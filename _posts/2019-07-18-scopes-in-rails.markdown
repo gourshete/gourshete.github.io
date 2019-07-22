@@ -84,8 +84,8 @@ It will result `Vehicle.count` by removing default clause `where(drive_type: 'ge
 
 ### How associations work with Scopes
 
-Now let's move towards effect of scopes on associations. Default scope will have effect on inherited classes. The default scope
-will take effect when a parent class will make query to the following class. Just like
+Scopes have effect on associated classes. The default scope
+will take effect when a parent class makes query to the associated class. Just like
 
       class Klass < ActiveRecord::Base
         has_many :vehicles
@@ -98,9 +98,13 @@ will take effect when a parent class will make query to the following class. Jus
 
 When a query is made from `klass` object to `vehicles`, the default scope   `drive_type: 'gear'` will be auto considered.
 
+....
 
+### Diving Deep
 
 Let's assume data for more clear picture
 
 <img src="{{ '/assets/img/scopes_1.png' | prepend: site.baseurl }}" alt="">
+
+Continue...
 
