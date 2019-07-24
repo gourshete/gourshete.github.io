@@ -115,7 +115,7 @@ Scopes can be extended to have methods defined within themselves. Suppose
           end
       end
     
-Calling `Vehicle.geared.count` would be like `Vehicle.where(drive_type: 'gear').count` and likewise for `pluck_ids`.
+Calling `Vehicle.geared.count` would be equivalent to `Vehicle.where(drive_type: 'gear').count` and likewise for `pluck_ids`.
 
 ...
 
