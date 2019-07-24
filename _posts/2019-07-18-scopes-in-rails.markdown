@@ -102,6 +102,21 @@ When a query is made from `klass` object to `vehicles`, the default scope   `dri
 
 ### Extended Scopes
 
+Scopes can be extended to have methods defined within themselves. Suppose 
+
+      class Vehicle < ActiveRecord::Base
+        scope :geared, -> {where(drive_type: 'gear')} do
+          def count
+            count
+          end
+          
+          def pluck_ids
+            pluck(:id)
+          end
+      end
+    
+Calling `Vehicle.geared.count` would be like `Vehicle.where(drive_type: 'gear').count` and likewise for `pluck_ids`.
+
 ...
 
 ### Why not class methods?
