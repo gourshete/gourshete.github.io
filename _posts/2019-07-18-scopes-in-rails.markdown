@@ -202,5 +202,5 @@ Then, what is the solution?
 
 Defining allowed `column_1` values in the association itself will do the trick.
 
-Continue...
 
+Cheers!!!
