@@ -8,6 +8,7 @@ keywords: "rails github gryffindor learning ruby scopes class method"
 Recently I was calling create method on an active-record model object. But it failed in validation, because 
 the provided foreign_key_id was not present in the associated table.
  
+
 My first guess was it might be a dangling reference.
  But I was wrong. There was a record with this foreign_key_id in its table. So what went wrong? It was a problem with 
  `default scope` defined on an associated model.
