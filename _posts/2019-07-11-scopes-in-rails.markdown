@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Scopes in Rails"
-date:   2018-07-07
+date:   2019-07-11
 keywords: "rails github gryffindor learning ruby scopes class method"
 ---
 
