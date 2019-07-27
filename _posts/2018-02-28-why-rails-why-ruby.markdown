@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Why Rails? Why Ruby?"
-date:   2019-05-05
+date:   2018-02-28
 keywords: "Web framework. Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has
  made it so worthy? Why Ruby? Convention over configuration. Easy to Learn. Great Community. Compatibility with latest technologies. 
- GitHub, Airbnb, Netflix, Twitter rails github gryffindor learning"
+ GitHub, Airbnb, Netflix, Twitter rails github gryffindor learning swapnil gourshete"
 ---
 
 Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has made it so worthy?
