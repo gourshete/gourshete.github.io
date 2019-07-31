@@ -2,7 +2,10 @@
 layout: post
 title:  "Scopes in Rails"
 date:   2019-07-11
-keywords: "rails github gryffindor learning ruby scopes class method"
+keywords: "rails github gryffindor learning ruby scopes class method default scope named scope unscoped swapnil edge case
+Let's first understand how scopes work in Rails. When we define a scope on an ActiveRecord model.This is just one way to
+use default scope. You can use default scopes `n` number of times in a Model. They all will be club together in the 
+resulting query.Scopes can be extended to have methods defined within themselves. associations work with Scopes"
 ---
 
 Recently I was calling create method on an active-record model object. But it failed in validation, because 
