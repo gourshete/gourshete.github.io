@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Rails Includes vs Joins"
-date:   2019-05-31
+date:   2018-03-08
 keywords: "Rails Includes Joins. Includes uses eager loading whereas joins uses lazy loading. there are some 
 cases when includes does not exceed joins in terms of efficiency. And here comes the difference. rails github gryffindor learning
 includes joins efficiency"
