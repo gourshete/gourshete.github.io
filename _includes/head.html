@@ -6,33 +6,33 @@
     <title>{{ page.title }}</title>
 
     <!-- Open Graph Meta -->
-    <meta content="{{ site.title }}" property="og:site_name">
+    <meta property="og:site_name" content="{{ site.title }}">
     {% if page.title %}
-      <meta content="{{ page.title }}" property="og:title">
+      <meta  property="og:title" content="{{ page.title }}">
     {% else %}
-      <meta content="{{ site.title }}" property="og:title">
+      <meta  property="og:title" content="{{ site.title }}">
     {% endif %}
     {% if page.title %}
-      <meta content="article" property="og:type">
+      <meta property="og:type" content="article">
     {% else %}
-      <meta content="website" property="og:type">
+      <meta property="og:type" content="website">
     {% endif %}
     {% if page.keywords %}
-      <meta content="{{ page.keywords}}" property="og:description">
+      <meta property="og:keywords" content="{{ page.keywords}}">
     {% else %}
-      <meta content="{{ site.description }}" property="og:description">
+      <meta property="og:keywords" content="{{ site.description }}">
     {% endif %}
     {% if page.url %}
-      <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+      <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     {% endif %}
     {% if page.date %}
-      <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
-      <meta content="{{ site.url }}/about/" property="article:author">
+      <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+      <meta property="article:author" content="{{ site.url }}/about/">
     {% endif %}
     {% if page.image %}
-      <meta content="{{ site.url }}/assets/img/{{ page.image }}" property="og:image">
+      <meta  property="og:image" content="{{ site.url }}/assets/img/{{ page.image }}">
     {% else %}
-      <meta content="{{ '/assets/img/touring.jpg' | prepend: site.url }}" property="og:image">
+      <meta  property="og:image" content="{{ '/assets/img/touring.jpg' | prepend: site.url }}">
     {% endif %}
 
     <!-- Twitter Cards -->
