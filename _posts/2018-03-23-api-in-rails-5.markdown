@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "APIs in Rails 5.0"
-date:   2019-06-04
+date:   2018-03-23
 keywords: "API in rails 5. rails github gryffindor learning api"
 ---
 
