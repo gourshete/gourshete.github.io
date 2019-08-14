@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How Indexes on database works!"
-date:   2019-06-08
+date:   2018-06-08
 keywords: "How index on database works? datastructures B-tree rails github gryffindor learning database postgresql index"
 ---
 
