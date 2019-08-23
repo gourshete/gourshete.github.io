@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Demystifying HTTP request - Part 1"
+title:  "HTTP request - Part 1"
 date:   2019-08-20
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails http https headers body response"
 ---
@@ -14,7 +14,9 @@ HTTP request headers can be broadly divided into 3 parts -
 ### General
 <br>
 
-`"GET /blog HTTP/1.1"`
+Sample HTTP request format <br>`"GET /blog HTTP/1.1"`
+
+Let's divide it into sections and see what each one means
 
 - Method
 

@@ -1,47 +1,42 @@
 ---
 layout: post
-title:  "Demystifying http request - part 2"
-date:   2019-08-22
+title:  "HTTP request - part 3"
+date:   2019-08-24
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails http https headers body response"
 ---
+
+
 HTTP request headers can be broadly divided into 3 parts - 
 1. General
 2. Response Headers
 3. Request Headers 
 
 <br>
-### Response Headers
+### Request Headers
 <br>
 
 Sample HTTP request format `"GET /blog HTTP/1.1"`
 
 Let's divide it into sections and see what each one means
 
+- Accept
 
-- date
+Tells about response formats that client can accept. e.g.<br>
+`text/html, application/json, application/xml, text/css, image/*, */*` 
 
-All http requests use Greenwich Standard Time(GMT) or UTC. Here is common format -<br> 
-'Date: Fri, 23 Aug 2019 10:17:27 GMT'<br>
-reference - [RFC](http://tools.ietf.org/html/rfc7231#section-7.1.1.1)
+- Referer
 
-- status
+Allows client to specify from which URI this http request is generated/ requested. Like<br>
+`Referer: https://buff.ly/`<br>
+It is of great help for analytics.
 
-It is a 3 digit code that represents response from server. Like<br>
-`Status Code: 304`
+- User agent
 
-- expires
+Indicates which browser the request is sent from. like<br>
+`user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36`
 
-Tell the date when cookie will expire.
 
-- last-modified
-
-Tells date and time when origin of content was last modified.
-
-- server
-
-Tells the web server used to process this http request.
-
-- cache-control <br>
+- Cache-control <br>
 Used to indicate various flags in cache control mechanism. Like 
   1. max-age - to indicate client accepts cached data whose age is not greater than value in seconds).
   2. public - server can use any cache to store data
