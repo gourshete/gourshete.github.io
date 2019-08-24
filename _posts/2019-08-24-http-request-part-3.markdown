@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "HTTP request - part 3"
+title:  "Ruby HTTP request response - 3"
 date:   2019-08-24
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails http https headers body response"
 ---

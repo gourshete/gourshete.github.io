@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Demystifying http request - part 2"
+title:  "Ruby HTTP request response - 2"
 date:   2019-08-22
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails http https headers body response"
 ---
