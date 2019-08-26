@@ -5,6 +5,15 @@ date:   2019-08-20
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails http https headers body response"
 ---
 
+At the end browser talks in the language of HTTP request. But we really know minimal about it. 
+
+The request process flow is as simple as browser sends http request to the server and receives a response. Sometimes what we see is a combined result of 
+responses from multiple requests.
+
+To summarize every image, text or anything seen on browser is a response received to an http request. 
+
+Let's see what a request and response headers of http request consists of.
+ 
 HTTP request headers can be broadly divided into 3 parts - 
 1. General
 2. Response Headers
