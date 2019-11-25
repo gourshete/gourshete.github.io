@@ -6,15 +6,18 @@ keywords: "ruby rails github gryffindor learning swapnil gourshete migration doc
 ---
 
 Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? <br>
-A - Absolutely no. rails:db:seed should only run for the first deployment. So here is what we need - Run seed data
- only for first deployment. The code that is deployed on subsequent kubernetes pods will be same with only differences 
-in configuration files telling what is current database, etc.
+**Ans -** Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should
+be run on every deployments. 
 
-Here are steps - 
+So here is what we need **-** Run seed data only for first deployment. We will consider here containerised architecture.
+
+**Here are steps -** <br> 
+During deployment
 * Check if db exists
 * If yes, then run rails db:migrate
 * If no, then run rails db:create && rails db:migrate && rails db:seed
 
+<br>
 
 #### How to determine if db exists during deployment? <br>
 **Ans -** After some googling, found out that a rake task can be written to determine if db exists
@@ -52,6 +55,7 @@ return with exit 0. To summarise,
 
      args: [ "-c", "env && bundle exec rake db:exists; DB_EXISTS=$?;  [[ $DB_EXISTS = 1 ]] && (rails db:create db:migrate db:seed) || (rails db:migrate)" ]
 
+`bundle exec rake db:exists; DB_EXISTS=$?;  [[ $DB_EXISTS = 1 ]] && (rails db:create db:migrate db:seed) || (rails db:migrate)` <br>
 This makes call to rake task above. Then collects its output into a variable DB_EXISTS. Then check if value of DB_EXISTS is equal to 1(which means db does not
 exists, according to our above assessment), IF YES THEN RUN `rails db:create db:migrate db:seed`, ELSE run `rails db:migrate`.
 
