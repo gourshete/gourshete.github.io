@@ -9,7 +9,8 @@ What is the best way of handling background jobs in Rails, (maybe) using sidekiq
 
 Let's take step by step look into creating a Rails App and making a request for Background job using sidekiq
 
-Pre-requisite for machine
+System Pre-requisite
+* Ruby
 * Rails
 * Redis
 * Sidekiq
@@ -17,7 +18,7 @@ Pre-requisite for machine
 <br>
 
 ### Create new Rails Project
-We will create a new rails project
+We will create a new rails project named `sidekiq-example`
 
 <img src="{{ '/assets/img/SS-sidekiq-new-project.png' | prepend: site.baseurl }}" alt=""> 
 
@@ -35,7 +36,7 @@ Now run command `bundle install`. This will install gem sidekiq in our project.
 <br>
 
 ### Generate Model
-Let's create a model named `Team` for reference
+Let's create a model named `Team` for reference with fields `name`, `rating`
 
 <img src="{{ '/assets/img/SS-sidekiq-model.png' | prepend: site.baseurl }}" alt="">
 
@@ -58,7 +59,7 @@ Create a controller for our actions under namespace `api/v1/`
 <br>
 
 ### Add routes
-Let's add routes for our actions. Add this in `routes.rb`
+Let's add routes for our actions. Add this in `routes.rb`.
 
 <img src="{{ '/assets/img/SS-sidekiq-routes.png' | prepend: site.baseurl }}" alt="">
 
