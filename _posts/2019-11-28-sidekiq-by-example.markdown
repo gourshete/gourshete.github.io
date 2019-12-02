@@ -15,6 +15,9 @@ System Pre-requisite
 * Redis
 * Sidekiq
 
+
+Note: The <a href="https://github.com/gourshete/sidekiq-example" target="_blank">repository</a>  of this project.
+
 <br>
 
 ### Create new Rails Project
@@ -103,5 +106,6 @@ If you hit URL will found out something like this in sidekiq server log
 * ):
 
 Well this is very simple example of running background job in rails. You can write complex logic in Sidekiq workers.
+You can add multiple workers.
 
 Cheers! 🍻🍻
