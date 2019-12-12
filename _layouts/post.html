@@ -8,7 +8,11 @@ layout: default
       </div>
   {% endif %}
   <h1 class="postTitle">{{ page.title }}</h1>
-  <p class="meta"><a href="/about"><span>Swapnil Gourshete</span></a> | {{ page.date | date: '%B %d, %Y' }} | <span class="time">{{ page.content | number_of_words | divided_by:180 }}</span> Minute Read</p>
+  <p class="meta"><a href="/about"><span>Swapnil Gourshete</span></a> | {{ page.date | date: '%B %d, %Y' }}
+    {% if (number_of_words > 360) %}
+    | <span class="time">{{ page.content | number_of_words | divided_by:180 }}</span> Minute Read
+    {% endif %}
+  </p>
   
   {{ content }}
 
