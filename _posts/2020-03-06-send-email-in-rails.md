@@ -5,7 +5,7 @@ date:   2020-03-06
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails sidekiq background-jobs async"
 ---
 
-Sending email is almost integral part of every web application nowadays. In this post we will cover how to send emails
+Sending email is integral part of every web application nowadays. In this post we will cover how to send emails
 from a rails application.
 
 First you need an active smtp server to send an email, because only SMTP servers are capable of sending or receiving emails.
