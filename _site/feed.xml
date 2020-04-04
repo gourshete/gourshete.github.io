@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-04T23:29:37+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Reset primary key sequence</title><link href="http://localhost:4000/reset_pk_sequence/" rel="alternate" type="text/html" title="Reset primary key sequence" /><published>2020-03-28T00:00:00+05:30</published><updated>2020-03-28T00:00:00+05:30</updated><id>http://localhost:4000/reset_pk_sequence</id><content type="html" xml:base="http://localhost:4000/reset_pk_sequence/">&lt;p&gt;Resetting primary key sequence in Rails can be achieved by simply calling method &lt;code class=&quot;highlighter-rouge&quot;&gt;reset_pk_sequence!&lt;/code&gt; on ActiveRecord with 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;table_name&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;reset_pk_sequence!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'table_name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What is Primary key sequence?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is a value maintained by database, which it refers to when adding new row. This is used to decide next value for primary key column. In 
+most common scenario the column named &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; holds primary key for the table.&lt;/p&gt;
+
+&lt;p&gt;When first row is being added, &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; is set to &lt;strong&gt;1&lt;/strong&gt;. At this time id_sequence would be &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt;. When second row is added, id_sequence would be
+set to &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt; and likewise.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why to reset this sequence?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sometimes due to imported records or other reason, id_sequence is not updated to hold the right value. Suppose we imported 10 records 
+to the above schema with their ids from previous schema and those ids not conflicting with existing 2 records. And id_sequence is not
+updated.&lt;/p&gt;
+
+&lt;p&gt;Now the value of id_sequence is &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt;, at the same time record with id &lt;strong&gt;3&lt;/strong&gt; is present(from imported records). In this case, 
+database insert operation will fail with error &lt;code class=&quot;highlighter-rouge&quot;&gt;duplicate primary key - validation failure&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to reset?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Open database console and run&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT setval&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'your_table_id_seq'&lt;/span&gt;, COALESCE&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;SELECT MAX&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;+1 FROM your_table&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to reset from Rails console?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;reset_pk_sequence!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'table_name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to reset for all tables?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tables&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;reset_pk_sequence!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;References -&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/244265&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/244265&quot;&gt;https://stackoverflow.com/a/244265&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;Rubyinrails&lt;/a&gt; - &lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/reset_pk.jpg" /></entry><entry><title type="html">Sending Email in Rails</title><link href="http://localhost:4000/send-email-in-rails/" rel="alternate" type="text/html" title="Sending Email in Rails" /><published>2020-03-06T00:00:00+05:30</published><updated>2020-03-06T00:00:00+05:30</updated><id>http://localhost:4000/send-email-in-rails</id><content type="html" xml:base="http://localhost:4000/send-email-in-rails/">&lt;p&gt;Sending email is integral part of every web application nowadays. In this post we will cover how to send emails
+from a rails application.&lt;/p&gt;
+
+&lt;p&gt;First you need an active smtp server to send an email, because only SMTP servers are capable of sending or receiving emails.
+There are many providers such as gmail, sendgrid and more. For this post, we will consider using gmail.&lt;/p&gt;
+
+&lt;p&gt;Assuming you have a Rails application with User model.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;We need to configure SMTP server. This can be set in config/environments/development.rb
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delivery_method&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:smtp&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'example.com'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#replace with your own url&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_url_options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;host: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+   &lt;span class=&quot;c1&quot;&gt;# SMTP settings for gmail&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;smtp_settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;ss&quot;&gt;:address&lt;/span&gt;              &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;smtp.gmail.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;ss&quot;&gt;:port&lt;/span&gt;                 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;587&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;ss&quot;&gt;:user_name&lt;/span&gt;            &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'EMAIL'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+       &lt;span class=&quot;ss&quot;&gt;:password&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'PASSWORD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+       &lt;span class=&quot;ss&quot;&gt;:authentication&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;plain&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;ss&quot;&gt;:enable_starttls_auto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lets write the code now. What will be sent in the email? Let’s say we want to send a welcome mail when user signs up.
+We will generate a mailer named - 
+rails g mailer UserRegistration &lt;br /&gt;
+This will generate 
+&lt;img src=&quot;/assets/images/SS-send-email-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open app/mailers/user_registrations_mailer.rb and add method following method
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;registration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;mail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;to: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;subject: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Welcome to Rails learning'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/user_registrations_mailer&lt;/code&gt; &amp;amp; add a new .erb file whose name resembles with method name in 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;app/mailers/user_registrations_mailer.rb&lt;/code&gt;. In our case it is &lt;code class=&quot;highlighter-rouge&quot;&gt;registration.html.erb&lt;/code&gt;, now put in whatever welcome message 
+you want a user to see in email. I will simply add
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;no&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= @user.first_name%&amp;gt; &amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%&amp;gt;,
+    
+ Welcome to Ruby on Rails learning.
+    
+ Thanks for signing up.
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;We need to trigger the action of sending emails. There are multiple ways to achieve this. Can call this from controller 
+action or a service call or activerecord callback. Will prefer last option here
+In &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; model register &lt;code class=&quot;highlighter-rouge&quot;&gt;after_create&lt;/code&gt; callback
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;after_create&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:send_sign_up_email&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+ &lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+ &lt;span class=&quot;nf&quot;&gt;private&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;user_registration_email&lt;/span&gt;
+   &lt;span class=&quot;no&quot;&gt;UserRegistrationsMailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;registration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;deliver_now&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And now you are all set to send sign-up emails.&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Sending email is integral part of every web application nowadays. In this post we will cover how to send emails from a rails application.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/send-email-1.jpg" /></entry><entry><title type="html">Ruby date formatting</title><link href="http://localhost:4000/ruby-date-formatting/" rel="alternate" type="text/html" title="Ruby date formatting" /><published>2020-01-01T00:00:00+05:30</published><updated>2020-01-01T00:00:00+05:30</updated><id>http://localhost:4000/ruby-date-formatting</id><content type="html" xml:base="http://localhost:4000/ruby-date-formatting/">&lt;p&gt;Ruby provides two classes to format date string &lt;code class=&quot;highlighter-rouge&quot;&gt;strftime&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;strptime&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;String to Date object&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Method &lt;code class=&quot;highlighter-rouge&quot;&gt;parse&lt;/code&gt; of class &lt;code class=&quot;highlighter-rouge&quot;&gt;Date&lt;/code&gt; converts string into date object with given directives. E.g.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2020-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%Y-%m-%d'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The provided directives can be changed according to given string format.&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'01-01-2020'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%m-%d-%Y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mo&quot;&gt;01&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Jan&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2020&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'31-01-2020'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%d-%m-%Y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Fri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Jan&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2020&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'01/01/2020'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%m/%d/%Y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mo&quot;&gt;01&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Jan&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2020&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;References&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://apidock.com/ruby/v2_5_5/Date/parse/class&quot;&gt;Date.parse&lt;/a&gt; - &lt;a href=&quot;https://apidock.com/ruby/v2_5_5/Date/parse/class&quot;&gt;https://apidock.com/ruby/v2_5_5/Date/parse/class&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://apidock.com/ruby/Date/strptime/class&quot;&gt;strptime&lt;/a&gt; - &lt;a href=&quot;https://apidock.com/ruby/Date/strptime/class&quot;&gt;https://apidock.com/ruby/Date/strptime/class&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://apidock.com/ruby/Time/strftime&quot;&gt;strftime&lt;/a&gt; - &lt;a href=&quot;https://apidock.com/ruby/Time/strftime&quot;&gt;https://apidock.com/ruby/Time/strftime&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;https://stackoverflow.com/a/14619560/5235107&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Ruby provides two classes to format date string strftime and strptime.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/date-format.png" /></entry><entry><title type="html">json and jsonb - Postgresql</title><link href="http://localhost:4000/postgresql-json/" rel="alternate" type="text/html" title="json and jsonb - Postgresql" /><published>2019-12-10T00:00:00+05:30</published><updated>2019-12-10T00:00:00+05:30</updated><id>http://localhost:4000/postgresql-json</id><content type="html" xml:base="http://localhost:4000/postgresql-json/">&lt;p&gt;Postgresql provides a data-type &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; to save data from JSON format. There are two ways for it - using &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt;
+and &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;. This article will clarify difference in short terms.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; are very similar to each other. The key difference is - &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; is binary representation of &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; -
+as per postgresql documentation.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Pros -  &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Improved efficiency&lt;/li&gt;
+  &lt;li&gt;Postgresql provides query interface for these types. So a direct query for any key in column can be made.&lt;/li&gt;
+  &lt;li&gt;Simple database schema&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cons -  &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Slight overhead to convert into binary form.&lt;/li&gt;
+  &lt;li&gt;Aggregate queries are slower (due to lack of statistics).&lt;/li&gt;
+  &lt;li&gt;Due to large table footprints may take large disk space.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry><entry><title type="html">Sidekiq By Example</title><link href="http://localhost:4000/sidekiq-by-example/" rel="alternate" type="text/html" title="Sidekiq By Example" /><published>2019-11-28T00:00:00+05:30</published><updated>2019-11-28T00:00:00+05:30</updated><id>http://localhost:4000/sidekiq-by-example</id><content type="html" xml:base="http://localhost:4000/sidekiq-by-example/">&lt;p&gt;What is the best way of handling background jobs in Rails, (maybe) using sidekiq.&lt;/p&gt;
+
+&lt;p&gt;Let’s take step by step look into creating a Rails App and making a request for Background job using sidekiq&lt;/p&gt;
+
+&lt;p&gt;System Pre-requisite&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Ruby&lt;/li&gt;
+  &lt;li&gt;Rails&lt;/li&gt;
+  &lt;li&gt;Redis&lt;/li&gt;
+  &lt;li&gt;Sidekiq&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note: The &lt;a href=&quot;https://github.com/gourshete/sidekiq-example&quot; target=&quot;_blank&quot;&gt;repository&lt;/a&gt;  of this project.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;create-new-rails-project&quot;&gt;Create new Rails Project&lt;/h3&gt;
+&lt;p&gt;We will create a new rails project named &lt;code class=&quot;highlighter-rouge&quot;&gt;sidekiq-example&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-new-project.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;add-sidekiq-gem&quot;&gt;Add sidekiq gem&lt;/h3&gt;
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; add gem ‘sidekiq’&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gem sidekiq&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now run command &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. This will install gem sidekiq in our project.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;➜  sidekiq-example: bundle install&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;generate-model&quot;&gt;Generate Model&lt;/h3&gt;
+&lt;p&gt;Let’s create a model named &lt;code class=&quot;highlighter-rouge&quot;&gt;Team&lt;/code&gt; for reference with fields &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;rating&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-model.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also add this in &lt;code class=&quot;highlighter-rouge&quot;&gt;seeds.rb&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-seed.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now Run &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;➜  sidekiq-example: rails db:create &amp;amp;&amp;amp; rails db:migrate &amp;amp;&amp;amp; rails db:seed&lt;/code&gt; &lt;br /&gt;
+It will create new database &lt;code class=&quot;highlighter-rouge&quot;&gt;sidekiq_example_development&lt;/code&gt; for our application and create a table called &lt;code class=&quot;highlighter-rouge&quot;&gt;teams&lt;/code&gt; in this database.
+Running seed data will insert sample 5 records in it.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;generate-a-controller&quot;&gt;Generate a controller&lt;/h3&gt;
+&lt;p&gt;Create a controller for our actions under namespace &lt;code class=&quot;highlighter-rouge&quot;&gt;api/v1/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-controller-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;add-routes&quot;&gt;Add routes&lt;/h3&gt;
+&lt;p&gt;Let’s add routes for our actions. Add this in &lt;code class=&quot;highlighter-rouge&quot;&gt;routes.rb&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-routes.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;add-sidekiq-worker&quot;&gt;Add Sidekiq worker&lt;/h3&gt;
+&lt;p&gt;Now let’s work on Sidekiq part. To perform sidekiq jobs, add worker in &lt;code class=&quot;highlighter-rouge&quot;&gt;app/workers&lt;/code&gt;. For our demo application
+it is &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt;. And add method named perform in it. When a call to &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; made, it will be a
+asynchronous call to this method &lt;code class=&quot;highlighter-rouge&quot;&gt;perform&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The logic for background job will be in this method &lt;code class=&quot;highlighter-rouge&quot;&gt;perform&lt;/code&gt;. To keep it simple for now, will just add sleep timer 
+in it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-worker.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It simply sleeps for number of milliseconds passed to it. This job will run asynchronously when called.&lt;/p&gt;
+
+&lt;p&gt;Let’s modify teams controller to make a call to this background job&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-controller-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; is making call to &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt;. What it means is when a url of kind &lt;code class=&quot;highlighter-rouge&quot;&gt;'/api/v1/teams/:id'&lt;/code&gt;
+is hit, the controller action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; will get called and background job &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; will be triggered. The action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt;
+will not wait for job &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; to complete though it is called from within its definition. This job will be 
+executed asynchronously with method &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;run&quot;&gt;Run&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Start rails server&lt;/li&gt;
+  &lt;li&gt;Start Redis&lt;/li&gt;
+  &lt;li&gt;Start Sidekiq&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you hit URL will found out something like this in sidekiq server log&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3001/api/v1/teams/2&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-server-log.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;):&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Well this is very simple example of running background job in rails. You can write complex logic in Sidekiq workers.
+You can add multiple workers.&lt;/p&gt;
+
+&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><category term="featured" /><summary type="html">What is the best way of handling background jobs in Rails, (maybe) using sidekiq.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/sidekiq.png" /></entry><entry><title type="html">Run seed data only on first Docker instance up</title><link href="http://localhost:4000/run-migrations-on-first-docker-up/" rel="alternate" type="text/html" title="Run seed data only on first Docker instance up" /><published>2019-11-22T00:00:00+05:30</published><updated>2019-11-22T00:00:00+05:30</updated><id>http://localhost:4000/run-migrations-on-first-docker-up</id><content type="html" xml:base="http://localhost:4000/run-migrations-on-first-docker-up/">&lt;p&gt;Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? &lt;br /&gt;
+&lt;strong&gt;Ans -&lt;/strong&gt; Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should
+be run on every deployments.&lt;/p&gt;
+
+&lt;p&gt;So here is what we need &lt;strong&gt;-&lt;/strong&gt; Run seed data only for first deployment. We will consider here containerised architecture.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Here are steps -&lt;/strong&gt; &lt;br /&gt; 
+During deployment&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Check if db exists&lt;/li&gt;
+  &lt;li&gt;If yes, then run rails db:migrate&lt;/li&gt;
+  &lt;li&gt;If no, then run rails db:create &amp;amp;&amp;amp; rails db:migrate &amp;amp;&amp;amp; rails db:seed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;how-to-determine-if-db-exists-during-deployment-&quot;&gt;How to determine if db exists during deployment? &lt;br /&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Ans -&lt;/strong&gt; After some googling, found out that a rake task can be written to determine if db exists&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+    &lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:db&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Checks to see if the database exists&quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:exists&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+          &lt;span class=&quot;no&quot;&gt;Rake&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'environment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;invoke&lt;/span&gt;
+          &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt;
+          &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+          &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;    
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This task tries to establish connection with the database, if exception occurs then return with exit 1. Exception
+occurred, here, means the database does not exists. And no exception means connection established successfully and
+return with exit 0. To summarise,&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;db does not exists &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+    &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;db exists &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;run-seed-data-if-dbexists-how-&quot;&gt;Run seed data if db:exists, How? &lt;br /&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Ans -&lt;/strong&gt; In deployment script, the conditional bash logic can be executed like&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; args: [ &quot;-c&quot;, &quot;env &amp;amp;&amp;amp; bundle exec rake db:exists; DB_EXISTS=$?;  [[ $DB_EXISTS = 1 ]] &amp;amp;&amp;amp; (rails db:create db:migrate db:seed) || (rails db:migrate)&quot; ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake db:exists; DB_EXISTS=$?;  [[ $DB_EXISTS = 1 ]] &amp;amp;&amp;amp; (rails db:create db:migrate db:seed) || (rails db:migrate)&lt;/code&gt; &lt;br /&gt;
+This makes call to rake task above. Then collects its output into a variable DB_EXISTS. Then check if value of DB_EXISTS is equal to 1(which means db does not
+exists, according to our above assessment), IF YES THEN RUN &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:create db:migrate db:seed&lt;/code&gt;, ELSE run &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? Ans - Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should be run on every deployments.</summary></entry><entry><title type="html">HTTP request response headers</title><link href="http://localhost:4000/http-request-part/" rel="alternate" type="text/html" title="HTTP request response headers" /><published>2019-08-20T00:00:00+05:30</published><updated>2019-08-20T00:00:00+05:30</updated><id>http://localhost:4000/http-request-part</id><content type="html" xml:base="http://localhost:4000/http-request-part/">&lt;p&gt;At the end browser talks in the language of HTTP request. But we really know minimal about it.&lt;/p&gt;
+
+&lt;p&gt;The request process flow is as simple as browser sends http request to the server and receives a response. Sometimes what we see is a combined result of 
+responses from multiple requests.&lt;/p&gt;
+
+&lt;p&gt;To summarize every image, text or anything seen on browser is a response received to an http request.&lt;/p&gt;
+
+&lt;p&gt;Let’s see what a request and response headers of http request consists of.&lt;/p&gt;
+
+&lt;p&gt;HTTP request headers can be broadly divided into 3 parts -&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;General&lt;/li&gt;
+  &lt;li&gt;Response Headers&lt;/li&gt;
+  &lt;li&gt;Request Headers&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;general&quot;&gt;General&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sample HTTP request format &lt;br /&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;GET /blog HTTP/1.1&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s divide it into sections and see what each one means&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Method&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; is a method used in http request which indicates type of work expected from request. There are methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;POST, DELETE, PUT, PATCH&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Path&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It tells at what url should server look for. e.g.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;https://gryffindor.in/&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Version&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HTTP protocol version as 1.1 or 2.0&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Status Code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is a 3 digit code that represents response from server. Like&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Status Code: 304&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;response-headers&quot;&gt;Response Headers&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sample HTTP request format &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;GET /blog HTTP/1.1&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s divide it into sections and see what each one means&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;date&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All http requests use Greenwich Standard Time(GMT) or UTC. Here is common format -&lt;br /&gt; 
+‘Date: Fri, 23 Aug 2019 10:17:27 GMT’&lt;br /&gt;
+reference - &lt;a href=&quot;http://tools.ietf.org/html/rfc7231#section-7.1.1.1&quot;&gt;RFC&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;status&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is a 3 digit code that represents response from server. Like&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Status Code: 304&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;expires&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tell the date when cookie will expire.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;last-modified&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tells date and time when origin of content was last modified.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tells the web server used to process this http request.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cache-control &lt;br /&gt;
+Used to indicate various flags in cache control mechanism. Like
+    &lt;ol&gt;
+      &lt;li&gt;max-age - to indicate client accepts cached data whose age is not greater than value in seconds).&lt;/li&gt;
+      &lt;li&gt;public - server can use any cache to store data&lt;/li&gt;
+      &lt;li&gt;no-cache - cache must not use data for subsequent request without re-validation.&lt;/li&gt;
+      &lt;li&gt;no-store - server can not use cache the request or response.&lt;/li&gt;
+      &lt;li&gt;must-revalidate - revalidate stale data before using&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;request-headers&quot;&gt;Request Headers&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sample HTTP request format &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;GET /blog HTTP/1.1&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s divide it into sections and see what each one means&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Accept&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tells about response formats that client can accept. e.g.&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;text/html, application/json, application/xml, text/css, image/*, */*&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Referer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Allows client to specify from which URI this http request is generated/ requested. Like&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Referer: https://buff.ly/&lt;/code&gt;&lt;br /&gt;
+It is of great help for analytics.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;User agent&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Indicates which browser the request is sent from. like&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cache-control &lt;br /&gt;
+Used to indicate various flags in cache control mechanism. Like
+    &lt;ol&gt;
+      &lt;li&gt;max-age - to indicate client accepts cached data whose age is not greater than value in seconds).&lt;/li&gt;
+      &lt;li&gt;public - server can use any cache to store data&lt;/li&gt;
+      &lt;li&gt;no-cache - cache must not use data for subsequent request without re-validation.&lt;/li&gt;
+      &lt;li&gt;no-store - server can not use cache the request or response.&lt;/li&gt;
+      &lt;li&gt;must-revalidate - revalidate stale data before using&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">At the end browser talks in the language of HTTP request. But we really know minimal about it.</summary></entry><entry><title type="html">Ruby Ranges Overview</title><link href="http://localhost:4000/ruby-range/" rel="alternate" type="text/html" title="Ruby Ranges Overview" /><published>2019-08-15T00:00:00+05:30</published><updated>2019-08-15T00:00:00+05:30</updated><id>http://localhost:4000/ruby-range</id><content type="html" xml:base="http://localhost:4000/ruby-range/">&lt;p&gt;Range in ruby can be used in following situations&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;as Sequence&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Range can be used to generate a sequence as simple as &lt;code class=&quot;highlighter-rouge&quot;&gt;(1..100)&lt;/code&gt; will generate a sequence from 1 to 100.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;array = (1..100).to_a&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;will initialize an array of class Integer starting from 1 to 100. And it is easiest way to declare an array of sequence
+in ruby.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;as Intervals&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if ((1..10) === 5)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;puts &quot;5 lies in (1..10)&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;===&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;5 lies in (1..10)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;as condition&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;score = 70
+  
+result = case score
+   when 0..40 then &quot;Fail&quot;
+   when 41..60 then &quot;Pass&quot;
+   when 61..70 then &quot;Pass with Merit&quot;
+   when 71..100 then &quot;Pass with Distinction&quot;
+   else &quot;Invalid Score&quot;
+end
+  
+puts result
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cheers!!!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Range in ruby can be used in following situations</summary></entry><entry><title type="html">Useful Rails commands</title><link href="http://localhost:4000/rails-command-line-tools/" rel="alternate" type="text/html" title="Useful Rails commands" /><published>2019-08-05T00:00:00+05:30</published><updated>2019-08-05T00:00:00+05:30</updated><id>http://localhost:4000/rails-command-line-tools</id><content type="html" xml:base="http://localhost:4000/rails-command-line-tools/">&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;rails-dbconsole&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails dbconsole&lt;/code&gt;&lt;/h3&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails dbconsole&lt;/code&gt; figures out which database you’re using and drops you into whichever command line interface you would use with it (and figures out the command line parameters to give to it, too!). It supports MySQL (including MariaDB), PostgreSQL, and SQLite3.&lt;/p&gt;
+
+&lt;p&gt;INFO: You can also use the alias “db” to invoke the dbconsole: &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ rails dbconsole&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;rails-runner&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails runner&lt;/code&gt;&lt;/h3&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;runner&lt;/code&gt; runs Ruby code in the context of Rails non-interactively. For instance:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ rails runner &quot;Model.long_running_method&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;INFO: You can also use the alias “r” to invoke the runner: &lt;code class=&quot;highlighter-rouge&quot;&gt;rails r&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can specify the environment in which the &lt;code class=&quot;highlighter-rouge&quot;&gt;runner&lt;/code&gt; command should operate using the &lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt; switch.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ rails runner -e staging &quot;Model.long_running_method&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can even execute ruby code written in a file with runner.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ rails runner lib/code_to_be_run.rb&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;rails-notes&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails notes&lt;/code&gt;&lt;/h3&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails notes&lt;/code&gt; searches through your code for comments beginning with a specific keyword. You can refer to &lt;code class=&quot;highlighter-rouge&quot;&gt;rails notes --help&lt;/code&gt; for information about usage.&lt;/p&gt;
+
+&lt;p&gt;By default, it will search in &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;db&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;lib&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;test&lt;/code&gt; directories for FIXME, OPTIMIZE, and TODO annotations in files with extension &lt;code class=&quot;highlighter-rouge&quot;&gt;.builder&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.rb&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.rake&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.yml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.yaml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.ruby&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.css&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.js&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rails notes
+app/controllers/admin/users_controller.rb:
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 20] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;TODO] any other way to &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;this?
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;132] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;FIXME] high priority &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;next deploy
+
+lib/school.rb:
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 13] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIMIZE] refactor this code to make it faster
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 17] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;FIXME]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;the-app-and-helper-objects&quot;&gt;The app and helper objects&lt;/h3&gt;
+
+&lt;p&gt;Inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;rails console&lt;/code&gt; you have access to the &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;helper&lt;/code&gt; instances.&lt;/p&gt;
+
+&lt;p&gt;With the &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt; method you can access named route helpers, as well as do requests.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; app.root_path
+ &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;
+ 
+ &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; app.get _
+ Started GET &lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;127.0.0.1 at 2014-06-19 10:41:57 &lt;span class=&quot;nt&quot;&gt;-0300&lt;/span&gt;
+ ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With the &lt;code class=&quot;highlighter-rouge&quot;&gt;helper&lt;/code&gt; method it is possible to access Rails and your application’s helpers.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; helper.time_ago_in_words 30.days.ago
+ &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;about 1 month&quot;&lt;/span&gt;
+ 
+ &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; helper.my_custom_helper
+ &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;my custom helper&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cheers!!!&lt;/code&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">rails dbconsole</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/kid_opening_gem.jpg" /></entry><entry><title type="html">Rails 6 adds *_previously_was attributes method</title><link href="http://localhost:4000/previously_was/" rel="alternate" type="text/html" title="Rails 6 adds *_previously_was attributes method" /><published>2019-08-02T00:00:00+05:30</published><updated>2019-08-02T00:00:00+05:30</updated><id>http://localhost:4000/previously_was</id><content type="html" xml:base="http://localhost:4000/previously_was/">&lt;p&gt;Rails had &lt;code class=&quot;highlighter-rouge&quot;&gt;previous_changes&lt;/code&gt; method to track value of object before and after save.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  person = Person.new(name: &quot;Joe&quot;)
+  person.name = &quot;Bill&quot;
+  person.previous_changes         # =&amp;gt; {&quot;name&quot; =&amp;gt; [&quot;Joe&quot;, &quot;Bill&quot;]}
+  person.name_previously_changed? # =&amp;gt; true
+  person.name_previous_change     # =&amp;gt; [&quot;Joe&quot;, &quot;Bill&quot;]
+  person.reload!
+  person.previous_changes         # =&amp;gt; {}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now &lt;code class=&quot;highlighter-rouge&quot;&gt;*_previously_was&lt;/code&gt; is added to the list. It adds attribute methods for each attribute in the &lt;code class=&quot;highlighter-rouge&quot;&gt;ActiveModel&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In our case, &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; has a attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;. So it would be&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  person.name_previously_was      # =&amp;gt; &quot;Joe&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For a pirate class object it will look like&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  pirate.update(catchphrase: &quot;Ahoy!&quot;)
+  #Before
+  pirate.previous_changes[&quot;catchphrase&quot;] # =&amp;gt; [&quot;Thar She Blows!&quot;, &quot;Ahoy!&quot;]
+  #Now
+  pirate.catchphrase_previously_was # =&amp;gt; &quot;Thar She Blows!&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;SOURCE :
+&lt;a href=&quot;https://github.com/rails/rails/pull/36836&quot; target=&quot;_blank&quot;&gt;commit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Rails had previous_changes method to track value of object before and after save.</summary></entry></feed>

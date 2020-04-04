@@ -1,0 +1,57 @@
+# Site
+name: 'Rails Examples'
+description: 'Exploring Rails'
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/ruby-on-rails.png'
+disqus: ''
+email: 'learning.swapnil@gmail.com'
+mailchimp-list: ''
+
+include: ["_pages"]
+permalink: /:title/
+
+# Plugins
+plugins: 
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag
+  
+authors:
+    swapnil:
+      name:           Swapnil Gourshete
+      site:           https://www.gryffindor.in
+      avatar:         /assets/images/avatar1.jpg
+      bio:            "Hi I am Swapnil, a Software Engineer and computer science enthusiastic"
+      email:          learning.swapnil@gmail.com
+      twitter:        https://twitter.com/gourshete
+      github:         https://github.com/gourshete
+
+# Defaults
+defaults:
+
+  # all posts
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+      author: swapnil
+      avatar: /assets/images/avatar1.jpg
+      
+  # all pages
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
+      
+# Syntax
+markdown: kramdown
+highlighter: rouge
+
+# Paginate
+paginate: 10
+
+
+
+# Exclude metadata and development time dependencies (like Grunt plugins)
+exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]
