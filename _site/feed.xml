@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-13T10:32:17+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Reset primary key sequence</title><link href="http://localhost:4000/reset_pk_sequence/" rel="alternate" type="text/html" title="Reset primary key sequence" /><published>2020-03-28T00:00:00+05:30</published><updated>2020-03-28T00:00:00+05:30</updated><id>http://localhost:4000/reset_pk_sequence</id><content type="html" xml:base="http://localhost:4000/reset_pk_sequence/">&lt;p&gt;Resetting primary key sequence in Rails can be achieved by simply calling method &lt;code class=&quot;highlighter-rouge&quot;&gt;reset_pk_sequence!&lt;/code&gt; on ActiveRecord with 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-16T23:26:20+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Rails log to STDOUT</title><link href="http://localhost:4000/rails-log-to-stdout/" rel="alternate" type="text/html" title="Rails log to STDOUT" /><published>2020-04-16T00:00:00+05:30</published><updated>2020-04-16T00:00:00+05:30</updated><id>http://localhost:4000/rails-log-to-stdout</id><content type="html" xml:base="http://localhost:4000/rails-log-to-stdout/">&lt;p&gt;Logs play important role in debugging application. Rails comes with six levels of logging :debug, :info, :warn, :error, :fatal,
+ and :unknown. These logs are generally written to &lt;code class=&quot;highlighter-rouge&quot;&gt;Rails.root/logs/#{environment}.log&lt;/code&gt; file of each environment.&lt;/p&gt;
+
+&lt;p&gt;The point here is Rails new versions ships with settings to write logs to STDOUT and not environment specific log files. A
+new environment variable named &lt;code class=&quot;highlighter-rouge&quot;&gt;RAILS_LOG_TO_STDOUT&lt;/code&gt; is used to take the decision. In new rails app you will find following
+code snippet in &lt;code class=&quot;highlighter-rouge&quot;&gt;production.rb&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'RAILS_LOG_TO_STDOUT'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;present?&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;STDOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;formatter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_formatter&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;logger&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TaggedLogging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It tells the rails app to write logs to STDOUT and not to &lt;code class=&quot;highlighter-rouge&quot;&gt;Rails.root/log/production.log&lt;/code&gt; if ENV[‘RAILS_LOG_TO_STDOUT’] is set to true.
+The same setting is applied to all environments. This setting can be toggled by simply altering the value set to
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;ENV['RAILS_LOG_TO_STDOUT']&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;References -&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://guides.rubyonrails.org/debugging_rails_applications.html&quot;&gt;Rails guide&lt;/a&gt; - &lt;a href=&quot;https://guides.rubyonrails.org/debugging_rails_applications.html&quot;&gt;https://guides.rubyonrails.org/debugging_rails_applications.html&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Logs play important role in debugging application. Rails comes with six levels of logging :debug, :info, :warn, :error, :fatal, and :unknown. These logs are generally written to Rails.root/logs/#{environment}.log file of each environment. The point here is Rails new versions ships with settings to write logs to STDOUT and not environment specific log files. A new environment variable named RAILS_LOG_TO_STDOUT is used to take the decision. In new rails app you will find following code snippet in production.rb</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/log.png" /></entry><entry><title type="html">Reset primary key sequence</title><link href="http://localhost:4000/reset_pk_sequence/" rel="alternate" type="text/html" title="Reset primary key sequence" /><published>2020-03-28T00:00:00+05:30</published><updated>2020-03-28T00:00:00+05:30</updated><id>http://localhost:4000/reset_pk_sequence</id><content type="html" xml:base="http://localhost:4000/reset_pk_sequence/">&lt;p&gt;Resetting primary key sequence in Rails can be achieved by simply calling method &lt;code class=&quot;highlighter-rouge&quot;&gt;reset_pk_sequence!&lt;/code&gt; on ActiveRecord with 
 &lt;code class=&quot;highlighter-rouge&quot;&gt;table_name&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;reset_pk_sequence!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'table_name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -614,34 +638,4 @@ lib/school.rb:
  &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;my custom helper&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cheers!!!&lt;/code&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">rails dbconsole</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/kid_opening_gem.jpg" /></entry><entry><title type="html">Rails 6 adds *_previously_was attributes method</title><link href="http://localhost:4000/previously_was/" rel="alternate" type="text/html" title="Rails 6 adds *_previously_was attributes method" /><published>2019-08-02T00:00:00+05:30</published><updated>2019-08-02T00:00:00+05:30</updated><id>http://localhost:4000/previously_was</id><content type="html" xml:base="http://localhost:4000/previously_was/">&lt;p&gt;Rails had &lt;code class=&quot;highlighter-rouge&quot;&gt;previous_changes&lt;/code&gt; method to track value of object before and after save.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  person = Person.new(name: &quot;Joe&quot;)
-  person.name = &quot;Bill&quot;
-  person.previous_changes         # =&amp;gt; {&quot;name&quot; =&amp;gt; [&quot;Joe&quot;, &quot;Bill&quot;]}
-  person.name_previously_changed? # =&amp;gt; true
-  person.name_previous_change     # =&amp;gt; [&quot;Joe&quot;, &quot;Bill&quot;]
-  person.reload!
-  person.previous_changes         # =&amp;gt; {}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now &lt;code class=&quot;highlighter-rouge&quot;&gt;*_previously_was&lt;/code&gt; is added to the list. It adds attribute methods for each attribute in the &lt;code class=&quot;highlighter-rouge&quot;&gt;ActiveModel&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;In our case, &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; has a attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;. So it would be&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  person.name_previously_was      # =&amp;gt; &quot;Joe&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For a pirate class object it will look like&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  pirate.update(catchphrase: &quot;Ahoy!&quot;)
-  #Before
-  pirate.previous_changes[&quot;catchphrase&quot;] # =&amp;gt; [&quot;Thar She Blows!&quot;, &quot;Ahoy!&quot;]
-  #Now
-  pirate.catchphrase_previously_was # =&amp;gt; &quot;Thar She Blows!&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;SOURCE :
-&lt;a href=&quot;https://github.com/rails/rails/pull/36836&quot; target=&quot;_blank&quot;&gt;commit&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Rails had previous_changes method to track value of object before and after save.</summary></entry></feed>
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cheers!!!&lt;/code&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">rails dbconsole</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/kid_opening_gem.jpg" /></entry></feed>
