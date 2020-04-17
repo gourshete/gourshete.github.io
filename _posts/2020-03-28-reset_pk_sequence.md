@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Reset primary key sequence"
-date:   2020-03-28
+date:   2020-04-16
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails database primary_key reset sequence
 postgres"
 image: assets/images/reset_pk.jpg

@@ -1,11 +1,10 @@
 ---
 layout: post
 title:  "Rails log to STDOUT"
-date:   2020-04-16
-keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails database primary_key reset sequence
-postgres"
+date:   2020-03-27
+keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails logs log file stdout terminal"
 image: assets/images/log.png
-categories: [ Rails ]
+categories: [ Rails, Short Blog ]
 ---
 
 Logs play important role in debugging application. Rails comes with six levels of logging :debug, :info, :warn, :error, :fatal,
@@ -26,9 +25,9 @@ code snippet in `production.rb`
 It tells the rails app to write logs to STDOUT and not to `Rails.root/log/production.log` if ENV['RAILS_LOG_TO_STDOUT'] is set to true.
 The same setting is applied to all environments. This setting can be toggled by simply altering the value set to
  `ENV['RAILS_LOG_TO_STDOUT']`.
- 
- 
- ...
+
+
+...
  
  * References - 
  
