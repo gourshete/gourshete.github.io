@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Sending Email in Rails"
+title:  "Sending Email from Rails"
 date:   2020-03-06
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails sidekiq background-jobs async"
 image: assets/images/send-email-1.jpg
