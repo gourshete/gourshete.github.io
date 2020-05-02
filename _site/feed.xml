@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-18T14:17:32+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Reset primary key sequence</title><link href="http://localhost:4000/reset_pk_sequence/" rel="alternate" type="text/html" title="Reset primary key sequence" /><published>2020-04-16T00:00:00+05:30</published><updated>2020-04-16T00:00:00+05:30</updated><id>http://localhost:4000/reset_pk_sequence</id><content type="html" xml:base="http://localhost:4000/reset_pk_sequence/">&lt;p&gt;Resetting primary key sequence in Rails can be achieved by simply calling method &lt;code class=&quot;highlighter-rouge&quot;&gt;reset_pk_sequence!&lt;/code&gt; on ActiveRecord with 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-02T14:17:06+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
+tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
+It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails 
+application.&lt;/p&gt;
+
+&lt;p&gt;Pre-requisites&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;influxdb: &lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.8/introduction/install/&quot;&gt;install&lt;/a&gt; unless is_influxdb_installed?&lt;/li&gt;
+  &lt;li&gt;grafana: &lt;a href=&quot;https://grafana.com/docs/grafana/latest/&quot;&gt;install&lt;/a&gt; unless is_grafana_installed?&lt;/li&gt;
+  &lt;li&gt;Rails app&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Now add gem &lt;code class=&quot;highlighter-rouge&quot;&gt;influxdb-rails&lt;/code&gt; gem to Rails application Gemfile and run &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt;. To get things up run
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;influxdb&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;This will create initialzer config/initializers/influxdb_rails.rb, which allows configuration of this gem.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We need one infuxdb database to store performance time series data, which eventually will be used by grafana dashboard.
+ Open influxdb cosnole by running &lt;code class=&quot;highlighter-rouge&quot;&gt;influx&lt;/code&gt;. If you face issue of connection refused, make sure &lt;code class=&quot;highlighter-rouge&quot;&gt;influxd&lt;/code&gt; is running. 
+ Once console is accessible create a database. I’m creating database named ‘rails-dev’ for now.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;We need to tell our rails application what database it should look for to store data. If it is going to use database service
+ from another instance, we must provide hostname. For all this, open influxdb initializer file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For database name -&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;database&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rails-dev&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are going to use a hosted influxdb instance then provide its address here&lt;/p&gt;
+
+&lt;p&gt;For hostname -&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hosts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;host-name.com/8086&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At this point we are set with storing performance metrics data into influxdb ‘rails-dev’.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check if grafana installed is working. Open &lt;a href=&quot;http://localhost:3005&quot;&gt;http://localhost:3005&lt;/a&gt;. Recheck if port number is
+appropriate. You can verify port number and other details of grafana from ‘grafana.ini’&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Let’s import a simple dashboard in grafana. Navigate to import screen &amp;amp; paste this board id &lt;code class=&quot;highlighter-rouge&quot;&gt;10428&lt;/code&gt;. Grafana will update
+configuration and import the board. That’s it. Import is pretty simple and straight forward.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/grafana_import_step1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we are all prepared to see live performance metrics of our application. After some requests grafana dashboard will 
+look something like&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/grafana-dashboard.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/influxdata/influxdb-rails&quot;&gt;influxdb-rails&lt;/a&gt; gem&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.8/introduction/install/&quot;&gt;influxdb&lt;/a&gt; installation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/grafana/latest/&quot;&gt;grafana&lt;/a&gt; installation&lt;/li&gt;
+  &lt;li&gt;grafana &lt;a href=&quot;https://grafana.com/docs/grafana/latest/reference/export_import/#importing-a-dashboard&quot;&gt;import dashboard&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">When application gets stable at some point, we try to improve things we built for a while now. And improving performance tops the list for me. Application performance is a large concept which can be measured with different number of parameters. It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails application.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/grafana-dashboard.png" /></entry><entry><title type="html">Reset primary key sequence</title><link href="http://localhost:4000/reset_pk_sequence/" rel="alternate" type="text/html" title="Reset primary key sequence" /><published>2020-04-16T00:00:00+05:30</published><updated>2020-04-16T00:00:00+05:30</updated><id>http://localhost:4000/reset_pk_sequence</id><content type="html" xml:base="http://localhost:4000/reset_pk_sequence/">&lt;p&gt;Resetting primary key sequence in Rails can be achieved by simply calling method &lt;code class=&quot;highlighter-rouge&quot;&gt;reset_pk_sequence!&lt;/code&gt; on ActiveRecord with 
 &lt;code class=&quot;highlighter-rouge&quot;&gt;table_name&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;reset_pk_sequence!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'table_name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -559,83 +629,4 @@ puts result
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Cheers!!!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Range in ruby can be used in following situations</summary></entry><entry><title type="html">Useful Rails commands</title><link href="http://localhost:4000/rails-command-line-tools/" rel="alternate" type="text/html" title="Useful Rails commands" /><published>2019-08-05T00:00:00+05:30</published><updated>2019-08-05T00:00:00+05:30</updated><id>http://localhost:4000/rails-command-line-tools</id><content type="html" xml:base="http://localhost:4000/rails-command-line-tools/">&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;rails-dbconsole&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails dbconsole&lt;/code&gt;&lt;/h3&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails dbconsole&lt;/code&gt; figures out which database you’re using and drops you into whichever command line interface you would use with it (and figures out the command line parameters to give to it, too!). It supports MySQL (including MariaDB), PostgreSQL, and SQLite3.&lt;/p&gt;
-
-&lt;p&gt;INFO: You can also use the alias “db” to invoke the dbconsole: &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ rails dbconsole&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;rails-runner&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails runner&lt;/code&gt;&lt;/h3&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;runner&lt;/code&gt; runs Ruby code in the context of Rails non-interactively. For instance:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ rails runner &quot;Model.long_running_method&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;INFO: You can also use the alias “r” to invoke the runner: &lt;code class=&quot;highlighter-rouge&quot;&gt;rails r&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can specify the environment in which the &lt;code class=&quot;highlighter-rouge&quot;&gt;runner&lt;/code&gt; command should operate using the &lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt; switch.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ rails runner -e staging &quot;Model.long_running_method&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;You can even execute ruby code written in a file with runner.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ rails runner lib/code_to_be_run.rb&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h3 id=&quot;rails-notes&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails notes&lt;/code&gt;&lt;/h3&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails notes&lt;/code&gt; searches through your code for comments beginning with a specific keyword. You can refer to &lt;code class=&quot;highlighter-rouge&quot;&gt;rails notes --help&lt;/code&gt; for information about usage.&lt;/p&gt;
-
-&lt;p&gt;By default, it will search in &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;db&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;lib&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;test&lt;/code&gt; directories for FIXME, OPTIMIZE, and TODO annotations in files with extension &lt;code class=&quot;highlighter-rouge&quot;&gt;.builder&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.rb&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.rake&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.yml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.yaml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.ruby&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.css&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.js&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rails notes
-app/controllers/admin/users_controller.rb:
-  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 20] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;TODO] any other way to &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;this?
-  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;132] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;FIXME] high priority &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;next deploy
-
-lib/school.rb:
-  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 13] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIMIZE] refactor this code to make it faster
-  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 17] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;FIXME]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;the-app-and-helper-objects&quot;&gt;The app and helper objects&lt;/h3&gt;
-
-&lt;p&gt;Inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;rails console&lt;/code&gt; you have access to the &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;helper&lt;/code&gt; instances.&lt;/p&gt;
-
-&lt;p&gt;With the &lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt; method you can access named route helpers, as well as do requests.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; app.root_path
- &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;
- 
- &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; app.get _
- Started GET &lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;127.0.0.1 at 2014-06-19 10:41:57 &lt;span class=&quot;nt&quot;&gt;-0300&lt;/span&gt;
- ...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;With the &lt;code class=&quot;highlighter-rouge&quot;&gt;helper&lt;/code&gt; method it is possible to access Rails and your application’s helpers.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; helper.time_ago_in_words 30.days.ago
- &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;about 1 month&quot;&lt;/span&gt;
- 
- &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; helper.my_custom_helper
- &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;my custom helper&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cheers!!!&lt;/code&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">rails dbconsole</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/kid_opening_gem.jpg" /></entry></feed>
+&lt;p&gt;Cheers!!!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Range in ruby can be used in following situations</summary></entry></feed>
