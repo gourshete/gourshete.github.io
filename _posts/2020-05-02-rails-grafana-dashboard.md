@@ -53,7 +53,7 @@ If you are going to use a hosted influxdb instance then provide its address here
 - Check if grafana installed is working. Open [http://localhost:3005](http://localhost:3005). Recheck if port number is
 appropriate. You can verify port number and other details of grafana from 'grafana.ini'
 
-- Let's import a simple dashboard in grafana. Navigate to import screen & paste this board id `10428`. Grafana will update
+- Let's import a simple dashboard in grafana. We will use already created dashboard for the rails app. Navigate to import screen & paste this board id `10428`. Grafana will update
 configuration and import the board. That's it. Import is pretty simple and straight forward. 
 
 <img src="{{ '/assets/images/grafana_import_step1.png' | prepend: site.baseurl }}" alt="">
