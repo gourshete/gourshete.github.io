@@ -5,13 +5,16 @@ date:   2020-05-02
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails database primary_key reset sequence
 postgres"
 image: assets/images/grafana-dashboard.png
-categories: [ Rails ]
+categories: [ Rails, grafana, APM ]
 ---
 
 When application gets stable at some point, we try to improve things we built for a while now. And improving performance
 tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
-It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails 
-application.
+It also depends on underlying infrastructure.
+ 
+So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor
+ controller action runtime, database query runtime and view rendering runtime. Let's start
+
 
 Pre-requisites
 1. influxdb: [install](https://docs.influxdata.com/influxdb/v1.8/introduction/install/) unless is_influxdb_installed?
@@ -71,3 +74,4 @@ Thanks for reading.
 - [influxdb](https://docs.influxdata.com/influxdb/v1.8/introduction/install/) installation
 - [grafana](https://grafana.com/docs/grafana/latest/) installation
 - grafana [import dashboard](https://grafana.com/docs/grafana/latest/reference/export_import/#importing-a-dashboard)
+- [sample-dashboard](https://github.com/influxdata/influxdb-rails/tree/master/sample-dashboard)
