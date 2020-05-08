@@ -5,7 +5,7 @@ date:   2020-04-16
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails database primary_key reset sequence
 postgres"
 image: assets/images/reset_pk.jpg
-categories: [ Rails ]
+categories: [ Rails, Postgres, Database ]
 ---
 
 Resetting primary key sequence in Rails can be achieved by simply calling method `reset_pk_sequence!` on ActiveRecord with 

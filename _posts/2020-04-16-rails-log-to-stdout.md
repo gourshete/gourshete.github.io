@@ -4,7 +4,7 @@ title:  "Error in logging! Rails log to STDOUT"
 date:   2020-03-27
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails logs log file stdout terminal"
 image: assets/images/log.png
-categories: [ Rails, Short Blog ]
+categories: [ Rails, logs, Short Blog ]
 ---
 
 Logs play important role in debugging application. Rails comes with six levels of logging :debug, :info, :warn, :error, :fatal,

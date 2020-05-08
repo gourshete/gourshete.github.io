@@ -4,7 +4,7 @@ title:  "APIs in Rails 5.0 - overview"
 date:   2018-03-23
 keywords: "API in rails 5. rails github gryffindor learning api"
 image: assets/images/web_api.png
-categories: [ Rails ]
+categories: [ Rails, Api ]
 ---
 
 Have you ever wonder how APIs work in the world of convention over configuration, specifically in Rails 5.0?

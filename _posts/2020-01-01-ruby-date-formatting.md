@@ -5,7 +5,7 @@ date:   2020-01-01
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails database primary_key reset sequence
 postgres"
 image: assets/images/date-format.png
-categories: [ Rails ]
+categories: [ Rails, Ruby ]
 ---
 
 Ruby provides two classes to format date string `strftime` and `strptime`.

@@ -4,7 +4,7 @@ title:  "Sending Email from Rails"
 date:   2020-03-06
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails sidekiq background-jobs async"
 image: assets/images/send-email-1.jpg
-categories: [ Rails ]
+categories: [ Rails, Email ]
 ---
 
 Sending email is integral part of every web application nowadays. In this post we will cover how to send emails

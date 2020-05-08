@@ -3,7 +3,7 @@ layout: post
 title:  "json and jsonb - Postgresql"
 date:   2019-12-10
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails postgresql json jsonb"
-categories: [ Rails, Postgres ]
+categories: [ Rails, Postgres, Database ]
 ---
 
 Postgresql provides a data-type `jsonb` to save data from JSON format. There are two ways for it - using `json`

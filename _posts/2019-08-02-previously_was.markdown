@@ -2,7 +2,7 @@
 layout: post
 title:  "Rails 6 adds *_previously_was attributes method"
 date:   2019-08-02
-categories: [ Rails ]
+categories: [ Rails, new release ]
 keywords: "rails github gryffindor learning swapnil gourshete rails6 ruby new release github _previously_was _previous_change
 _previously_changed attribute_previously_changed active model swapnil gourshete"
 ---

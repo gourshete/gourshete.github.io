@@ -2,7 +2,7 @@
 layout: post
 title:  "HTTP request response headers"
 date:   2019-08-20
-categories: [ Rails ]
+categories: [ Rails, Http ]
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails http https headers body response general"
 ---
 

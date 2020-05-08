@@ -7,7 +7,7 @@ Let's first understand how scopes work in Rails. When we define a scope on an Ac
 use default scope. You can use default scopes `n` number of times in a Model. They all will be club together in the 
 resulting query.Scopes can be extended to have methods defined within themselves. associations work with Scopes"
 image: assets/images/scope.jpeg
-categories: [ Rails ]
+categories: [ Rails, Scopes ]
 ---
 
 Recently I was calling create method on an active-record model object. But it failed in validation, because 

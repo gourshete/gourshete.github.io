@@ -2,7 +2,7 @@
 layout: post
 title:  "Ruby Ranges Overview"
 date:   2019-08-15
-categories: [ Rails ]
+categories: [ Rails, Ruby ]
 keywords: "ruby rails github gryffindor learning swapnil gourshete ranges sequence Range in ruby can be used in following situations
 Sequence Range can be used to generate a sequence as simple as as Intervals as condition"
 ---
