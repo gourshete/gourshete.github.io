@@ -2,7 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f93489d-3530-46a5-a548-c41773eb44ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/author-jane.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author-jane.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/author-sal.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author-sal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/author.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/buy-me-a-coffee.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/buy-me-a-coffee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/charm-old-cities/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/charm-old-cities/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/how-index-works-on-database/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/how-index-works-on-database/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/http-request-part/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/http-request-part/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/modified-and-use-gem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/modified-and-use-gem/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/postgresql-json/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/postgresql-json/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/previously_was/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/previously_was/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/privacy-policy.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/privacy-policy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-command-line-tools/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-command-line-tools/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-grafana-dashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-grafana-dashboard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-includes-vs-joins/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-includes-vs-joins/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-log-to-stdout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-log-to-stdout/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-request-lifecycle/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-request-lifecycle/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/reset_pk_sequence/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/reset_pk_sequence/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/ruby-date-formatting/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/ruby-date-formatting/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/ruby-range/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/ruby-range/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/run-migrations-on-first-docker-up/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/run-migrations-on-first-docker-up/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/scopes-in-rails/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/scopes-in-rails/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/send-email-from-rails/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/send-email-from-rails/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sidekiq-by-example/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sidekiq-by-example/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/squash-old-migrations/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/squash-old-migrations/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/string-comparison/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/string-comparison/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/why-rails-why-ruby/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/why-rails-why-ruby/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,20 +52,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/2020-05-02-rails-grafana-dashboard.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="1449">
-                <caret line="63" column="87" selection-start-line="63" selection-end-line="63" selection-end-column="87" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="115">
-                <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+              <first_editor relative-caret-position="427">
+                <caret line="72" column="68" selection-start-line="72" selection-end-line="72" selection-end-column="68" />
               </first_editor>
               <second_editor />
             </state>
@@ -37,11 +61,11 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md">
+        <entry file="file://$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="92">
-                <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <first_editor relative-caret-position="542">
+                <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
               </first_editor>
               <second_editor />
             </state>
@@ -62,9 +86,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/_posts/2020-05-02-rails-grafana-dashboard.md" />
-        <option value="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" />
         <option value="$PROJECT_DIR$/_site/contact.html" />
         <option value="$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md" />
+        <option value="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" />
       </list>
     </option>
   </component>
@@ -142,12 +166,12 @@
       <updated>1588822207776</updated>
       <workItem from="1588822211137" duration="241000" />
       <workItem from="1588929250655" duration="2590000" />
-      <workItem from="1588945022179" duration="171000" />
+      <workItem from="1588945022179" duration="557000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3002000" />
+    <option name="totallyTimeSpent" value="3388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -210,11 +234,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="92">
+            <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2020-05-02-rails-grafana-dashboard.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="1449">
-            <caret line="63" column="87" selection-start-line="63" selection-end-line="63" selection-end-column="87" />
+          <first_editor relative-caret-position="427">
+            <caret line="72" column="68" selection-start-line="72" selection-end-line="72" selection-end-column="68" />
           </first_editor>
           <second_editor />
         </state>
@@ -223,18 +257,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="115">
-            <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="92">
-            <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <first_editor relative-caret-position="542">
+            <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
           </first_editor>
           <second_editor />
         </state>

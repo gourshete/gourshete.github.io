@@ -51,3 +51,11 @@ select id, metadata ->'property' as property from foo
 <img src="{{ '/assets/images/select-property.png' | prepend: site.baseurl }}" alt="">
 
 Cheers!!!
+
+----
+
+References - 
+
+- Official postgresql doc - [link](https://www.postgresql.org/docs/current/functions-json.html)
+
+- postgresql tutorial blog - [link](https://www.postgresqltutorial.com/postgresql-json/)
