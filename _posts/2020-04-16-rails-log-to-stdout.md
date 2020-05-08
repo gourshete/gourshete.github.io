@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Rails log to STDOUT"
+title:  "Error in logging! Rails log to STDOUT"
 date:   2020-03-27
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails logs log file stdout terminal"
 image: assets/images/log.png
