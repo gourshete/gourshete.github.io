@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-03T16:00:59+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-08T16:19:54+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
 tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
 It also depends on underlying infrastructure.&lt;/p&gt;
 
@@ -277,7 +277,32 @@ as per postgresql documentation.&lt;/p&gt;
   &lt;li&gt;Due to large table footprints may take large disk space.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry><entry><title type="html">Sidekiq By Example</title><link href="http://localhost:4000/sidekiq-by-example/" rel="alternate" type="text/html" title="Sidekiq By Example" /><published>2019-11-28T00:00:00+05:30</published><updated>2019-11-28T00:00:00+05:30</updated><id>http://localhost:4000/sidekiq-by-example</id><content type="html" xml:base="http://localhost:4000/sidekiq-by-example/">&lt;p&gt;What is the best way of handling background jobs in Rails, (maybe) using sidekiq.&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;h4 id=&quot;querying-json-field&quot;&gt;Querying json field&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Creating table&lt;/code&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;create table foo (id serial NOT NULL primary key, metadata json)
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;inserting test data&lt;/code&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;insert into foo(metadata) values ('{ &quot;property&quot;: &quot;bar1&quot; }'), ('{ &quot;property&quot;: &quot;bar2&quot; }')
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fetching data from table foo&lt;/code&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;select * from foo
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;&lt;img src=&quot;/assets/images/select-foo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;selecting json field&lt;/code&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;select id, metadata -&amp;gt;'property' as property from foo
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;&lt;img src=&quot;/assets/images/select-property.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry><entry><title type="html">Sidekiq By Example</title><link href="http://localhost:4000/sidekiq-by-example/" rel="alternate" type="text/html" title="Sidekiq By Example" /><published>2019-11-28T00:00:00+05:30</published><updated>2019-11-28T00:00:00+05:30</updated><id>http://localhost:4000/sidekiq-by-example</id><content type="html" xml:base="http://localhost:4000/sidekiq-by-example/">&lt;p&gt;What is the best way of handling background jobs in Rails, (maybe) using sidekiq.&lt;/p&gt;
 
 &lt;p&gt;Let’s take step by step look into creating a Rails App and making a request for Background job using sidekiq&lt;/p&gt;
 

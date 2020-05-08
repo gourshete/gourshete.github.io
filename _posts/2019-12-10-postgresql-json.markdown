@@ -24,5 +24,30 @@ as per postgresql documentation.
 2. Aggregate queries are slower (due to lack of statistics).
 3. Due to large table footprints may take large disk space.
 
+...
 
-Cheers! 🍻🍻
+#### Querying json field
+
+1. `Creating table` 
+```postgresql
+create table foo (id serial NOT NULL primary key, metadata json)
+```
+
+2. `inserting test data` 
+```postgresql
+insert into foo(metadata) values ('{ "property": "bar1" }'), ('{ "property": "bar2" }')
+```
+
+3. `fetching data from table foo`
+```postgresql
+select * from foo
+```
+<img src="{{ '/assets/images/select-foo.png' | prepend: site.baseurl }}" alt="">
+
+4. `selecting json field`
+```postgresql
+select id, metadata ->'property' as property from foo
+```
+<img src="{{ '/assets/images/select-property.png' | prepend: site.baseurl }}" alt="">
+
+Cheers!!!

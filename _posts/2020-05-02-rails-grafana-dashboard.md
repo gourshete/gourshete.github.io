@@ -5,7 +5,7 @@ date:   2020-05-02
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails database primary_key reset sequence
 postgres"
 image: assets/images/grafana-dashboard.png
-categories: [ Rails, grafana, APM ]
+categories: [ Rails, influxdb, grafana, APM ]
 ---
 
 When application gets stable at some point, we try to improve things we built for a while now. And improving performance
