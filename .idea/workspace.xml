@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f93489d-3530-46a5-a548-c41773eb44ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,12 +24,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
               <first_editor relative-caret-position="115">
                 <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="92">
+                <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               </first_editor>
               <second_editor />
             </state>
@@ -53,6 +64,7 @@
         <option value="$PROJECT_DIR$/_posts/2020-05-02-rails-grafana-dashboard.md" />
         <option value="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" />
         <option value="$PROJECT_DIR$/_site/contact.html" />
+        <option value="$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md" />
       </list>
     </option>
   </component>
@@ -102,6 +114,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
@@ -129,12 +142,12 @@
       <updated>1588822207776</updated>
       <workItem from="1588822211137" duration="241000" />
       <workItem from="1588929250655" duration="2590000" />
-      <workItem from="1588945022179" duration="81000" />
+      <workItem from="1588945022179" duration="171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2912000" />
+    <option name="totallyTimeSpent" value="3002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -212,6 +225,16 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="115">
             <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="92">
+            <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           </first_editor>
           <second_editor />
         </state>
