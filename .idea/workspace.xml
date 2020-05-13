@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f93489d-3530-46a5-a548-c41773eb44ee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-03-08-rails-includes-vs-joins.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-03-08-rails-includes-vs-joins.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-03-23-api-in-rails-5.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-03-23-api-in-rails-5.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-06-08-how-index-works-on-database.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-06-08-how-index-works-on-database.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-06-28-modified-and-use-gem.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-06-28-modified-and-use-gem.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-06-28-squash-old-migrations.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-06-28-squash-old-migrations.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-07-07-string-comparison.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-07-07-string-comparison.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-07-11-scopes-in-rails.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-07-11-scopes-in-rails.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-08-02-previously_was.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-08-02-previously_was.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-08-05-rails-command-line-tools.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-08-05-rails-command-line-tools.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-08-15-ruby-range.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-08-15-ruby-range.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-08-20-http-request-part.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-08-20-http-request-part.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-11-28-sidekiq-by-example.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-11-28-sidekiq-by-example.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2019-12-10-postgresql-json.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-03-06-send-email-from-rails.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-03-06-send-email-from-rails.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-03-28-reset_pk_sequence.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-03-28-reset_pk_sequence.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-04-16-rails-log-to-stdout.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-04-16-rails-log-to-stdout.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +15,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -48,7 +62,6 @@
         <option value="$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md" />
         <option value="$PROJECT_DIR$/_layouts/default.html" />
         <option value="$PROJECT_DIR$/_pages/about.md" />
-        <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/_posts/2020-04-16-rails-log-to-stdout.md" />
         <option value="$PROJECT_DIR$/_posts/2020-03-28-reset_pk_sequence.md" />
         <option value="$PROJECT_DIR$/_posts/2020-03-06-send-email-from-rails.md" />
@@ -68,6 +81,8 @@
         <option value="$PROJECT_DIR$/_posts/2018-03-23-api-in-rails-5.markdown" />
         <option value="$PROJECT_DIR$/_posts/2018-03-08-rails-includes-vs-joins.markdown" />
         <option value="$PROJECT_DIR$/_posts/2018-02-28-why-rails-why-ruby.markdown" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/_config.yml" />
       </list>
     </option>
   </component>
@@ -86,7 +101,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1276" />
     <option name="height" value="777" />
@@ -97,6 +112,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -107,18 +123,22 @@
             <path>
               <item name="gourshete.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="gourshete.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="_pages" type="462c0819:PsiDirectoryNode" />
+              <item name="_includes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gourshete.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="gourshete.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="_posts" type="462c0819:PsiDirectoryNode" />
+              <item name="_layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gourshete.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gourshete.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="_pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -150,17 +170,20 @@
       <updated>1588822207776</updated>
       <workItem from="1588822211137" duration="241000" />
       <workItem from="1588929250655" duration="2590000" />
-      <workItem from="1588945022179" duration="1768000" />
+      <workItem from="1588945022179" duration="2110000" />
+      <workItem from="1589086142368" duration="701000" />
+      <workItem from="1589346651490" duration="121000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4599000" />
+    <option name="totallyTimeSpent" value="5763000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="23" width="1276" height="777" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31987077" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3298217" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -197,9 +220,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_site/about.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_site/about.html" />
     <entry file="file://$PROJECT_DIR$/_pages/about.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
@@ -215,13 +236,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -432,6 +446,47 @@
             <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_site/sitemap.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/menu-header.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/tracking-header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_includes/tracking-footer.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
         </state>
       </provider>
     </entry>
