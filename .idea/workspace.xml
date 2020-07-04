@@ -3,42 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9f93489d-3530-46a5-a548-c41773eb44ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/404/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/author-jane.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author-jane.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/author-sal.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author-sal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/author.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/buy-me-a-coffee.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/buy-me-a-coffee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/charm-old-cities/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/charm-old-cities/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/how-index-works-on-database/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/how-index-works-on-database/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/http-request-part/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/http-request-part/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/modified-and-use-gem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/modified-and-use-gem/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/postgresql-json/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/postgresql-json/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/previously_was/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/previously_was/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/privacy-policy.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/privacy-policy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/rails-command-line-tools/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-command-line-tools/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/rails-grafana-dashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-grafana-dashboard/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/rails-includes-vs-joins/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-includes-vs-joins/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/rails-log-to-stdout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-log-to-stdout/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/rails-request-lifecycle/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-request-lifecycle/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/reset_pk_sequence/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/reset_pk_sequence/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/ruby-date-formatting/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/ruby-date-formatting/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/ruby-range/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/ruby-range/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/run-migrations-on-first-docker-up/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/run-migrations-on-first-docker-up/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/scopes-in-rails/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/scopes-in-rails/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/send-email-from-rails/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/send-email-from-rails/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/sidekiq-by-example/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sidekiq-by-example/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/squash-old-migrations/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/squash-old-migrations/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/string-comparison/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/string-comparison/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/why-rails-why-ruby/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/why-rails-why-ruby/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,41 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_layouts/default.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="498">
-                <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-              </first_editor>
-              <second_editor />
+        <entry file="file://$PROJECT_DIR$/_layouts/post.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="55" column="58" lean-forward="true" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -93,6 +29,8 @@
     <findStrings>
       <find>made with</find>
       <find>made wi</find>
+      <find>addto</find>
+      <find>addtoany</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -127,6 +65,7 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md" />
+        <option value="$PROJECT_DIR$/_layouts/post.html" />
       </list>
     </option>
   </component>
@@ -156,7 +95,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -188,6 +126,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -222,18 +161,21 @@
       <workItem from="1588945022179" duration="2110000" />
       <workItem from="1589086142368" duration="701000" />
       <workItem from="1589346651490" duration="498000" />
-      <workItem from="1589529954167" duration="2251000" />
+      <workItem from="1589529954167" duration="2609000" />
+      <workItem from="1592747014207" duration="948000" />
+      <workItem from="1592804711524" duration="216000" />
+      <workItem from="1593881193168" duration="236000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8391000" />
+    <option name="totallyTimeSpent" value="10149000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1276" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11750405" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2382496" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -509,17 +451,18 @@
     <entry file="file://$PROJECT_DIR$/_includes/tracking-footer.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+    <entry file="file://$PROJECT_DIR$/_layouts/page-sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
+        <state relative-caret-position="-6" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+    <entry file="file://$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="138">
+            <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -530,13 +473,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="498">
-            <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_layouts/post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="55" column="58" lean-forward="true" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
         </state>
       </provider>
     </entry>
