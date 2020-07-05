@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Setting up Rails Performance dashboard with influxdb and grafana | Ruby on Rails Examples</title>
+    <title>Rails - Managing secrets using credentials | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Setting up Rails Performance dashboard with influxdb and grafana | Ruby on Rails Examples</title>
+<title>Rails - Managing secrets using credentials | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Setting up Rails Performance dashboard with influxdb and grafana" />
+<meta property="og:title" content="Rails - Managing secrets using credentials" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="When application gets stable at some point, we try to improve things we built for a while now. And improving performance tops the list for me. Application performance is a large concept which can be measured with different number of parameters. It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor controller action runtime, database query runtime and view rendering runtime. Let’s start" />
-<meta property="og:description" content="When application gets stable at some point, we try to improve things we built for a while now. And improving performance tops the list for me. Application performance is a large concept which can be measured with different number of parameters. It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor controller action runtime, database query runtime and view rendering runtime. Let’s start" />
-<link rel="canonical" href="http://localhost:4000/rails-grafana-dashboard/" />
-<meta property="og:url" content="http://localhost:4000/rails-grafana-dashboard/" />
+<meta name="description" content="How do you manage secret keys? We cannot commit them in Version Control System (like github), it is too dangerous." />
+<meta property="og:description" content="How do you manage secret keys? We cannot commit them in Version Control System (like github), it is too dangerous." />
+<link rel="canonical" href="http://localhost:4000/rails-credentials/" />
+<meta property="og:url" content="http://localhost:4000/rails-credentials/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
 <meta property="og:image" content="http://localhost:4000/assets/images/grafana-dashboard.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-05-02T00:00:00+05:30" />
+<meta property="article:published_time" content="2020-07-04T00:00:00+05:30" />
 <script type="application/ld+json">
-{"description":"When application gets stable at some point, we try to improve things we built for a while now. And improving performance tops the list for me. Application performance is a large concept which can be measured with different number of parameters. It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor controller action runtime, database query runtime and view rendering runtime. Let’s start","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"@type":"BlogPosting","headline":"Setting up Rails Performance dashboard with influxdb and grafana","dateModified":"2020-05-02T00:00:00+05:30","datePublished":"2020-05-02T00:00:00+05:30","image":"http://localhost:4000/assets/images/grafana-dashboard.png","url":"http://localhost:4000/rails-grafana-dashboard/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/rails-grafana-dashboard/"},"author":{"@type":"Person","name":"swapnil"},"@context":"http://schema.org"}</script>
+{"description":"How do you manage secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"@type":"BlogPosting","headline":"Rails - Managing secrets using credentials","dateModified":"2020-07-04T00:00:00+05:30","datePublished":"2020-07-04T00:00:00+05:30","image":"http://localhost:4000/assets/images/grafana-dashboard.png","url":"http://localhost:4000/rails-credentials/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/rails-credentials/"},"author":{"@type":"Person","name":"swapnil"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -353,24 +353,20 @@ function lunr_search(term) {
 						
                           <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
                         
-                          <a class="sscroll text-danger" href="/categories.html#influxdb">influxdb</a><span class="sep">, </span>
-                        
-                          <a class="sscroll text-danger" href="/categories.html#grafana">grafana</a><span class="sep">, </span>
-                        
-                          <a class="sscroll text-danger" href="/categories.html#apm">apm</a><span class="sep">, </span>
+                          <a class="sscroll text-danger" href="/categories.html#secret keys">secret keys</a><span class="sep">, </span>
                         
                         </span>
 					</p>
-					<h1 class="display-4 mb-4 article-headline">Setting up Rails Performance dashboard with influxdb and grafana</h1>
+					<h1 class="display-4 mb-4 article-headline">Rails - Managing secrets using credentials</h1>
 					<div class="d-flex align-items-center">
                         
                         <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
                         
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">May 02, 2020 · <span class="reading-time">
+                            <span class="text-muted d-block mt-1">Jul 04, 2020 · <span class="reading-time">
   
   
-    2 mins read
+    1 mins read
   
 </span>
     </span>
@@ -379,7 +375,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/grafana-dashboard.png" alt="Setting up Rails Performance dashboard with influxdb and grafana">
+					<img class="rounded" src="/assets/images/grafana-dashboard.png" alt="Rails - Managing secrets using credentials">
 				</div>
                 
 			</div>
@@ -421,66 +417,43 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>When application gets stable at some point, we try to improve things we built for a while now. And improving performance
-tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
-It also depends on underlying infrastructure.</p>
+			<p>How do you manage secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</p>
 
-<p>So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor
- controller action runtime, database query runtime and view rendering runtime. Let’s start</p>
+<p>In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp; then application
+code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.</p>
 
-<p>Pre-requisites</p>
-<ol>
-  <li>influxdb: <a href="https://docs.influxdata.com/influxdb/v1.8/introduction/install/">install</a> unless is_influxdb_installed?</li>
-  <li>grafana: <a href="https://grafana.com/docs/grafana/latest/">install</a> unless is_grafana_installed?</li>
-  <li>Rails app</li>
-</ol>
-
-<p><br /></p>
+<p>Let’s talk about rails credentials now - the way for managing secret keys in the rails eco system itself. How different
+this approach is? Well, it stores secret keys in application code itself, but those are encrypted and needs a master key to
+decrypt. So, we can place just one secret key i.e. master key outside of VCS. Isn’t it good?</p>
 
 <ul>
-  <li>Now add gem <code class="highlighter-rouge">influxdb-rails</code> gem to Rails application Gemfile and run <code class="highlighter-rouge">bundle</code>. To get things up run
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">influxdb</span>
-</code></pre></div>    </div>
-    <p>This will create initialzer config/initializers/influxdb_rails.rb, which allows configuration of this gem.</p>
-  </li>
-  <li>
-    <p>We need one infuxdb database to store performance time series data, which eventually will be used by grafana dashboard.
- Open influxdb cosnole by running <code class="highlighter-rouge">influx</code>. If you face issue of connection refused, make sure <code class="highlighter-rouge">influxd</code> is running. 
- Once console is accessible create a database. I’m creating database named ‘rails-dev’ for now.</p>
-  </li>
-  <li>We need to tell our rails application what database it should look for to store data. If it is going to use database service
- from another instance, we must provide hostname. For all this, open influxdb initializer file.</li>
+  <li>Create/edit credentials</li>
 </ul>
 
-<p>For database name -</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">config</span><span class="p">.</span><span class="nf">client</span><span class="p">.</span><span class="nf">database</span> <span class="o">=</span> <span class="s2">"rails-dev"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">EDITOR</span><span class="o">=</span><span class="s1">'VIM'</span> rails credentials:edit
 </code></pre></div></div>
 
-<p>If you are going to use a hosted influxdb instance then provide its address here</p>
+<p>This will create two files <code class="highlighter-rouge">credentials.yml.enc</code> &amp; <code class="highlighter-rouge">master.key</code> and open up decrypted credentials.yml.enc</p>
 
-<p>For hostname -</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">config</span><span class="p">.</span><span class="nf">client</span><span class="p">.</span><span class="nf">hosts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"host-name.com/8086"</span><span class="p">]</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="ss">aws:
+   access_key_id: </span><span class="mi">123</span>
+   <span class="ss">secret_access_key: </span><span class="mi">345</span>
+
+<span class="c1"># Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.</span>
+<span class="ss">secret_key_base:
+</span></code></pre></div></div>
+
+<p>Before saving these keys will be encrypted using master key. Note do not commit <code class="highlighter-rouge">master.key</code> file.</p>
+
+<p>And these credentials can be accessed in rails environment as</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">config</span>
+ <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:aws</span><span class="o">=&gt;</span><span class="p">{</span><span class="ss">:access_key_id</span><span class="o">=&gt;</span><span class="mi">123</span><span class="p">,</span> <span class="ss">:secret_access_key</span><span class="o">=&gt;</span><span class="mi">345</span><span class="p">}}</span>
 </code></pre></div></div>
-
-<p>At this point we are set with storing performance metrics data into influxdb ‘rails-dev’.</p>
 
 <ul>
-  <li>
-    <p>Check if grafana installed is working. Open <a href="http://localhost:3005">http://localhost:3005</a>. Recheck if port number is
-appropriate. You can verify port number and other details of grafana from ‘grafana.ini’</p>
-  </li>
-  <li>
-    <p>Let’s import a simple dashboard in grafana. We will use already created dashboard for the rails app. Navigate to import screen &amp; paste this board id <code class="highlighter-rouge">10428</code>. Grafana will update
-configuration and import the board. That’s it. Import is pretty simple and straight forward.</p>
-  </li>
+  <li>The only key that would stored out of VCS is master key. There are multiple ways to achieve it.</li>
 </ul>
-
-<p><img src="/assets/images/grafana_import_step1.png" alt="" /></p>
-
-<p>Now we are all prepared to see live performance metrics of our application. After some requests grafana dashboard will 
-look something like</p>
-
-<p><img src="/assets/images/grafana-dashboard.png" alt="" /></p>
 
 <p>Thanks for reading.</p>
 
@@ -489,11 +462,7 @@ look something like</p>
 <p>References -</p>
 
 <ul>
-  <li><a href="https://github.com/influxdata/influxdb-rails">influxdb-rails</a> gem</li>
-  <li><a href="https://docs.influxdata.com/influxdb/v1.8/introduction/install/">influxdb</a> installation</li>
-  <li><a href="https://grafana.com/docs/grafana/latest/">grafana</a> installation</li>
-  <li>grafana <a href="https://grafana.com/docs/grafana/latest/reference/export_import/#importing-a-dashboard">import dashboard</a></li>
-  <li><a href="https://github.com/influxdata/influxdb-rails/tree/master/sample-dashboard">sample-dashboard</a></li>
+  <li><a href="https://blog.saeloun.com/2019/10/10/rails-6-adds-support-for-multi-environment-credentials.html">Blog</a> on rails credentials</li>
 </ul>
                 
 			</article>
@@ -584,13 +553,9 @@ look something like</p>
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/reset_pk_sequence/"> <img height="30px" class="mr-1" src="/assets/images/reset_pk.jpg">  Reset primary key sequence</a>
+                <a class="text-dark" href="/rails-grafana-dashboard/"> <img height="30px" class="mr-1" src="/assets/images/grafana-dashboard.png">  Setting up Rails Performance dashboard with influxdb and grafana</a>
             </div>
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/rails-credentials/"> Rails - Managing secrets using credentials  <img height="30px" class="ml-1" src="/assets/images/grafana-dashboard.png"> </a>
-            </div>
           
         </div>
     </div>

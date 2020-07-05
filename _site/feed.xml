@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-04T22:20:29+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-05T00:41:00+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Rails - Managing secrets using credentials</title><link href="http://localhost:4000/rails-credentials/" rel="alternate" type="text/html" title="Rails - Managing secrets using credentials" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-credentials</id><content type="html" xml:base="http://localhost:4000/rails-credentials/">&lt;p&gt;How do you manage secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
+
+&lt;p&gt;In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp;amp; then application
+code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.&lt;/p&gt;
+
+&lt;p&gt;Let’s talk about rails credentials now - the way for managing secret keys in the rails eco system itself. How different
+this approach is? Well, it stores secret keys in application code itself, but those are encrypted and needs a master key to
+decrypt. So, we can place just one secret key i.e. master key outside of VCS. Isn’t it good?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create/edit credentials&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'VIM'&lt;/span&gt; rails credentials:edit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will create two files &lt;code class=&quot;highlighter-rouge&quot;&gt;credentials.yml.enc&lt;/code&gt; &amp;amp; &lt;code class=&quot;highlighter-rouge&quot;&gt;master.key&lt;/code&gt; and open up decrypted credentials.yml.enc&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;ss&quot;&gt;aws:
+   access_key_id: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;
+   &lt;span class=&quot;ss&quot;&gt;secret_access_key: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;345&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;secret_key_base:
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Before saving these keys will be encrypted using master key. Note do not commit &lt;code class=&quot;highlighter-rouge&quot;&gt;master.key&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;And these credentials can be accessed in rails environment as&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;credentials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:aws&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:access_key_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secret_access_key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;345&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The only key that would stored out of VCS is master key. There are multiple ways to achieve it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.saeloun.com/2019/10/10/rails-6-adds-support-for-multi-environment-credentials.html&quot;&gt;Blog&lt;/a&gt; on rails credentials&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/grafana-dashboard.png" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
 tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
 It also depends on underlying infrastructure.&lt;/p&gt;
 
@@ -681,50 +727,4 @@ Used to indicate various flags in cache control mechanism. Like
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">At the end browser talks in the language of HTTP request. But we really know minimal about it.</summary></entry><entry><title type="html">Ruby Ranges Overview</title><link href="http://localhost:4000/ruby-range/" rel="alternate" type="text/html" title="Ruby Ranges Overview" /><published>2019-08-15T00:00:00+05:30</published><updated>2019-08-15T00:00:00+05:30</updated><id>http://localhost:4000/ruby-range</id><content type="html" xml:base="http://localhost:4000/ruby-range/">&lt;p&gt;Range in ruby can be used in following situations&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;as Sequence&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Range can be used to generate a sequence as simple as &lt;code class=&quot;highlighter-rouge&quot;&gt;(1..100)&lt;/code&gt; will generate a sequence from 1 to 100.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;array = (1..100).to_a&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;will initialize an array of class Integer starting from 1 to 100. And it is easiest way to declare an array of sequence
-in ruby.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;as Intervals&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if ((1..10) === 5)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;puts &quot;5 lies in (1..10)&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;===&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;5 lies in (1..10)&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;as condition&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;score = 70
-  
-result = case score
-   when 0..40 then &quot;Fail&quot;
-   when 41..60 then &quot;Pass&quot;
-   when 61..70 then &quot;Pass with Merit&quot;
-   when 71..100 then &quot;Pass with Distinction&quot;
-   else &quot;Invalid Score&quot;
-end
-  
-puts result
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Cheers!!!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Range in ruby can be used in following situations</summary></entry></feed>
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">At the end browser talks in the language of HTTP request. But we really know minimal about it.</summary></entry></feed>
