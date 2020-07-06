@@ -4,7 +4,7 @@ title:  "Rails - Managing secrets using credentials"
 date:   2020-07-04
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails secrets kubernetes
 postgres"
-image: assets/images/grafana-dashboard.png
+image: assets/images/lock5.png
 categories: [ Rails, Secret keys ]
 ---
 
