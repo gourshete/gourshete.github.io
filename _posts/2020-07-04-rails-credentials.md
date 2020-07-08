@@ -1,14 +1,14 @@
 ---
 layout: post
-title:  "Rails - Managing secrets using credentials"
+title:  "Rails - Managing API keys using 'credentials'"
 date:   2020-07-04
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails secrets kubernetes
 postgres"
 image: assets/images/lock5.png
-categories: [ Rails, Secret keys ]
+categories: [ Rails, API keys, Secrets ]
 ---
 
-How do you manage secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.
+How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.
 
 In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets & then application
 code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.
@@ -24,24 +24,24 @@ decrypt. So, we can place just one secret key i.e. master key outside of VCS. Is
 EDITOR='VIM' rails credentials:edit
 ```
 
-This will create two files `credentials.yml.enc` & `master.key` and open up decrypted credentials.yml.enc
+This will create two files `credentials.yml.enc` & `master.key` and open up decrypted `credentials.yml.enc`
 
 ```ruby
 aws:
-   access_key_id: 123
-   secret_access_key: 345
+   access_key_id: AWSACCESSKEYID
+   secret_access_key: AWSSECRETACCESSKEY
 
 # Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
 secret_key_base:
 ```
 
-Before saving these keys will be encrypted using master key. Note do not commit `master.key` file.
+This file will be encrypted again before saving. Note do not commit `master.key` file.
 
-And these credentials can be accessed in rails environment as
+- Accessing these in rails environment as
 
 ```ruby
  > Rails.application.credentials.config
- => {:aws=>{:access_key_id=>123, :secret_access_key=>345}}
+ => {:aws=>{:access_key_id=>AWSACCESSKEYID, :secret_access_key=>AWSSECRETACCESSKEY}}
 ```
 
 - The only key that would stored out of VCS is master key. There are multiple ways to achieve it. 
