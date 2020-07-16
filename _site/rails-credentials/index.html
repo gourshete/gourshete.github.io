@@ -164,7 +164,7 @@ var documents = [{
     "id": 13,
     "url": "http://localhost:4000/rails-credentials/",
     "title": "Rails - Managing API keys using 'credentials'",
-    "body": "2020/07/04 - How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous. In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp; then applicationcode picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up. Let’s talk about rails credentials now - the way for managing secret keys in the rails eco system itself. How differentthis approach is? Well, it stores secret keys in application code itself, but those are encrypted and needs a master key todecrypt. So, we can place just one secret key i. e. master key outside of VCS. Isn’t it good?  Create/edit credentialsEDITOR='VIM' rails credentials:editThis will create two files credentials. yml. enc &amp; master. key and open up decrypted credentials. yml. enc aws:  access_key_id: AWSACCESSKEYID  secret_access_key: AWSSECRETACCESSKEY# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies. secret_key_base:This file will be encrypted again before saving. Note do not commit master. key file.  Accessing these in rails environment as &gt; Rails. application. credentials. config =&gt; {:aws=&gt;{:access_key_id=&gt;AWSACCESSKEYID, :secret_access_key=&gt;AWSSECRETACCESSKEY}} The only key that would stored out of VCS is master key. There are multiple ways to achieve it. Thanks for reading. … References -  Blog on rails credentials"
+    "body": "2020/07/04 - How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous. In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp; then applicationcode picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up. Let’s talk about rails credentials now - the way for managing secret keys in the rails eco system itself. How differentthis approach is? Well, it stores secret keys in application code itself, but those are encrypted and needs a master key todecrypt. So, we can place just one secret key i. e. master key outside of VCS. Isn’t it good?  Create/edit credentialsEDITOR='VIM' rails credentials:editThis will create two files credentials. yml. enc &amp; master. key and open up decrypted credentials. yml. enc aws:  access_key_id: AWSACCESSKEYID  secret_access_key: AWSSECRETACCESSKEY# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies. secret_key_base:This file will be encrypted again before saving. Note do not commit master. key file. The only key that would stored out of VCS is master key. There are multiple ways to achieve it.  Accessing these in rails environment as &gt; Rails. application. credentials. config =&gt; {:aws=&gt;{:access_key_id=&gt;AWSACCESSKEYID, :secret_access_key=&gt;AWSSECRETACCESSKEY}} Adding Environment wise Credentials: We can also keep dev, staging &amp; production env wise separate credential files. Let’s create it for development environment as - &gt; rails credentials:edit --environment developmentIt will open up in a default editor like aws:  access_key_id: 123  secret_access_key: 456Put in secrets in here &amp; then can be simply accessed in application as &gt; Rails. application. credentials. config =&gt; {:aws=&gt;{:access_key_id=&gt; DEVELOPMENT_KEY , :secret_access_key=&gt; DEVELOPMENT_ACCESS_KEY }}  The best thing I liked was this Even if you forget to remove secrets key file it will no be added to VCS as rails has moved it to gitignore. Thanks for reading. References -    Saeloun Blog on rails credentials     Medium Blog on environment wise credentials  "
     }, {
     "id": 14,
     "url": "http://localhost:4000/rails-grafana-dashboard/",
@@ -368,7 +368,7 @@ function lunr_search(term) {
                             <span class="text-muted d-block mt-1">Jul 04, 2020 · <span class="reading-time">
   
   
-    1 mins read
+    2 mins read
   
 </span>
     </span>
@@ -445,7 +445,8 @@ decrypt. So, we can place just one secret key i.e. master key outside of VCS. Is
 <span class="ss">secret_key_base:
 </span></code></pre></div></div>
 
-<p>This file will be encrypted again before saving. Note do not commit <code class="highlighter-rouge">master.key</code> file.</p>
+<p>This file will be encrypted again before saving. Note do not commit <code class="highlighter-rouge">master.key</code> file. The only key that would stored 
+out of VCS is master key. There are multiple ways to achieve it.</p>
 
 <ul>
   <li>Accessing these in rails environment as</li>
@@ -455,18 +456,50 @@ decrypt. So, we can place just one secret key i.e. master key outside of VCS. Is
  <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:aws</span><span class="o">=&gt;</span><span class="p">{</span><span class="ss">:access_key_id</span><span class="o">=&gt;</span><span class="no">AWSACCESSKEYID</span><span class="p">,</span> <span class="ss">:secret_access_key</span><span class="o">=&gt;</span><span class="no">AWSSECRETACCESSKEY</span><span class="p">}}</span>
 </code></pre></div></div>
 
+<p><br /><br /></p>
+
+<h3 id="adding-environment-wise-credentials">Adding Environment wise Credentials</h3>
+
+<p>We can also keep dev, staging &amp; production env wise separate credential files. Let’s create it for development environment as -</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">rails</span> <span class="n">credentials</span><span class="ss">:edit</span> <span class="o">--</span><span class="n">environment</span> <span class="n">development</span>
+</code></pre></div></div>
+
+<p>It will open up in a default editor like</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="ss">aws:
+   access_key_id: </span><span class="mi">123</span>
+   <span class="ss">secret_access_key: </span><span class="mi">456</span>
+</code></pre></div></div>
+
+<p>Put in secrets in here &amp; then can be simply accessed in application as</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">config</span>
+ <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:aws</span><span class="o">=&gt;</span><span class="p">{</span><span class="ss">:access_key_id</span><span class="o">=&gt;</span><span class="s2">"DEVELOPMENT_KEY"</span><span class="p">,</span> <span class="ss">:secret_access_key</span><span class="o">=&gt;</span><span class="s2">"DEVELOPMENT_ACCESS_KEY"</span><span class="p">}}</span>
+</code></pre></div></div>
+
+<p><br /></p>
 <ul>
-  <li>The only key that would stored out of VCS is master key. There are multiple ways to achieve it.</li>
+  <li>The best thing I liked was this</li>
 </ul>
+
+<p><img src="/assets/images/development-credentials.png" alt="" /></p>
+
+<p>Even if you forget to remove secrets <code class="highlighter-rouge">key file</code> it will no be added to VCS as rails has moved it to <code class="highlighter-rouge">gitignore</code>.</p>
 
 <p>Thanks for reading.</p>
 
-<p>…</p>
+<hr />
 
 <p>References -</p>
 
 <ul>
-  <li><a href="https://blog.saeloun.com/2019/10/10/rails-6-adds-support-for-multi-environment-credentials.html">Blog</a> on rails credentials</li>
+  <li>
+    <p>Saeloun <a href="https://blog.saeloun.com/2019/10/10/rails-6-adds-support-for-multi-environment-credentials.html">Blog</a> on rails credentials</p>
+  </li>
+  <li>
+    <p>Medium <a href="https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc">Blog</a> on environment wise credentials</p>
+  </li>
 </ul>
                 
 			</article>

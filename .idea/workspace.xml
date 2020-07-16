@@ -6,9 +6,6 @@
       <change beforePath="$PROJECT_DIR$/_posts/2020-07-04-rails-credentials.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-07-04-rails-credentials.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/404/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/images/lock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/images/lock3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/images/lock4.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/author-jane.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author-jane.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/author-sal.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author-sal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/author.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author.html" afterDir="false" />
@@ -65,20 +62,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/2020-07-04-rails-credentials.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="330">
-                <caret line="39" column="41" lean-forward="true" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2020-05-02-rails-grafana-dashboard.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="1771">
-                <caret line="77" selection-start-line="77" selection-end-line="77" />
+              <first_editor relative-caret-position="359">
+                <caret line="81" column="3" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
               </first_editor>
               <second_editor />
             </state>
@@ -244,18 +229,19 @@
       <workItem from="1593881193168" duration="236000" />
       <workItem from="1546301083564" duration="4168000" />
       <workItem from="1594192719525" duration="649000" />
-      <workItem from="1594203745614" duration="739000" />
+      <workItem from="1594203745614" duration="1197000" />
+      <workItem from="1594917837295" duration="3023000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17250000" />
+    <option name="totallyTimeSpent" value="20731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1276" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16450568" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16693678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -557,16 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2020-05-02-rails-grafana-dashboard.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="1771">
-            <caret line="77" selection-start-line="77" selection-end-line="77" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -574,11 +550,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2020-05-02-rails-grafana-dashboard.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="267">
+            <caret line="63" column="87" lean-forward="true" selection-start-line="63" selection-start-column="87" selection-end-line="63" selection-end-column="87" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2020-07-04-rails-credentials.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="330">
-            <caret line="39" column="41" lean-forward="true" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+          <first_editor relative-caret-position="359">
+            <caret line="81" column="3" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
           </first_editor>
           <second_editor />
         </state>

@@ -35,22 +35,54 @@ aws:
 secret_key_base:
 ```
 
-This file will be encrypted again before saving. Note do not commit `master.key` file.
+This file will be encrypted again before saving. Note do not commit `master.key` file. The only key that would stored 
+out of VCS is master key. There are multiple ways to achieve it.
 
 - Accessing these in rails environment as
 
 ```ruby
  > Rails.application.credentials.config
  => {:aws=>{:access_key_id=>AWSACCESSKEYID, :secret_access_key=>AWSSECRETACCESSKEY}}
+``` 
+
+<br><br>
+
+### Adding Environment wise Credentials
+
+We can also keep dev, staging & production env wise separate credential files. Let's create it for development environment as -
+
+```ruby
+> rails credentials:edit --environment development
 ```
 
-- The only key that would stored out of VCS is master key. There are multiple ways to achieve it. 
+It will open up in a default editor like
 
+```ruby
+aws:
+   access_key_id: 123
+   secret_access_key: 456
+```
+
+Put in secrets in here & then can be simply accessed in application as
+
+```ruby
+ > Rails.application.credentials.config
+ => {:aws=>{:access_key_id=>"DEVELOPMENT_KEY", :secret_access_key=>"DEVELOPMENT_ACCESS_KEY"}}
+```
+
+<br>
+- The best thing I liked was this
+
+<img src="{{ '/assets/images/development-credentials.png' | prepend: site.baseurl }}" alt="">
+
+Even if you forget to remove secrets `key file` it will no be added to VCS as rails has moved it to `gitignore`.
 
 Thanks for reading.
 
-...
+---
 
   References - 
  
-- [Blog](https://blog.saeloun.com/2019/10/10/rails-6-adds-support-for-multi-environment-credentials.html) on rails credentials
+- Saeloun [Blog](https://blog.saeloun.com/2019/10/10/rails-6-adds-support-for-multi-environment-credentials.html) on rails credentials
+
+- Medium [Blog](https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc) on environment wise credentials
