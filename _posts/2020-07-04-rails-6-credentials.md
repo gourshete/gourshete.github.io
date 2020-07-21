@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Rails - Managing API keys using 'credentials'"
+title:  "Rails 6 - Managing API keys using 'credentials'"
 date:   2020-07-04
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails secrets kubernetes
 postgres"
