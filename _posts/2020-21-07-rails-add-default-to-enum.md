@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Rails 6.0.3 - adds defaults value to enum"
+title:  "Rails 6.1 - adds defaults value to enum"
 date:   2020-07-04
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails defaults enum"
 image: assets/images/rails-6.jpeg
@@ -22,7 +22,7 @@ Well we can achieve it using
 database default value constraint, but it will not be assigned until object is saved to database i.e. `Book.new.status`
 will not reflect `database default-value constraint` as it is yet to be saved to database.
 
-- Rails added support to define default value for enum. Declaring like
+- Rails 6.1 added support to define default value for enum. Declaring like
 
 ```ruby
 class Book < ActiveRecord::Base
