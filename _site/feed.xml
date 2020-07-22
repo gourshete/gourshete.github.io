@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-17T21:19:11+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Rails - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-credentials/" rel="alternate" type="text/html" title="Rails - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-credentials</id><content type="html" xml:base="http://localhost:4000/rails-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-22T00:27:41+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Rails 6.0.3 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.0.3 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
+from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
+
+&lt;p&gt;Well we can achieve it using
+database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
+will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails added support to define default value for enum. Declaring like&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;More example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
 
 &lt;p&gt;In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp;amp; then application
 code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.&lt;/p&gt;
@@ -613,153 +664,4 @@ return with exit 0. To summarise,&lt;/p&gt;
 This makes call to rake task above. Then collects its output into a variable DB_EXISTS. Then check if value of DB_EXISTS is equal to 1(which means db does not
 exists, according to our above assessment), IF YES THEN RUN &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:create db:migrate db:seed&lt;/code&gt;, ELSE run &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? Ans - Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should be run on every deployments.</summary></entry><entry><title type="html">HTTP request response headers</title><link href="http://localhost:4000/http-request-part/" rel="alternate" type="text/html" title="HTTP request response headers" /><published>2019-08-20T00:00:00+05:30</published><updated>2019-08-20T00:00:00+05:30</updated><id>http://localhost:4000/http-request-part</id><content type="html" xml:base="http://localhost:4000/http-request-part/">&lt;p&gt;At the end browser talks in the language of HTTP request. But we really know minimal about it.&lt;/p&gt;
-
-&lt;p&gt;The request process flow is as simple as browser sends http request to the server and receives a response. Sometimes what we see is a combined result of 
-responses from multiple requests.&lt;/p&gt;
-
-&lt;p&gt;To summarize every image, text or anything seen on browser is a response received to an http request.&lt;/p&gt;
-
-&lt;p&gt;Let’s see what a request and response headers of http request consists of.&lt;/p&gt;
-
-&lt;p&gt;HTTP request headers can be broadly divided into 3 parts -&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;General&lt;/li&gt;
-  &lt;li&gt;Response Headers&lt;/li&gt;
-  &lt;li&gt;Request Headers&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;general&quot;&gt;General&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Sample HTTP request format &lt;br /&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;GET /blog HTTP/1.1&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s divide it into sections and see what each one means&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Method&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; is a method used in http request which indicates type of work expected from request. There are methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;POST, DELETE, PUT, PATCH&lt;/code&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Path&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;It tells at what url should server look for. e.g.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://gryffindor.in/&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Version&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;HTTP protocol version as 1.1 or 2.0&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Status Code&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;It is a 3 digit code that represents response from server. Like&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Status Code: 304&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;response-headers&quot;&gt;Response Headers&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Sample HTTP request format &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;GET /blog HTTP/1.1&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s divide it into sections and see what each one means&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;date&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All http requests use Greenwich Standard Time(GMT) or UTC. Here is common format -&lt;br /&gt; 
-‘Date: Fri, 23 Aug 2019 10:17:27 GMT’&lt;br /&gt;
-reference - &lt;a href=&quot;http://tools.ietf.org/html/rfc7231#section-7.1.1.1&quot;&gt;RFC&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;status&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;It is a 3 digit code that represents response from server. Like&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Status Code: 304&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;expires&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Tell the date when cookie will expire.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;last-modified&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Tells date and time when origin of content was last modified.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;server&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Tells the web server used to process this http request.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;cache-control &lt;br /&gt;
-Used to indicate various flags in cache control mechanism. Like
-    &lt;ol&gt;
-      &lt;li&gt;max-age - to indicate client accepts cached data whose age is not greater than value in seconds).&lt;/li&gt;
-      &lt;li&gt;public - server can use any cache to store data&lt;/li&gt;
-      &lt;li&gt;no-cache - cache must not use data for subsequent request without re-validation.&lt;/li&gt;
-      &lt;li&gt;no-store - server can not use cache the request or response.&lt;/li&gt;
-      &lt;li&gt;must-revalidate - revalidate stale data before using&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;request-headers&quot;&gt;Request Headers&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Sample HTTP request format &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;GET /blog HTTP/1.1&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s divide it into sections and see what each one means&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Accept&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Tells about response formats that client can accept. e.g.&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;text/html, application/json, application/xml, text/css, image/*, */*&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Referer&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Allows client to specify from which URI this http request is generated/ requested. Like&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Referer: https://buff.ly/&lt;/code&gt;&lt;br /&gt;
-It is of great help for analytics.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;User agent&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Indicates which browser the request is sent from. like&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cache-control &lt;br /&gt;
-Used to indicate various flags in cache control mechanism. Like
-    &lt;ol&gt;
-      &lt;li&gt;max-age - to indicate client accepts cached data whose age is not greater than value in seconds).&lt;/li&gt;
-      &lt;li&gt;public - server can use any cache to store data&lt;/li&gt;
-      &lt;li&gt;no-cache - cache must not use data for subsequent request without re-validation.&lt;/li&gt;
-      &lt;li&gt;no-store - server can not use cache the request or response.&lt;/li&gt;
-      &lt;li&gt;must-revalidate - revalidate stale data before using&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">At the end browser talks in the language of HTTP request. But we really know minimal about it.</summary></entry></feed>
+&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? Ans - Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should be run on every deployments.</summary></entry></feed>

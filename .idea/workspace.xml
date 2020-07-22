@@ -3,8 +3,43 @@
   <component name="ChangeListManager">
     <list default="true" id="9f93489d-3530-46a5-a548-c41773eb44ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-07-04-rails-credentials.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-07-04-rails-6-credentials.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/author-jane.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author-jane.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/author-sal.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author-sal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/author.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/buy-me-a-coffee.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/buy-me-a-coffee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/charm-old-cities/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/charm-old-cities/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/contact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/how-index-works-on-database/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/how-index-works-on-database/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/http-request-part/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/http-request-part/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/modified-and-use-gem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/modified-and-use-gem/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/postgresql-json/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/postgresql-json/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/previously_was/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/previously_was/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/privacy-policy.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/privacy-policy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-command-line-tools/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-command-line-tools/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-credentials/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-grafana-dashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-grafana-dashboard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-includes-vs-joins/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-includes-vs-joins/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-log-to-stdout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-log-to-stdout/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-request-lifecycle/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-request-lifecycle/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/reset_pk_sequence/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/reset_pk_sequence/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/ruby-date-formatting/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/ruby-date-formatting/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/ruby-range/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/ruby-range/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/run-migrations-on-first-docker-up/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/run-migrations-on-first-docker-up/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/scopes-in-rails/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/scopes-in-rails/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/send-email-from-rails/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/send-email-from-rails/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sidekiq-by-example/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sidekiq-by-example/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/squash-old-migrations/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/squash-old-migrations/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/string-comparison/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/string-comparison/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/why-rails-why-ruby/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/why-rails-why-ruby/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,12 +58,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2020-07-04-rails-6-credentials.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="168">
-                <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <first_editor relative-caret-position="474">
+                <caret line="86" selection-start-line="86" selection-end-line="86" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_posts/2020-21-07-rails-add-default-to-enum.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="115">
+                <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
               </first_editor>
               <second_editor />
             </state>
@@ -38,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11937">
-              <caret line="519" column="11" selection-start-line="519" selection-start-column="11" selection-end-line="519" selection-end-column="11" />
+            <state relative-caret-position="12581">
+              <caret line="547" column="11" selection-start-line="547" selection-start-column="11" selection-end-line="547" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -98,21 +145,7 @@
         <option value="$PROJECT_DIR$/_posts/2020-01-01-ruby-date-formatting.md" />
         <option value="$PROJECT_DIR$/_layouts/post.html" />
         <option value="$PROJECT_DIR$/_posts/2020-07-04-rails-credentials.md" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/gourshete.github.io.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/dbnavigator.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+        <option value="$PROJECT_DIR$/_posts/2020-21-07-rails-add-default-to-enum.md" />
       </list>
     </option>
   </component>
@@ -154,11 +187,6 @@
               <item name="gourshete.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="gourshete.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="_posts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gourshete.github.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gourshete.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="_site" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -206,12 +234,12 @@
       <workItem from="1594192719525" duration="649000" />
       <workItem from="1594203745614" duration="1197000" />
       <workItem from="1594917837295" duration="3023000" />
-      <workItem from="1595348355126" duration="65000" />
+      <workItem from="1595348355126" duration="2939000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10858000" />
+    <option name="totallyTimeSpent" value="13732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1276" height="777" extended-state="0" />
@@ -544,8 +572,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11937">
-          <caret line="519" column="11" selection-start-line="519" selection-start-column="11" selection-end-line="519" selection-end-column="11" />
+        <state relative-caret-position="12581">
+          <caret line="547" column="11" selection-start-line="547" selection-start-column="11" selection-end-line="547" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -556,11 +584,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2020-07-04-rails-6-credentials.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="168">
-            <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <first_editor relative-caret-position="474">
+            <caret line="86" selection-start-line="86" selection-end-line="86" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2020-21-07-rails-add-default-to-enum.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="115">
+            <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
           </first_editor>
           <second_editor />
         </state>
