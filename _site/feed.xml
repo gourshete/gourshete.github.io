@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-22T16:43:55+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Rails 6.0.3 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.0.3 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-04T00:04:35+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Ruby Modules</title><link href="http://localhost:4000/ruby-modules/" rel="alternate" type="text/html" title="Ruby Modules" /><published>2020-09-15T00:00:00+05:30</published><updated>2020-09-15T00:00:00+05:30</updated><id>http://localhost:4000/ruby-modules</id><content type="html" xml:base="http://localhost:4000/ruby-modules/"></content><author><name>swapnil</name></author><summary type="html"></summary></entry><entry><title type="html">Readme</title><link href="http://localhost:4000/readme/" rel="alternate" type="text/html" title="Readme" /><published>2020-07-27T00:00:00+05:30</published><updated>2020-07-27T00:00:00+05:30</updated><id>http://localhost:4000/readme</id><content type="html" xml:base="http://localhost:4000/readme/">&lt;p&gt;Hi, I am Swapnil, Software Engineer based in India. I work on backend stuff &amp;amp; somewhat react too. I write blog 
+posts at &lt;a href=&quot;https://railsexamples.com&quot;&gt;railsexamples.com&lt;/a&gt;. Of course I watch cricket .&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/gourshete&quot;&gt;Twitter&lt;/a&gt; &lt;a href=&quot;https://linkedin.com/swapnil.gourshete&quot;&gt;Linkedin&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/gourshete&quot;&gt;&lt;img src=&quot;https://github-readme-stats.vercel.app/api?username=gourshete&quot; alt=&quot;Swapnil's github stats&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Hi, I am Swapnil, Software Engineer based in India. I work on backend stuff &amp;amp; somewhat react too. I write blog posts at railsexamples.com. Of course I watch cricket .</summary></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
@@ -13,7 +18,7 @@ database default value constraint, but it will not be assigned until object is s
 will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Rails added support to define default value for enum. Declaring like&lt;/li&gt;
+  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
@@ -504,164 +509,4 @@ as per postgresql documentation.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;postgresql tutorial blog - &lt;a href=&quot;https://www.postgresqltutorial.com/postgresql-json/&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry><entry><title type="html">Sidekiq By Example</title><link href="http://localhost:4000/sidekiq-by-example/" rel="alternate" type="text/html" title="Sidekiq By Example" /><published>2019-11-28T00:00:00+05:30</published><updated>2019-11-28T00:00:00+05:30</updated><id>http://localhost:4000/sidekiq-by-example</id><content type="html" xml:base="http://localhost:4000/sidekiq-by-example/">&lt;p&gt;What is the best way of handling background jobs in Rails, (maybe) using sidekiq.&lt;/p&gt;
-
-&lt;p&gt;Let’s take step by step look into creating a Rails App and making a request for Background job using sidekiq&lt;/p&gt;
-
-&lt;p&gt;System Pre-requisite&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Ruby&lt;/li&gt;
-  &lt;li&gt;Rails&lt;/li&gt;
-  &lt;li&gt;Redis&lt;/li&gt;
-  &lt;li&gt;Sidekiq&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Note: The &lt;a href=&quot;https://github.com/gourshete/sidekiq-example&quot; target=&quot;_blank&quot;&gt;repository&lt;/a&gt;  of this project.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;create-new-rails-project&quot;&gt;Create new Rails Project&lt;/h3&gt;
-&lt;p&gt;We will create a new rails project named &lt;code class=&quot;highlighter-rouge&quot;&gt;sidekiq-example&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-new-project.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;add-sidekiq-gem&quot;&gt;Add sidekiq gem&lt;/h3&gt;
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; add gem ‘sidekiq’&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gem sidekiq&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Now run command &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. This will install gem sidekiq in our project.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;➜  sidekiq-example: bundle install&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;generate-model&quot;&gt;Generate Model&lt;/h3&gt;
-&lt;p&gt;Let’s create a model named &lt;code class=&quot;highlighter-rouge&quot;&gt;Team&lt;/code&gt; for reference with fields &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;rating&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-model.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Also add this in &lt;code class=&quot;highlighter-rouge&quot;&gt;seeds.rb&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-seed.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now Run &lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;➜  sidekiq-example: rails db:create &amp;amp;&amp;amp; rails db:migrate &amp;amp;&amp;amp; rails db:seed&lt;/code&gt; &lt;br /&gt;
-It will create new database &lt;code class=&quot;highlighter-rouge&quot;&gt;sidekiq_example_development&lt;/code&gt; for our application and create a table called &lt;code class=&quot;highlighter-rouge&quot;&gt;teams&lt;/code&gt; in this database.
-Running seed data will insert sample 5 records in it.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;generate-a-controller&quot;&gt;Generate a controller&lt;/h3&gt;
-&lt;p&gt;Create a controller for our actions under namespace &lt;code class=&quot;highlighter-rouge&quot;&gt;api/v1/&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-controller-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;add-routes&quot;&gt;Add routes&lt;/h3&gt;
-&lt;p&gt;Let’s add routes for our actions. Add this in &lt;code class=&quot;highlighter-rouge&quot;&gt;routes.rb&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-routes.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;add-sidekiq-worker&quot;&gt;Add Sidekiq worker&lt;/h3&gt;
-&lt;p&gt;Now let’s work on Sidekiq part. To perform sidekiq jobs, add worker in &lt;code class=&quot;highlighter-rouge&quot;&gt;app/workers&lt;/code&gt;. For our demo application
-it is &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt;. And add method named perform in it. When a call to &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; made, it will be a
-asynchronous call to this method &lt;code class=&quot;highlighter-rouge&quot;&gt;perform&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The logic for background job will be in this method &lt;code class=&quot;highlighter-rouge&quot;&gt;perform&lt;/code&gt;. To keep it simple for now, will just add sleep timer 
-in it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-worker.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It simply sleeps for number of milliseconds passed to it. This job will run asynchronously when called.&lt;/p&gt;
-
-&lt;p&gt;Let’s modify teams controller to make a call to this background job&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-controller-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can see action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; is making call to &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt;. What it means is when a url of kind &lt;code class=&quot;highlighter-rouge&quot;&gt;'/api/v1/teams/:id'&lt;/code&gt;
-is hit, the controller action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; will get called and background job &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; will be triggered. The action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt;
-will not wait for job &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; to complete though it is called from within its definition. This job will be 
-executed asynchronously with method &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;run&quot;&gt;Run&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Start rails server&lt;/li&gt;
-  &lt;li&gt;Start Redis&lt;/li&gt;
-  &lt;li&gt;Start Sidekiq&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you hit URL will found out something like this in sidekiq server log&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3001/api/v1/teams/2&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-server-log.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;):&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Well this is very simple example of running background job in rails. You can write complex logic in Sidekiq workers.
-You can add multiple workers.&lt;/p&gt;
-
-&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><category term="featured" /><summary type="html">What is the best way of handling background jobs in Rails, (maybe) using sidekiq.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/sidekiq.png" /></entry><entry><title type="html">Run seed data only on first Docker instance up</title><link href="http://localhost:4000/run-migrations-on-first-docker-up/" rel="alternate" type="text/html" title="Run seed data only on first Docker instance up" /><published>2019-11-22T00:00:00+05:30</published><updated>2019-11-22T00:00:00+05:30</updated><id>http://localhost:4000/run-migrations-on-first-docker-up</id><content type="html" xml:base="http://localhost:4000/run-migrations-on-first-docker-up/">&lt;p&gt;Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? &lt;br /&gt;
-&lt;strong&gt;Ans -&lt;/strong&gt; Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should
-be run on every deployments.&lt;/p&gt;
-
-&lt;p&gt;So here is what we need &lt;strong&gt;-&lt;/strong&gt; Run seed data only for first deployment. We will consider here containerised architecture.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Here are steps -&lt;/strong&gt; &lt;br /&gt; 
-During deployment&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Check if db exists&lt;/li&gt;
-  &lt;li&gt;If yes, then run rails db:migrate&lt;/li&gt;
-  &lt;li&gt;If no, then run rails db:create &amp;amp;&amp;amp; rails db:migrate &amp;amp;&amp;amp; rails db:seed&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;how-to-determine-if-db-exists-during-deployment-&quot;&gt;How to determine if db exists during deployment? &lt;br /&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Ans -&lt;/strong&gt; After some googling, found out that a rake task can be written to determine if db exists&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-    &lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:db&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Checks to see if the database exists&quot;&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:exists&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
-          &lt;span class=&quot;no&quot;&gt;Rake&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'environment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;invoke&lt;/span&gt;
-          &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt;
-          &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-          &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;    
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This task tries to establish connection with the database, if exception occurs then return with exit 1. Exception
-occurred, here, means the database does not exists. And no exception means connection established successfully and
-return with exit 0. To summarise,&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;db does not exists &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
-    &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;db exists &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;run-seed-data-if-dbexists-how-&quot;&gt;Run seed data if db:exists, How? &lt;br /&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Ans -&lt;/strong&gt; In deployment script, the conditional bash logic can be executed like&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; args: [ &quot;-c&quot;, &quot;env &amp;amp;&amp;amp; bundle exec rake db:exists; DB_EXISTS=$?;  [[ $DB_EXISTS = 1 ]] &amp;amp;&amp;amp; (rails db:create db:migrate db:seed) || (rails db:migrate)&quot; ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake db:exists; DB_EXISTS=$?;  [[ $DB_EXISTS = 1 ]] &amp;amp;&amp;amp; (rails db:create db:migrate db:seed) || (rails db:migrate)&lt;/code&gt; &lt;br /&gt;
-This makes call to rake task above. Then collects its output into a variable DB_EXISTS. Then check if value of DB_EXISTS is equal to 1(which means db does not
-exists, according to our above assessment), IF YES THEN RUN &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:create db:migrate db:seed&lt;/code&gt;, ELSE run &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? Ans - Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should be run on every deployments.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry></feed>
