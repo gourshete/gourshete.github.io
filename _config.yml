@@ -20,7 +20,7 @@ plugins:
 authors:
     swapnil:
       name:           Swapnil Gourshete
-      site:           https://www.gryffindor.in
+      site:           '/'
       avatar:         /assets/images/swapnil.jpg
       bio:            "Hi I am Swapnil, a Software Engineer and computer science enthusiastic"
       email:          learning.swapnil@gmail.com
