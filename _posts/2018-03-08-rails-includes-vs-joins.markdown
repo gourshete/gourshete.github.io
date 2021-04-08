@@ -16,7 +16,7 @@ here comes the difference.
 
 <h4>What is the problem with Joins?</h4>
 
-<img src="{{ '/assets/img/joins_all.png' | prepend: site.baseurl }}" alt="">
+<img src="{{ '/assets/images/joins_all.png' | prepend: site.baseurl }}" alt="">
 
 Here, we retrieved users in the first line and data is formatted in the each do loop. Here is interesting thing, to retrieve user.company.name, each time a call to database is made. It means, if there are 10k users then 10k separate queries would be fired up.
 And this will overkill system when scaled up. Isn't there is efficient way? Yes, it is Includes.
@@ -30,7 +30,7 @@ from associated tables, includes must be used.
 
 Here is an example,
 
-<img src="{{ '/assets/img/includes.png' | prepend: site.baseurl }}" alt="">
+<img src="{{ '/assets/images/includes.png' | prepend: site.baseurl }}" alt="">
 
 Here, the data from table companies is brought right in the first line, since it says includes companies.
 No additional query is fired from the do loop for 'user.company.name'. Size of users table does not matter now.
@@ -43,7 +43,7 @@ contains huge data.
 
 Hopefully not, there are some cases when includes does not exceed joins in terms of efficiency.
 
-<img src="{{ '/assets/img/includes_3.png' | prepend: site.baseurl }}" alt="">
+<img src="{{ '/assets/images/includes_3.png' | prepend: site.baseurl }}" alt="">
 Here, we used tables users and companies, but companies is only for some sort of filter. We did not actually 
 used data from companies later in the code. So no need to bring data from companies along with users. This is
  why join is efficient in this case.
