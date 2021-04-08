@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Setting up Rails Performance dashboard with influxdb and grafana | Ruby on Rails Examples</title>
+    <title>Allow HTTPS traffic via AWS Load balancer and EC2 | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Setting up Rails Performance dashboard with influxdb and grafana | Ruby on Rails Examples</title>
+<title>Allow HTTPS traffic via AWS Load balancer and EC2 | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Setting up Rails Performance dashboard with influxdb and grafana" />
+<meta property="og:title" content="Allow HTTPS traffic via AWS Load balancer and EC2" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="When application gets stable at some point, we try to improve things we built for a while now. And improving performance tops the list for me. Application performance is a large concept which can be measured with different number of parameters. It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor controller action runtime, database query runtime and view rendering runtime. Let’s start" />
-<meta property="og:description" content="When application gets stable at some point, we try to improve things we built for a while now. And improving performance tops the list for me. Application performance is a large concept which can be measured with different number of parameters. It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor controller action runtime, database query runtime and view rendering runtime. Let’s start" />
-<link rel="canonical" href="http://localhost:4000/rails-grafana-dashboard/" />
-<meta property="og:url" content="http://localhost:4000/rails-grafana-dashboard/" />
+<meta name="description" content="In this post we will achieve passing only https traffic to EC2 via application load balancer." />
+<meta property="og:description" content="In this post we will achieve passing only https traffic to EC2 via application load balancer." />
+<link rel="canonical" href="http://localhost:4000/allow-https-traffic/" />
+<meta property="og:url" content="http://localhost:4000/allow-https-traffic/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/grafana-dashboard.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/aws-icon.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-05-02T00:00:00+05:30" />
+<meta property="article:published_time" content="2021-04-07T00:00:00+05:30" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/rails-grafana-dashboard/","headline":"Setting up Rails Performance dashboard with influxdb and grafana","dateModified":"2020-05-02T00:00:00+05:30","datePublished":"2020-05-02T00:00:00+05:30","image":"http://localhost:4000/assets/images/grafana-dashboard.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/rails-grafana-dashboard/"},"description":"When application gets stable at some point, we try to improve things we built for a while now. And improving performance tops the list for me. Application performance is a large concept which can be measured with different number of parameters. It also depends on underlying infrastructure. So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor controller action runtime, database query runtime and view rendering runtime. Let’s start","author":{"@type":"Person","name":"swapnil"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/allow-https-traffic/","headline":"Allow HTTPS traffic via AWS Load balancer and EC2","dateModified":"2021-04-07T00:00:00+05:30","datePublished":"2021-04-07T00:00:00+05:30","image":"http://localhost:4000/assets/images/aws-icon.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/allow-https-traffic/"},"description":"In this post we will achieve passing only https traffic to EC2 via application load balancer.","author":{"@type":"Person","name":"swapnil"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -340,24 +340,24 @@ function lunr_search(term) {
 						
                           <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
                         
-                          <a class="sscroll text-danger" href="/categories.html#influxdb">influxdb</a><span class="sep">, </span>
+                          <a class="sscroll text-danger" href="/categories.html#aws">aws</a><span class="sep">, </span>
                         
-                          <a class="sscroll text-danger" href="/categories.html#grafana">grafana</a><span class="sep">, </span>
+                          <a class="sscroll text-danger" href="/categories.html#elb">elb</a><span class="sep">, </span>
                         
-                          <a class="sscroll text-danger" href="/categories.html#apm">apm</a><span class="sep">, </span>
+                          <a class="sscroll text-danger" href="/categories.html#ec2">ec2</a><span class="sep">, </span>
                         
                         </span>
 					</p>
-					<h1 class="display-4 mb-4 article-headline">Setting up Rails Performance dashboard with influxdb and grafana</h1>
+					<h1 class="display-4 mb-4 article-headline">Allow HTTPS traffic via AWS Load balancer and EC2</h1>
 					<div class="d-flex align-items-center">
                         
                         <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
                         
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">May 02, 2020 · <span class="reading-time">
+                            <span class="text-muted d-block mt-1">Apr 07, 2021 · <span class="reading-time">
   
   
-    2 mins read
+    3 mins read
   
 </span>
     </span>
@@ -366,7 +366,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/grafana-dashboard.png" alt="Setting up Rails Performance dashboard with influxdb and grafana">
+					<img class="rounded" src="/assets/images/aws-icon.png" alt="Allow HTTPS traffic via AWS Load balancer and EC2">
 				</div>
                 
 			</div>
@@ -408,79 +408,150 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>When application gets stable at some point, we try to improve things we built for a while now. And improving performance
-tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
-It also depends on underlying infrastructure.</p>
+			<p>In this post we will achieve passing only https traffic to EC2 via application load balancer.</p>
 
-<p>So here we will setup very simple and minimalistic performance dashboard for a Rails application which will help us monitor
- controller action runtime, database query runtime and view rendering runtime. Let’s start</p>
+<p>Pre-requisites:</p>
 
-<p>Pre-requisites</p>
 <ol>
-  <li>influxdb: <a href="https://docs.influxdata.com/influxdb/v1.8/introduction/install/">install</a> unless is_influxdb_installed?</li>
-  <li>grafana: <a href="https://grafana.com/docs/grafana/latest/">install</a> unless is_grafana_installed?</li>
-  <li>Rails app</li>
+  <li>running EC2 instance</li>
+  <li>SSL certificate added to AWS Certificate Manager</li>
 </ol>
 
-<p><br /></p>
+<p>-</p>
 
-<ul>
-  <li>Now add gem <code class="highlighter-rouge">influxdb-rails</code> gem to Rails application Gemfile and run <code class="highlighter-rouge">bundle</code>. To get things up run
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">influxdb</span>
-</code></pre></div>    </div>
-    <p>This will create initialzer config/initializers/influxdb_rails.rb, which allows configuration of this gem.</p>
-  </li>
-  <li>
-    <p>We need one infuxdb database to store performance time series data, which eventually will be used by grafana dashboard.
- Open influxdb cosnole by running <code class="highlighter-rouge">influx</code>. If you face issue of connection refused, make sure <code class="highlighter-rouge">influxd</code> is running. 
- Once console is accessible create a database. I’m creating database named ‘rails-dev’ for now.</p>
-  </li>
-  <li>We need to tell our rails application what database it should look for to store data. If it is going to use database service
- from another instance, we must provide hostname. For all this, open influxdb initializer file.</li>
-</ul>
+<p>First we need to setup an AWS Load balancer. If you have load balancer created, then please skip to 
+<a href="#skip-step">this step</a><br />
+AWS provides three types of LB - application, network and classic, while 
+AWS itself promotes application LB for Modern web applications.</p>
 
-<p>For database name -</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">config</span><span class="p">.</span><span class="nf">client</span><span class="p">.</span><span class="nf">database</span> <span class="o">=</span> <span class="s2">"rails-dev"</span>
-</code></pre></div></div>
-
-<p>If you are going to use a hosted influxdb instance then provide its address here</p>
-
-<p>For hostname -</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">config</span><span class="p">.</span><span class="nf">client</span><span class="p">.</span><span class="nf">hosts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"host-name.com/8086"</span><span class="p">]</span>
-</code></pre></div></div>
-
-<p>At this point we are set with storing performance metrics data into influxdb ‘rails-dev’.</p>
+<p><img src="/assets/images/aws-lb-types.png" alt="aws-load-balancer-types" /></p>
 
 <ul>
   <li>
-    <p>Check if grafana installed is working. Open <a href="http://localhost:3005">http://localhost:3005</a>. Recheck if port number is
-appropriate. You can verify port number and other details of grafana from ‘grafana.ini’</p>
-  </li>
-  <li>
-    <p>Let’s import a simple dashboard in grafana. We will use already created dashboard for the rails app. Navigate to import screen &amp; paste this board id <code class="highlighter-rouge">10428</code>. Grafana will update
-configuration and import the board. That’s it. Import is pretty simple and straight forward.</p>
+    <h4>Create Application Load Balancer</h4>
+
+    <ol>
+      <li>Open the Amazon EC2 console at <a href="https://console.aws.amazon.com/ec2/" target="_blank"> https://console.aws.amazon.com/ec2/ </a></li>
+      <li>On the navigation pane, open CREATE LOAD BALANCER.</li>
+      <li>Choose Create for Application Load Balancer.</li>
+    </ol>
   </li>
 </ul>
 
-<p><img src="/assets/images/grafana_import_step1.png" alt="" /></p>
+<p>-</p>
 
-<p>Now we are all prepared to see live performance metrics of our application. After some requests grafana dashboard will 
-look something like</p>
+<ul>
+  <li>
+    <h4>Adding listener configuration</h4>
 
-<p><img src="/assets/images/grafana-dashboard.png" alt="" /></p>
+    <p>We need to add where load balancer is listening. We also need to specify what action should be taken, but it is covered
+later in the post as it has a pre-requisite task. 
+We will listen from both ports 80 and 443.</p>
+    <ol>
+      <li>
+        <p>For port 443 (HTTPS) - On AWS console, for port choose HTTPS and for port choose 443.</p>
+      </li>
+      <li>
+        <p>For port 80 (HTTP) - On AWS console, for protocol choose HTTP and for port choose 80.</p>
+      </li>
+    </ol>
+  </li>
+</ul>
 
-<p>Thanks for reading.</p>
+<p>-</p>
 
-<p>…</p>
+<ul>
+  <li>
+    <h4>Configure Security Settings</h4>
+
+    <p>AWS Certificate Manager (ACM) is the preferred tool to provision and store server certificates. If you previously 
+stored a server certificate using IAM, you can deploy it to your load balancer.
+From Certificate type dropdown choose Choose a certificate from ACM (recommended). Select Certificate from Certificate 
+name dropdown.</p>
+  </li>
+</ul>
+
+<p>-</p>
+
+<ul>
+  <li>
+    <h4>Adding VPC and security groups</h4>
+
+    <p>Add appropriate VPC and security groups to your ALB</p>
+  </li>
+</ul>
+
+<p>-</p>
+
+<ul>
+  <li>
+    <h4>Adding target group</h4>
+
+    <p>Create new target group with protocol (HTTP) and port (80). For health check keep default settings or assign any other
+route your application has, it will be used for periodically checking health of target group. Use this target group to
+forward your traffic from listener port 443 (From the above steps).</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/lb-health-check.png" alt="load-balancer-health-check" /></p>
+
+<p>-</p>
+
+<ul>
+  <li>
+    <h4>Listeners &amp; targets settings</h4>
+
+    <p>Open listeners edit option and do changes for following</p>
+    <ol>
+      <li>For port 80 (HTTP) - Open edit option. For Default action(s), choose Redirect to. Choose HTTPS &amp; 443 and Original host, path, query 
+from dropdown. This will redirect all traffic on port 80 to port 443 (https) on same host.</li>
+      <li>For port 443 (HTTPS) - Open edit option. Select protocol HTTPS and port 443. For Default action(s), choose Forward 
+to and then select your ALB target group from the drop-down menu. For Default SSL certificate, choose From ACM
+(recommended) and then choose the ACM certificate.</li>
+    </ol>
+  </li>
+</ul>
+
+<p>-</p>
+
+<div id="skip-step"></div>
+
+<ul>
+  <li>
+    <h5>Already have Application Load Balancer up and running, then</h5>
+
+    <ol>
+      <li>In the navigation pane, choose Load Balancers and then choose your Application Load Balancer.</li>
+      <li>Choose Add listener.</li>
+      <li>For Protocol, choose HTTPS.</li>
+      <li>For port, choose 443.</li>
+      <li>For Default action(s), choose Forward to, and then select your ALB target group from the drop-down menu.</li>
+      <li>For Default SSL certificate, choose From ACM (recommended) and then choose the ACM certificate.</li>
+      <li>Choose Save.</li>
+    </ol>
+  </li>
+</ul>
+
+<p>If you are operating classic load balancer, then the process is slightly different. For classic LB, please refer to this
+guide - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/" target="_blank">https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/</a></p>
+
+<p>-</p>
+
+<h4>Note</h4>
+<p>Make sure to apply proper security groups and subnet configuration to allow traffic only from expected load balancer
+otherwise EC2 instance would be still accessible via http to end user.</p>
+
+<hr />
 
 <p>References -</p>
 
 <ul>
-  <li><a href="https://github.com/influxdata/influxdb-rails">influxdb-rails</a> gem</li>
-  <li><a href="https://docs.influxdata.com/influxdb/v1.8/introduction/install/">influxdb</a> installation</li>
-  <li><a href="https://grafana.com/docs/grafana/latest/">grafana</a> installation</li>
-  <li>grafana <a href="https://grafana.com/docs/grafana/latest/reference/export_import/#importing-a-dashboard">import dashboard</a></li>
-  <li><a href="https://github.com/influxdata/influxdb-rails/tree/master/sample-dashboard">sample-dashboard</a></li>
+  <li>
+    <p><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html" target="_blank">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html</a></p>
+  </li>
+  <li>
+    <p><a href="https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/" target="_blank">https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/</a></p>
+  </li>
 </ul>
                 
 			</article>
@@ -544,13 +615,9 @@ look something like</p>
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/reset_pk_sequence/"> <img height="30px" class="mr-1" src="/assets/images/reset_pk.jpg">  Reset primary key sequence</a>
+                <a class="text-dark" href="/rails-add-default-to-enum/"> <img height="30px" class="mr-1" src="/assets/images/rails-6.jpeg">  Rails 6.1 - adds defaults value to enum</a>
             </div>
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/rails-6-credentials/"> Rails 6 - Managing API keys using 'credentials'  <img height="30px" class="ml-1" src="/assets/images/lock5.png"> </a>
-            </div>
           
         </div>
     </div>

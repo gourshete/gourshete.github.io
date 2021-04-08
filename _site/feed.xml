@@ -1,55 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-08T23:55:46+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-09T00:35:47+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Pre-requisites:&lt;/p&gt;
 
-&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
-from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;running EC2 instance&lt;/li&gt;
+  &lt;li&gt;SSL certificate added to AWS Certificate Manager&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Well we can achieve it using
-database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
-will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
+&lt;p&gt;-&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;First we need to setup an AWS Load balancer. If you have load balancer created, then please skip to 
+&lt;a href=&quot;#skip-step&quot;&gt;this step&lt;/a&gt;&lt;br /&gt;
+AWS provides three types of LB - application, network and classic, while 
+AWS itself promotes application LB for Modern web applications.&lt;/p&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/aws-lb-types.png&quot; alt=&quot;aws-load-balancer-types&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;More example&lt;/li&gt;
+  &lt;li&gt;
+    &lt;h4&gt;Create Application Load Balancer&lt;/h4&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;Open the Amazon EC2 console at &lt;a href=&quot;https://console.aws.amazon.com/ec2/&quot; target=&quot;_blank&quot;&gt; https://console.aws.amazon.com/ec2/ &lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;On the navigation pane, open CREATE LOAD BALANCER.&lt;/li&gt;
+      &lt;li&gt;Choose Create for Application Load Balancer.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;p&gt;-&lt;/p&gt;
 
-&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4&gt;Adding listener configuration&lt;/h4&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;We need to add where load balancer is listening. We also need to specify what action should be taken, but it is covered
+later in the post as it has a pre-requisite task. 
+We will listen from both ports 80 and 443.&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;For port 443 (HTTPS) - On AWS console, for port choose HTTPS and for port choose 443.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;For port 80 (HTTP) - On AWS console, for protocol choose HTTP and for port choose 80.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4&gt;Configure Security Settings&lt;/h4&gt;
+
+    &lt;p&gt;AWS Certificate Manager (ACM) is the preferred tool to provision and store server certificates. If you previously 
+stored a server certificate using IAM, you can deploy it to your load balancer.
+From Certificate type dropdown choose Choose a certificate from ACM (recommended). Select Certificate from Certificate 
+name dropdown.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4&gt;Adding VPC and security groups&lt;/h4&gt;
+
+    &lt;p&gt;Add appropriate VPC and security groups to your ALB&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4&gt;Adding target group&lt;/h4&gt;
+
+    &lt;p&gt;Create new target group with protocol (HTTP) and port (80). For health check keep default settings or assign any other
+route your application has, it will be used for periodically checking health of target group. Use this target group to
+forward your traffic from listener port 443 (From the above steps).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/lb-health-check.png&quot; alt=&quot;load-balancer-health-check&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h4&gt;Listeners &amp;amp; targets settings&lt;/h4&gt;
+
+    &lt;p&gt;Open listeners edit option and do changes for following&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;For port 80 (HTTP) - Open edit option. For Default action(s), choose Redirect to. Choose HTTPS &amp;amp; 443 and Original host, path, query 
+from dropdown. This will redirect all traffic on port 80 to port 443 (https) on same host.&lt;/li&gt;
+      &lt;li&gt;For port 443 (HTTPS) - Open edit option. Select protocol HTTPS and port 443. For Default action(s), choose Forward 
+to and then select your ALB target group from the drop-down menu. For Default SSL certificate, choose From ACM
+(recommended) and then choose the ACM certificate.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;div id=&quot;skip-step&quot;&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h5&gt;Already have Application Load Balancer up and running, then&lt;/h5&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;In the navigation pane, choose Load Balancers and then choose your Application Load Balancer.&lt;/li&gt;
+      &lt;li&gt;Choose Add listener.&lt;/li&gt;
+      &lt;li&gt;For Protocol, choose HTTPS.&lt;/li&gt;
+      &lt;li&gt;For port, choose 443.&lt;/li&gt;
+      &lt;li&gt;For Default action(s), choose Forward to, and then select your ALB target group from the drop-down menu.&lt;/li&gt;
+      &lt;li&gt;For Default SSL certificate, choose From ACM (recommended) and then choose the ACM certificate.&lt;/li&gt;
+      &lt;li&gt;Choose Save.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are operating classic load balancer, then the process is slightly different. For classic LB, please refer to this
+guide - &lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;h4&gt;Note&lt;/h4&gt;
+&lt;p&gt;Make sure to apply proper security groups and subnet configuration to allow traffic only from expected load balancer
+otherwise EC2 instance would be still accessible via http to end user.&lt;/p&gt;
 
 &lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;References -&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html&quot; target=&quot;_blank&quot;&gt;https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
 
 &lt;p&gt;In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp;amp; then application
 code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.&lt;/p&gt;
@@ -130,7 +223,58 @@ out of VCS is master key. There are multiple ways to achieve it.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;Medium &lt;a href=&quot;https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc&quot;&gt;Blog&lt;/a&gt; on environment wise credentials&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
+from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
+
+&lt;p&gt;Well we can achieve it using
+database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
+will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;More example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
 tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
 It also depends on underlying infrastructure.&lt;/p&gt;
 
@@ -609,59 +753,4 @@ executed asynchronously with method &lt;code class=&quot;highlighter-rouge&quot;
 &lt;p&gt;Well this is very simple example of running background job in rails. You can write complex logic in Sidekiq workers.
 You can add multiple workers.&lt;/p&gt;
 
-&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><category term="featured" /><summary type="html">What is the best way of handling background jobs in Rails, (maybe) using sidekiq.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/sidekiq.png" /></entry><entry><title type="html">Run seed data only on first Docker instance up</title><link href="http://localhost:4000/run-migrations-on-first-docker-up/" rel="alternate" type="text/html" title="Run seed data only on first Docker instance up" /><published>2019-11-22T00:00:00+05:30</published><updated>2019-11-22T00:00:00+05:30</updated><id>http://localhost:4000/run-migrations-on-first-docker-up</id><content type="html" xml:base="http://localhost:4000/run-migrations-on-first-docker-up/">&lt;p&gt;Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? &lt;br /&gt;
-&lt;strong&gt;Ans -&lt;/strong&gt; Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should
-be run on every deployments.&lt;/p&gt;
-
-&lt;p&gt;So here is what we need &lt;strong&gt;-&lt;/strong&gt; Run seed data only for first deployment. We will consider here containerised architecture.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Here are steps -&lt;/strong&gt; &lt;br /&gt; 
-During deployment&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Check if db exists&lt;/li&gt;
-  &lt;li&gt;If yes, then run rails db:migrate&lt;/li&gt;
-  &lt;li&gt;If no, then run rails db:create &amp;amp;&amp;amp; rails db:migrate &amp;amp;&amp;amp; rails db:seed&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;how-to-determine-if-db-exists-during-deployment-&quot;&gt;How to determine if db exists during deployment? &lt;br /&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Ans -&lt;/strong&gt; After some googling, found out that a rake task can be written to determine if db exists&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-    &lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:db&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Checks to see if the database exists&quot;&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:exists&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
-          &lt;span class=&quot;no&quot;&gt;Rake&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'environment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;invoke&lt;/span&gt;
-          &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt;
-          &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-          &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;    
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This task tries to establish connection with the database, if exception occurs then return with exit 1. Exception
-occurred, here, means the database does not exists. And no exception means connection established successfully and
-return with exit 0. To summarise,&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;db does not exists &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
-    &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;db exists &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;run-seed-data-if-dbexists-how-&quot;&gt;Run seed data if db:exists, How? &lt;br /&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Ans -&lt;/strong&gt; In deployment script, the conditional bash logic can be executed like&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; args: [ &quot;-c&quot;, &quot;env &amp;amp;&amp;amp; bundle exec rake db:exists; DB_EXISTS=$?;  [[ $DB_EXISTS = 1 ]] &amp;amp;&amp;amp; (rails db:create db:migrate db:seed) || (rails db:migrate)&quot; ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake db:exists; DB_EXISTS=$?;  [[ $DB_EXISTS = 1 ]] &amp;amp;&amp;amp; (rails db:create db:migrate db:seed) || (rails db:migrate)&lt;/code&gt; &lt;br /&gt;
-This makes call to rake task above. Then collects its output into a variable DB_EXISTS. Then check if value of DB_EXISTS is equal to 1(which means db does not
-exists, according to our above assessment), IF YES THEN RUN &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:create db:migrate db:seed&lt;/code&gt;, ELSE run &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? Ans - Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But migrations should be run on every deployments.</summary></entry></feed>
+&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><category term="featured" /><summary type="html">What is the best way of handling background jobs in Rails, (maybe) using sidekiq.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/sidekiq.png" /></entry></feed>
