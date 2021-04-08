@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-09T00:22:21+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-09T00:29:01+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
 
 &lt;p&gt;Pre-requisites:&lt;/p&gt;
 
@@ -117,14 +117,19 @@ to and then select your ALB target group from the drop-down menu. For Default SS
       &lt;li&gt;For port, choose 443.&lt;/li&gt;
       &lt;li&gt;For Default action(s), choose Forward to, and then select your ALB target group from the drop-down menu.&lt;/li&gt;
       &lt;li&gt;For Default SSL certificate, choose From ACM (recommended) and then choose the ACM certificate.&lt;/li&gt;
-      &lt;li&gt;Choose Save.
-If you are operating classic load balancer, then the process is slightly different. Please refer to this guide -
-&lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&amp;lt;/a&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Choose Save.&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;If you are operating classic load balancer, then the process is slightly different. For classic LB, please refer to this
+guide - &lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;-&lt;/p&gt;
+
+&lt;h4&gt;Note&lt;/h4&gt;
+&lt;p&gt;Make sure to apply proper security groups and subnet configuration to allow traffic only from expected load balancer
+otherwise EC2 instance would be still accessible via http to end user.&lt;/p&gt;
 
 &lt;hr /&gt;
 

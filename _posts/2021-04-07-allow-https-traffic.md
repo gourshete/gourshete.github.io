@@ -89,10 +89,15 @@ AWS itself promotes application LB for Modern web applications.
   5. For Default action(s), choose Forward to, and then select your ALB target group from the drop-down menu.
   6. For Default SSL certificate, choose From ACM (recommended) and then choose the ACM certificate. 
   7. Choose Save.
-  If you are operating classic load balancer, then the process is slightly different. Please refer to this guide -
-     <a href="https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/" target="_blank">https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/</a
+  
+If you are operating classic load balancer, then the process is slightly different. For classic LB, please refer to this
+guide - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/" target="_blank">https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/</a>
 
 -
+
+<h4>Note</h4>
+Make sure to apply proper security groups and subnet configuration to allow traffic only from expected load balancer
+otherwise EC2 instance would be still accessible via http to end user.
 
 ---
 
