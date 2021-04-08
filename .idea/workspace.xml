@@ -2,11 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f93489d-3530-46a5-a548-c41773eb44ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2020-21-07-rails-add-default-to-enum.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-21-07-rails-add-default-to-enum.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-03-08-rails-includes-vs-joins.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-03-08-rails-includes-vs-joins.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2019-01-18-charm-old-cities.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/allow-https-traffic/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/allow-https-traffic/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/api-in-rails-5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/author.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/author.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/charm-old-cities/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/charm-old-cities/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/contact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/how-index-works-on-database/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/how-index-works-on-database/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/http-request-part/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/http-request-part/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/modified-and-use-gem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/modified-and-use-gem/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/postgresql-json/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/postgresql-json/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/previously_was/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/previously_was/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/privacy-policy.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/privacy-policy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-6-credentials/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-6-credentials/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-add-default-to-enum/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-add-default-to-enum/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-command-line-tools/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-command-line-tools/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-grafana-dashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-grafana-dashboard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-includes-vs-joins/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-includes-vs-joins/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-log-to-stdout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-log-to-stdout/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/rails-request-lifecycle/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/rails-request-lifecycle/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/reset_pk_sequence/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/reset_pk_sequence/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/ruby-date-formatting/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/ruby-date-formatting/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/ruby-range/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/ruby-range/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/run-migrations-on-first-docker-up/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/run-migrations-on-first-docker-up/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/scopes-in-rails/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/scopes-in-rails/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/send-email-from-rails/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/send-email-from-rails/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sidekiq-by-example/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sidekiq-by-example/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/squash-old-migrations/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/squash-old-migrations/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/string-comparison/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/string-comparison/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/why-rails-why-ruby/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/why-rails-why-ruby/index.html" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -162,18 +196,6 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="false" />
   <component name="SvnConfiguration">
