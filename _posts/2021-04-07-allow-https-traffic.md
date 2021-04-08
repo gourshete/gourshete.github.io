@@ -16,7 +16,9 @@ Pre-requisites:
 
 -
 
-First we need to setup an AWS Load balancer. AWS provides three types of LB - application, network and classic, while 
+First we need to setup an AWS Load balancer. If you have load balancer created, then please skip to 
+<a href="#skip-step">this step</a>  
+AWS provides three types of LB - application, network and classic, while 
 AWS itself promotes application LB for Modern web applications.
 
 <img src="{{ '/assets/images/aws-lb-types.png' | prepend: site.baseurl }}" alt="aws-load-balancer-types">
@@ -29,7 +31,7 @@ AWS itself promotes application LB for Modern web applications.
 
 -
 
-- Adding listener configuration
+- <h4>Adding listener configuration</h4>
 
   We need to add where load balancer is listening. We also need to specify what action should be taken, but it is covered
   later in the post as it has a pre-requisite task. 
@@ -40,7 +42,7 @@ AWS itself promotes application LB for Modern web applications.
   
 -
 
-- Configure Security Settings 
+- <h4>Configure Security Settings</h4> 
 
   AWS Certificate Manager (ACM) is the preferred tool to provision and store server certificates. If you previously 
   stored a server certificate using IAM, you can deploy it to your load balancer.
@@ -49,13 +51,13 @@ AWS itself promotes application LB for Modern web applications.
 
 -
 
-- Adding VPC and security groups
+- <h4>Adding VPC and security groups</h4>
 
   Add appropriate VPC and security groups to your ALB
 
 -
 
-- Adding target group
+- <h4>Adding target group</h4>
 
   Create new target group with protocol (HTTP) and port (80). For health check keep default settings or assign any other
   route your application has, it will be used for periodically checking health of target group. Use this target group to
@@ -65,7 +67,7 @@ AWS itself promotes application LB for Modern web applications.
 
 -
   
-- Listeners & targets settings
+- <h4>Listeners & targets settings</h4>
 
   Open listeners edit option and do changes for following 
   1. For port 80 (HTTP) - Open edit option. For Default action(s), choose Redirect to. Choose HTTPS & 443 and Original host, path, query 
@@ -76,7 +78,9 @@ AWS itself promotes application LB for Modern web applications.
   
 -
 
-- Already have Application Load Balancer up and running, then
+<div id="skip-step"></div>
+
+- <h5>Already have Application Load Balancer up and running, then</h5>
 
   1. In the navigation pane, choose Load Balancers and then choose your Application Load Balancer.
   2. Choose Add listener.

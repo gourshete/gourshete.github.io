@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-09T00:01:15+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-09T00:22:21+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
 
 &lt;p&gt;Pre-requisites:&lt;/p&gt;
 
@@ -9,7 +9,9 @@
 
 &lt;p&gt;-&lt;/p&gt;
 
-&lt;p&gt;First we need to setup an AWS Load balancer. AWS provides three types of LB - application, network and classic, while 
+&lt;p&gt;First we need to setup an AWS Load balancer. If you have load balancer created, then please skip to 
+&lt;a href=&quot;#skip-step&quot;&gt;this step&lt;/a&gt;&lt;br /&gt;
+AWS provides three types of LB - application, network and classic, while 
 AWS itself promotes application LB for Modern web applications.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/aws-lb-types.png&quot; alt=&quot;aws-load-balancer-types&quot; /&gt;&lt;/p&gt;
@@ -30,7 +32,7 @@ AWS itself promotes application LB for Modern web applications.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Adding listener configuration&lt;/p&gt;
+    &lt;h4&gt;Adding listener configuration&lt;/h4&gt;
 
     &lt;p&gt;We need to add where load balancer is listening. We also need to specify what action should be taken, but it is covered
 later in the post as it has a pre-requisite task. 
@@ -50,7 +52,7 @@ We will listen from both ports 80 and 443.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Configure Security Settings&lt;/p&gt;
+    &lt;h4&gt;Configure Security Settings&lt;/h4&gt;
 
     &lt;p&gt;AWS Certificate Manager (ACM) is the preferred tool to provision and store server certificates. If you previously 
 stored a server certificate using IAM, you can deploy it to your load balancer.
@@ -63,7 +65,7 @@ name dropdown.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Adding VPC and security groups&lt;/p&gt;
+    &lt;h4&gt;Adding VPC and security groups&lt;/h4&gt;
 
     &lt;p&gt;Add appropriate VPC and security groups to your ALB&lt;/p&gt;
   &lt;/li&gt;
@@ -73,7 +75,7 @@ name dropdown.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Adding target group&lt;/p&gt;
+    &lt;h4&gt;Adding target group&lt;/h4&gt;
 
     &lt;p&gt;Create new target group with protocol (HTTP) and port (80). For health check keep default settings or assign any other
 route your application has, it will be used for periodically checking health of target group. Use this target group to
@@ -87,7 +89,7 @@ forward your traffic from listener port 443 (From the above steps).&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Listeners &amp;amp; targets settings&lt;/p&gt;
+    &lt;h4&gt;Listeners &amp;amp; targets settings&lt;/h4&gt;
 
     &lt;p&gt;Open listeners edit option and do changes for following&lt;/p&gt;
     &lt;ol&gt;
@@ -102,9 +104,11 @@ to and then select your ALB target group from the drop-down menu. For Default SS
 
 &lt;p&gt;-&lt;/p&gt;
 
+&lt;div id=&quot;skip-step&quot;&gt;&lt;/div&gt;
+
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Already have Application Load Balancer up and running, then&lt;/p&gt;
+    &lt;h5&gt;Already have Application Load Balancer up and running, then&lt;/h5&gt;
 
     &lt;ol&gt;
       &lt;li&gt;In the navigation pane, choose Load Balancers and then choose your Application Load Balancer.&lt;/li&gt;
