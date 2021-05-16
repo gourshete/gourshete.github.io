@@ -4,20 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Author | Ruby on Rails Examples</title>
+    <title>Resolve early termination of worker in Rails | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Author | Ruby on Rails Examples</title>
+<title>Resolve early termination of worker in Rails | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Author" />
+<meta property="og:title" content="Resolve early termination of worker in Rails" />
+<meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Exploring Rails" />
-<meta property="og:description" content="Exploring Rails" />
-<link rel="canonical" href="http://localhost:4000/author.html" />
-<meta property="og:url" content="http://localhost:4000/author.html" />
+<meta name="description" content="In this post we will resolve error Early termination of puma worker." />
+<meta property="og:description" content="In this post we will resolve error Early termination of puma worker." />
+<link rel="canonical" href="http://localhost:4000/remove-stale-postmaster-pid/" />
+<meta property="og:url" content="http://localhost:4000/remove-stale-postmaster-pid/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
+<meta property="og:image" content="http://localhost:4000/assets/images/stale-postmaster-pid-error.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-28T00:00:00+05:30" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/author.html","headline":"Author","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"description":"Exploring Rails","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/remove-stale-postmaster-pid/","headline":"Resolve early termination of worker in Rails","dateModified":"2021-04-28T00:00:00+05:30","datePublished":"2021-04-28T00:00:00+05:30","image":"http://localhost:4000/assets/images/stale-postmaster-pid-error.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/remove-stale-postmaster-pid/"},"description":"In this post we will resolve error Early termination of puma worker.","author":{"@type":"Person","name":"swapnil"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -97,7 +101,7 @@ var documents = [{
     "id": 1,
     "url": "http://localhost:4000/author.html",
     "title": "Author",
-    "body": "Author:                                             Swapnil Gourshete :       (View Posts)      Hi I am Swapnil, a Software Engineer and computer science enthusiastic                          &nbsp;       &nbsp;       &nbsp;                                      "
+    "body": "{{page. title}}:     {% for author in site. authors %}                                         {{ author[1]. name }} :       (View Posts)      {{ author[1]. bio }}                          &nbsp;       &nbsp;       &nbsp;                                    {% endfor %}  "
     }, {
     "id": 2,
     "url": "http://localhost:4000/categories.html",
@@ -330,34 +334,202 @@ function lunr_search(term) {
 
     <!-- Content -->
     <main role="main" class="site-content">
-        <div class="container">
-<h4 class="font-weight-bold spanborder"><span>Author</span></h4>
-    <div class="row gap-y listrecent listrecent listauthor">
-    
-        <div class="col-lg-6 mb-4">
-            <div class="p-4">
-            <div class="row">
-            <div class="col-md-3 mb-4 mb-md-0"><img alt="Swapnil Gourshete" src="/assets/images/swapnil.jpg" class="rounded-circle" height="80" width="80"></div>
-            <div class="col-md-9">
-            <a href="#">
-            <h4 class="text-dark mb-0"> Swapnil Gourshete </h4>
-            <small class="d-inline-block mt-1 mb-3 font-weight-normal">(View Posts)</small>
-            <div class="excerpt">Hi I am Swapnil, a Software Engineer and computer science enthusiastic</div>
-            </a>
-            <div class="icon-block mt-3 d-flex justify-content-between">  
-            <div>
-            <a target="_blank" href="https://github.com/gourshete"><i class="fab fa-github text-muted" aria-hidden="true"></i></a>  &nbsp;
-            <a target="_blank" href="https://twitter.com/gourshete"><i class="fab fa-twitter text-muted" aria-hidden="true"></i></a>  &nbsp;
-            <a target="_blank" href="/"><i class="fa fa-globe text-muted" aria-hidden="true"></i></a> &nbsp;
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#puma">puma</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#postgres">postgres</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Resolve early termination of worker in Rails</h1>
+					<div class="d-flex align-items-center">
+                        
+                        <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
+                        
+						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 28, 2021 · <span class="reading-time">
+  
+  
+    1 mins read
+  
+</span>
+    </span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/images/stale-postmaster-pid-error.png" alt="Resolve early termination of worker in Rails">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_facebook"></a>
+						<a class="a2a_button_twitter"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_linkedin"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p><em>In this post we will resolve error Early termination of puma worker</em>.</p>
+
+<p>Few days ago in the morning like every normal day I started dev environment rails server and suddenly server log flooded
+with error message - <code class="highlighter-rouge">early-termination-of-worker</code>.</p>
+
+<p>I did not understand why it happened as I did nothing different. Oh, but there was one thing to note - I had to abruptly
+shut down mac yesterday EOD. Were these issues related?</p>
+
+<p><strong>Yes, they were</strong>.</p>
+
+<p>While shutting down mac, postgres server was also abruptly closed - leading stale postmaster.pid file in the
+system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
+reason was postgres server was unable to start as system had <code class="highlighter-rouge">stale postmaster.pid</code> reference.</p>
+
+<p>How did I found the reason -</p>
+
+<p><img src="/assets/images/stale-postmaster-pid-error.png" alt="postgres-stale-postmaster-pid-error" /></p>
+
+<p>So the answer was straight forward - <strong>Go and delete postmaster.pid file</strong>.</p>
+
+<p><em>How to do it?</em></p>
+
+<p>I use postgres desktop application, so these were steps for me -</p>
+
+<ol>
+  <li>
+    <p>Open terminal &amp; navigate to Postgres directory. You can find postgres directory by opening postgres app and clicking 
+on server settings option. My path was - <br /> <code class="highlighter-rouge">/Users/swapnil/Library/Application Support/Postgres/var-13</code></p>
+  </li>
+  <li>List all files in the directory and check if postmaster.pid file is present.
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Go ahead and remove postmaster.pid -
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rm</span> <span class="n">postmaster</span><span class="p">.</span><span class="nf">pid</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>.</p>
+
+<p>That’s it. After this step your postgres server should be running &amp; so rails server will be able to connect to it.</p>
+
+<p>P.S. - If you installed postgres via different method then solution steps would be different for you.</p>
+
+<hr />
+
+<p>Thanks. Cheers!</p>
+
+                
+			</article>
+			<div>
+				<br>
+			</div>
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				</span>
+			</div>
+            
+             <!-- Author Box -->
+                				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Hi I am Swapnil, a Software Engineer and computer science enthusiastic					
+					</div>
+				</div>				
+                
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/allow-https-traffic/"> <img height="30px" class="mr-1" src="/assets/images/aws-icon.png">  Allow HTTPS traffic via AWS Load balancer and EC2</a>
             </div>
-            </div>
-            </div>
-            </div>
-            </div>
+          
+          
         </div>
-    
     </div>
 </div>
+
     </main>
 
 

@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-07T14:38:00+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-16T23:10:34+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-postmaster-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2021-04-28T00:00:00+05:30</published><updated>2021-04-28T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-postmaster-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-postmaster-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve error Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Few days ago in the morning like every normal day I started dev environment rails server and suddenly server log flooded
+with error message - &lt;code class=&quot;highlighter-rouge&quot;&gt;early-termination-of-worker&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I did not understand why it happened as I did nothing different. Oh, but there was one thing to note - I had to abruptly
+shut down mac yesterday EOD. Were these issues related?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Yes, they were&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;While shutting down mac, postgres server was also abruptly closed - leading stale postmaster.pid file in the
+system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
+reason was postgres server was unable to start as system had &lt;code class=&quot;highlighter-rouge&quot;&gt;stale postmaster.pid&lt;/code&gt; reference.&lt;/p&gt;
+
+&lt;p&gt;How did I found the reason -&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/stale-postmaster-pid-error.png&quot; alt=&quot;postgres-stale-postmaster-pid-error&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So the answer was straight forward - &lt;strong&gt;Go and delete postmaster.pid file&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;How to do it?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I use postgres desktop application, so these were steps for me -&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Open terminal &amp;amp; navigate to Postgres directory. You can find postgres directory by opening postgres app and clicking 
+on server settings option. My path was - &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/swapnil/Library/Application Support/Postgres/var-13&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;List all files in the directory and check if postmaster.pid file is present.
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Go ahead and remove postmaster.pid -
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;postmaster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pid&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;That’s it. After this step your postgres server should be running &amp;amp; so rails server will be able to connect to it.&lt;/p&gt;
+
+&lt;p&gt;P.S. - If you installed postgres via different method then solution steps would be different for you.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Thanks. Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will resolve error Early termination of puma worker.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/stale-postmaster-pid-error.png" /></entry><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
 
 &lt;p&gt;Pre-requisites:&lt;/p&gt;
 
@@ -142,7 +189,58 @@ otherwise EC2 instance would be still accessible via http to end user.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
+from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
+
+&lt;p&gt;Well we can achieve it using
+database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
+will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;More example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
 
 &lt;p&gt;In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp;amp; then application
 code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.&lt;/p&gt;
@@ -223,58 +321,7 @@ out of VCS is master key. There are multiple ways to achieve it.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;Medium &lt;a href=&quot;https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc&quot;&gt;Blog&lt;/a&gt; on environment wise credentials&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
-from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
-
-&lt;p&gt;Well we can achieve it using
-database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
-will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;More example&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
 tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
 It also depends on underlying infrastructure.&lt;/p&gt;
 
@@ -729,109 +776,4 @@ as per postgresql documentation.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;postgresql tutorial blog - &lt;a href=&quot;https://www.postgresqltutorial.com/postgresql-json/&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry><entry><title type="html">Sidekiq By Example</title><link href="http://localhost:4000/sidekiq-by-example/" rel="alternate" type="text/html" title="Sidekiq By Example" /><published>2019-11-28T00:00:00+05:30</published><updated>2019-11-28T00:00:00+05:30</updated><id>http://localhost:4000/sidekiq-by-example</id><content type="html" xml:base="http://localhost:4000/sidekiq-by-example/">&lt;p&gt;What is the best way of handling background jobs in Rails, (maybe) using sidekiq.&lt;/p&gt;
-
-&lt;p&gt;Let’s take step by step look into creating a Rails App and making a request for Background job using sidekiq&lt;/p&gt;
-
-&lt;p&gt;System Pre-requisite&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Ruby&lt;/li&gt;
-  &lt;li&gt;Rails&lt;/li&gt;
-  &lt;li&gt;Redis&lt;/li&gt;
-  &lt;li&gt;Sidekiq&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Note: The &lt;a href=&quot;https://github.com/gourshete/sidekiq-example&quot; target=&quot;_blank&quot;&gt;repository&lt;/a&gt;  of this project.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;create-new-rails-project&quot;&gt;Create new Rails Project&lt;/h3&gt;
-&lt;p&gt;We will create a new rails project named &lt;code class=&quot;highlighter-rouge&quot;&gt;sidekiq-example&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-new-project.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;add-sidekiq-gem&quot;&gt;Add sidekiq gem&lt;/h3&gt;
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; add gem ‘sidekiq’&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gem sidekiq&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Now run command &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. This will install gem sidekiq in our project.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;➜  sidekiq-example: bundle install&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;generate-model&quot;&gt;Generate Model&lt;/h3&gt;
-&lt;p&gt;Let’s create a model named &lt;code class=&quot;highlighter-rouge&quot;&gt;Team&lt;/code&gt; for reference with fields &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;rating&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-model.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Also add this in &lt;code class=&quot;highlighter-rouge&quot;&gt;seeds.rb&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-seed.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now Run &lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;➜  sidekiq-example: rails db:create &amp;amp;&amp;amp; rails db:migrate &amp;amp;&amp;amp; rails db:seed&lt;/code&gt; &lt;br /&gt;
-It will create new database &lt;code class=&quot;highlighter-rouge&quot;&gt;sidekiq_example_development&lt;/code&gt; for our application and create a table called &lt;code class=&quot;highlighter-rouge&quot;&gt;teams&lt;/code&gt; in this database.
-Running seed data will insert sample 5 records in it.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;generate-a-controller&quot;&gt;Generate a controller&lt;/h3&gt;
-&lt;p&gt;Create a controller for our actions under namespace &lt;code class=&quot;highlighter-rouge&quot;&gt;api/v1/&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-controller-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;add-routes&quot;&gt;Add routes&lt;/h3&gt;
-&lt;p&gt;Let’s add routes for our actions. Add this in &lt;code class=&quot;highlighter-rouge&quot;&gt;routes.rb&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-routes.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;add-sidekiq-worker&quot;&gt;Add Sidekiq worker&lt;/h3&gt;
-&lt;p&gt;Now let’s work on Sidekiq part. To perform sidekiq jobs, add worker in &lt;code class=&quot;highlighter-rouge&quot;&gt;app/workers&lt;/code&gt;. For our demo application
-it is &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt;. And add method named perform in it. When a call to &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; made, it will be a
-asynchronous call to this method &lt;code class=&quot;highlighter-rouge&quot;&gt;perform&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The logic for background job will be in this method &lt;code class=&quot;highlighter-rouge&quot;&gt;perform&lt;/code&gt;. To keep it simple for now, will just add sleep timer 
-in it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-worker.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It simply sleeps for number of milliseconds passed to it. This job will run asynchronously when called.&lt;/p&gt;
-
-&lt;p&gt;Let’s modify teams controller to make a call to this background job&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-controller-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can see action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; is making call to &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt;. What it means is when a url of kind &lt;code class=&quot;highlighter-rouge&quot;&gt;'/api/v1/teams/:id'&lt;/code&gt;
-is hit, the controller action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; will get called and background job &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; will be triggered. The action &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt;
-will not wait for job &lt;code class=&quot;highlighter-rouge&quot;&gt;BuyTimeWorker&lt;/code&gt; to complete though it is called from within its definition. This job will be 
-executed asynchronously with method &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;run&quot;&gt;Run&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Start rails server&lt;/li&gt;
-  &lt;li&gt;Start Redis&lt;/li&gt;
-  &lt;li&gt;Start Sidekiq&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you hit URL will found out something like this in sidekiq server log&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3001/api/v1/teams/2&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/SS-sidekiq-server-log.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;):&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Well this is very simple example of running background job in rails. You can write complex logic in Sidekiq workers.
-You can add multiple workers.&lt;/p&gt;
-
-&lt;p&gt;Cheers! 🍻🍻&lt;/p&gt;</content><author><name>swapnil</name></author><category term="featured" /><summary type="html">What is the best way of handling background jobs in Rails, (maybe) using sidekiq.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/sidekiq.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry></feed>
