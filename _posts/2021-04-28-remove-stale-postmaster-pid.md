@@ -9,13 +9,17 @@ categories: [ Rails, Puma, Postgres ]
 
 *In this post we will resolve error Early termination of puma worker*.
 
-Few days ago in the morning like every normal day I started dev environment rails server and suddenly server log flooded
+Note - Root cause described below is one of the reason. It is possible that this issue may occur due to another reason. 
+
+Let's begin.
+
+Few days ago, like every normal day I started dev environment rails server and suddenly server log flooded
 with error message - `early-termination-of-worker`.
 
 I did not understand why it happened as I did nothing different. Oh, but there was one thing to note - I had to abruptly
 shut down mac yesterday EOD. Were these issues related?
 
-**Yes, they were**.
+**Yes, they were!**
 
 While shutting down mac, postgres server was also abruptly closed - leading stale postmaster.pid file in the
 system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 

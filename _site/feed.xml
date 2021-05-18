@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-16T23:10:34+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-postmaster-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2021-04-28T00:00:00+05:30</published><updated>2021-04-28T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-postmaster-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-postmaster-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve error Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-18T16:35:43+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-postmaster-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2021-04-28T00:00:00+05:30</published><updated>2021-04-28T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-postmaster-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-postmaster-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve error Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;Few days ago in the morning like every normal day I started dev environment rails server and suddenly server log flooded
+&lt;p&gt;Note - Root cause described below is one of the reason. It is possible that this issue may occur due to another reason.&lt;/p&gt;
+
+&lt;p&gt;Let’s begin.&lt;/p&gt;
+
+&lt;p&gt;Few days ago, like every normal day I started dev environment rails server and suddenly server log flooded
 with error message - &lt;code class=&quot;highlighter-rouge&quot;&gt;early-termination-of-worker&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;I did not understand why it happened as I did nothing different. Oh, but there was one thing to note - I had to abruptly
 shut down mac yesterday EOD. Were these issues related?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Yes, they were&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Yes, they were!&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;While shutting down mac, postgres server was also abruptly closed - leading stale postmaster.pid file in the
 system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
