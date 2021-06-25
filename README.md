@@ -9,3 +9,6 @@ This repo holds code for a blog website running on [railsexamples.com](railsexam
 - Jekyll 
 - Github pages
 
+<h3>Contributors</h3>
+
+- [Swapnil Gourshete](github.com/gourshete)
