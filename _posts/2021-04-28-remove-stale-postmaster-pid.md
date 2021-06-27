@@ -7,17 +7,17 @@ image: assets/images/stale-postmaster-pid-error.png
 categories: [ Rails, Puma, Postgres ]
 ---
 
-*In this post we will resolve error Early termination of puma worker*.
+*In this post we will resolve the error - Early termination of puma worker*.
 
-Note - Root cause described below is one of the reason. It is possible that this issue may occur due to another reason. 
+Note - The reason described below is one of the cause, it is quite possible to reproduce this issue due to another reason. 
 
 Let's begin.
 
 Few days ago, like every normal day I started dev environment rails server and suddenly server log flooded
 with error message - `early-termination-of-worker`.
 
-I did not understand why it happened as I did nothing different. Oh, but there was one thing to note - I had to abruptly
-shut down mac yesterday EOD. Were these issues related?
+I did not understand at the time why it has happened as I did nothing different. Oh, but there was one thing to note - 
+I had to abruptly shut down mac the day before. Were these issues related?
 
 **Yes, they were!**
 
@@ -25,11 +25,11 @@ While shutting down mac, postgres server was also abruptly closed - leading stal
 system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
 reason was postgres server was unable to start as system had `stale postmaster.pid` reference.
 
-How did I found the reason - 
+If you are stuck at how I find out the reason, here it is - 
 
 <img src="{{ '/assets/images/stale-postmaster-pid-error.png' | prepend: site.baseurl }}" alt="postgres-stale-postmaster-pid-error">
 
-So the answer was straight forward - **Go and delete postmaster.pid file**.
+So after knowing the problem, answer was straight forward - **Go and delete postmaster.pid file**.
 
 *How to do it?*
 
