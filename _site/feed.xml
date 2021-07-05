@@ -1,14 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-18T16:35:43+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-postmaster-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2021-04-28T00:00:00+05:30</published><updated>2021-04-28T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-postmaster-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-postmaster-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve error Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-05T19:05:55+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Understanding Amazon S3 ACLs</title><link href="http://localhost:4000/understanding-aws-s3-acl/" rel="alternate" type="text/html" title="Understanding Amazon S3 ACLs" /><published>2021-06-28T00:00:00+05:30</published><updated>2021-06-28T00:00:00+05:30</updated><id>http://localhost:4000/understanding-aws-s3-acl</id><content type="html" xml:base="http://localhost:4000/understanding-aws-s3-acl/">&lt;p&gt;The AWS provides built in options for fine grain control over s3 objects and buckets. One of them is ACL - Access Control List.&lt;/p&gt;
 
-&lt;p&gt;Note - Root cause described below is one of the reason. It is possible that this issue may occur due to another reason.&lt;/p&gt;
+&lt;p&gt;In this post we will try to understand different types of ACL options with their permissions provided by AWS.&lt;/p&gt;
+
+&lt;p&gt;From AWS Docs -&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Amazon S3 access control lists (ACLs) enable you to manage access to buckets and objects. Each bucket and object has an 
+ACL attached to it as a subresource. It defines which AWS accounts or groups are granted access and the type of access. 
+When a request is received against a resource, Amazon S3 checks the corresponding ACL to verify that the requester has 
+the necessary access permissions.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You can grant &lt;strong&gt;read&lt;/strong&gt;, &lt;strong&gt;write&lt;/strong&gt; and &lt;strong&gt;full-control&lt;/strong&gt; permissions using ACL. They can be applied on bucket and/or object.
+When granted on bucket, the permissions are scoped to bucket. When granted on object, they are scoped to objects. All of these
+permissions can be applied on both bucket &amp;amp; objects except write. It is not applicable to objects.&lt;/p&gt;
+
+&lt;h4&gt;Mapping of ACL permissions and access policy permissions&lt;/h4&gt;
+
+&lt;p&gt;ACL allows only a finite set of permissions, compared to the number of permissions you can set in an access policy. Each
+of these permissions allows one or more Amazon S3 operations.&lt;/p&gt;
+
+&lt;h3&gt;Canned ACL&lt;/h3&gt;
+
+&lt;p&gt;Canned ACLs are predefined grants provided by S3. In most of the use cases these canned ACL will suit in. Each canned ACL
+has predefined set of grantees and permissions as shown in table below -&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Canned ACL&lt;/th&gt;
+      &lt;th&gt;Applies to&lt;/th&gt;
+      &lt;th&gt;Permissions added to ACL&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;private&lt;/td&gt;
+      &lt;td&gt;Bucket and object&lt;/td&gt;
+      &lt;td&gt;Owner gets FULL_CONTROL. No one else has access rights (default).&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;public-read&lt;/td&gt;
+      &lt;td&gt;Bucket and object&lt;/td&gt;
+      &lt;td&gt;Owner gets FULL_CONTROL. The AllUsers group gets READ access.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;public-read-write&lt;/td&gt;
+      &lt;td&gt;Bucket and object&lt;/td&gt;
+      &lt;td&gt;Owner gets FULL_CONTROL. The AllUsers group gets READ and WRITE access. Granting this on a bucket is generally not recommended.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;aws-exec-read&lt;/td&gt;
+      &lt;td&gt;Bucket and object&lt;/td&gt;
+      &lt;td&gt;Owner gets FULL_CONTROL. Amazon EC2 gets READ access to GET an Amazon Machine Image (AMI) bundle from Amazon S3.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;authenticated-read&lt;/td&gt;
+      &lt;td&gt;Bucket and object&lt;/td&gt;
+      &lt;td&gt;Owner gets FULL_CONTROL. The AuthenticatedUsers group gets READ access.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;bucket-owner-read&lt;/td&gt;
+      &lt;td&gt;Object&lt;/td&gt;
+      &lt;td&gt;Object owner gets FULL_CONTROL. Bucket owner gets READ access. If you specify this canned ACL when creating a bucket, Amazon S3 ignores it.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;bucket-owner-full-control&lt;/td&gt;
+      &lt;td&gt;Object&lt;/td&gt;
+      &lt;td&gt;Both the object owner and the bucket owner get FULL_CONTROL over the object. If you specify this canned ACL when creating a bucket, Amazon S3 ignores it.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;log-delivery-write&lt;/td&gt;
+      &lt;td&gt;Bucket&lt;/td&gt;
+      &lt;td&gt;The LogDelivery group gets WRITE and READ_ACP permissions on the bucket.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;em&gt;Note&lt;/em&gt; - You can specify only one of these canned ACLs in your request.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html&quot; target=&quot;_blank&quot;&gt;https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">The AWS provides built in options for fine grain control over s3 objects and buckets. One of them is ACL - Access Control List.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-postmaster-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2021-04-28T00:00:00+05:30</published><updated>2021-04-28T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-postmaster-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-postmaster-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve the error - Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note - The reason described below is one of the cause, it is quite possible to reproduce this issue due to another reason.&lt;/p&gt;
 
 &lt;p&gt;Let’s begin.&lt;/p&gt;
 
 &lt;p&gt;Few days ago, like every normal day I started dev environment rails server and suddenly server log flooded
 with error message - &lt;code class=&quot;highlighter-rouge&quot;&gt;early-termination-of-worker&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;I did not understand why it happened as I did nothing different. Oh, but there was one thing to note - I had to abruptly
-shut down mac yesterday EOD. Were these issues related?&lt;/p&gt;
+&lt;p&gt;I did not understand at the time why it has happened as I did nothing different. Oh, but there was one thing to note - 
+I had to abruptly shut down mac the day before. Were these issues related?&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Yes, they were!&lt;/strong&gt;&lt;/p&gt;
 
@@ -16,11 +102,11 @@ shut down mac yesterday EOD. Were these issues related?&lt;/p&gt;
 system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
 reason was postgres server was unable to start as system had &lt;code class=&quot;highlighter-rouge&quot;&gt;stale postmaster.pid&lt;/code&gt; reference.&lt;/p&gt;
 
-&lt;p&gt;How did I found the reason -&lt;/p&gt;
+&lt;p&gt;If you are stuck at how I find out the reason, here it is -&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/stale-postmaster-pid-error.png&quot; alt=&quot;postgres-stale-postmaster-pid-error&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;So the answer was straight forward - &lt;strong&gt;Go and delete postmaster.pid file&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;So after knowing the problem, answer was straight forward - &lt;strong&gt;Go and delete postmaster.pid file&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;How to do it?&lt;/em&gt;&lt;/p&gt;
 
@@ -49,7 +135,7 @@ on server settings option. My path was - &lt;br /&gt; &lt;code class=&quot;highl
 
 &lt;hr /&gt;
 
-&lt;p&gt;Thanks. Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will resolve error Early termination of puma worker.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/stale-postmaster-pid-error.png" /></entry><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
+&lt;p&gt;Thanks. Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will resolve the error - Early termination of puma worker.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/stale-postmaster-pid-error.png" /></entry><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
 
 &lt;p&gt;Pre-requisites:&lt;/p&gt;
 
@@ -193,58 +279,7 @@ otherwise EC2 instance would be still accessible via http to end user.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
-from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
-
-&lt;p&gt;Well we can achieve it using
-database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
-will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;More example&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
 
 &lt;p&gt;In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp;amp; then application
 code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.&lt;/p&gt;
@@ -325,7 +360,58 @@ out of VCS is master key. There are multiple ways to achieve it.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;Medium &lt;a href=&quot;https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc&quot;&gt;Blog&lt;/a&gt; on environment wise credentials&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
+from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
+
+&lt;p&gt;Well we can achieve it using
+database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
+will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;More example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
 tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
 It also depends on underlying infrastructure.&lt;/p&gt;
 
@@ -716,68 +802,4 @@ In &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; model regis
 
 &lt;p&gt;&lt;a href=&quot;https://apidock.com/ruby/Time/strftime&quot;&gt;strftime&lt;/a&gt; - &lt;a href=&quot;https://apidock.com/ruby/Time/strftime&quot;&gt;https://apidock.com/ruby/Time/strftime&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;https://stackoverflow.com/a/14619560/5235107&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Ruby provides two classes to format date string strftime and strptime.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/date-format.png" /></entry><entry><title type="html">json and jsonb - Postgresql</title><link href="http://localhost:4000/postgresql-json/" rel="alternate" type="text/html" title="json and jsonb - Postgresql" /><published>2019-12-10T00:00:00+05:30</published><updated>2019-12-10T00:00:00+05:30</updated><id>http://localhost:4000/postgresql-json</id><content type="html" xml:base="http://localhost:4000/postgresql-json/">&lt;p&gt;Postgresql provides a data-type &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; to save data from JSON format. There are two ways for it - using &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt;
-and &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;. This article will clarify difference in short terms.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; are very similar to each other. The key difference is - &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; is binary representation of &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; -
-as per postgresql documentation.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Pros -  &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Improved efficiency&lt;/li&gt;
-  &lt;li&gt;Postgresql provides query interface for these types. So a direct query for any key in column can be made.&lt;/li&gt;
-  &lt;li&gt;Simple database schema&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cons -  &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Slight overhead to convert into binary form.&lt;/li&gt;
-  &lt;li&gt;Aggregate queries are slower (due to lack of statistics).&lt;/li&gt;
-  &lt;li&gt;Due to large table footprints may take large disk space.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;…&lt;/p&gt;
-
-&lt;h4 id=&quot;querying-json-field&quot;&gt;Querying json field&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Creating table&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;create table foo (id serial NOT NULL primary key, metadata json)
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;inserting test data&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;insert into foo(metadata) values ('{ &quot;property&quot;: &quot;bar1&quot; }'), ('{ &quot;property&quot;: &quot;bar2&quot; }')
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fetching data from table foo&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;select * from foo
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;p&gt;&lt;img src=&quot;/assets/images/select-foo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;selecting json field&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;select id, metadata -&amp;gt;'property' as property from foo
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;p&gt;&lt;img src=&quot;/assets/images/select-property.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Cheers!!!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Official postgresql doc - &lt;a href=&quot;https://www.postgresql.org/docs/current/functions-json.html&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;postgresql tutorial blog - &lt;a href=&quot;https://www.postgresqltutorial.com/postgresql-json/&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;https://stackoverflow.com/a/14619560/5235107&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Ruby provides two classes to format date string strftime and strptime.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/date-format.png" /></entry></feed>

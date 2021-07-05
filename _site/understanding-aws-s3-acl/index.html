@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>How Indexes on database works! | Ruby on Rails Examples</title>
+    <title>Understanding Amazon S3 ACLs | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>How Indexes on database works! | Ruby on Rails Examples</title>
+<title>Understanding Amazon S3 ACLs | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="How Indexes on database works!" />
+<meta property="og:title" content="Understanding Amazon S3 ACLs" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results faster for select and where queries." />
-<meta property="og:description" content="When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results faster for select and where queries." />
-<link rel="canonical" href="http://localhost:4000/how-index-works-on-database/" />
-<meta property="og:url" content="http://localhost:4000/how-index-works-on-database/" />
+<meta name="description" content="The AWS provides built in options for fine grain control over s3 objects and buckets. One of them is ACL - Access Control List." />
+<meta property="og:description" content="The AWS provides built in options for fine grain control over s3 objects and buckets. One of them is ACL - Access Control List." />
+<link rel="canonical" href="http://localhost:4000/understanding-aws-s3-acl/" />
+<meta property="og:url" content="http://localhost:4000/understanding-aws-s3-acl/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/how_index_works.gif" />
+<meta property="og:image" content="http://localhost:4000/assets/images/aws-icon.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-06-08T00:00:00+05:30" />
+<meta property="article:published_time" content="2021-06-28T00:00:00+05:30" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/how-index-works-on-database/","headline":"How Indexes on database works!","dateModified":"2018-06-08T00:00:00+05:30","datePublished":"2018-06-08T00:00:00+05:30","image":"http://localhost:4000/assets/images/how_index_works.gif","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/how-index-works-on-database/"},"description":"When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results faster for select and where queries.","author":{"@type":"Person","name":"swapnil"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/understanding-aws-s3-acl/","headline":"Understanding Amazon S3 ACLs","dateModified":"2021-06-28T00:00:00+05:30","datePublished":"2021-06-28T00:00:00+05:30","image":"http://localhost:4000/assets/images/aws-icon.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/understanding-aws-s3-acl/"},"description":"The AWS provides built in options for fine grain control over s3 objects and buckets. One of them is ACL - Access Control List.","author":{"@type":"Person","name":"swapnil"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -251,7 +251,7 @@ var documents = [{
     "id": 31,
     "url": "http://localhost:4000/rails-request-lifecycle/",
     "title": "Rails Request Lifecycle...",
-    "body": "2019/06/12 - Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out! Breakdown of request flow -  Browser generates HTTP/HTTPS request after a click or a event Web server receives request, analyses it and passes to application server Application server calls up proper controller-action after talking with router The resulted output is sent back to browser and displayed on screen.  Web Browser : Browser should direct request to a specific destination. For users it is a URL seen on web page, but computers need IP addresses, they do not understand these URLs. For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser who starts finding out IP address. Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, browser generally asks Internet Service Providers(ISP). If not found then it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like . com, . net, . org) –&gt; And then to Authoritative DNS Server. The chase ends here. Yay! We get the required ip address. Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name provider has not set up your domain information properly. It is actually interesting to try on terminal with dig, . .  Web Server : By now browser is successfully connected to server. The server here is web server. Some examples are Apache,Nginx, Passenger, Puma, Unicorn, Webrick. These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice that request. For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose. With nginx it is like Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,for anything else than assets, it will get 404 not found response. But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript?? Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be complex to put it in web server configuration file. So what next? There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK . . . RACK App: Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework, “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc. ” On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status code, headers, and body. ” In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. It notifies the web framework using a method call, communicates the details as method arguments, and the web framework communicates back by return values from the method call. In code it just looks like Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, http_method, parameters, rack_app_version, etc. And the call method responds in three variables - status, header and body. Status is http status, to tell about request completedsuccessfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response. Coming to rails, the config. ru file will look something like It is supposed to pass Rack application to run keyword, this means Rails. application is a Rack app and must respond to call method. . . . . Our app: Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes. rb!!! Yes that’s too muck Rack apps around. But Rails is always been that. config/routes. rb - This will ultimately generate these seven routes From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go to BooksController#show and likewise! That’s it from the Rails Request Lifecycle.  Cheers!!! {% if page. comments %}   Please enable JavaScript to view the comments powered by Disqus.  {% endif %} "
+    "body": "2019/06/12 - Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out! Breakdown of request flow -  Browser generates HTTP/HTTPS request after a click or a event Web server receives request, analyses it and passes to application server Application server calls up proper controller-action after talking with router The resulted output is sent back to browser and displayed on screen.  Web Browser : Browser should direct request to a specific destination. For users it is a URL seen on web page, but computers need IP addresses, they do not understand these URLs. For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser who starts finding out IP address. Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, browser generally asks Internet Service Providers(ISP). If not found then it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like . com, . net, . org) –&gt; And then to Authoritative DNS Server. The chase ends here. Yay! We get the required ip address. Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name provider has not set up your domain information properly. It is actually interesting to try on terminal with dig, . .  Web Server : By now browser is successfully connected to server. The server here is web server. Some examples are Apache,Nginx, Passenger, Puma, Unicorn, Webrick. These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice that request. For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose. With nginx it is like Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,for anything else than assets, it will get 404 not found response. But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript?? Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be complex to put it in web server configuration file. So what next? There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK . . . RACK App: Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework, “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc. ” On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status code, headers, and body. ” In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. It notifies the web framework using a method call, communicates the details as method arguments, and the web framework communicates back by return values from the method call. In code it just looks like Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, http_method, parameters, rack_app_version, etc. And the call method responds in three variables - status, header and body. Status is http status, to tell about request completedsuccessfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response. Coming to rails, the config. ru file will look something like It is supposed to pass Rack application to run keyword, this means Rails. application is a Rack app and must respond to call method. . . . . Our app: Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes. rb!!! Yes that’s too muck Rack apps around. But Rails is always been that. config/routes. rb - This will ultimately generate these seven routes From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go to BooksController#show and likewise! That’s it from the Rails Request Lifecycle.  Cheers!!!   Please enable JavaScript to view the comments powered by Disqus.  "
     }, {
     "id": 32,
     "url": "http://localhost:4000/how-index-works-on-database/",
@@ -348,22 +348,20 @@ function lunr_search(term) {
 					<p class="text-uppercase font-weight-bold">
                         <span class="catlist">
 						
-                          <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
-                        
-                          <a class="sscroll text-danger" href="/categories.html#database">database</a><span class="sep">, </span>
+                          <a class="sscroll text-danger" href="/categories.html#aws">aws</a><span class="sep">, </span>
                         
                         </span>
 					</p>
-					<h1 class="display-4 mb-4 article-headline">How Indexes on database works!</h1>
+					<h1 class="display-4 mb-4 article-headline">Understanding Amazon S3 ACLs</h1>
 					<div class="d-flex align-items-center">
                         
                         <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
                         
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">Jun 08, 2018 · <span class="reading-time">
+                            <span class="text-muted d-block mt-1">Jun 28, 2021 · <span class="reading-time">
   
   
-    4 mins read
+    2 mins read
   
 </span>
     </span>
@@ -372,7 +370,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/how_index_works.gif" alt="How Indexes on database works!">
+					<img class="rounded" src="/assets/images/aws-icon.png" alt="Understanding Amazon S3 ACLs">
 				</div>
                 
 			</div>
@@ -414,65 +412,93 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results faster for select and where queries.</p>
+			<p>The AWS provides built in options for fine grain control over s3 objects and buckets. One of them is ACL - Access Control List.</p>
 
-<p><img src="/assets/images/how_index_works.gif" alt="" /></p>
+<p>In this post we will try to understand different types of ACL options with their permissions provided by AWS.</p>
 
-<h4>What is Index ?</h4>
+<p>From AWS Docs -</p>
 
-<p>Index is simply a data-structure that holds pointer to rows that has value for a column. It narrows down the number of rows to look out for. Indexes can be created using one of the B-tree, Hash, GiST, GIN.</p>
+<p><em>Amazon S3 access control lists (ACLs) enable you to manage access to buckets and objects. Each bucket and object has an 
+ACL attached to it as a subresource. It defines which AWS accounts or groups are granted access and the type of access. 
+When a request is received against a resource, Amazon S3 checks the corresponding ACL to verify that the requester has 
+the necessary access permissions.</em></p>
+
+<p>You can grant <strong>read</strong>, <strong>write</strong> and <strong>full-control</strong> permissions using ACL. They can be applied on bucket and/or object.
+When granted on bucket, the permissions are scoped to bucket. When granted on object, they are scoped to objects. All of these
+permissions can be applied on both bucket &amp; objects except write. It is not applicable to objects.</p>
+
+<h4>Mapping of ACL permissions and access policy permissions</h4>
+
+<p>ACL allows only a finite set of permissions, compared to the number of permissions you can set in an access policy. Each
+of these permissions allows one or more Amazon S3 operations.</p>
+
+<h3>Canned ACL</h3>
+
+<p>Canned ACLs are predefined grants provided by S3. In most of the use cases these canned ACL will suit in. Each canned ACL
+has predefined set of grantees and permissions as shown in table below -</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Canned ACL</th>
+      <th>Applies to</th>
+      <th>Permissions added to ACL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>private</td>
+      <td>Bucket and object</td>
+      <td>Owner gets FULL_CONTROL. No one else has access rights (default).</td>
+    </tr>
+    <tr>
+      <td>public-read</td>
+      <td>Bucket and object</td>
+      <td>Owner gets FULL_CONTROL. The AllUsers group gets READ access.</td>
+    </tr>
+    <tr>
+      <td>public-read-write</td>
+      <td>Bucket and object</td>
+      <td>Owner gets FULL_CONTROL. The AllUsers group gets READ and WRITE access. Granting this on a bucket is generally not recommended.</td>
+    </tr>
+    <tr>
+      <td>aws-exec-read</td>
+      <td>Bucket and object</td>
+      <td>Owner gets FULL_CONTROL. Amazon EC2 gets READ access to GET an Amazon Machine Image (AMI) bundle from Amazon S3.</td>
+    </tr>
+    <tr>
+      <td>authenticated-read</td>
+      <td>Bucket and object</td>
+      <td>Owner gets FULL_CONTROL. The AuthenticatedUsers group gets READ access.</td>
+    </tr>
+    <tr>
+      <td>bucket-owner-read</td>
+      <td>Object</td>
+      <td>Object owner gets FULL_CONTROL. Bucket owner gets READ access. If you specify this canned ACL when creating a bucket, Amazon S3 ignores it.</td>
+    </tr>
+    <tr>
+      <td>bucket-owner-full-control</td>
+      <td>Object</td>
+      <td>Both the object owner and the bucket owner get FULL_CONTROL over the object. If you specify this canned ACL when creating a bucket, Amazon S3 ignores it.</td>
+    </tr>
+    <tr>
+      <td>log-delivery-write</td>
+      <td>Bucket</td>
+      <td>The LogDelivery group gets WRITE and READ_ACP permissions on the bucket.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+<em>Note</em> - You can specify only one of these canned ACLs in your request.</p>
+
+<hr />
+
+<p>References -</p>
 
 <ul>
-  <li>Comparison of B-tree/Hash/Gist (Generalised Search Tree) /GIN (Generalised Inverted Index)</li>
+  <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html" target="_blank">https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html</a></li>
 </ul>
-
-<p>Skip this if you know B-tree and Hash comparison. Most commonly index are created using B-tree, because they are very efficient in time complexity. As well B-tree can handle equality and range queries i.e.&lt;, ≤, &gt;, ≥ operations. B-tree can also sort data in it. Hash indexes can only handle equality(=) operations. Use of Hash index is discouraged by postgresql due to some issues.</p>
-
-<p>Hash index operations are not presently WAL-logged, so hash indexes might need to be rebuilt with REINDEX after a database crash if there were unwritten changes. Also, changes to hash indexes are not replicated over streaming or file-based replication after the initial base backup, so they give wrong answers to queries that subsequently use them. For these reasons, hash index use is presently discouraged.</p>
-
-<ul>
-  <li>
-    <p>Syntax for Creating index</p>
-
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="no">CREATE</span> <span class="no">INDEX</span> <span class="n">index_name</span> <span class="no">ON</span> <span class="n">table_name</span> <span class="p">(</span><span class="n">column1</span><span class="p">,</span> <span class="n">column2</span><span class="p">,</span> <span class="o">..</span><span class="p">);</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<h4>How Index works ?</h4>
-
-<p>Suppose we have a users table(id, name) indexed on name. When a record is inserted in users table, respective entry in B-tree would be made. At the moment users table have entries (1, ‘Deepak’), (2, ‘Rohit’), (3, ‘MSD’), (4, ‘Aaradhya’). The indexed B-tree would look like [Aaradhya, Deepak, MSD, Rohit].</p>
-
-<p><img src="/assets/images/index_2.jpeg" alt="" /></p>
-
-<p>For instance, I insert a record (5, ‘Swapnil’), B-tree would be updated to [Aaradhya, Deepak, MSD, Rohit] and node Rohit will point to [Rohit, Swapnil]. The searching operation are made easy because the data is sorted. If you are interested in postgresql code, take a look here on how postgresql works. When search query for name Swapnil is fired, unlike sequentially traversing users table as in without indexing, B-tree will efficiently find it is in node Rohit. Note that after locating node, it switches to binary search to reach Swapnil. Here is the source code to search value in single B-tree in postgresql.</p>
-
-<p><img src="/assets/images/index_3.jpeg" alt="" /></p>
-
-<h4>A take on insert/update with index</h4>
-
-<p>Insert is the only operation which do not directly benefits from index, as it do not include where clause. Additionally it increases time for inserting. Let’s take a look. When not using index, a database insert operation would only add a row to table. But while using index, it additionally needs to add index-entry in B-tree. And it takes time, first to lookup appropriate node, assign value to node then to maintain B-tree split the node, if needed.</p>
-
-<p>In update query, when record is updated in database, the index for the same also gets updated.</p>
-
-<p><img src="/assets/images/blank.jpeg" alt="" /></p>
-
-<h4>Building indexes concurrently</h4>
-<p>Most database systems allow to perform reads while creating index in a single scan, but lock parallel write operations. Transactions involving insert, update, delete will be blocked until index build is finished. And this could have sever impact if system is a live production database.</p>
-
-<p>Postgresql supports building indexes without locking with CONCURRENTLY option of CREATE INDEX. It performs two scans of table. First index is entered in system catalog in one transaction. Then two transactions perform two scans. Before each table scan, the index build must wait for existing transactions that have modified the table to terminate. After the second scan, the index build must wait for any transactions that have a snapshot predating the second scan to terminate. When these write operations are done, both scans complete and assures updated data. The reads were never a problem. Read more</p>
-
-<p>CREATE INDEX CONCURRENTLY index_name ON table_name (column1, column2, ..);</p>
-
-<h4>Last Stop</h4>
-<ul>
-  <li>Indexes does not store values of columns other than indexed ones.</li>
-  <li>Indexes should be created on columns which are queried frequently.</li>
-  <li>To optimise insert performance, it is very important to keep the number of indexes small.</li>
-</ul>
-
-<p>Have a great day! Cheers!!!</p>
-
                 
 			</article>
 			<div>
@@ -481,10 +507,6 @@ function lunr_search(term) {
 			<!-- Tags -->
 			<div class="mb-4">
 				<span class="taglist">
-				
-				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
-				
-				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#sticky">sticky</a>
 				
 				</span>
 			</div>
@@ -539,13 +561,9 @@ function lunr_search(term) {
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/api-in-rails-5/"> <img height="30px" class="mr-1" src="/assets/images/web_api.png">  APIs in Rails 5.0 - overview</a>
+                <a class="text-dark" href="/remove-stale-postmaster-pid/"> <img height="30px" class="mr-1" src="/assets/images/stale-postmaster-pid-error.png">  Resolve early termination of worker in Rails</a>
             </div>
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/rails-request-lifecycle/"> Rails Request Lifecycle...  <img height="30px" class="ml-1" src="/assets/images/dig.png"> </a>
-            </div>
           
         </div>
     </div>
