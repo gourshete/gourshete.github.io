@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Sidekiq By Example"
+title:  "Sidekiq By Example : Ruby's background worker"
 date:   2019-11-28
 keywords: "ruby rails github gryffindor learning swapnil gourshete ruby on rails sidekiq background-jobs async"
 image: assets/images/sidekiq.png
