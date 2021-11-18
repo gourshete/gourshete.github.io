@@ -17,11 +17,11 @@ Few days ago, like every normal day I started dev environment rails server and s
 with error message - `early-termination-of-worker`.
 
 I did not understand at the time why it has happened as I did nothing different. Oh, but there was one thing to note - 
-I had to abruptly shut down mac the day before. Were these issues related?
+I had to abruptly shut down mac the day before. Was it even related?
 
-**Yes, they were!**
+**Yes, it was!**
 
-While shutting down mac, postgres server was also abruptly closed - leading stale postmaster.pid file in the
+While shutting down mac, postgres server was also abruptly closed - leading to `stale postmaster.pid` file in the
 system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
 reason was postgres server was unable to start as system had `stale postmaster.pid` reference.
 
