@@ -10,7 +10,7 @@ categories: [ Ruby, Rails]
 *In this post we will learn about multiple inheritance in ruby*.
 
 
-**What is Multpile Inheritance?**
+**What is Multiple Inheritance?**
 
 It is property of code to inherit from multiple parent classes. Ruby supports inheriting only from one parent class.
 
