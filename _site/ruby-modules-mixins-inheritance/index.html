@@ -4,23 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rails Includes vs Joins | Ruby on Rails Examples</title>
+    <title>Multiple Inheritance in Ruby | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Rails Includes vs Joins | Ruby on Rails Examples</title>
+<title>Multiple Inheritance in Ruby | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Rails Includes vs Joins" />
+<meta property="og:title" content="Multiple Inheritance in Ruby" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="When I started learning Rails, I was always in a state of confusion about using includes or joins, because both are used in almost same scenario. Includes uses eager loading whereas joins uses lazy loading. Both are used when certain operations are meant to be performed on associated tables. And here comes the difference." />
-<meta property="og:description" content="When I started learning Rails, I was always in a state of confusion about using includes or joins, because both are used in almost same scenario. Includes uses eager loading whereas joins uses lazy loading. Both are used when certain operations are meant to be performed on associated tables. And here comes the difference." />
-<link rel="canonical" href="http://localhost:4000/rails-includes-vs-joins/" />
-<meta property="og:url" content="http://localhost:4000/rails-includes-vs-joins/" />
+<meta name="description" content="In this post we will learn about multiple inheritance in ruby." />
+<meta property="og:description" content="In this post we will learn about multiple inheritance in ruby." />
+<link rel="canonical" href="http://localhost:4000/ruby-modules-mixins-inheritance/" />
+<meta property="og:url" content="http://localhost:4000/ruby-modules-mixins-inheritance/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
+<meta property="og:image" content="http://localhost:4000/assets/images/multiple-Inheritance-home-image.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-03-08T00:00:00+05:30" />
+<meta property="article:published_time" content="2023-05-09T00:00:00+05:30" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/rails-includes-vs-joins/"},"headline":"Rails Includes vs Joins","dateModified":"2018-03-08T00:00:00+05:30","datePublished":"2018-03-08T00:00:00+05:30","author":{"@type":"Person","name":"swapnil"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"description":"When I started learning Rails, I was always in a state of confusion about using includes or joins, because both are used in almost same scenario. Includes uses eager loading whereas joins uses lazy loading. Both are used when certain operations are meant to be performed on associated tables. And here comes the difference.","url":"http://localhost:4000/rails-includes-vs-joins/","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ruby-modules-mixins-inheritance/"},"headline":"Multiple Inheritance in Ruby","dateModified":"2023-05-09T00:00:00+05:30","datePublished":"2023-05-09T00:00:00+05:30","author":{"@type":"Person","name":"swapnil"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"image":"http://localhost:4000/assets/images/multiple-Inheritance-home-image.png","description":"In this post we will learn about multiple inheritance in ruby.","url":"http://localhost:4000/ruby-modules-mixins-inheritance/","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -250,7 +251,7 @@ var documents = [{
     "id": 31,
     "url": "http://localhost:4000/rails-request-lifecycle/",
     "title": "Rails Request Lifecycle...",
-    "body": "2019/06/12 - Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out! Breakdown of request flow -  Browser generates HTTP/HTTPS request after a click or a event Web server receives request, analyses it and passes to application server Application server calls up proper controller-action after talking with router The resulted output is sent back to browser and displayed on screen.  Web Browser : Browser should direct request to a specific destination. For users it is a URL seen on web page, but computers need IP addresses, they do not understand these URLs. For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser who starts finding out IP address. Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, browser generally asks Internet Service Providers(ISP). If not found then it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like . com, . net, . org) –&gt; And then to Authoritative DNS Server. The chase ends here. Yay! We get the required ip address. Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name provider has not set up your domain information properly. It is actually interesting to try on terminal with dig, . .  Web Server : By now browser is successfully connected to server. The server here is web server. Some examples are Apache,Nginx, Passenger, Puma, Unicorn, Webrick. These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice that request. For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose. With nginx it is like Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,for anything else than assets, it will get 404 not found response. But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript?? Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be complex to put it in web server configuration file. So what next? There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK . . . RACK App: Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework, “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc. ” On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status code, headers, and body. ” In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. It notifies the web framework using a method call, communicates the details as method arguments, and the web framework communicates back by return values from the method call. In code it just looks like Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, http_method, parameters, rack_app_version, etc. And the call method responds in three variables - status, header and body. Status is http status, to tell about request completedsuccessfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response. Coming to rails, the config. ru file will look something like It is supposed to pass Rack application to run keyword, this means Rails. application is a Rack app and must respond to call method. . . . . Our app: Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes. rb!!! Yes that’s too muck Rack apps around. But Rails is always been that. config/routes. rb - This will ultimately generate these seven routes From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go to BooksController#show and likewise! That’s it from the Rails Request Lifecycle.  Cheers!!! {% if page. comments %}   Please enable JavaScript to view the comments powered by Disqus.  {% endif %} "
+    "body": "2019/06/12 - Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out! Breakdown of request flow -  Browser generates HTTP/HTTPS request after a click or a event Web server receives request, analyses it and passes to application server Application server calls up proper controller-action after talking with router The resulted output is sent back to browser and displayed on screen.  Web Browser : Browser should direct request to a specific destination. For users it is a URL seen on web page, but computers need IP addresses, they do not understand these URLs. For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser who starts finding out IP address. Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, browser generally asks Internet Service Providers(ISP). If not found then it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like . com, . net, . org) –&gt; And then to Authoritative DNS Server. The chase ends here. Yay! We get the required ip address. Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name provider has not set up your domain information properly. It is actually interesting to try on terminal with dig, . .  Web Server : By now browser is successfully connected to server. The server here is web server. Some examples are Apache,Nginx, Passenger, Puma, Unicorn, Webrick. These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice that request. For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose. With nginx it is like Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,for anything else than assets, it will get 404 not found response. But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript?? Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be complex to put it in web server configuration file. So what next? There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK . . . RACK App: Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework, “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc. ” On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status code, headers, and body. ” In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. It notifies the web framework using a method call, communicates the details as method arguments, and the web framework communicates back by return values from the method call. In code it just looks like Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, http_method, parameters, rack_app_version, etc. And the call method responds in three variables - status, header and body. Status is http status, to tell about request completedsuccessfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response. Coming to rails, the config. ru file will look something like It is supposed to pass Rack application to run keyword, this means Rails. application is a Rack app and must respond to call method. . . . . Our app: Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes. rb!!! Yes that’s too muck Rack apps around. But Rails is always been that. config/routes. rb - This will ultimately generate these seven routes From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go to BooksController#show and likewise! That’s it from the Rails Request Lifecycle.  Cheers!!!   Please enable JavaScript to view the comments powered by Disqus.  "
     }, {
     "id": 32,
     "url": "http://localhost:4000/how-index-works-on-database/",
@@ -342,32 +343,36 @@ function lunr_search(term) {
 <div class="container">
 <div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
 		<div class="h-100 tofront">
-			<div class="row  justify-content-center ">
-				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
 					<p class="text-uppercase font-weight-bold">
                         <span class="catlist">
 						
-                          <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
+                          <a class="sscroll text-danger" href="/categories.html#ruby">ruby</a><span class="sep">, </span>
                         
-                          <a class="sscroll text-danger" href="/categories.html#query">query</a><span class="sep">, </span>
+                          <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
                         
                         </span>
 					</p>
-					<h1 class="display-4 mb-4 article-headline">Rails Includes vs Joins</h1>
+					<h1 class="display-4 mb-4 article-headline">Multiple Inheritance in Ruby</h1>
 					<div class="d-flex align-items-center">
                         
                         <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
                         
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">Mar 08, 2018 · <span class="reading-time">
+                            <span class="text-muted d-block mt-1">May 09, 2023 · <span class="reading-time">
   
   
-    2 mins read
+    1 min read
   
 </span>
     </span>
 						</small>
 					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/images/multiple-Inheritance-home-image.png" alt="Multiple Inheritance in Ruby">
 				</div>
                 
 			</div>
@@ -409,64 +414,49 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>When I started learning Rails, I was always in a state of confusion about using includes or joins,
-because both are used in almost same scenario. Includes uses eager loading whereas joins uses lazy 
-loading. Both are used when certain operations are meant to be performed on associated tables. And 
-here comes the difference.</p>
+			<p><em>In this post we will learn about multiple inheritance in ruby</em>.</p>
 
-<h4>What is the problem with Joins?</h4>
+<p><strong>What is Multiple Inheritance?</strong></p>
 
-<p><img src="/assets/images/joins_all.png" alt="" /></p>
+<p>It is property of code to inherit from multiple parent classes. Ruby supports inheriting only from one parent class.</p>
 
-<p>Here, we retrieved users in the first line and data is formatted in the each do loop. Here is interesting thing, to retrieve user.company.name, each time a call to database is made. It means, if there are 10k users then 10k separate queries would be fired up.
-And this will overkill system when scaled up. Isn’t there is efficient way? Yes, it is Includes.</p>
+<p><img src="/assets/images/class-1.png" alt="class-inheritance-example" /></p>
 
-<p>And this will overkill system when scaled up. Isn’t there a more efficient way? Yes, it is Includes.</p>
+<p>So what is the way for inheriting from multiple classes? By the way are you aware of classic diamond problem in
+mulitple inheritance? <a href="https://en.wikipedia.org/wiki/Multiple_inheritance">If not, read more about it here.</a></p>
 
-<h3>INCLUDES</h3>
-<p>If we go through Rails documenting, it clearly says - ’With includes, Active Record ensures that all of the
-specified associations are loaded using the minimum possible number of queries’. When we need data to be used
-from associated tables, includes must be used.</p>
+<p>Here comes in play modules in Ruby. Modules are somewhat different than classes -</p>
+<ol>
+  <li>Modules can’t be instantiated, class can be instantiated</li>
+  <li>Can’t create object of Modules, but can create object of class</li>
+  <li>We can include multiple modules in a single class, but can’t include classes</li>
+</ol>
 
-<p>Here is an example,</p>
+<p>To achieve multiple inheritance, we can include as many modules in a class. The same methods will be overriden by latest implementation. Let’s take a example -</p>
 
-<p><img src="/assets/images/includes.png" alt="" /></p>
+<p><img src="/assets/images/class-modules-2.png" alt="class-inheritance-example" /></p>
 
-<p>Here, the data from table companies is brought right in the first line, since it says includes companies.
-No additional query is fired from the do loop for ‘user.company.name’. Size of users table does not matter now.
-It is scalable to any size.</p>
+<p>Here module A is included in <code class="highlighter-rouge">class C</code> and so when method <code class="highlighter-rouge">name</code> is called upon <code class="highlighter-rouge">class C</code> it results printing <code class="highlighter-rouge">"A"</code></p>
 
-<p>Isn’t it fantastic? Yes, it is. It saves hell lot of time. And it proves to be very efficient, when application
-contains huge data.</p>
+<p>Now let’s consider this example -</p>
+
+<p><img src="/assets/images/class-modules-3.png" alt="class-inheritance-example" /></p>
+
+<p>Here we have two modules <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code>. And when these two are included in <code class="highlighter-rouge">class C</code>, because both define same method <code class="highlighter-rouge">name</code> and module <code class="highlighter-rouge">B</code> is included after A - the program output is <code class="highlighter-rouge">"B"</code></p>
+
+<p>And that’s how we can include multiple modules in same class.</p>
+
+<p>I hope this was useful!</p>
+
+<hr />
+
+<p><br /></p>
+
+<p>References -</p>
 
 <ul>
-  <li>So, does includes always preferred over joins?</li>
+  <li><a href="https://en.wikipedia.org/wiki/Multiple_inheritance">The Diamond problem</a></li>
 </ul>
-
-<p>Hopefully not, there are some cases when includes does not exceed joins in terms of efficiency.</p>
-
-<p><img src="/assets/images/includes_3.png" alt="" />
-Here, we used tables users and companies, but companies is only for some sort of filter. We did not actually 
-used data from companies later in the code. So no need to bring data from companies along with users. This is
- why join is efficient in this case.</p>
-
-<p>…</p>
-
-<h4>Eager Loading</h4>
-<p>It joins everything in a single query. Sometimes the query may result in a huge sql call with too many joins 
-left joins.</p>
-
-<p><code class="highlighter-rouge">User.eager_load(:posts)</code><br /></p>
-
-<p>…</p>
-
-<h4>Pre Loading</h4>
-<p>Preload works in same way as Includes. It brings up the data normally in two queries.<br />
-<code class="highlighter-rouge">User.pre_load(:posts)</code><br />
-–&gt; <code class="highlighter-rouge">SELECT "users".* FROM "users"
- SELECT "posts".* FROM "posts"  WHERE "posts"."user_id" IN (1)</code></p>
-
-<p>Cheers!!!</p>
                 
 			</article>
 			<div>
@@ -529,13 +519,9 @@ left joins.</p>
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/why-rails-why-ruby/"> <img height="30px" class="mr-1" src="/assets/images/why.jpg">  Why Rails? Why Ruby?</a>
+                <a class="text-dark" href="/remove-stale-pid/"> <img height="30px" class="mr-1" src="/assets/images/stale-postmaster-pid-error.png">  Resolve early termination of worker in Rails</a>
             </div>
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/api-in-rails-5/"> APIs in Rails 5.0 - overview  <img height="30px" class="ml-1" src="/assets/images/web_api.png"> </a>
-            </div>
           
         </div>
     </div>

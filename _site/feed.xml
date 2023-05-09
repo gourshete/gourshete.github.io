@@ -1,26 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-18T16:35:43+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-postmaster-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2021-04-28T00:00:00+05:30</published><updated>2021-04-28T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-postmaster-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-postmaster-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve error Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-09T13:10:22+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Multiple Inheritance in Ruby</title><link href="http://localhost:4000/ruby-modules-mixins-inheritance/" rel="alternate" type="text/html" title="Multiple Inheritance in Ruby" /><published>2023-05-09T00:00:00+05:30</published><updated>2023-05-09T00:00:00+05:30</updated><id>http://localhost:4000/ruby-modules-mixins-inheritance</id><content type="html" xml:base="http://localhost:4000/ruby-modules-mixins-inheritance/">&lt;p&gt;&lt;em&gt;In this post we will learn about multiple inheritance in ruby&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;Note - Root cause described below is one of the reason. It is possible that this issue may occur due to another reason.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What is Multiple Inheritance?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It is property of code to inherit from multiple parent classes. Ruby supports inheriting only from one parent class.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/class-1.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So what is the way for inheriting from multiple classes? By the way are you aware of classic diamond problem in
+mulitple inheritance? &lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_inheritance&quot;&gt;If not, read more about it here.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here comes in play modules in Ruby. Modules are somewhat different than classes -&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Modules can’t be instantiated, class can be instantiated&lt;/li&gt;
+  &lt;li&gt;Can’t create object of Modules, but can create object of class&lt;/li&gt;
+  &lt;li&gt;We can include multiple modules in a single class, but can’t include classes&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To achieve multiple inheritance, we can include as many modules in a class. The same methods will be overriden by latest implementation. Let’s take a example -&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/class-modules-2.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here module A is included in &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt; and so when method &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; is called upon &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt; it results printing &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;A&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let’s consider this example -&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/class-modules-3.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we have two modules &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;. And when these two are included in &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt;, because both define same method &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; and module &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt; is included after A - the program output is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;B&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And that’s how we can include multiple modules in same class.&lt;/p&gt;
+
+&lt;p&gt;I hope this was useful!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_inheritance&quot;&gt;The Diamond problem&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will learn about multiple inheritance in ruby.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/multiple-Inheritance-home-image.png" /></entry><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2022-12-12T00:00:00+05:30</published><updated>2022-12-12T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve the error - Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note - The reason described below is one of the cause, it is quite possible to reproduce this issue due to another reason.&lt;/p&gt;
 
 &lt;p&gt;Let’s begin.&lt;/p&gt;
 
 &lt;p&gt;Few days ago, like every normal day I started dev environment rails server and suddenly server log flooded
 with error message - &lt;code class=&quot;highlighter-rouge&quot;&gt;early-termination-of-worker&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;I did not understand why it happened as I did nothing different. Oh, but there was one thing to note - I had to abruptly
-shut down mac yesterday EOD. Were these issues related?&lt;/p&gt;
+&lt;p&gt;I did not understand at the time why it has happened as I did nothing different. Oh, but there was one thing to note - 
+I had to abruptly shut down mac the day before. Was it even related?&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Yes, they were!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Yes, it was!&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;While shutting down mac, postgres server was also abruptly closed - leading stale postmaster.pid file in the
+&lt;p&gt;While shutting down mac, postgres server was also abruptly closed - leading to &lt;code class=&quot;highlighter-rouge&quot;&gt;stale postmaster.pid&lt;/code&gt; file in the
 system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
 reason was postgres server was unable to start as system had &lt;code class=&quot;highlighter-rouge&quot;&gt;stale postmaster.pid&lt;/code&gt; reference.&lt;/p&gt;
 
-&lt;p&gt;How did I found the reason -&lt;/p&gt;
+&lt;p&gt;If you are stuck at how I find out the reason, here it is -&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/stale-postmaster-pid-error.png&quot; alt=&quot;postgres-stale-postmaster-pid-error&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;So the answer was straight forward - &lt;strong&gt;Go and delete postmaster.pid file&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;So after knowing the problem, answer was straight forward - &lt;strong&gt;Go and delete postmaster.pid file&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;How to do it?&lt;/em&gt;&lt;/p&gt;
 
@@ -49,7 +91,58 @@ on server settings option. My path was - &lt;br /&gt; &lt;code class=&quot;highl
 
 &lt;hr /&gt;
 
-&lt;p&gt;Thanks. Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will resolve error Early termination of puma worker.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/stale-postmaster-pid-error.png" /></entry><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
+&lt;p&gt;Thanks. Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will resolve the error - Early termination of puma worker.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/stale-postmaster-pid-error.png" /></entry><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-postmaster-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2021-04-28T00:00:00+05:30</published><updated>2021-04-28T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-postmaster-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-postmaster-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve the error - Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note - The reason described below is one of the cause, it is quite possible to reproduce this issue due to another reason.&lt;/p&gt;
+
+&lt;p&gt;Let’s begin.&lt;/p&gt;
+
+&lt;p&gt;Few days ago, like every normal day I started dev environment rails server and suddenly server log flooded
+with error message - &lt;code class=&quot;highlighter-rouge&quot;&gt;early-termination-of-worker&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I did not understand at the time why it has happened as I did nothing different. Oh, but there was one thing to note - 
+I had to abruptly shut down mac the day before. Was it even related?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Yes, it was!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;While shutting down mac, postgres server was also abruptly closed - leading to &lt;code class=&quot;highlighter-rouge&quot;&gt;stale postmaster.pid&lt;/code&gt; file in the
+system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
+reason was postgres server was unable to start as system had &lt;code class=&quot;highlighter-rouge&quot;&gt;stale postmaster.pid&lt;/code&gt; reference.&lt;/p&gt;
+
+&lt;p&gt;If you are stuck at how I find out the reason, here it is -&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/stale-postmaster-pid-error.png&quot; alt=&quot;postgres-stale-postmaster-pid-error&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So after knowing the problem, answer was straight forward - &lt;strong&gt;Go and delete postmaster.pid file&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;How to do it?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I use postgres desktop application, so these were steps for me -&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Open terminal &amp;amp; navigate to Postgres directory. You can find postgres directory by opening postgres app and clicking 
+on server settings option. My path was - &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/swapnil/Library/Application Support/Postgres/var-13&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;List all files in the directory and check if postmaster.pid file is present.
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Go ahead and remove postmaster.pid -
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;postmaster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pid&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;That’s it. After this step your postgres server should be running &amp;amp; so rails server will be able to connect to it.&lt;/p&gt;
+
+&lt;p&gt;P.S. - If you installed postgres via different method then solution steps would be different for you.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Thanks. Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will resolve the error - Early termination of puma worker.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/stale-postmaster-pid-error.png" /></entry><entry><title type="html">Allow HTTPS traffic via AWS Load balancer and EC2</title><link href="http://localhost:4000/allow-https-traffic/" rel="alternate" type="text/html" title="Allow HTTPS traffic via AWS Load balancer and EC2" /><published>2021-04-07T00:00:00+05:30</published><updated>2021-04-07T00:00:00+05:30</updated><id>http://localhost:4000/allow-https-traffic</id><content type="html" xml:base="http://localhost:4000/allow-https-traffic/">&lt;p&gt;In this post we will achieve passing only https traffic to EC2 via application load balancer.&lt;/p&gt;
 
 &lt;p&gt;Pre-requisites:&lt;/p&gt;
 
@@ -458,31 +551,7 @@ database insert operation will fail with error &lt;code class=&quot;highlighter-
 
 &lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/244265&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/244265&quot;&gt;https://stackoverflow.com/a/244265&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;Rubyinrails&lt;/a&gt; - &lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/reset_pk.jpg" /></entry><entry><title type="html">Error in logging! Rails log to STDOUT</title><link href="http://localhost:4000/rails-log-to-stdout/" rel="alternate" type="text/html" title="Error in logging! Rails log to STDOUT" /><published>2020-03-27T00:00:00+05:30</published><updated>2020-03-27T00:00:00+05:30</updated><id>http://localhost:4000/rails-log-to-stdout</id><content type="html" xml:base="http://localhost:4000/rails-log-to-stdout/">&lt;p&gt;Logs play important role in debugging application. Rails comes with six levels of logging :debug, :info, :warn, :error, :fatal,
- and :unknown. These logs are generally written to &lt;code class=&quot;highlighter-rouge&quot;&gt;Rails.root/logs/#{environment}.log&lt;/code&gt; file of each environment.&lt;/p&gt;
-
-&lt;p&gt;The point here is Rails new versions ships with settings to write logs to STDOUT and not environment specific log files. A
-new environment variable named &lt;code class=&quot;highlighter-rouge&quot;&gt;RAILS_LOG_TO_STDOUT&lt;/code&gt; is used to take the decision. In new rails app you will find following
-code snippet in &lt;code class=&quot;highlighter-rouge&quot;&gt;production.rb&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'RAILS_LOG_TO_STDOUT'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;present?&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;STDOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;formatter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_formatter&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;logger&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TaggedLogging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It tells the rails app to write logs to STDOUT and not to &lt;code class=&quot;highlighter-rouge&quot;&gt;Rails.root/log/production.log&lt;/code&gt; if ENV[‘RAILS_LOG_TO_STDOUT’] is set to true.
-The same setting is applied to all environments. This setting can be toggled by simply altering the value set to
- &lt;code class=&quot;highlighter-rouge&quot;&gt;ENV['RAILS_LOG_TO_STDOUT']&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;…&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;References -&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://guides.rubyonrails.org/debugging_rails_applications.html&quot;&gt;Rails guide&lt;/a&gt; - &lt;a href=&quot;https://guides.rubyonrails.org/debugging_rails_applications.html&quot;&gt;https://guides.rubyonrails.org/debugging_rails_applications.html&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Logs play important role in debugging application. Rails comes with six levels of logging :debug, :info, :warn, :error, :fatal, and :unknown. These logs are generally written to Rails.root/logs/#{environment}.log file of each environment. The point here is Rails new versions ships with settings to write logs to STDOUT and not environment specific log files. A new environment variable named RAILS_LOG_TO_STDOUT is used to take the decision. In new rails app you will find following code snippet in production.rb</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/log.png" /></entry><entry><title type="html">Sending Email from Rails</title><link href="http://localhost:4000/send-email-from-rails/" rel="alternate" type="text/html" title="Sending Email from Rails" /><published>2020-03-06T00:00:00+05:30</published><updated>2020-03-06T00:00:00+05:30</updated><id>http://localhost:4000/send-email-from-rails</id><content type="html" xml:base="http://localhost:4000/send-email-from-rails/">&lt;p&gt;Sending email is integral part of every web application nowadays. In this post we will cover how to send emails
+&lt;p&gt;&lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;Rubyinrails&lt;/a&gt; - &lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/reset_pk.jpg" /></entry><entry><title type="html">Sending Email from Rails</title><link href="http://localhost:4000/send-email-from-rails/" rel="alternate" type="text/html" title="Sending Email from Rails" /><published>2020-03-06T00:00:00+05:30</published><updated>2020-03-06T00:00:00+05:30</updated><id>http://localhost:4000/send-email-from-rails</id><content type="html" xml:base="http://localhost:4000/send-email-from-rails/">&lt;p&gt;Sending email is integral part of every web application nowadays. In this post we will cover how to send emails
 from a rails application.&lt;/p&gt;
 
 &lt;p&gt;First you need an active smtp server to send an email, because only SMTP servers are capable of sending or receiving emails.
@@ -716,68 +785,4 @@ In &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; model regis
 
 &lt;p&gt;&lt;a href=&quot;https://apidock.com/ruby/Time/strftime&quot;&gt;strftime&lt;/a&gt; - &lt;a href=&quot;https://apidock.com/ruby/Time/strftime&quot;&gt;https://apidock.com/ruby/Time/strftime&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;https://stackoverflow.com/a/14619560/5235107&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Ruby provides two classes to format date string strftime and strptime.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/date-format.png" /></entry><entry><title type="html">json and jsonb - Postgresql</title><link href="http://localhost:4000/postgresql-json/" rel="alternate" type="text/html" title="json and jsonb - Postgresql" /><published>2019-12-10T00:00:00+05:30</published><updated>2019-12-10T00:00:00+05:30</updated><id>http://localhost:4000/postgresql-json</id><content type="html" xml:base="http://localhost:4000/postgresql-json/">&lt;p&gt;Postgresql provides a data-type &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; to save data from JSON format. There are two ways for it - using &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt;
-and &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;. This article will clarify difference in short terms.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; are very similar to each other. The key difference is - &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; is binary representation of &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; -
-as per postgresql documentation.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Pros -  &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Improved efficiency&lt;/li&gt;
-  &lt;li&gt;Postgresql provides query interface for these types. So a direct query for any key in column can be made.&lt;/li&gt;
-  &lt;li&gt;Simple database schema&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cons -  &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Slight overhead to convert into binary form.&lt;/li&gt;
-  &lt;li&gt;Aggregate queries are slower (due to lack of statistics).&lt;/li&gt;
-  &lt;li&gt;Due to large table footprints may take large disk space.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;…&lt;/p&gt;
-
-&lt;h4 id=&quot;querying-json-field&quot;&gt;Querying json field&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Creating table&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;create table foo (id serial NOT NULL primary key, metadata json)
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;inserting test data&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;insert into foo(metadata) values ('{ &quot;property&quot;: &quot;bar1&quot; }'), ('{ &quot;property&quot;: &quot;bar2&quot; }')
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fetching data from table foo&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;select * from foo
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;p&gt;&lt;img src=&quot;/assets/images/select-foo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;selecting json field&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;select id, metadata -&amp;gt;'property' as property from foo
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;p&gt;&lt;img src=&quot;/assets/images/select-property.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Cheers!!!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Official postgresql doc - &lt;a href=&quot;https://www.postgresql.org/docs/current/functions-json.html&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;postgresql tutorial blog - &lt;a href=&quot;https://www.postgresqltutorial.com/postgresql-json/&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;https://stackoverflow.com/a/14619560/5235107&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Ruby provides two classes to format date string strftime and strptime.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/date-format.png" /></entry></feed>
