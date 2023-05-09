@@ -73,10 +73,6 @@
 <lastmod>2020-03-06T00:00:00+05:30</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/rails-log-to-stdout/</loc>
-<lastmod>2020-03-27T00:00:00+05:30</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/reset_pk_sequence/</loc>
 <lastmod>2020-04-16T00:00:00+05:30</lastmod>
 </url>
@@ -99,6 +95,14 @@
 <url>
 <loc>http://localhost:4000/remove-stale-postmaster-pid/</loc>
 <lastmod>2021-04-28T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/remove-stale-pid/</loc>
+<lastmod>2022-12-12T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/ruby-modules-mixins-inheritance/</loc>
+<lastmod>2023-05-09T00:00:00+05:30</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/404/</loc>

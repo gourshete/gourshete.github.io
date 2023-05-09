@@ -14,7 +14,7 @@ categories: [ Ruby, Rails]
 
 It is property of code to inherit from multiple parent classes. Ruby supports inheriting only from one parent class.
 
-<img src="{{ '/assets/images/class-1' | prepend: site.baseurl }}" alt="class-inheritance-example">
+<img src="{{ '/assets/images/class-1.png' | prepend: site.baseurl }}" alt="class-inheritance-example">
 
 
 So what is the way for inheriting from multiple classes? By the way are you aware of classic diamond problem in
