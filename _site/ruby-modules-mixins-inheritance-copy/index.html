@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rails 6.1 - adds defaults value to enum | Ruby on Rails Examples</title>
+    <title>Multiple Inheritance in Ruby | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Rails 6.1 - adds defaults value to enum | Ruby on Rails Examples</title>
+<title>Multiple Inheritance in Ruby | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Rails 6.1 - adds defaults value to enum" />
+<meta property="og:title" content="Multiple Inheritance in Ruby" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="How do we define enums? Pretty much like" />
-<meta property="og:description" content="How do we define enums? Pretty much like" />
-<link rel="canonical" href="http://localhost:4000/rails-add-default-to-enum/" />
-<meta property="og:url" content="http://localhost:4000/rails-add-default-to-enum/" />
+<meta name="description" content="In this post we will learn about multiple inheritance in ruby." />
+<meta property="og:description" content="In this post we will learn about multiple inheritance in ruby." />
+<link rel="canonical" href="http://localhost:4000/ruby-modules-mixins-inheritance-copy/" />
+<meta property="og:url" content="http://localhost:4000/ruby-modules-mixins-inheritance-copy/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/rails-6.jpeg" />
+<meta property="og:image" content="http://localhost:4000/assets/images/multiple-Inheritance-home-image.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-07-04T00:00:00+05:30" />
+<meta property="article:published_time" content="2023-05-09T00:00:00+05:30" />
 <script type="application/ld+json">
-{"headline":"Rails 6.1 - adds defaults value to enum","dateModified":"2020-07-04T00:00:00+05:30","datePublished":"2020-07-04T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"@type":"BlogPosting","image":"http://localhost:4000/assets/images/rails-6.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/rails-add-default-to-enum/"},"author":{"@type":"Person","name":"swapnil"},"description":"How do we define enums? Pretty much like","url":"http://localhost:4000/rails-add-default-to-enum/","@context":"http://schema.org"}</script>
+{"headline":"Multiple Inheritance in Ruby","dateModified":"2023-05-09T00:00:00+05:30","datePublished":"2023-05-09T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"@type":"BlogPosting","image":"http://localhost:4000/assets/images/multiple-Inheritance-home-image.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ruby-modules-mixins-inheritance-copy/"},"author":{"@type":"Person","name":"swapnil"},"description":"In this post we will learn about multiple inheritance in ruby.","url":"http://localhost:4000/ruby-modules-mixins-inheritance-copy/","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -348,24 +348,22 @@ function lunr_search(term) {
 					<p class="text-uppercase font-weight-bold">
                         <span class="catlist">
 						
+                          <a class="sscroll text-danger" href="/categories.html#ruby">ruby</a><span class="sep">, </span>
+                        
                           <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
-                        
-                          <a class="sscroll text-danger" href="/categories.html#new addition">new addition</a><span class="sep">, </span>
-                        
-                          <a class="sscroll text-danger" href="/categories.html#enum">enum</a><span class="sep">, </span>
                         
                         </span>
 					</p>
-					<h1 class="display-4 mb-4 article-headline">Rails 6.1 - adds defaults value to enum</h1>
+					<h1 class="display-4 mb-4 article-headline">Multiple Inheritance in Ruby</h1>
 					<div class="d-flex align-items-center">
                         
                         <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
                         
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">Jul 04, 2020 · <span class="reading-time">
+                            <span class="text-muted d-block mt-1">May 09, 2023 · <span class="reading-time">
   
   
-    1 mins read
+    1 min read
   
 </span>
     </span>
@@ -374,7 +372,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/rails-6.jpeg" alt="Rails 6.1 - adds defaults value to enum">
+					<img class="rounded" src="/assets/images/multiple-Inheritance-home-image.png" alt="Multiple Inheritance in Ruby">
 				</div>
                 
 			</div>
@@ -416,48 +414,39 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>How do we define enums? Pretty much like</p>
+			<p><em>In this post we will learn about multiple inheritance in ruby</em>.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Book</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-  <span class="n">enum</span> <span class="ss">status: </span><span class="p">[</span><span class="ss">:proposed</span><span class="p">,</span> <span class="ss">:written</span><span class="p">,</span> <span class="ss">:published</span><span class="p">]</span>
-<span class="k">end</span>
-</code></pre></div></div>
+<p><strong>What is Multiple Inheritance?</strong></p>
 
-<p>Here what is the value of <code class="highlighter-rouge">status</code> for newly created object of class Book? It would be <code class="highlighter-rouge">proposed</code>, as is the first value 
-from enums. What if we need a default enum value to be set to newly created objects?</p>
+<p>It is property of code to inherit from multiple parent classes. Ruby supports inheriting only from one parent class.</p>
 
-<p>Well we can achieve it using
-database default value constraint, but it will not be assigned until object is saved to database i.e. <code class="highlighter-rouge">Book.new.status</code>
-will not reflect <code class="highlighter-rouge">database default-value constraint</code> as it is yet to be saved to database.</p>
+<p><img src="/assets/images/class-1.png" alt="class-inheritance-example" /></p>
 
-<ul>
-  <li>Rails 6.1 added support to define default value for enum. Declaring like</li>
-</ul>
+<p>So what is the way for inheriting from multiple classes? By the way are you aware of classic diamond problem in
+mulitple inheritance? <a href="https://en.wikipedia.org/wiki/Multiple_inheritance">If not, read more about it here.</a></p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Book</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-  <span class="n">enum</span> <span class="ss">status: </span><span class="p">[</span><span class="ss">:proposed</span><span class="p">,</span> <span class="ss">:written</span><span class="p">,</span> <span class="ss">:published</span><span class="p">],</span> <span class="ss">_default: :published</span>
-<span class="k">end</span>
-</code></pre></div></div>
+<p>Here comes in play modules in Ruby. Modules are somewhat different than classes -</p>
+<ol>
+  <li>Modules can’t be instantiated, class can be instantiated</li>
+  <li>Can’t create object of Modules, but can create object of class</li>
+  <li>We can include multiple modules in a single class, but can’t include classes</li>
+</ol>
 
-<p>So now new object of class Book will show value for column <code class="highlighter-rouge">status</code> as <code class="highlighter-rouge">published</code> and not proposed.</p>
+<p>To achieve multiple inheritance, we can include as many modules in a class. The same methods will be overriden by latest implementation. Let’s take a example -</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Book</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">status</span> <span class="c1"># =&gt; "published"</span>
-</code></pre></div></div>
+<p><img src="/assets/images/class-modules-2.png" alt="class-inheritance-example" /></p>
 
-<ul>
-  <li>More example</li>
-</ul>
+<p>Here module A is included in <code class="highlighter-rouge">class C</code> and so when method <code class="highlighter-rouge">name</code> is called upon <code class="highlighter-rouge">class C</code> it results printing <code class="highlighter-rouge">"A"</code></p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Blog</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-  <span class="n">enum</span> <span class="ss">status: </span><span class="p">[</span><span class="ss">:open</span><span class="p">,</span> <span class="ss">:inprogress</span><span class="p">,</span> <span class="ss">:complete</span><span class="p">],</span> <span class="ss">_default: :inprogress</span>
-<span class="k">end</span>
+<p>Now let’s consider this example -</p>
 
-<span class="no">Blog</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">status</span> <span class="c1"># =&gt; "inprogress"</span>
-</code></pre></div></div>
+<p><img src="/assets/images/class-modules-3.png" alt="class-inheritance-example" /></p>
 
-<p><br /></p>
+<p>Here we have two modules <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code>. And when these two are included in <code class="highlighter-rouge">class C</code>, because both define same method <code class="highlighter-rouge">name</code> and module <code class="highlighter-rouge">B</code> is included after A - the program output is <code class="highlighter-rouge">"B"</code></p>
 
-<p>Thanks for reading.</p>
+<p>And that’s how we can include multiple modules in same class.</p>
+
+<p>I hope this was useful!</p>
 
 <hr />
 
@@ -466,7 +455,7 @@ will not reflect <code class="highlighter-rouge">database default-value constrai
 <p>References -</p>
 
 <ul>
-  <li>Rails <a href="https://github.com/rails/rails/pull/39820">master PR</a> which adds _default enum by <code class="highlighter-rouge">kamipo</code></li>
+  <li><a href="https://en.wikipedia.org/wiki/Multiple_inheritance">The Diamond problem</a></li>
 </ul>
                 
 			</article>
@@ -530,12 +519,12 @@ will not reflect <code class="highlighter-rouge">database default-value constrai
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/rails-6-credentials/"> <img height="30px" class="mr-1" src="/assets/images/lock5.png">  Rails 6 - Managing API keys using 'credentials'</a>
+                <a class="text-dark" href="/remove-stale-pid/"> <img height="30px" class="mr-1" src="/assets/images/stale-postmaster-pid-error.png">  Resolve early termination of worker in Rails</a>
             </div>
           
           
             <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/allow-https-traffic/"> Allow HTTPS traffic via AWS Load balancer and EC2  <img height="30px" class="ml-1" src="/assets/images/aws-icon.png"> </a>
+                <a class="text-dark" href="/polymorphic-associations/"> Polymorphic Associations  <img height="30px" class="ml-1" src="/assets/images/multiple-Inheritance-home-image.png"> </a>
             </div>
           
         </div>
