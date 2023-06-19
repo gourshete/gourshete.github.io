@@ -4,22 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home | Ruby on Rails Examples</title>
+    <title>Multiple Inheritance in Ruby | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Page 2 of 3 for Home | Ruby on Rails Examples</title>
+<title>Multiple Inheritance in Ruby | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Multiple Inheritance in Ruby" />
+<meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A place to learn rails" />
-<meta property="og:description" content="A place to learn rails" />
-<link rel="canonical" href="http://localhost:4000/page2/" />
-<meta property="og:url" content="http://localhost:4000/page2/" />
+<meta name="description" content="In this post we will learn about multiple inheritance in ruby." />
+<meta property="og:description" content="In this post we will learn about multiple inheritance in ruby." />
+<link rel="canonical" href="http://localhost:4000/ruby-modules-mixins-inheritance-copy/" />
+<meta property="og:url" content="http://localhost:4000/ruby-modules-mixins-inheritance-copy/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
-<link rel="prev" href="http://localhost:4000/" />
-<link rel="next" href="http://localhost:4000/page3" />
+<meta property="og:image" content="http://localhost:4000/assets/images/multiple-Inheritance-home-image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-05-09T00:00:00+05:30" />
 <script type="application/ld+json">
-{"headline":"Home","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"@type":"WebPage","description":"A place to learn rails","url":"http://localhost:4000/page2/","@context":"http://schema.org"}</script>
+{"headline":"Multiple Inheritance in Ruby","dateModified":"2023-05-09T00:00:00+05:30","datePublished":"2023-05-09T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"@type":"BlogPosting","image":"http://localhost:4000/assets/images/multiple-Inheritance-home-image.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ruby-modules-mixins-inheritance-copy/"},"author":{"@type":"Person","name":"swapnil"},"description":"In this post we will learn about multiple inheritance in ruby.","url":"http://localhost:4000/ruby-modules-mixins-inheritance-copy/","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -99,42 +101,42 @@ var documents = [{
     "id": 1,
     "url": "http://localhost:4000/author.html",
     "title": "Author",
-    "body": "Author:                                             Swapnil Gourshete :       (View Posts)      Hi I am Swapnil, a Software Engineer and computer science enthusiastic                          &nbsp;       &nbsp;       &nbsp;                                      "
+    "body": "{{page. title}}:     {% for author in site. authors %}                                         {{ author[1]. name }} :       (View Posts)      {{ author[1]. bio }}                          &nbsp;       &nbsp;       &nbsp;                                    {% endfor %}  "
     }, {
     "id": 2,
     "url": "http://localhost:4000/categories.html",
     "title": "Categories",
-    "body": "          Categories               Rails:                                  		Polymorphic Associations	: 		  Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Product, because user will have self image and product . . . 	 			In 				Ruby, 				Rails, 								Jun 19, 2023						                                 		Multiple Inheritance in Ruby	: 		  In this post we will learn about multiple inheritance in ruby. 	 			In 				Ruby, 				Rails, 								May 09, 2023						                                 		Resolve early termination of worker in Rails	: 		  In this post we will resolve the error - Early termination of puma worker. 	 			In 				Rails, 				Puma, 				Postgres, 								Dec 12, 2022						                                 		Allow HTTPS traffic via AWS Load balancer and EC2	: 		  In this post we will achieve passing only https traffic to EC2 via application load balancer. 	 			In 				Rails, 				AWS, 				ELB, 				EC2, 								Apr 07, 2021						                                 		Rails 6. 1 - adds defaults value to enum	: 		  How do we define enums? Pretty much like	 			In 				Rails, 				New addition, 				enum, 								Jul 04, 2020						                                 		Rails 6 - Managing API keys using 'credentials'	: 		  How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous. 	 			In 				Rails, 				API keys, 				Secrets, 								Jul 04, 2020						                                 		Setting up Rails Performance dashboard with influxdb and grafana	: 		  When application gets stable at some point, we try to improve things we built for a while now. And improving performancetops the list for me. Application performance is a large concep. . . 	 			In 				Rails, 				influxdb, 				grafana, 				APM, 								May 02, 2020						                                 		Reset primary key sequence	: 		  Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name. 	 			In 				Rails, 				Postgres, 				Database, 								Apr 16, 2020						                                 		Sending Email from Rails	: 		  Sending email is integral part of every web application nowadays. In this post we will cover how to send emailsfrom a rails application. 	 			In 				Rails, 				Email, 								Mar 06, 2020						                                 		Ruby date formatting	: 		  Ruby provides two classes to format date string strftime and strptime. 	 			In 				Rails, 				Ruby, 								Jan 01, 2020						                                 		json and jsonb - Postgresql	: 		  Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using jsonand jsonb. This article will clarify difference in short terms. 	 			In 				Rails, 				Postgres, 				Database, 								Dec 10, 2019	                                 		Sidekiq By Example : Ruby's background worker	: 		  What is the best way of handling background jobs in Rails, (maybe) using sidekiq. 	 			In 				Rails, 				Sidekiq, 								Nov 28, 2019						                                 		Run seed data only on first Docker instance up	: 		  Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? Ans - Absolutely no. rails db:seed should only run for the first time i. e. first deployment. But. . . 	 			In 				Rails, 								Nov 22, 2019	                                 		HTTP request response headers	: 		  At the end browser talks in the language of HTTP request. But we really know minimal about it. 	 			In 				Rails, 				Http, 								Aug 20, 2019	                                 		Ruby Ranges Overview	: 		  Range in ruby can be used in following situations	 			In 				Rails, 				Ruby, 								Aug 15, 2019	                                 		Useful Rails commands	: 		     rails dbconsole 	 			In 				Rails, 				Command line, 								Aug 05, 2019						                                 		Rails 6 adds *_previously_was attributes method	: 		  Rails had previous_changes method to track value of object before and after save. 	 			In 				Rails, 				new release, 								Aug 02, 2019	                                 		Scopes in Rails	: 		  Recently I was calling create method on an active-record model object. But it failed in validation, because the provided foreign_key_id was not present in the associated table. 	 			In 				Rails, 				Scopes, 								Jul 11, 2019						                                 		String Comparison: StringInquirer	: 		  Generally we use ==/===/eql?/equal? for string comparison in Rails. It does work in all scenarios we needed. But we often tend to look how same things can be done in more clean ways or. . . 	 			In 				Rails, 				Ruby, 								Jul 07, 2019						                                 		Squasher: Replacing old migrations	: 		  Too many migrations in application makes it painful. Sometimes they are written a long time back, that now you do not even remember. At the point you might want to replace them with s. . . 	 			In 				Rails, 				Migrations, 								Jun 28, 2019						                                 		Modify a gem and use it in Rails	: 		  Sometimes a situation arises where we need to modify a gem according to our requirement and then successfully integrate into our project. Let’s find out!	 			In 				Rails, 				Gem, 								Jun 28, 2019						                                 		Rails Request Lifecycle. . . 	: 		  Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out!	 			In 				Rails, 								Jun 12, 2019						                                 		How Indexes on database works!	: 		  When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results . . . 	 			In 				Rails, 				Database, 								Jun 08, 2018						                                 		APIs in Rails 5. 0 - overview	: 		  Have you ever wonder how APIs work in the world of convention over configuration, specifically in Rails 5. 0?	 			In 				Rails, 				Api, 								Mar 23, 2018						                                 		Rails Includes vs Joins	: 		  When I started learning Rails, I was always in a state of confusion about using includes or joins,because both are used in almost same scenario. Includes uses eager loading whereas jo. . . 	 			In 				Rails, 				Query, 								Mar 08, 2018	                                 		Why Rails? Why Ruby?	: 		  Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has made it so worthy?	 			In 				Rails, 								Feb 28, 2018						                              Query:                                  		Rails Includes vs Joins	: 		  When I started learning Rails, I was always in a state of confusion about using includes or joins,because both are used in almost same scenario. Includes uses eager loading whereas jo. . . 	 			In 				Rails, 				Query, 								Mar 08, 2018	                              Api:                                  		APIs in Rails 5. 0 - overview	: 		  Have you ever wonder how APIs work in the world of convention over configuration, specifically in Rails 5. 0?	 			In 				Rails, 				Api, 								Mar 23, 2018						                              Database:                                  		Reset primary key sequence	: 		  Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name. 	 			In 				Rails, 				Postgres, 				Database, 								Apr 16, 2020						                                 		json and jsonb - Postgresql	: 		  Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using jsonand jsonb. This article will clarify difference in short terms. 	 			In 				Rails, 				Postgres, 				Database, 								Dec 10, 2019	                                 		How Indexes on database works!	: 		  When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results . . . 	 			In 				Rails, 				Database, 								Jun 08, 2018						                              Gem:                                  		Modify a gem and use it in Rails	: 		  Sometimes a situation arises where we need to modify a gem according to our requirement and then successfully integrate into our project. Let’s find out!	 			In 				Rails, 				Gem, 								Jun 28, 2019						                              Migrations:                                  		Squasher: Replacing old migrations	: 		  Too many migrations in application makes it painful. Sometimes they are written a long time back, that now you do not even remember. At the point you might want to replace them with s. . . 	 			In 				Rails, 				Migrations, 								Jun 28, 2019						                              Ruby:                                  		Polymorphic Associations	: 		  Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Product, because user will have self image and product . . . 	 			In 				Ruby, 				Rails, 								Jun 19, 2023						                                 		Multiple Inheritance in Ruby	: 		  In this post we will learn about multiple inheritance in ruby. 	 			In 				Ruby, 				Rails, 								May 09, 2023						                                 		Ruby date formatting	: 		  Ruby provides two classes to format date string strftime and strptime. 	 			In 				Rails, 				Ruby, 								Jan 01, 2020						                                 		Ruby Ranges Overview	: 		  Range in ruby can be used in following situations	 			In 				Rails, 				Ruby, 								Aug 15, 2019	                                 		String Comparison: StringInquirer	: 		  Generally we use ==/===/eql?/equal? for string comparison in Rails. It does work in all scenarios we needed. But we often tend to look how same things can be done in more clean ways or. . . 	 			In 				Rails, 				Ruby, 								Jul 07, 2019						                              Scopes:                                  		Scopes in Rails	: 		  Recently I was calling create method on an active-record model object. But it failed in validation, because the provided foreign_key_id was not present in the associated table. 	 			In 				Rails, 				Scopes, 								Jul 11, 2019						                              new release:                                  		Rails 6 adds *_previously_was attributes method	: 		  Rails had previous_changes method to track value of object before and after save. 	 			In 				Rails, 				new release, 								Aug 02, 2019	                              Command line:                                  		Useful Rails commands	: 		     rails dbconsole 	 			In 				Rails, 				Command line, 								Aug 05, 2019						                              Http:                                  		HTTP request response headers	: 		  At the end browser talks in the language of HTTP request. But we really know minimal about it. 	 			In 				Rails, 				Http, 								Aug 20, 2019	                              Sidekiq:                                  		Sidekiq By Example : Ruby's background worker	: 		  What is the best way of handling background jobs in Rails, (maybe) using sidekiq. 	 			In 				Rails, 				Sidekiq, 								Nov 28, 2019						                              Postgres:                                  		Resolve early termination of worker in Rails	: 		  In this post we will resolve the error - Early termination of puma worker. 	 			In 				Rails, 				Puma, 				Postgres, 								Dec 12, 2022						                                 		Reset primary key sequence	: 		  Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name. 	 			In 				Rails, 				Postgres, 				Database, 								Apr 16, 2020						                                 		json and jsonb - Postgresql	: 		  Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using jsonand jsonb. This article will clarify difference in short terms. 	 			In 				Rails, 				Postgres, 				Database, 								Dec 10, 2019	                              Email:                                  		Sending Email from Rails	: 		  Sending email is integral part of every web application nowadays. In this post we will cover how to send emailsfrom a rails application. 	 			In 				Rails, 				Email, 								Mar 06, 2020						                              influxdb:                                  		Setting up Rails Performance dashboard with influxdb and grafana	: 		  When application gets stable at some point, we try to improve things we built for a while now. And improving performancetops the list for me. Application performance is a large concep. . . 	 			In 				Rails, 				influxdb, 				grafana, 				APM, 								May 02, 2020						                              grafana:                                  		Setting up Rails Performance dashboard with influxdb and grafana	: 		  When application gets stable at some point, we try to improve things we built for a while now. And improving performancetops the list for me. Application performance is a large concep. . . 	 			In 				Rails, 				influxdb, 				grafana, 				APM, 								May 02, 2020						                              APM:                                  		Setting up Rails Performance dashboard with influxdb and grafana	: 		  When application gets stable at some point, we try to improve things we built for a while now. And improving performancetops the list for me. Application performance is a large concep. . . 	 			In 				Rails, 				influxdb, 				grafana, 				APM, 								May 02, 2020						                              API keys:                                  		Rails 6 - Managing API keys using 'credentials'	: 		  How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous. 	 			In 				Rails, 				API keys, 				Secrets, 								Jul 04, 2020						                              Secrets:                                  		Rails 6 - Managing API keys using 'credentials'	: 		  How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous. 	 			In 				Rails, 				API keys, 				Secrets, 								Jul 04, 2020						                              New addition:                                  		Rails 6. 1 - adds defaults value to enum	: 		  How do we define enums? Pretty much like	 			In 				Rails, 				New addition, 				enum, 								Jul 04, 2020						                              enum:                                  		Rails 6. 1 - adds defaults value to enum	: 		  How do we define enums? Pretty much like	 			In 				Rails, 				New addition, 				enum, 								Jul 04, 2020						                              AWS:                                  		Allow HTTPS traffic via AWS Load balancer and EC2	: 		  In this post we will achieve passing only https traffic to EC2 via application load balancer. 	 			In 				Rails, 				AWS, 				ELB, 				EC2, 								Apr 07, 2021						                              ELB:                                  		Allow HTTPS traffic via AWS Load balancer and EC2	: 		  In this post we will achieve passing only https traffic to EC2 via application load balancer. 	 			In 				Rails, 				AWS, 				ELB, 				EC2, 								Apr 07, 2021						                              EC2:                                  		Allow HTTPS traffic via AWS Load balancer and EC2	: 		  In this post we will achieve passing only https traffic to EC2 via application load balancer. 	 			In 				Rails, 				AWS, 				ELB, 				EC2, 								Apr 07, 2021						                              Puma:                                  		Resolve early termination of worker in Rails	: 		  In this post we will resolve the error - Early termination of puma worker. 	 			In 				Rails, 				Puma, 				Postgres, 								Dec 12, 2022						                                             Featured:    				                                          Sidekiq By Example : Ruby's background worker                          In                     Rails,                     Sidekiq,                                                                                           Rails Request Lifecycle. . .                           In                     Rails,                                                                                           How Indexes on database works!                          In                     Rails,                     Database,                                                                   "
+    "body": "          Categories          {% for category in site. categories %}     {{ category[0] }}:           {% assign pages_list = category[1] %}    {% for post in pages_list %}    {% if post. title != null %}     {% if group == null or group == post. group %}           {% include main-loop-card. html %}     {% endif %}    {% endif %}    {% endfor %}    {% assign pages_list = nil %}    {% assign group = nil %}    {% endfor %}                  {% include sidebar-featured. html %}          "
     }, {
     "id": 3,
     "url": "http://localhost:4000/contact.html",
     "title": "Contact",
-    "body": "  Please send your message to Ruby on Rails Examples. We will reply as soon as possible!   "
+    "body": "  Please send your message to {{site. name}}. We will reply as soon as possible!   "
     }, {
     "id": 4,
     "url": "http://localhost:4000/",
     "title": "Home",
-    "body": "                                  Polymorphic Associations  :       Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Produ. . .               In                 Ruby,                 Rails,                                        Jun 19, 2023                                                                                                                             Multiple Inheritance in Ruby          :                       In                         Ruby,                         Rails,                                                                  May 09, 2023                                                                                                                                     Resolve early termination of worker in Rails          :                       In                         Rails,                         Puma,                         Postgres,                                                                  Dec 12, 2022                                                                                                                                    Allow HTTPS traffic via AWS Load balancer and EC2          :                       In                         Rails,                         AWS,                         ELB,                         EC2,                                                                  Apr 07, 2021                                                                  How Indexes on database works!                  When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database o. . .                 Read More            	                                All Stories:                   		Polymorphic Associations	: 		  Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Product, because user will have self image and product . . . 	 			In 				Ruby, 				Rails, 								Jun 19, 2023						                  		Multiple Inheritance in Ruby	: 		  In this post we will learn about multiple inheritance in ruby. 	 			In 				Ruby, 				Rails, 								May 09, 2023						                  		Resolve early termination of worker in Rails	: 		  In this post we will resolve the error - Early termination of puma worker. 	 			In 				Rails, 				Puma, 				Postgres, 								Dec 12, 2022						                  		Allow HTTPS traffic via AWS Load balancer and EC2	: 		  In this post we will achieve passing only https traffic to EC2 via application load balancer. 	 			In 				Rails, 				AWS, 				ELB, 				EC2, 								Apr 07, 2021						                  		Rails 6. 1 - adds defaults value to enum	: 		  How do we define enums? Pretty much like	 			In 				Rails, 				New addition, 				enum, 								Jul 04, 2020						                  		Rails 6 - Managing API keys using 'credentials'	: 		  How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous. 	 			In 				Rails, 				API keys, 				Secrets, 								Jul 04, 2020						                  		Setting up Rails Performance dashboard with influxdb and grafana	: 		  When application gets stable at some point, we try to improve things we built for a while now. And improving performancetops the list for me. Application performance is a large concep. . . 	 			In 				Rails, 				influxdb, 				grafana, 				APM, 								May 02, 2020						                  		Reset primary key sequence	: 		  Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name. 	 			In 				Rails, 				Postgres, 				Database, 								Apr 16, 2020						                  		Sending Email from Rails	: 		  Sending email is integral part of every web application nowadays. In this post we will cover how to send emailsfrom a rails application. 	 			In 				Rails, 				Email, 								Mar 06, 2020						                  		Ruby date formatting	: 		  Ruby provides two classes to format date string strftime and strptime. 	 			In 				Rails, 				Ruby, 								Jan 01, 2020						                                                &laquo;                              1                               2                               3                              Next &raquo;                                          Featured:    				                                          Sidekiq By Example : Ruby's background worker                          In                     Rails,                     Sidekiq,                                                                                           Rails Request Lifecycle. . .                           In                     Rails,                                                                                           How Indexes on database works!                          In                     Rails,                     Database,                                                               "
+    "body": "  {% if page. url ==  /  %}            {% assign latest_post = site. posts[0] %}          &lt;div class= topfirstimage  style= background-image: url({% if latest_post. image contains  ://  %}{{ latest_post. image }}{% else %} {{site. baseurl}}/{{ latest_post. image}}{% endif %}); height: 200px;  background-size: cover;  background-repeat: no-repeat; &gt;&lt;/div&gt;           {{ latest_post. title }}  :       {{ latest_post. excerpt | strip_html | strip_newlines | truncate: 136 }}               In         {% for category in latest_post. categories %}        {{ category }},         {% endfor %}                                {{ latest_post. date | date: '%b %d, %Y' }}                            {%- assign second_post = site. posts[1] -%}                        {% if second_post. image %}                         &lt;img class= w-100  src= {% if second_post. image contains  ://  %}{{ second_post. image }}{% else %}{{ second_post. image | absolute_url }}{% endif %}  alt= {{ second_post. title }} &gt;                        {% endif %}                                    {{ second_post. title }}          :                       In             {% for category in second_post. categories %}            {{ category }},             {% endfor %}                                                      {{ second_post. date | date: '%b %d, %Y' }}                                    {%- assign third_post = site. posts[2] -%}                        {% if third_post. image %}                         &lt;img class= w-100  src= {% if third_post. image contains  ://  %}{{ third_post. image }}{% else %}{{site. baseurl}}/{{ third_post. image }}{% endif %}  alt= {{ third_post. title }} &gt;                        {% endif %}                                    {{ third_post. title }}          :                       In             {% for category in third_post. categories %}            {{ category }},             {% endfor %}                                                      {{ third_post. date | date: '%b %d, %Y' }}                                    {%- assign fourth_post = site. posts[3] -%}                        {% if fourth_post. image %}                        &lt;img class= w-100  src= {% if fourth_post. image contains  ://  %}{{ fourth_post. image }}{% else %}{{site. baseurl}}/{{ fourth_post. image }}{% endif %}  alt= {{ fourth_post. title }} &gt;                        {% endif %}                                    {{ fourth_post. title }}          :                       In             {% for category in fourth_post. categories %}            {{ category }},             {% endfor %}                                                      {{ fourth_post. date | date: '%b %d, %Y' }}                                  {% for post in site. posts %} {% if post. tags contains  sticky  %}                    {{post. title}}                  {{ post. excerpt | strip_html | strip_newlines | truncate: 136 }}                 Read More            	             {% endif %}{% endfor %}  {% endif %}                All Stories:         {% for post in paginator. posts %}          {% include main-loop-card. html %}        {% endfor %}                   {% if paginator. total_pages &gt; 1 %}              {% if paginator. previous_page %}        &laquo; Prev       {% else %}        &laquo;       {% endif %}       {% for page in (1. . paginator. total_pages) %}        {% if page == paginator. page %}        {{ page }}        {% elsif page == 1 %}        {{ page }}        {% else %}        {{ page }}        {% endif %}       {% endfor %}       {% if paginator. next_page %}        Next &raquo;       {% else %}        &raquo;       {% endif %}            {% endif %}                     {% include sidebar-featured. html %}      "
     }, {
     "id": 5,
     "url": "http://localhost:4000/privacy-policy.html",
     "title": "Privacy Policy",
-    "body": "“Ruby on Rails Examples” takes your privacy seriously. To better protect your privacy we provide this privacy policy notice explaining the way your personal information is collected and used. Collection of Routine Information: This website track basic information about their visitors. This information includes, but is not limited to, IP addresses, browser details, timestamps and referring pages. None of this information can personally identify specific visitor to this website. The information is tracked for routine administration and maintenance purposes. Cookies: Where necessary, this website uses cookies to store information about a visitor’s preferences and history in order to better serve the visitor and/or present the visitor with customized content. Advertisement and Other Third Parties: Advertising partners and other third parties may use cookies, scripts and/or web beacons to track visitor activities on this website in order to display advertisements and other useful information. Such tracking is done directly by the third parties through their own servers and is subject to their own privacy policies. This website has no access or control over these cookies, scripts and/or web beacons that may be used by third parties. Learn how to opt out of Google’s cookie usage. Links to Third Party Websites: We have included links on this website for your use and reference. We are not responsible for the privacy policies on these websites. You should be aware that the privacy policies of these websites may differ from our own. Security: The security of your personal information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. Changes To This Privacy Policy: This Privacy Policy is effective and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. Contact Information: For any questions or concerns regarding the privacy policy, please contact us here. "
+    "body": "”{{site. name}}” takes your privacy seriously. To better protect your privacy we provide this privacy policy notice explaining the way your personal information is collected and used. Collection of Routine Information: This website track basic information about their visitors. This information includes, but is not limited to, IP addresses, browser details, timestamps and referring pages. None of this information can personally identify specific visitor to this website. The information is tracked for routine administration and maintenance purposes. Cookies: Where necessary, this website uses cookies to store information about a visitor’s preferences and history in order to better serve the visitor and/or present the visitor with customized content. Advertisement and Other Third Parties: Advertising partners and other third parties may use cookies, scripts and/or web beacons to track visitor activities on this website in order to display advertisements and other useful information. Such tracking is done directly by the third parties through their own servers and is subject to their own privacy policies. This website has no access or control over these cookies, scripts and/or web beacons that may be used by third parties. Learn how to opt out of Google’s cookie usage. Links to Third Party Websites: We have included links on this website for your use and reference. We are not responsible for the privacy policies on these websites. You should be aware that the privacy policies of these websites may differ from our own. Security: The security of your personal information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. Changes To This Privacy Policy: This Privacy Policy is effective and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. Contact Information: For any questions or concerns regarding the privacy policy, please contact us here. "
     }, {
     "id": 6,
     "url": "http://localhost:4000/tags.html",
     "title": "Tags",
-    "body": "          Tags               featured:                                  		Sidekiq By Example : Ruby's background worker	: 		  What is the best way of handling background jobs in Rails, (maybe) using sidekiq. 	 			In 				Rails, 				Sidekiq, 								Nov 28, 2019						                                 		Rails Request Lifecycle. . . 	: 		  Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out!	 			In 				Rails, 								Jun 12, 2019						                                 		How Indexes on database works!	: 		  When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results . . . 	 			In 				Rails, 				Database, 								Jun 08, 2018						                              sticky:                                  		How Indexes on database works!	: 		  When it comes to performance of an application, databases are highly important and effective. And one of the key factor in database optimisation is index. It helps in getting results . . . 	 			In 				Rails, 				Database, 								Jun 08, 2018						                                             Featured:    				                                          Sidekiq By Example : Ruby's background worker                          In                     Rails,                     Sidekiq,                                                                                           Rails Request Lifecycle. . .                           In                     Rails,                                                                                           How Indexes on database works!                          In                     Rails,                     Database,                                                                   "
+    "body": "          Tags          {% for tag in site. tags %}     {{ tag[0] }}:           {% assign pages_list = tag[1] %}    {% for post in pages_list %}    {% if post. title != null %}     {% if group == null or group == post. group %}           {% include main-loop-card. html %}     {% endif %}    {% endif %}    {% endfor %}    {% assign pages_list = nil %}    {% assign group = nil %}    {% endfor %}                  {% include sidebar-featured. html %}          "
     }, {
     "id": 7,
     "url": "http://localhost:4000/robots.txt",
     "title": "",
-    "body": "Sitemap: http://localhost:4000/sitemap. xml "
+    "body": "      Sitemap: {{ “sitemap. xml”   absolute_url }}   "
     }, {
     "id": 8,
     "url": "http://localhost:4000/page2/",
     "title": "Home",
-    "body": "                  All Stories:                   		json and jsonb - Postgresql	: 		  Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using jsonand jsonb. This article will clarify difference in short terms. 	 			In 				Rails, 				Postgres, 				Database, 								Dec 10, 2019	                  		Sidekiq By Example : Ruby's background worker	: 		  What is the best way of handling background jobs in Rails, (maybe) using sidekiq. 	 			In 				Rails, 				Sidekiq, 								Nov 28, 2019						                  		Run seed data only on first Docker instance up	: 		  Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? Ans - Absolutely no. rails db:seed should only run for the first time i. e. first deployment. But. . . 	 			In 				Rails, 								Nov 22, 2019	                  		HTTP request response headers	: 		  At the end browser talks in the language of HTTP request. But we really know minimal about it. 	 			In 				Rails, 				Http, 								Aug 20, 2019	                  		Ruby Ranges Overview	: 		  Range in ruby can be used in following situations	 			In 				Rails, 				Ruby, 								Aug 15, 2019	                  		Useful Rails commands	: 		     rails dbconsole 	 			In 				Rails, 				Command line, 								Aug 05, 2019						                  		Rails 6 adds *_previously_was attributes method	: 		  Rails had previous_changes method to track value of object before and after save. 	 			In 				Rails, 				new release, 								Aug 02, 2019	                  		Scopes in Rails	: 		  Recently I was calling create method on an active-record model object. But it failed in validation, because the provided foreign_key_id was not present in the associated table. 	 			In 				Rails, 				Scopes, 								Jul 11, 2019						                  		String Comparison: StringInquirer	: 		  Generally we use ==/===/eql?/equal? for string comparison in Rails. It does work in all scenarios we needed. But we often tend to look how same things can be done in more clean ways or. . . 	 			In 				Rails, 				Ruby, 								Jul 07, 2019						                  		Squasher: Replacing old migrations	: 		  Too many migrations in application makes it painful. Sometimes they are written a long time back, that now you do not even remember. At the point you might want to replace them with s. . . 	 			In 				Rails, 				Migrations, 								Jun 28, 2019						                                                &laquo; Prev                              1                               2                               3                              Next &raquo;                                          Featured:    				                                          Sidekiq By Example : Ruby's background worker                          In                     Rails,                     Sidekiq,                                                                                           Rails Request Lifecycle. . .                           In                     Rails,                                                                                           How Indexes on database works!                          In                     Rails,                     Database,                                                               "
+    "body": "  {% if page. url ==  /  %}            {% assign latest_post = site. posts[0] %}          &lt;div class= topfirstimage  style= background-image: url({% if latest_post. image contains  ://  %}{{ latest_post. image }}{% else %} {{site. baseurl}}/{{ latest_post. image}}{% endif %}); height: 200px;  background-size: cover;  background-repeat: no-repeat; &gt;&lt;/div&gt;           {{ latest_post. title }}  :       {{ latest_post. excerpt | strip_html | strip_newlines | truncate: 136 }}               In         {% for category in latest_post. categories %}        {{ category }},         {% endfor %}                                {{ latest_post. date | date: '%b %d, %Y' }}                            {%- assign second_post = site. posts[1] -%}                        {% if second_post. image %}                         &lt;img class= w-100  src= {% if second_post. image contains  ://  %}{{ second_post. image }}{% else %}{{ second_post. image | absolute_url }}{% endif %}  alt= {{ second_post. title }} &gt;                        {% endif %}                                    {{ second_post. title }}          :                       In             {% for category in second_post. categories %}            {{ category }},             {% endfor %}                                                      {{ second_post. date | date: '%b %d, %Y' }}                                    {%- assign third_post = site. posts[2] -%}                        {% if third_post. image %}                         &lt;img class= w-100  src= {% if third_post. image contains  ://  %}{{ third_post. image }}{% else %}{{site. baseurl}}/{{ third_post. image }}{% endif %}  alt= {{ third_post. title }} &gt;                        {% endif %}                                    {{ third_post. title }}          :                       In             {% for category in third_post. categories %}            {{ category }},             {% endfor %}                                                      {{ third_post. date | date: '%b %d, %Y' }}                                    {%- assign fourth_post = site. posts[3] -%}                        {% if fourth_post. image %}                        &lt;img class= w-100  src= {% if fourth_post. image contains  ://  %}{{ fourth_post. image }}{% else %}{{site. baseurl}}/{{ fourth_post. image }}{% endif %}  alt= {{ fourth_post. title }} &gt;                        {% endif %}                                    {{ fourth_post. title }}          :                       In             {% for category in fourth_post. categories %}            {{ category }},             {% endfor %}                                                      {{ fourth_post. date | date: '%b %d, %Y' }}                                  {% for post in site. posts %} {% if post. tags contains  sticky  %}                    {{post. title}}                  {{ post. excerpt | strip_html | strip_newlines | truncate: 136 }}                 Read More            	             {% endif %}{% endfor %}  {% endif %}                All Stories:         {% for post in paginator. posts %}          {% include main-loop-card. html %}        {% endfor %}                   {% if paginator. total_pages &gt; 1 %}              {% if paginator. previous_page %}        &laquo; Prev       {% else %}        &laquo;       {% endif %}       {% for page in (1. . paginator. total_pages) %}        {% if page == paginator. page %}        {{ page }}        {% elsif page == 1 %}        {{ page }}        {% else %}        {{ page }}        {% endif %}       {% endfor %}       {% if paginator. next_page %}        Next &raquo;       {% else %}        &raquo;       {% endif %}            {% endif %}                     {% include sidebar-featured. html %}      "
     }, {
     "id": 9,
     "url": "http://localhost:4000/page3/",
@@ -337,407 +339,198 @@ function lunr_search(term) {
 
     <!-- Content -->
     <main role="main" class="site-content">
-        <div class="container">
-    
- <!--endif page url is / -->
-    
-
-
-<!-- Now the rest of the posts with the usual loop but with an offset:4 on the first page so we can skeep the first 4 posts displayed above -->
-    
-<div class="row mt-3">
-   
-    <div class="col-md-8 main-loop">
         
-        <h4 class="font-weight-bold spanborder"><span>All Stories</span></h4>
-        
-
-        
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/postgresql-json/">json and jsonb - Postgresql</a>
-	</h2>
-	<p class="excerpt">
-	   Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using jsonand jsonb. This article will clarify difference in short terms.
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#postgres">Postgres</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#database">Database</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Dec 10, 2019
-	</small>
-</div>
-
-</div>
-        
-        
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/sidekiq-by-example/">Sidekiq By Example : Ruby's background worker</a>
-	</h2>
-	<p class="excerpt">
-	   What is the best way of handling background jobs in Rails, (maybe) using sidekiq.
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#sidekiq">Sidekiq</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Nov 28, 2019
-	</small>
-</div>
-
-	<div class="col-md-3 pr-0 text-right">
-	<a href="/sidekiq-by-example/">
-	<img class="w-100" src="/assets/images/sidekiq.png" alt="Sidekiq By Example : Ruby's background worker">
-	</a>
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#ruby">ruby</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Multiple Inheritance in Ruby</h1>
+					<div class="d-flex align-items-center">
+                        
+                        <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
+                        
+						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 09, 2023 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+    </span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/images/multiple-Inheritance-home-image.png" alt="Multiple Inheritance in Ruby">
+				</div>
+                
+			</div>
+		</div>
 	</div>
-
-</div>
-        
-        
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/run-migrations-on-first-docker-up/">Run seed data only on first Docker instance up</a>
-	</h2>
-	<p class="excerpt">
-	   Q: Do we need to run rails db:seed, rails db:migrate every time the deployment happen? Ans - Absolutely no. rails db:seed should only run for the first time i.e. first deployment. But...
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Nov 22, 2019
-	</small>
 </div>
 
-</div>
-        
-        
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/http-request-part/">HTTP request response headers</a>
-	</h2>
-	<p class="excerpt">
-	   At the end browser talks in the language of HTTP request. But we really know minimal about it.
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#http">Http</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Aug 20, 2019
-	</small>
-</div>
 
-</div>
-        
-        
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/ruby-range/">Ruby Ranges Overview</a>
-	</h2>
-	<p class="excerpt">
-	   Range in ruby can be used in following situations
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#ruby">Ruby</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Aug 15, 2019
-	</small>
-</div>
 
-</div>
-        
-        
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/rails-command-line-tools/">Useful Rails commands</a>
-	</h2>
-	<p class="excerpt">
-	         rails dbconsole  
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#command line">Command line</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Aug 05, 2019
-	</small>
-</div>
 
-	<div class="col-md-3 pr-0 text-right">
-	<a href="/rails-command-line-tools/">
-	<img class="w-100" src="/assets/images/kid_opening_gem.jpg" alt="Useful Rails commands">
-	</a>
-	</div>
 
-</div>
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
         
         
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/previously_was/">Rails 6 adds *_previously_was attributes method</a>
-	</h2>
-	<p class="excerpt">
-	   Rails had previous_changes method to track value of object before and after save.
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#new release">new release</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Aug 02, 2019
-	</small>
-</div>
-
-</div>
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_facebook"></a>
+						<a class="a2a_button_twitter"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_linkedin"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
         
         
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/scopes-in-rails/">Scopes in Rails</a>
-	</h2>
-	<p class="excerpt">
-	   Recently I was calling create method on an active-record model object. But it failed in validation, because the provided foreign_key_id was not present in the associated table.
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#scopes">Scopes</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Jul 11, 2019
-	</small>
-</div>
-
-	<div class="col-md-3 pr-0 text-right">
-	<a href="/scopes-in-rails/">
-	<img class="w-100" src="/assets/images/scope.jpeg" alt="Scopes in Rails">
-	</a>
-	</div>
-
-</div>
-        
-        
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/string-comparison/">String Comparison: StringInquirer</a>
-	</h2>
-	<p class="excerpt">
-	   Generally we use ==/===/eql?/equal? for string comparison in Rails.It does work in all scenarios we needed. But we often tend to look how same things can be done in more clean ways or...
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#ruby">Ruby</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Jul 07, 2019
-	</small>
-</div>
-
-	<div class="col-md-3 pr-0 text-right">
-	<a href="/string-comparison/">
-	<img class="w-100" src="/assets/images/equality.png" alt="String Comparison: StringInquirer">
-	</a>
-	</div>
-
-</div>
-        
-        
-        
-            <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/squash-old-migrations/">Squasher: Replacing old migrations</a>
-	</h2>
-	<p class="excerpt">
-	   Too many migrations in application makes it painful. Sometimes they are written a long time back, that now you do not even remember. At the point you might want to replace them with s...
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#migrations">Migrations</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Jun 28, 2019
-	</small>
-</div>
-
-	<div class="col-md-3 pr-0 text-right">
-	<a href="/squash-old-migrations/">
-	<img class="w-100" src="/assets/images/line_at_toll.jpg" alt="Squasher: Replacing old migrations">
-	</a>
-	</div>
-
-</div>
-        
-        
-        
-        <div class="mt-5">
-         <!-- Pagination links -->
+		<div class="col-md-12 col-lg-8">
             
-            <ul class="pagination"> 
-              
-                <li class="page-item"><a class="page-link" href="/">&laquo; Prev</a></li>
-              
+            <!-- Article -->
+			<article class="article-post">                
+			<p><em>In this post we will learn about multiple inheritance in ruby</em>.</p>
 
-              
-                
-                <li class="page-item"><a class="page-link" href="/">1</a></li>
-                
-              
-                
-                <li class="page-item disabled"><span class="webjeda page-link">2</span></li>
-                
-              
-                
-                <li class="page-item"><a class="page-link" href="/page3">3</a></li>
-                
-              
+<p><strong>What is Multiple Inheritance?</strong></p>
 
-              
-                <li class="page-item"><a class="page-link" href="/page3">Next &raquo;</a></li>
-              
-            </ul>
-                  
-        </div>
+<p>It is property of code to inherit from multiple parent classes. Ruby supports inheriting only from one parent class.</p>
+
+<p><img src="/assets/images/class-1.png" alt="class-inheritance-example" /></p>
+
+<p>So what is the way for inheriting from multiple classes? By the way are you aware of classic diamond problem in
+mulitple inheritance? <a href="https://en.wikipedia.org/wiki/Multiple_inheritance">If not, read more about it here.</a></p>
+
+<p>Here comes in play modules in Ruby. Modules are somewhat different than classes -</p>
+<ol>
+  <li>Modules can’t be instantiated, class can be instantiated</li>
+  <li>Can’t create object of Modules, but can create object of class</li>
+  <li>We can include multiple modules in a single class, but can’t include classes</li>
+</ol>
+
+<p>To achieve multiple inheritance, we can include as many modules in a class. The same methods will be overriden by latest implementation. Let’s take a example -</p>
+
+<p><img src="/assets/images/class-modules-2.png" alt="class-inheritance-example" /></p>
+
+<p>Here module A is included in <code class="highlighter-rouge">class C</code> and so when method <code class="highlighter-rouge">name</code> is called upon <code class="highlighter-rouge">class C</code> it results printing <code class="highlighter-rouge">"A"</code></p>
+
+<p>Now let’s consider this example -</p>
+
+<p><img src="/assets/images/class-modules-3.png" alt="class-inheritance-example" /></p>
+
+<p>Here we have two modules <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code>. And when these two are included in <code class="highlighter-rouge">class C</code>, because both define same method <code class="highlighter-rouge">name</code> and module <code class="highlighter-rouge">B</code> is included after A - the program output is <code class="highlighter-rouge">"B"</code></p>
+
+<p>And that’s how we can include multiple modules in same class.</p>
+
+<p>I hope this was useful!</p>
+
+<hr />
+
+<p><br /></p>
+
+<p>References -</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Multiple_inheritance">The Diamond problem</a></li>
+</ul>
+                
+			</article>
+			<div>
+				<br>
+			</div>
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				</span>
+			</div>
+            
+             <!-- Author Box -->
+                				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Hi I am Swapnil, a Software Engineer and computer science enthusiastic					
+					</div>
+				</div>				
+                
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
         
-    </div>
-    
-    <div class="col-md-4">
-        <div class="sticky-top sticky-top-offset">
-    <h4 class="font-weight-bold spanborder"><span>Featured</span></h4>  
-    <ol class="list-featured">				
-                        
-            <li class="mb-4">
-            <span>
-                <h6 class="font-weight-bold">
-                    <a href="/sidekiq-by-example/" class="text-dark">Sidekiq By Example : Ruby's background worker</a>
-                </h6>
-                <span class="d-block text-muted">
-                    In <span class="catlist">
-                    
-                    <a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-                    
-                    <a class="text-capitalize text-muted smoothscroll" href="/categories.html#sidekiq">Sidekiq</a><span class="sep">, </span>
-                    
-                    </span>
-                </span>
-            </span>
-            </li>                
-                        
-            <li class="mb-4">
-            <span>
-                <h6 class="font-weight-bold">
-                    <a href="/rails-request-lifecycle/" class="text-dark">Rails Request Lifecycle...</a>
-                </h6>
-                <span class="d-block text-muted">
-                    In <span class="catlist">
-                    
-                    <a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-                    
-                    </span>
-                </span>
-            </span>
-            </li>                
-                        
-            <li class="mb-4">
-            <span>
-                <h6 class="font-weight-bold">
-                    <a href="/how-index-works-on-database/" class="text-dark">How Indexes on database works!</a>
-                </h6>
-                <span class="d-block text-muted">
-                    In <span class="catlist">
-                    
-                    <a class="text-capitalize text-muted smoothscroll" href="/categories.html#rails">Rails</a><span class="sep">, </span>
-                    
-                    <a class="text-capitalize text-muted smoothscroll" href="/categories.html#database">Database</a><span class="sep">, </span>
-                    
-                    </span>
-                </span>
-            </span>
-            </li>                
-           
-    </ol>
-</div>     
-    </div>
-    
+        
+	</div>
 </div>
 
 
-
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/remove-stale-pid/"> <img height="30px" class="mr-1" src="/assets/images/stale-postmaster-pid-error.png">  Resolve early termination of worker in Rails</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/polymorphic-associations/"> Polymorphic Associations  <img height="30px" class="ml-1" src="/assets/images/poly-main.png"> </a>
+            </div>
+          
+        </div>
+    </div>
 </div>
+
     </main>
 
 

@@ -97,8 +97,12 @@
 <lastmod>2022-12-12T00:00:00+05:30</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/ruby-modules-mixins-inheritance/</loc>
+<loc>http://localhost:4000/ruby-modules-mixins-inheritance-copy/</loc>
 <lastmod>2023-05-09T00:00:00+05:30</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/polymorphic-associations/</loc>
+<lastmod>2023-06-19T00:00:00+05:30</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/404/</loc>

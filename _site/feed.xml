@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-19T19:55:20+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Multiple Inheritance in Ruby</title><link href="http://localhost:4000/ruby-modules-mixins-inheritance/" rel="alternate" type="text/html" title="Multiple Inheritance in Ruby" /><published>2023-05-09T00:00:00+05:30</published><updated>2023-05-09T00:00:00+05:30</updated><id>http://localhost:4000/ruby-modules-mixins-inheritance</id><content type="html" xml:base="http://localhost:4000/ruby-modules-mixins-inheritance/">&lt;p&gt;&lt;em&gt;In this post we will learn about multiple inheritance in ruby&lt;/em&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-20T00:23:12+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Polymorphic Associations</title><link href="http://localhost:4000/polymorphic-associations/" rel="alternate" type="text/html" title="Polymorphic Associations" /><published>2023-06-19T00:00:00+05:30</published><updated>2023-06-19T00:00:00+05:30</updated><id>http://localhost:4000/polymorphic-associations</id><content type="html" xml:base="http://localhost:4000/polymorphic-associations/">&lt;!--- Define --&gt;
+&lt;p&gt;Suppose two models can be associated to a third model with a common attribute. For example, &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt; can belong to &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; as well as &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;, because user will have self image and product will have descriptive images of product.
+This can be achieved with Polymorphic associations, Two or more models can be associated to third model using single association.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use-it&quot;&gt;How to use it?&lt;/h2&gt;
+&lt;p&gt;There are two parts -&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Migration defining two fields on the model which will have work as base model. It will have &lt;code class=&quot;highlighter-rouge&quot;&gt;association_id&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;association_type&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;string&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Defining associations in models.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And we are ready to use it.&lt;/p&gt;
+
+&lt;p&gt;Lets understand through code example.&lt;/p&gt;
+
+&lt;h2 id=&quot;code-example&quot;&gt;Code Example&lt;/h2&gt;
+&lt;p&gt;Suppose we have three models - Picture, User, Product. We need specify polymorphic association at
+&lt;code class=&quot;highlighter-rouge&quot;&gt;pictures&lt;/code&gt; table creation&lt;/p&gt;
+
+&lt;h4 id=&quot;1-migration&quot;&gt;1. Migration&lt;/h4&gt;
+&lt;p&gt;We will add two fields &lt;code class=&quot;highlighter-rouge&quot;&gt;imageable_type&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;imageable_id&lt;/code&gt;.
+&lt;img src=&quot;/assets/images/poly-1.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;2-model-associations-changes&quot;&gt;2. Model associations changes&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/poly-2.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;benefits&quot;&gt;Benefits&lt;/h3&gt;
+&lt;p&gt;The setup provides easy access to associated models.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;From an instance of the User model, you can retrieve a collection of pictures: &lt;code class=&quot;highlighter-rouge&quot;&gt;@user.pictures&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Similarly, you can retrieve &lt;code class=&quot;highlighter-rouge&quot;&gt;@product.pictures&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;If you have an instance of the Picture model, you can get to its parent via &lt;code class=&quot;highlighter-rouge&quot;&gt;@picture.imageable&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Polymorphic association helps in making your code DRY(Do not Repeat Yourself)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://guides.rubyonrails.org/association_basics.html#polymorphic-associations&quot;&gt;Rails documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Product, because user will have self image and product will have descriptive images of product. This can be achieved with Polymorphic associations, Two or more models can be associated to third model using single association.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/poly-main.png" /></entry><entry><title type="html">Multiple Inheritance in Ruby</title><link href="http://localhost:4000/ruby-modules-mixins-inheritance-copy/" rel="alternate" type="text/html" title="Multiple Inheritance in Ruby" /><published>2023-05-09T00:00:00+05:30</published><updated>2023-05-09T00:00:00+05:30</updated><id>http://localhost:4000/ruby-modules-mixins-inheritance%20copy</id><content type="html" xml:base="http://localhost:4000/ruby-modules-mixins-inheritance-copy/">&lt;p&gt;&lt;em&gt;In this post we will learn about multiple inheritance in ruby&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;What is Multiple Inheritance?&lt;/strong&gt;&lt;/p&gt;
 
@@ -235,7 +278,58 @@ otherwise EC2 instance would be still accessible via http to end user.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
+from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
+
+&lt;p&gt;Well we can achieve it using
+database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
+will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;More example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
 
 &lt;p&gt;In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp;amp; then application
 code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.&lt;/p&gt;
@@ -316,58 +410,7 @@ out of VCS is master key. There are multiple ways to achieve it.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;Medium &lt;a href=&quot;https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc&quot;&gt;Blog&lt;/a&gt; on environment wise credentials&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
-from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
-
-&lt;p&gt;Well we can achieve it using
-database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
-will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;More example&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
 tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
 It also depends on underlying infrastructure.&lt;/p&gt;
 
@@ -734,68 +777,4 @@ In &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; model regis
 
 &lt;p&gt;&lt;a href=&quot;https://apidock.com/ruby/Time/strftime&quot;&gt;strftime&lt;/a&gt; - &lt;a href=&quot;https://apidock.com/ruby/Time/strftime&quot;&gt;https://apidock.com/ruby/Time/strftime&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;https://stackoverflow.com/a/14619560/5235107&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Ruby provides two classes to format date string strftime and strptime.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/date-format.png" /></entry><entry><title type="html">json and jsonb - Postgresql</title><link href="http://localhost:4000/postgresql-json/" rel="alternate" type="text/html" title="json and jsonb - Postgresql" /><published>2019-12-10T00:00:00+05:30</published><updated>2019-12-10T00:00:00+05:30</updated><id>http://localhost:4000/postgresql-json</id><content type="html" xml:base="http://localhost:4000/postgresql-json/">&lt;p&gt;Postgresql provides a data-type &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; to save data from JSON format. There are two ways for it - using &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt;
-and &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;. This article will clarify difference in short terms.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; are very similar to each other. The key difference is - &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt; is binary representation of &lt;code class=&quot;highlighter-rouge&quot;&gt;json&lt;/code&gt; -
-as per postgresql documentation.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Pros -  &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Improved efficiency&lt;/li&gt;
-  &lt;li&gt;Postgresql provides query interface for these types. So a direct query for any key in column can be made.&lt;/li&gt;
-  &lt;li&gt;Simple database schema&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cons -  &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonb&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Slight overhead to convert into binary form.&lt;/li&gt;
-  &lt;li&gt;Aggregate queries are slower (due to lack of statistics).&lt;/li&gt;
-  &lt;li&gt;Due to large table footprints may take large disk space.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;…&lt;/p&gt;
-
-&lt;h4 id=&quot;querying-json-field&quot;&gt;Querying json field&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Creating table&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;create table foo (id serial NOT NULL primary key, metadata json)
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;inserting test data&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;insert into foo(metadata) values ('{ &quot;property&quot;: &quot;bar1&quot; }'), ('{ &quot;property&quot;: &quot;bar2&quot; }')
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fetching data from table foo&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;select * from foo
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;p&gt;&lt;img src=&quot;/assets/images/select-foo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;selecting json field&lt;/code&gt;
-    &lt;pre&gt;&lt;code class=&quot;language-postgresql&quot;&gt;select id, metadata -&amp;gt;'property' as property from foo
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;p&gt;&lt;img src=&quot;/assets/images/select-property.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Cheers!!!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Official postgresql doc - &lt;a href=&quot;https://www.postgresql.org/docs/current/functions-json.html&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;postgresql tutorial blog - &lt;a href=&quot;https://www.postgresqltutorial.com/postgresql-json/&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/14619560/5235107&quot;&gt;https://stackoverflow.com/a/14619560/5235107&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Ruby provides two classes to format date string strftime and strptime.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/date-format.png" /></entry></feed>
