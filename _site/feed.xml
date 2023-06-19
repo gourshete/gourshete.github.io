@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-19T22:01:59+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Polymorphic Associations</title><link href="http://localhost:4000/polymorphic-associations/" rel="alternate" type="text/html" title="Polymorphic Associations" /><published>2023-06-19T00:00:00+05:30</published><updated>2023-06-19T00:00:00+05:30</updated><id>http://localhost:4000/polymorphic-associations</id><content type="html" xml:base="http://localhost:4000/polymorphic-associations/">&lt;!--- Define --&gt;
-&lt;p&gt;Suppose we have two models to which third model needs to be associated. It can be done with Polymorphic associations, Two or more models can be associated to third model using single association.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-20T00:23:12+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Polymorphic Associations</title><link href="http://localhost:4000/polymorphic-associations/" rel="alternate" type="text/html" title="Polymorphic Associations" /><published>2023-06-19T00:00:00+05:30</published><updated>2023-06-19T00:00:00+05:30</updated><id>http://localhost:4000/polymorphic-associations</id><content type="html" xml:base="http://localhost:4000/polymorphic-associations/">&lt;!--- Define --&gt;
+&lt;p&gt;Suppose two models can be associated to a third model with a common attribute. For example, &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt; can belong to &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; as well as &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;, because user will have self image and product will have descriptive images of product.
+This can be achieved with Polymorphic associations, Two or more models can be associated to third model using single association.&lt;/p&gt;
 
 &lt;h2 id=&quot;how-to-use-it&quot;&gt;How to use it?&lt;/h2&gt;
 &lt;p&gt;There are two parts -&lt;/p&gt;
@@ -8,10 +9,13 @@
   &lt;li&gt;Defining associations in models.&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;And we are ready to use it.&lt;/p&gt;
+
 &lt;p&gt;Lets understand through code example.&lt;/p&gt;
 
 &lt;h2 id=&quot;code-example&quot;&gt;Code Example&lt;/h2&gt;
-&lt;p&gt;Suppose we have three models - Picture, User, Product&lt;/p&gt;
+&lt;p&gt;Suppose we have three models - Picture, User, Product. We need specify polymorphic association at
+&lt;code class=&quot;highlighter-rouge&quot;&gt;pictures&lt;/code&gt; table creation&lt;/p&gt;
 
 &lt;h4 id=&quot;1-migration&quot;&gt;1. Migration&lt;/h4&gt;
 &lt;p&gt;We will add two fields &lt;code class=&quot;highlighter-rouge&quot;&gt;imageable_type&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;imageable_id&lt;/code&gt;.
@@ -20,49 +24,14 @@
 &lt;h4 id=&quot;2-model-associations-changes&quot;&gt;2. Model associations changes&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/poly-2.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Extra Benefits&lt;/p&gt;
+&lt;h3 id=&quot;benefits&quot;&gt;Benefits&lt;/h3&gt;
+&lt;p&gt;The setup provides easy access to associated models.&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;From an instance of the Employee model, you can retrieve a collection of pictures: @employee.pictures&lt;/li&gt;
-  &lt;li&gt;Similarly, you can retrieve @product.pictures&lt;/li&gt;
+  &lt;li&gt;From an instance of the User model, you can retrieve a collection of pictures: &lt;code class=&quot;highlighter-rouge&quot;&gt;@user.pictures&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Similarly, you can retrieve &lt;code class=&quot;highlighter-rouge&quot;&gt;@product.pictures&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;If you have an instance of the Picture model, you can get to its parent via &lt;code class=&quot;highlighter-rouge&quot;&gt;@picture.imageable&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Polymorphic association helps in making your code DRY(Do not Repeat Yourself)&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;Summarize&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;em&gt;In this post we will learn about multiple inheritance in ruby&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;What is Multiple Inheritance?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;It is property of code to inherit from multiple parent classes. Ruby supports inheriting only from one parent class.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/class-1.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So what is the way for inheriting from multiple classes? By the way are you aware of classic diamond problem in
-mulitple inheritance? &lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_inheritance&quot;&gt;If not, read more about it here.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Here comes in play modules in Ruby. Modules are somewhat different than classes -&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Modules can’t be instantiated, class can be instantiated&lt;/li&gt;
-  &lt;li&gt;Can’t create object of Modules, but can create object of class&lt;/li&gt;
-  &lt;li&gt;We can include multiple modules in a single class, but can’t include classes&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;To achieve multiple inheritance, we can include as many modules in a class. The same methods will be overriden by latest implementation. Let’s take a example -&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/class-modules-2.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here module A is included in &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt; and so when method &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; is called upon &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt; it results printing &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;A&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Now let’s consider this example -&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/class-modules-3.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here we have two modules &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;. And when these two are included in &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt;, because both define same method &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; and module &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt; is included after A - the program output is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;B&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And that’s how we can include multiple modules in same class.&lt;/p&gt;
-
-&lt;p&gt;I hope this was useful!&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -71,8 +40,8 @@ mulitple inheritance? &lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_in
 &lt;p&gt;References -&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_inheritance&quot;&gt;The Diamond problem&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Suppose we have two models to which third model needs to be associated. It can be done with Polymorphic associations, Two or more models can be associated to third model using single association.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/multiple-Inheritance-home-image.png" /></entry><entry><title type="html">Multiple Inheritance in Ruby</title><link href="http://localhost:4000/ruby-modules-mixins-inheritance-copy/" rel="alternate" type="text/html" title="Multiple Inheritance in Ruby" /><published>2023-05-09T00:00:00+05:30</published><updated>2023-05-09T00:00:00+05:30</updated><id>http://localhost:4000/ruby-modules-mixins-inheritance%20copy</id><content type="html" xml:base="http://localhost:4000/ruby-modules-mixins-inheritance-copy/">&lt;p&gt;&lt;em&gt;In this post we will learn about multiple inheritance in ruby&lt;/em&gt;.&lt;/p&gt;
+  &lt;li&gt;&lt;a href=&quot;https://guides.rubyonrails.org/association_basics.html#polymorphic-associations&quot;&gt;Rails documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Product, because user will have self image and product will have descriptive images of product. This can be achieved with Polymorphic associations, Two or more models can be associated to third model using single association.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/poly-main.png" /></entry><entry><title type="html">Multiple Inheritance in Ruby</title><link href="http://localhost:4000/ruby-modules-mixins-inheritance-copy/" rel="alternate" type="text/html" title="Multiple Inheritance in Ruby" /><published>2023-05-09T00:00:00+05:30</published><updated>2023-05-09T00:00:00+05:30</updated><id>http://localhost:4000/ruby-modules-mixins-inheritance%20copy</id><content type="html" xml:base="http://localhost:4000/ruby-modules-mixins-inheritance-copy/">&lt;p&gt;&lt;em&gt;In this post we will learn about multiple inheritance in ruby&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;What is Multiple Inheritance?&lt;/strong&gt;&lt;/p&gt;
 
