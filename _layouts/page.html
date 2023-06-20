@@ -7,6 +7,14 @@ layout: default
 <div class="page-content">
 {{ content }}
 <!-- Comments -->
+<script src="https://utteranc.es/client.js"
+        repo="gourshete/gourshete.github.io"
+        issue-term="pathname"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
 {% if page.comments == true %}
 {% include comments.html %}
 {% endif %}
