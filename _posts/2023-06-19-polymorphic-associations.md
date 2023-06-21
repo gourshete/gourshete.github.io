@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Polymorphic Associations"
+title:  "Polymorphic Associations in Rails"
 date:   2023-06-19
-keywords: "ruby rails aws github learning swapnil gourshete ruby on rails"
+keywords: "ruby rails github learning ruby_on_rails polymorphic association activerecord"
 image: assets/images/poly-main.png
 categories: [ Ruby, Rails]
 ---
