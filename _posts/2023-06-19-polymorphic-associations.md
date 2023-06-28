@@ -36,7 +36,13 @@ We will add two fields `imageable_type` and `imageable_id`.
 
 
 
-### Benefits
+## What if we do not use Polymorphic?
+We will have to create two tables representing `User-Image` and `Product-Image` associations. That will be
+storing same attributes in two tables except `user_id` and `product_id`.
+
+
+
+## Benefits
 The setup provides easy access to associated models.
 - From an instance of the User model, you can retrieve a collection of pictures: `@user.pictures`
 - Similarly, you can retrieve `@product.pictures`

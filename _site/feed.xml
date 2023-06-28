@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-29T02:06:55+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Polymorphic Associations in Rails</title><link href="http://localhost:4000/polymorphic-associations/" rel="alternate" type="text/html" title="Polymorphic Associations in Rails" /><published>2023-06-19T00:00:00+05:30</published><updated>2023-06-19T00:00:00+05:30</updated><id>http://localhost:4000/polymorphic-associations</id><content type="html" xml:base="http://localhost:4000/polymorphic-associations/">&lt;!--- Define --&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-29T03:50:33+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">Polymorphic Associations in Rails</title><link href="http://localhost:4000/polymorphic-associations/" rel="alternate" type="text/html" title="Polymorphic Associations in Rails" /><published>2023-06-19T00:00:00+05:30</published><updated>2023-06-19T00:00:00+05:30</updated><id>http://localhost:4000/polymorphic-associations</id><content type="html" xml:base="http://localhost:4000/polymorphic-associations/">&lt;!--- Define --&gt;
 &lt;p&gt;Suppose two models can be associated to a third model with a common attribute. For example, &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt; can belong to &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; as well as &lt;code class=&quot;highlighter-rouge&quot;&gt;Product&lt;/code&gt;, because user will have self image and product will have descriptive images of product.
 This can be achieved with Polymorphic associations, Two or more models can be associated to third model using single association.&lt;/p&gt;
 
@@ -24,7 +24,11 @@ This can be achieved with Polymorphic associations, Two or more models can be as
 &lt;h4 id=&quot;2-model-associations-changes&quot;&gt;2. Model associations changes&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/poly-2.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;benefits&quot;&gt;Benefits&lt;/h3&gt;
+&lt;h2 id=&quot;what-if-we-do-not-use-polymorphic&quot;&gt;What if we do not use Polymorphic?&lt;/h2&gt;
+&lt;p&gt;We will have to create two tables representing &lt;code class=&quot;highlighter-rouge&quot;&gt;User-Image&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Product-Image&lt;/code&gt; associations. That will be
+storing same attributes in two tables except &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;product_id&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;benefits&quot;&gt;Benefits&lt;/h2&gt;
 &lt;p&gt;The setup provides easy access to associated models.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;From an instance of the User model, you can retrieve a collection of pictures: &lt;code class=&quot;highlighter-rouge&quot;&gt;@user.pictures&lt;/code&gt;&lt;/li&gt;
