@@ -4,7 +4,7 @@ title:  "Polymorphic Associations in Rails"
 date:   2023-06-19
 keywords: "ruby rails github learning ruby_on_rails polymorphic association activerecord"
 image: assets/images/poly-main.png
-categories: [ Ruby, Rails]
+categories: [ Ruby, Rails, Activerecord]
 ---
 
 <!--- Define -->
@@ -44,6 +44,32 @@ The setup provides easy access to associated models.
 - Polymorphic association helps in making your code DRY(Do not Repeat Yourself)
 
 
+
+## Can we test polymorphic associations?
+Yes, of course. I am using `rspec` for unit testing instead of `minitest`. It can be installed from here
+<a href="https://github.com/rspec/rspec-rails" target="_blank">install rails rspec</a>.
+
+If you had not installed rspec previously, run
+
+```bash
+$ rails generate rspec:model user
+      create  spec/models/user_spec.rb
+
+$ rails generate rspec:model product
+      create  spec/models/product_spec.rb
+
+$ rails generate rspec:model picture
+      create  spec/models/picture_spec.rb
+```
+
+Now we have empty rspec files for models. Let's add following code to picture model rspec file
+<img src="{{ '/assets/images/poly-rspec.png' | prepend: site.baseurl }}" alt="polymorphic-rspec-example">
+
+And when we run this spec file
+<img src="{{ '/assets/images/poly-run-rspec.png' | prepend: site.baseurl }}" alt="polymorphic-rspec-example">
+
+It will pass with flying colors!
+
 ---
 
 <br>
@@ -51,3 +77,4 @@ The setup provides easy access to associated models.
   References - 
  
 - [Rails documentation](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
+- [rspec-rails](https://github.com/rspec/rspec-rails).
