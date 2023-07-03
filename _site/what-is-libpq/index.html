@@ -4,23 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>json and jsonb - Postgresql | Ruby on Rails Examples</title>
+    <title>What is libpq? | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>json and jsonb - Postgresql | Ruby on Rails Examples</title>
+<title>What is libpq? | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="json and jsonb - Postgresql" />
+<meta property="og:title" content="What is libpq?" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms." />
-<meta property="og:description" content="Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms." />
-<link rel="canonical" href="http://localhost:4000/postgresql-json/" />
-<meta property="og:url" content="http://localhost:4000/postgresql-json/" />
+<meta name="description" content="You might have heard about libpq while installing/operating postgresql. But what is libpq? Let’s understand." />
+<meta property="og:description" content="You might have heard about libpq while installing/operating postgresql. But what is libpq? Let’s understand." />
+<link rel="canonical" href="http://localhost:4000/what-is-libpq/" />
+<meta property="og:url" content="http://localhost:4000/what-is-libpq/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
+<meta property="og:image" content="http://localhost:4000/assets/images/libpq.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-12-10T00:00:00+05:30" />
+<meta property="article:published_time" content="2023-07-03T00:00:00+05:30" />
 <script type="application/ld+json">
-{"headline":"json and jsonb - Postgresql","dateModified":"2019-12-10T00:00:00+05:30","datePublished":"2019-12-10T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/postgresql-json/"},"author":{"@type":"Person","name":"swapnil"},"description":"Postgresql provides a data-type jsonb to save data from JSON format. There are two ways for it - using json and jsonb. This article will clarify difference in short terms.","url":"http://localhost:4000/postgresql-json/","@context":"http://schema.org"}</script>
+{"headline":"What is libpq?","dateModified":"2023-07-03T00:00:00+05:30","datePublished":"2023-07-03T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"@type":"BlogPosting","image":"http://localhost:4000/assets/images/libpq.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/what-is-libpq/"},"author":{"@type":"Person","name":"swapnil"},"description":"You might have heard about libpq while installing/operating postgresql. But what is libpq? Let’s understand.","url":"http://localhost:4000/what-is-libpq/","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -347,34 +348,34 @@ function lunr_search(term) {
 <div class="container">
 <div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
 		<div class="h-100 tofront">
-			<div class="row  justify-content-center ">
-				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
 					<p class="text-uppercase font-weight-bold">
                         <span class="catlist">
 						
-                          <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
-                        
                           <a class="sscroll text-danger" href="/categories.html#postgres">postgres</a><span class="sep">, </span>
-                        
-                          <a class="sscroll text-danger" href="/categories.html#database">database</a><span class="sep">, </span>
                         
                         </span>
 					</p>
-					<h1 class="display-4 mb-4 article-headline">json and jsonb - Postgresql</h1>
+					<h1 class="display-4 mb-4 article-headline">What is libpq?</h1>
 					<div class="d-flex align-items-center">
                         
                         <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
                         
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">Dec 10, 2019 · <span class="reading-time">
+                            <span class="text-muted d-block mt-1">Jul 03, 2023 · <span class="reading-time">
   
   
-    1 min read
+    2 mins read
   
 </span>
     </span>
 						</small>
 					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/images/libpq.png" alt="What is libpq?">
 				</div>
                 
 			</div>
@@ -416,70 +417,109 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>Postgresql provides a data-type <code class="highlighter-rouge">jsonb</code> to save data from JSON format. There are two ways for it - using <code class="highlighter-rouge">json</code>
-and <code class="highlighter-rouge">jsonb</code>. This article will clarify difference in short terms.</p>
+			<p>You might have heard about libpq while installing/operating <code class="highlighter-rouge">postgresql</code>. But what is <code class="highlighter-rouge">libpq</code>? Let’s understand.</p>
 
-<p><code class="highlighter-rouge">json</code> and <code class="highlighter-rouge">jsonb</code> are very similar to each other. The key difference is - <code class="highlighter-rouge">jsonb</code> is binary representation of <code class="highlighter-rouge">json</code> -
-as per postgresql documentation.</p>
+<p><br /></p>
 
-<ul>
-  <li>Pros -  <code class="highlighter-rouge">jsonb</code></li>
-</ul>
+<!--- Define -->
 
+<h2 id="what-is-libpq">What is libpq?</h2>
+<p>libpq is a library that helps app to communicate with postgresql backend server. It is C application programmer’s interface. It helps in passing on queries and returning the result.</p>
+
+<h3 id="also">Also</h3>
+<p>As per Postgresql docs -</p>
+
+<p>libpq is also the underlying engine for several other PostgreSQL application interfaces, including those  written for C++, Perl, Python, Tcl and ECPG. So some aspects of libpq behavior will be important to you if you use one of those packages. In particular, Section 34.15, Section 34.16 and Section 34.19 describe behavior that is visible to the user of any application that uses libpq.</p>
+
+<!-- Layman words explaination, if possible -->
+
+<h2 id="when-it-is-used">When it is used?</h2>
+<p>If you have Postgresql on your setup, then libpq will be needed and used as underlying interface to communicate with Postgresql backend server.</p>
+
+<h3 id="how-to-install-libpq">How to install libpq?</h3>
 <ol>
-  <li>Improved efficiency</li>
-  <li>Postgresql provides query interface for these types. So a direct query for any key in column can be made.</li>
-  <li>Simple database schema</li>
-</ol>
-
-<ul>
-  <li>Cons -  <code class="highlighter-rouge">jsonb</code></li>
-</ul>
-
-<ol>
-  <li>Slight overhead to convert into binary form.</li>
-  <li>Aggregate queries are slower (due to lack of statistics).</li>
-  <li>Due to large table footprints may take large disk space.</li>
-</ol>
-
-<p>…</p>
-
-<h4 id="querying-json-field">Querying json field</h4>
-
-<ol>
-  <li><code class="highlighter-rouge">Creating table</code>
-    <pre><code class="language-postgresql">create table foo (id serial NOT NULL primary key, metadata json)
-</code></pre>
+  <li>On Mac OS
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>libpq
+</code></pre></div>    </div>
   </li>
-  <li><code class="highlighter-rouge">inserting test data</code>
-    <pre><code class="language-postgresql">insert into foo(metadata) values ('{ "property": "bar1" }'), ('{ "property": "bar2" }')
-</code></pre>
-  </li>
-  <li><code class="highlighter-rouge">fetching data from table foo</code>
-    <pre><code class="language-postgresql">select * from foo
-</code></pre>
-    <p><img src="/assets/images/select-foo.png" alt="" /></p>
-  </li>
-  <li><code class="highlighter-rouge">selecting json field</code>
-    <pre><code class="language-postgresql">select id, metadata -&gt;'property' as property from foo
-</code></pre>
-    <p><img src="/assets/images/select-property.png" alt="" /></p>
+  <li>On Ubuntu
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>libpq-dev
+</code></pre></div>    </div>
   </li>
 </ol>
 
-<p>Cheers!!!</p>
+<p><br /></p>
+
+<h3 id="issues-if-not-installed">Issues if not installed</h3>
+<p><img src="/assets/images/libpq-error.png" alt="libpq-error-image" /></p>
+
+<p>-&gt; Installation of <code class="highlighter-rouge">libpq</code> should resolve this error. If you are still facing an issue, you might need to add libpq to path. Following is example for command terminal which uses zshrc.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'export PATH="/usr/local/opt/libpq/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<h3 id="code-example-to-connect-and-print-hello-world">Code Example to connect and print hello world</h3>
+<p>Code example -</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;libpq-fe.h&gt;
+</span>
+<span class="k">static</span> <span class="kt">void</span>
+<span class="nf">exit_nicely</span><span class="p">(</span><span class="n">PGconn</span> <span class="o">*</span><span class="n">conn</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">PQfinish</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">conninfo</span><span class="p">;</span>
+    <span class="n">PGconn</span>     <span class="o">*</span><span class="n">conn</span><span class="p">;</span>
+    <span class="n">PGresult</span>   <span class="o">*</span><span class="n">res</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">conninfo</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">else</span>
+        <span class="n">conninfo</span> <span class="o">=</span> <span class="s">"dbname=postgres"</span><span class="p">;</span>
+
+    <span class="cm">/* Connect to the database */</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">PQconnectdb</span><span class="p">(</span><span class="n">conninfo</span><span class="p">);</span>
+
+    <span class="cm">/* Verify success of database connection */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">PQstatus</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span> <span class="o">!=</span> <span class="n">CONNECTION_OK</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"Connection to database failed: %s"</span><span class="p">,</span>
+                <span class="n">PQerrorMessage</span><span class="p">(</span><span class="n">conn</span><span class="p">));</span>
+        <span class="n">exit_nicely</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Execute a simple query and display the results */</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">PQexec</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s">"SELECT 'Hello World'"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">PQgetvalue</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+
+    <span class="n">PQclear</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+
+    <span class="cm">/* close the connection to the database and cleanup */</span>
+    <span class="n">PQfinish</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <hr />
+
+<p><br /></p>
 
 <p>References -</p>
 
 <ul>
-  <li>
-    <p>Official postgresql doc - <a href="https://www.postgresql.org/docs/current/functions-json.html">link</a></p>
-  </li>
-  <li>
-    <p>postgresql tutorial blog - <a href="https://www.postgresqltutorial.com/postgresql-json/">link</a></p>
-  </li>
+  <li><a href="https://www.postgresql.org/docs/current/libpq.html">Postgresql libpq documentation</a></li>
+  <li><a href="https://pgpedia.info/l/libpq.html">Code reference</a></li>
 </ul>
                 
 			</article>
@@ -539,13 +579,9 @@ as per postgresql documentation.</p>
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/sidekiq-by-example/"> <img height="30px" class="mr-1" src="/assets/images/sidekiq.png">  Sidekiq By Example : Ruby's background worker</a>
+                <a class="text-dark" href="/polymorphic-associations/"> <img height="30px" class="mr-1" src="/assets/images/poly-main.png">  Polymorphic Associations in Rails</a>
             </div>
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/ruby-date-formatting/"> Ruby date formatting  <img height="30px" class="ml-1" src="/assets/images/date-format.png"> </a>
-            </div>
           
         </div>
     </div>
