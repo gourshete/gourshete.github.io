@@ -8,12 +8,14 @@ categories: [ Ruby, Rails, Activerecord]
 ---
 
 <!--- Define -->
+.
+## What is the usecase?
 Suppose two models can be associated to a third model with a common attribute. For example, `Image` can belong to `User` as well as `Product`, because user will have self image and product will have descriptive images of product.
-This can be achieved with Polymorphic associations, Two or more models can be associated to third model using single association.
+This can be achieved with Polymorphic associations - Two or more models can be associated to third model using single association.
 
 
 ## How to use it?
-There are two parts -
+Let's understand how to use it. There are two parts -
 1. Migration defining two fields on the model which will have work as base model. It will have `association_id` -> `int` and `association_type` -> `string`.
 2. Defining associations in models.
 
