@@ -1,4 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-06T15:26:26+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">What is libpq?</title><link href="http://localhost:4000/what-is-libpq/" rel="alternate" type="text/html" title="What is libpq?" /><published>2023-07-03T00:00:00+05:30</published><updated>2023-07-03T00:00:00+05:30</updated><id>http://localhost:4000/what-is-libpq</id><content type="html" xml:base="http://localhost:4000/what-is-libpq/">&lt;p&gt;You might have heard about libpq while installing/operating &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt;. But what is &lt;code class=&quot;highlighter-rouge&quot;&gt;libpq&lt;/code&gt;? Let’s understand.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-08T17:17:41+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ruby on Rails Examples</title><subtitle>Exploring Rails</subtitle><entry><title type="html">What is self in Ruby?</title><link href="http://localhost:4000/self-keyword-in-ruby/" rel="alternate" type="text/html" title="What is self in Ruby?" /><published>2023-09-08T00:00:00+05:30</published><updated>2023-09-08T00:00:00+05:30</updated><id>http://localhost:4000/self-keyword-in-ruby</id><content type="html" xml:base="http://localhost:4000/self-keyword-in-ruby/">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;self&lt;/code&gt; is a keyword in ruby which means it is reserved by Ruby to serve a specific purpose and we cannot use it like regular variables (although you can override it, but you shouldn’t).&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-self-in-ruby&quot;&gt;What is &lt;code class=&quot;highlighter-rouge&quot;&gt;self&lt;/code&gt; in Ruby?&lt;/h2&gt;
+&lt;p&gt;Behaviour of self depends on what context it is defined. &lt;code class=&quot;highlighter-rouge&quot;&gt;self&lt;/code&gt; can represent instance of class or the class itself. Let’s understand through examples.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-within-method&quot;&gt;1. within method&lt;/h3&gt;
+&lt;p&gt;In this case, self represents the current instance of the class. It will be different for different instances of the class and will not intervene any proceedings between them.&lt;/p&gt;
+
+&lt;h5 id=&quot;example-1&quot;&gt;Example 1:&lt;/h5&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RailsExamples&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method1&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;__id__&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:1:0&amp;gt; obj &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; RailsExamples.new
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:2:0&amp;gt; obj.method1
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:3:0&amp;gt; 460060
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:4:0&amp;gt; 
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:5:0&amp;gt; obj.__id__
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:6:0&amp;gt; 460060
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:7:0&amp;gt; 
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:8:0&amp;gt; obj.method1 &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; RailsExamples.new.method1
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:9:0&amp;gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-within-class&quot;&gt;2. Within class&lt;/h3&gt;
+&lt;p&gt;In this case &lt;code class=&quot;highlighter-rouge&quot;&gt;self&lt;/code&gt; will represent the class itself. It will return the Class object under which it is defined. Let’s understand through example -&lt;/p&gt;
+
+&lt;h5 id=&quot;example-2&quot;&gt;Example 2:&lt;/h5&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RailsExamples&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method1&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;__id__&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;method2&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;__id__&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:1:0&amp;gt; RailsExamples.method2
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 992600
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:2:0&amp;gt; RailsExamples.method2
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 992600
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:3:0&amp;gt; RailsExamples.__id__
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 992600
+irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:4:0&amp;gt; RailsExamples.new.method1.__id__
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 2052721
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-outside-any-context&quot;&gt;3. Outside any context&lt;/h3&gt;
+&lt;p&gt;When &lt;code class=&quot;highlighter-rouge&quot;&gt;self&lt;/code&gt; is called outside any class or method, it refers the main object (the top-level context).&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:218:0&amp;gt; p self
+main
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Happy Coding!!!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">self is a keyword in ruby which means it is reserved by Ruby to serve a specific purpose and we cannot use it like regular variables (although you can override it, but you shouldn’t).</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/self.jpeg" /></entry><entry><title type="html">What is libpq?</title><link href="http://localhost:4000/what-is-libpq/" rel="alternate" type="text/html" title="What is libpq?" /><published>2023-07-03T00:00:00+05:30</published><updated>2023-07-03T00:00:00+05:30</updated><id>http://localhost:4000/what-is-libpq</id><content type="html" xml:base="http://localhost:4000/what-is-libpq/">&lt;p&gt;You might have heard about libpq while installing/operating &lt;code class=&quot;highlighter-rouge&quot;&gt;postgresql&lt;/code&gt;. But what is &lt;code class=&quot;highlighter-rouge&quot;&gt;libpq&lt;/code&gt;? Let’s understand.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -412,7 +476,58 @@ otherwise EC2 instance would be still accessible via http to end user.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
+from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
+
+&lt;p&gt;Well we can achieve it using
+database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
+will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;More example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;References -&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
 
 &lt;p&gt;In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp;amp; then application
 code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.&lt;/p&gt;
@@ -493,58 +608,7 @@ out of VCS is master key. There are multiple ways to achieve it.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;Medium &lt;a href=&quot;https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc&quot;&gt;Blog&lt;/a&gt; on environment wise credentials&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Rails 6.1 - adds defaults value to enum</title><link href="http://localhost:4000/rails-add-default-to-enum/" rel="alternate" type="text/html" title="Rails 6.1 - adds defaults value to enum" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-add-default-to-enum</id><content type="html" xml:base="http://localhost:4000/rails-add-default-to-enum/">&lt;p&gt;How do we define enums? Pretty much like&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here what is the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; for newly created object of class Book? It would be &lt;code class=&quot;highlighter-rouge&quot;&gt;proposed&lt;/code&gt;, as is the first value 
-from enums. What if we need a default enum value to be set to newly created objects?&lt;/p&gt;
-
-&lt;p&gt;Well we can achieve it using
-database default value constraint, but it will not be assigned until object is saved to database i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;Book.new.status&lt;/code&gt;
-will not reflect &lt;code class=&quot;highlighter-rouge&quot;&gt;database default-value constraint&lt;/code&gt; as it is yet to be saved to database.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails 6.1 added support to define default value for enum. Declaring like&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:proposed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:written&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :published&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So now new object of class Book will show value for column &lt;code class=&quot;highlighter-rouge&quot;&gt;status&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt; and not proposed.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;published&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;More example&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:inprogress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:complete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;_default: :inprogress&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;Blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;inprogress&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Rails &lt;a href=&quot;https://github.com/rails/rails/pull/39820&quot;&gt;master PR&lt;/a&gt; which adds _default enum by &lt;code class=&quot;highlighter-rouge&quot;&gt;kamipo&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do we define enums? Pretty much like</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/rails-6.jpeg" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry><entry><title type="html">Setting up Rails Performance dashboard with influxdb and grafana</title><link href="http://localhost:4000/rails-grafana-dashboard/" rel="alternate" type="text/html" title="Setting up Rails Performance dashboard with influxdb and grafana" /><published>2020-05-02T00:00:00+05:30</published><updated>2020-05-02T00:00:00+05:30</updated><id>http://localhost:4000/rails-grafana-dashboard</id><content type="html" xml:base="http://localhost:4000/rails-grafana-dashboard/">&lt;p&gt;When application gets stable at some point, we try to improve things we built for a while now. And improving performance
 tops the list for me. Application performance is a large concept which can be measured with different number of parameters.
 It also depends on underlying infrastructure.&lt;/p&gt;
 
@@ -677,68 +741,4 @@ database insert operation will fail with error &lt;code class=&quot;highlighter-
 
 &lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/244265&quot;&gt;StackOverflow&lt;/a&gt; - &lt;a href=&quot;https://stackoverflow.com/a/244265&quot;&gt;https://stackoverflow.com/a/244265&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;Rubyinrails&lt;/a&gt; - &lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/reset_pk.jpg" /></entry><entry><title type="html">Sending Email from Rails</title><link href="http://localhost:4000/send-email-from-rails/" rel="alternate" type="text/html" title="Sending Email from Rails" /><published>2020-03-06T00:00:00+05:30</published><updated>2020-03-06T00:00:00+05:30</updated><id>http://localhost:4000/send-email-from-rails</id><content type="html" xml:base="http://localhost:4000/send-email-from-rails/">&lt;p&gt;Sending email is integral part of every web application nowadays. In this post we will cover how to send emails
-from a rails application.&lt;/p&gt;
-
-&lt;p&gt;First you need an active smtp server to send an email, because only SMTP servers are capable of sending or receiving emails.
-There are many providers such as gmail, sendgrid and more. For this post, we will consider using gmail.&lt;/p&gt;
-
-&lt;p&gt;Assuming you have a Rails application with User model.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;We need to configure SMTP server. This can be set in config/environments/development.rb
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delivery_method&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:smtp&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'example.com'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#replace with your own url&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_url_options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;host: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    
-   &lt;span class=&quot;c1&quot;&gt;# SMTP settings for gmail&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;smtp_settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;ss&quot;&gt;:address&lt;/span&gt;              &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;smtp.gmail.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;ss&quot;&gt;:port&lt;/span&gt;                 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;587&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;ss&quot;&gt;:user_name&lt;/span&gt;            &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'EMAIL'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-       &lt;span class=&quot;ss&quot;&gt;:password&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'PASSWORD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-       &lt;span class=&quot;ss&quot;&gt;:authentication&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;plain&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;ss&quot;&gt;:enable_starttls_auto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Lets write the code now. What will be sent in the email? Let’s say we want to send a welcome mail when user signs up.
-We will generate a mailer named - 
-rails g mailer UserRegistration &lt;br /&gt;
-This will generate 
-&lt;img src=&quot;/assets/images/SS-send-email-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Open app/mailers/user_registrations_mailer.rb and add method following method
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;registration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
- &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;
- &lt;span class=&quot;n&quot;&gt;mail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;to: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;subject: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Welcome to Rails learning'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/user_registrations_mailer&lt;/code&gt; &amp;amp; add a new .erb file whose name resembles with method name in 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;app/mailers/user_registrations_mailer.rb&lt;/code&gt;. In our case it is &lt;code class=&quot;highlighter-rouge&quot;&gt;registration.html.erb&lt;/code&gt;, now put in whatever welcome message 
-you want a user to see in email. I will simply add
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;no&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= @user.first_name%&amp;gt; &amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;last_name&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%&amp;gt;,
-    
- Welcome to Ruby on Rails learning.
-    
- Thanks for signing up.
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;We need to trigger the action of sending emails. There are multiple ways to achieve this. Can call this from controller 
-action or a service call or activerecord callback. Will prefer last option here
-In &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; model register &lt;code class=&quot;highlighter-rouge&quot;&gt;after_create&lt;/code&gt; callback
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;after_create&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:send_sign_up_email&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
- &lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
- &lt;span class=&quot;nf&quot;&gt;private&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;user_registration_email&lt;/span&gt;
-   &lt;span class=&quot;no&quot;&gt;UserRegistrationsMailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;registration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;deliver_now&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;And now you are all set to send sign-up emails.&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Sending email is integral part of every web application nowadays. In this post we will cover how to send emails from a rails application.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/send-email-1.jpg" /></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;Rubyinrails&lt;/a&gt; - &lt;a href=&quot;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&quot;&gt;https://rubyinrails.com/2019/07/12/postgres-reset-sequence-to-max-id-in-rails/&lt;/a&gt;&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">Resetting primary key sequence in Rails can be achieved by simply calling method reset_pk_sequence! on ActiveRecord with table_name.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/reset_pk.jpg" /></entry></feed>
