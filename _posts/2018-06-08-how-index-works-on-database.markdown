@@ -47,9 +47,6 @@ Insert is the only operation which do not directly benefits from index, as it do
 
 In update query, when record is updated in database, the index for the same also gets updated.
 
-<img src="{{ '/assets/images/blank.jpeg' | prepend: site.baseurl }}" alt="">
-
-
 <h4>Building indexes concurrently</h4>
 Most database systems allow to perform reads while creating index in a single scan, but lock parallel write operations. Transactions involving insert, update, delete will be blocked until index build is finished. And this could have sever impact if system is a live production database.
 

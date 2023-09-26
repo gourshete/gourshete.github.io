@@ -34,11 +34,11 @@ migrations before 2018. Squasher afterward deletes all those now-redundent migra
 
 - Does Rails versioning affect our way?<br>
 --> Yes. By default squasher will not generate any rails versioning for newly generated migration.
-<img src="{{ '/assets/img/squasher1.png' | prepend: site.baseurl }}" alt="">
+<img src="{{ '/assets/images/squasher1.png' | prepend: site.baseurl }}" alt="">
 So there are high chances it may break during migrations.<br>
 To counter it, squasher simply comes with option - <br>
  `-m, --migration=VERSION`. It define the rails migration version(since Rails 5) 
-<img src="{{ '/assets/img/squasher2.png' | prepend: site.baseurl }}" alt="">
+<img src="{{ '/assets/images/squasher2.png' | prepend: site.baseurl }}" alt="">
 
 <p></p>
 

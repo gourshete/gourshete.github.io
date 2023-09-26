@@ -11,7 +11,7 @@ keywords: "Web framework. Ruby on Rails has been a prominent framework for web a
 
 Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has made it so worthy?
 
-<img src="{{ '/assets/img/why.jpg' | prepend: site.baseurl }}" alt=""> 
+<img src="{{ '/assets/images/why.jpg' | prepend: site.baseurl }}" alt=""> 
 
 Here are some findings,
 

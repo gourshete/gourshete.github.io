@@ -177,7 +177,7 @@ It is upto you what to choose. But I think we should consider what framework has
 
 Let's assume data for more clear picture
 
-<img src="{{ '/assets/img/scopes_1.png' | prepend: site.baseurl }}" alt="">
+<img src="{{ '/assets/images/scopes_1.png' | prepend: site.baseurl }}" alt="">
 
 `state_id` is present in every `cities` record. And `State` model has a default scope on `column_1` as `where(column_1: 1)`.
 
