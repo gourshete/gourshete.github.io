@@ -3,7 +3,7 @@ layout: post
 title:  "What is self in Ruby?"
 date:   2023-09-08
 keywords: "ruby rails github learning swapnil gourshete ruby on rails self keyword"
-image: assets/images/self.jpeg
+image: assets/images/railsexamples-com-self.png
 categories: [ Ruby ]
 ---
 
