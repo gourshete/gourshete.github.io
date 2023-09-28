@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Ruby Valid Parenthesis Solution"
+title:  "Leetcode Valid Parenthesis Solution Ruby - 2"
 date:   2023-09-28
 keywords: "leetcode valid paranthesis ruby rails github learning swapnil gourshete"
 image: assets/images/leetcode/leetcode-valid-parenthesis.png

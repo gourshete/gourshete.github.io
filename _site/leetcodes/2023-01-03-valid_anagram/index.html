@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Leetcode 2 (Ruby) - contains duplicate Solution | Ruby on Rails Examples</title>
+    <title>Leetcode Valid Anagram Solution Ruby - 3 | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Leetcode 2 (Ruby) - contains duplicate Solution | Ruby on Rails Examples</title>
+<title>Leetcode Valid Anagram Solution Ruby - 3 | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Leetcode 2 (Ruby) - contains duplicate Solution" />
+<meta property="og:title" content="Leetcode Valid Anagram Solution Ruby - 3" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Problem Statement -" />
 <meta property="og:description" content="Problem Statement -" />
-<link rel="canonical" href="http://localhost:4000/leetcodes/contains_duplicate/" />
-<meta property="og:url" content="http://localhost:4000/leetcodes/contains_duplicate/" />
+<link rel="canonical" href="http://localhost:4000/leetcodes/2023-01-03-valid_anagram/" />
+<meta property="og:url" content="http://localhost:4000/leetcodes/2023-01-03-valid_anagram/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/leetcode/leetcode-2-contains-duplicate-2.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/leetcode/leetcode-3-cover.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-09-28T00:00:00+05:30" />
 <script type="application/ld+json">
-{"headline":"Leetcode 2 (Ruby) - contains duplicate Solution","dateModified":"2023-09-28T00:00:00+05:30","datePublished":"2023-09-28T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"@type":"BlogPosting","image":"http://localhost:4000/assets/images/leetcode/leetcode-2-contains-duplicate-2.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/leetcodes/contains_duplicate/"},"description":"Problem Statement -","url":"http://localhost:4000/leetcodes/contains_duplicate/","@context":"http://schema.org"}</script>
+{"headline":"Leetcode Valid Anagram Solution Ruby - 3","dateModified":"2023-09-28T00:00:00+05:30","datePublished":"2023-09-28T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"@type":"BlogPosting","image":"http://localhost:4000/assets/images/leetcode/leetcode-3-cover.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/leetcodes/2023-01-03-valid_anagram/"},"description":"Problem Statement -","url":"http://localhost:4000/leetcodes/2023-01-03-valid_anagram/","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -394,7 +394,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/leetcode/leetcode-2-contains-duplicate-2.png" alt="Leetcode 2 (Ruby) - contains duplicate Solution">
+					<img class="rounded" src="/assets/images/leetcode/leetcode-3-cover.png" alt="Leetcode Valid Anagram Solution Ruby - 3">
 				</div>
                 
 			</div>
@@ -438,50 +438,54 @@ function lunr_search(term) {
 			<article class="article-post">                
 			<p>Problem Statement -</p>
 
-<p>Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.</p>
+<p>Given two strings s and t, return true if t is an anagram of s, and false otherwise.</p>
 
-<p>leetcode problem link - <a target="_blank" href="https://leetcode.com/problems/contains_duplicate">Contains Duplicate</a></p>
+<p>An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p>
+
+<p>leetcode problem link - <a target="_blank" href="https://leetcode.com/problems/valid-anagram/">Valid Anagram</a></p>
 
 <p><br /></p>
 
 <h2>High level overview -</h2>
 
-<p>We need to return true/false if any integer appears twice in given array. Goal here is to do it in O(n) time complexity and O(n) extra space.</p>
+<p>We need to tell if given sequence is a valid anagram. Goal here is to do it in O(n+m) time complexity and O(n+m) extra space.</p>
 
-<p>To check if integer has already appeared in the array, we need to store the processed values somewhere. So what could be the best choice? How will we select the data structure?
-The data structure that best suits our case is a Hash, because we will store integers as keys.</p>
+<p>We will iterate through each character of both strings and keep track of how many times it has appeared.</p>
 
-<p>We will iterate through each int, and check if it is present in the Hash. If yes, then we can say that the number has appeared twice and return truthy response. If no, then make entry for this integer in Hash so that it can be found in next appearance of the same integer.</p>
+<p>But How to store the count? What is best suited data structure?
+Hash will be ideal data structure for this use case, where key will be char and value will be their respective count. And of course, we will need two hashes.</p>
 
-<p>And if we reach outside the loop, then we can come to conclusion that No integer appeared twice in the array.</p>
+<p>Then we will compare these two count values and decide if it is a valid anagram. If they both match, then it is valid. If they do not match, then it is invalid.</p>
+
+<p>Choices -</p>
+
+<p>As problem statement says - <em>using all the original letters exactly once</em>, we can also solve it using sort.
+Sort both strings and then compare them. But sort will take O(nlogn) complexity, whereas above approach will take O(n+m) time.</p>
 
 <p><br /></p>
 
 <h2>Algorithm -</h2>
 
 <ol>
-  <li>Initiate an hash to store the processed integers, initially empty</li>
-  <li>Iterate through each integer</li>
-  <li>check if this integer as key is present in the Hash
-    - if yes, then return truthy and exit function</li>
-  <li>if no, then push the integer as key into hash (what to keep as value? I am going with simple boolean)</li>
-  <li>End loop</li>
-  <li>Return falsy and exit function</li>
+  <li>Count occurrances of each char using <code class="highlighter-rouge">.tally</code> method. It will return <code class="highlighter-rouge">hash</code> object</li>
+  <li>Check if both the hash objects match
+    <ul>
+      <li>yes? -&gt; The input is a valid anagram</li>
+      <li>no? -&gt; The input is not a valid anagram</li>
+    </ul>
+  </li>
 </ol>
 
 <p><br /></p>
 
 <h2>Code -</h2>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># @param {Integer[]} nums</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># @param {String} s</span>
+<span class="c1"># @param {String} t</span>
 <span class="c1"># @return {Boolean}</span>
-<span class="k">def</span> <span class="nf">contains_duplicate</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-  <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="n">nums</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
-    <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="n">h</span><span class="p">.</span><span class="nf">key?</span> <span class="n">n</span>
+<span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="k">return</span> <span class="kp">false</span> <span class="k">if</span> <span class="n">s</span><span class="p">.</span><span class="nf">length</span> <span class="o">!=</span> <span class="n">t</span><span class="p">.</span><span class="nf">length</span>
 
-    <span class="n">h</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="kp">true</span>
-  <span class="k">end</span>
-  <span class="kp">false</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">chars</span><span class="p">.</span><span class="nf">tally</span> <span class="o">==</span> <span class="n">t</span><span class="p">.</span><span class="nf">chars</span><span class="p">.</span><span class="nf">tally</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
@@ -489,9 +493,9 @@ The data structure that best suits our case is a Hash, because we will store int
 
 <h2>Benchmarking -</h2>
 
-<p><span>Beats 96.79%of users with Ruby | Runtime : 90 ms</span></p>
+<p><span>Beats 80.09%of users with Ruby | Runtime : 59 ms</span></p>
 
-<p><img src="/assets/images/leetcode/leetcode-2-contains-duplicate.png" alt="" /></p>
+<p><img src="/assets/images/leetcode/leetcode-3-bc.png" alt="" /></p>
 
 <p>Happy Coding!!!</p>
                 
@@ -541,10 +545,10 @@ The data structure that best suits our case is a Hash, because we will store int
     <div class="container">
         <div class="row prevnextlinks small font-weight-bold">
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/leetcodes/valid_parenthesis/"> Ruby Valid Parenthesis Solution  <img height="30px" class="ml-1" src="/assets/images/leetcode/leetcode-valid-parenthesis.png"> </a>
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/leetcodes/2023-01-02-valid_parenthesis/"> <img height="30px" class="mr-1" src="/assets/images/leetcode/leetcode-valid-parenthesis.png">  Leetcode Valid Parenthesis Solution Ruby - 2</a>
             </div>
+          
           
         </div>
     </div>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Leetcode 2 (Ruby) - contains duplicate Solution"
+title:  "Leetcode Contains Duplicate Solution Ruby - 1"
 date:   2023-09-28
 keywords: "leetcode valid paranthesis ruby rails github learning swapnil gourshete"
 image: assets/images/leetcode/leetcode-2-contains-duplicate-2.png

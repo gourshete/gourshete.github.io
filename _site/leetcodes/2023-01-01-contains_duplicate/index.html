@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ruby Valid Parenthesis Solution | Ruby on Rails Examples</title>
+    <title>Leetcode Contains Duplicate Solution Ruby - 1 | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Ruby Valid Parenthesis Solution | Ruby on Rails Examples</title>
+<title>Leetcode Contains Duplicate Solution Ruby - 1 | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Ruby Valid Parenthesis Solution" />
+<meta property="og:title" content="Leetcode Contains Duplicate Solution Ruby - 1" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Problem Statement -" />
 <meta property="og:description" content="Problem Statement -" />
-<link rel="canonical" href="http://localhost:4000/leetcodes/valid_parenthesis/" />
-<meta property="og:url" content="http://localhost:4000/leetcodes/valid_parenthesis/" />
+<link rel="canonical" href="http://localhost:4000/leetcodes/2023-01-01-contains_duplicate/" />
+<meta property="og:url" content="http://localhost:4000/leetcodes/2023-01-01-contains_duplicate/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/leetcode/leetcode-valid-parenthesis.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/leetcode/leetcode-2-contains-duplicate-2.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-09-28T00:00:00+05:30" />
 <script type="application/ld+json">
-{"headline":"Ruby Valid Parenthesis Solution","dateModified":"2023-09-28T00:00:00+05:30","datePublished":"2023-09-28T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"@type":"BlogPosting","image":"http://localhost:4000/assets/images/leetcode/leetcode-valid-parenthesis.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/leetcodes/valid_parenthesis/"},"description":"Problem Statement -","url":"http://localhost:4000/leetcodes/valid_parenthesis/","@context":"http://schema.org"}</script>
+{"headline":"Leetcode Contains Duplicate Solution Ruby - 1","dateModified":"2023-09-28T00:00:00+05:30","datePublished":"2023-09-28T00:00:00+05:30","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"@type":"BlogPosting","image":"http://localhost:4000/assets/images/leetcode/leetcode-2-contains-duplicate-2.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/leetcodes/2023-01-01-contains_duplicate/"},"description":"Problem Statement -","url":"http://localhost:4000/leetcodes/2023-01-01-contains_duplicate/","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -385,7 +385,7 @@ function lunr_search(term) {
                             <span class="text-muted d-block mt-1">Sep 28, 2023 · <span class="reading-time">
   
   
-    2 mins read
+    1 mins read
   
 </span>
     </span>
@@ -394,7 +394,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/leetcode/leetcode-valid-parenthesis.png" alt="Ruby Valid Parenthesis Solution">
+					<img class="rounded" src="/assets/images/leetcode/leetcode-2-contains-duplicate-2.png" alt="Leetcode Contains Duplicate Solution Ruby - 1">
 				</div>
                 
 			</div>
@@ -438,55 +438,50 @@ function lunr_search(term) {
 			<article class="article-post">                
 			<p>Problem Statement -</p>
 
-<p>Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[’ and ‘]’, determine if the input string is valid.</p>
+<p>Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.</p>
 
-<p>leetcode problem link - <a target="_blank" href="https://leetcode.com/problems/valid-parentheses/">valid-parentheses</a></p>
+<p>leetcode problem link - <a target="_blank" href="https://leetcode.com/problems/contains_duplicate">Contains Duplicate</a></p>
 
 <p><br /></p>
 
 <h2>High level overview -</h2>
 
-<p>We need to tell if given sequence is a valid paranthesis. Goal here is to do it in O(n) time complexity and O(n) extra space.</p>
+<p>We need to return true/false if any integer appears twice in given array. Goal here is to do it in O(n) time complexity and O(n) extra space.</p>
 
-<p>We will iterate through each character, and check if any single opening bracket was processed for same set earlier. If yes, then we can mark this closing bracket as a pair for it and remove it from array list. Complete the processing of the input using same logic.</p>
+<p>To check if integer has already appeared in the array, we need to store the processed values somewhere. So what could be the best choice? How will we select the data structure?
+The data structure that best suits our case is a Hash, because we will store integers as keys.</p>
 
-<p>Now at the end we can decide if paranthesis is valid by looking at the content of the array - if it has any element at all it means the matching failed because either the closing bracket or opening bracket is in excess. If array is empty then we can safely say paranthesis is valid.</p>
+<p>We will iterate through each int, and check if it is present in the Hash. If yes, then we can say that the number has appeared twice and return truthy response. If no, then make entry for this integer in Hash so that it can be found in next appearance of the same integer.</p>
+
+<p>And if we reach outside the loop, then we can come to conclusion that No integer appeared twice in the array.</p>
 
 <p><br /></p>
 
 <h2>Algorithm -</h2>
 
 <ol>
-  <li>Initiate an array to store the processed chars, initially empty</li>
-  <li>Iterate through each char</li>
-  <li>check if it is closing bracket
-    - if yes, check if closing bracket matches with last element in the array</li>
-  <li>if no, then push the char to array</li>
+  <li>Initiate an hash to store the processed integers, initially empty</li>
+  <li>Iterate through each integer</li>
+  <li>check if this integer as key is present in the Hash
+    - if yes, then return truthy and exit function</li>
+  <li>if no, then push the integer as key into hash (what to keep as value? I am going with simple boolean)</li>
   <li>End loop</li>
-  <li>Check if the array is empty
-    <ul>
-      <li>yes? -&gt; The input is a valid paranthesis</li>
-      <li>no? -&gt; The input is not a valid paranthesis</li>
-    </ul>
-  </li>
+  <li>Return falsy and exit function</li>
 </ol>
 
 <p><br /></p>
 
 <h2>Code -</h2>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># @param {String} s</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># @param {Integer[]} nums</span>
 <span class="c1"># @return {Boolean}</span>
-<span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-  <span class="n">ar</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="n">s</span><span class="p">.</span><span class="nf">chars</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="s1">')'</span> <span class="o">&amp;&amp;</span> <span class="n">ar</span><span class="p">.</span><span class="nf">last</span> <span class="o">==</span> <span class="s1">'('</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="s1">'}'</span> <span class="o">&amp;&amp;</span> <span class="n">ar</span><span class="p">.</span><span class="nf">last</span> <span class="o">==</span> <span class="s1">'{'</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="s1">']'</span> <span class="o">&amp;&amp;</span> <span class="n">ar</span><span class="p">.</span><span class="nf">last</span> <span class="o">==</span> <span class="s1">'['</span><span class="p">)</span>
-      <span class="n">ar</span><span class="p">.</span><span class="nf">pop</span>
-    <span class="k">else</span>
-      <span class="n">ar</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
+<span class="k">def</span> <span class="nf">contains_duplicate</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+  <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">nums</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+    <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="n">h</span><span class="p">.</span><span class="nf">key?</span> <span class="n">n</span>
 
-  <span class="n">ar</span><span class="p">.</span><span class="nf">empty?</span>
+    <span class="n">h</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="k">end</span>
+  <span class="kp">false</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
@@ -494,9 +489,9 @@ function lunr_search(term) {
 
 <h2>Benchmarking -</h2>
 
-<p><span>Beats 80.09%of users with Ruby | Runtime : 59 ms</span></p>
+<p><span>Beats 96.79%of users with Ruby | Runtime : 90 ms</span></p>
 
-<p><img src="/assets/images/leetcode/valid-paranthesis-1.png" alt="" /></p>
+<p><img src="/assets/images/leetcode/leetcode-2-contains-duplicate.png" alt="" /></p>
 
 <p>Happy Coding!!!</p>
                 
@@ -546,10 +541,10 @@ function lunr_search(term) {
     <div class="container">
         <div class="row prevnextlinks small font-weight-bold">
           
-            <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/leetcodes/contains_duplicate/"> <img height="30px" class="mr-1" src="/assets/images/leetcode/leetcode-2-contains-duplicate-2.png">  Leetcode 2 (Ruby) - contains duplicate Solution</a>
-            </div>
           
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/leetcodes/2023-01-02-valid_parenthesis/"> Leetcode Valid Parenthesis Solution Ruby - 2  <img height="30px" class="ml-1" src="/assets/images/leetcode/leetcode-valid-parenthesis.png"> </a>
+            </div>
           
         </div>
     </div>
