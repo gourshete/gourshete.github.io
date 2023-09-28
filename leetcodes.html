@@ -1,0 +1,15 @@
+---
+layout: default
+title: Leetcode
+---
+<h1>Staff</h1>
+
+<ul>
+  {% for author in site.leetcodes %}
+    <li>
+      <h2>{{ author.title }}</h2>
+      <h3>{{ author.date }}</h3>
+      <p>{{ author.content | markdownify }}</p>
+    </li>
+  {% endfor %}
+</ul>

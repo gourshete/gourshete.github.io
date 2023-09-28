@@ -4,24 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sidekiq By Example : Ruby's background worker | Ruby on Rails Examples</title>
+    <title>Test Post | Ruby on Rails Examples</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Sidekiq By Example : Ruby’s background worker | Ruby on Rails Examples</title>
+<title>Test Post | Ruby on Rails Examples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Sidekiq By Example : Ruby’s background worker" />
-<meta name="author" content="swapnil" />
+<meta property="og:title" content="Test Post" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="What is the best way of handling background jobs in Rails, (maybe) using sidekiq." />
-<meta property="og:description" content="What is the best way of handling background jobs in Rails, (maybe) using sidekiq." />
-<link rel="canonical" href="http://localhost:4000/sidekiq-by-example/" />
-<meta property="og:url" content="http://localhost:4000/sidekiq-by-example/" />
+<meta name="description" content="Leetcode" />
+<meta property="og:description" content="Leetcode" />
+<link rel="canonical" href="http://localhost:4000/leetcodes/leetcode-1/" />
+<meta property="og:url" content="http://localhost:4000/leetcodes/leetcode-1/" />
 <meta property="og:site_name" content="Ruby on Rails Examples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/sidekiq.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/railsexamples-com-self.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-11-28T00:00:00+05:30" />
+<meta property="article:published_time" content="2023-09-08T00:00:00+05:30" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Sidekiq By Example : Ruby’s background worker","dateModified":"2019-11-28T00:00:00+05:30","datePublished":"2019-11-28T00:00:00+05:30","image":"http://localhost:4000/assets/images/sidekiq.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/sidekiq-by-example/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"author":{"@type":"Person","name":"swapnil"},"description":"What is the best way of handling background jobs in Rails, (maybe) using sidekiq.","url":"http://localhost:4000/sidekiq-by-example/","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Test Post","dateModified":"2023-09-08T00:00:00+05:30","datePublished":"2023-09-08T00:00:00+05:30","image":"http://localhost:4000/assets/images/railsexamples-com-self.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/leetcodes/leetcode-1/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"description":"Leetcode","url":"http://localhost:4000/leetcodes/leetcode-1/","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -369,21 +368,17 @@ function lunr_search(term) {
 					<p class="text-uppercase font-weight-bold">
                         <span class="catlist">
 						
-                          <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
-                        
-                          <a class="sscroll text-danger" href="/categories.html#sidekiq">sidekiq</a><span class="sep">, </span>
+                          <a class="sscroll text-danger" href="/categories.html#ruby">ruby</a><span class="sep">, </span>
                         
                         </span>
 					</p>
 					<div class="d-flex align-items-center">
                         
-                        <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
-                        
-						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">Nov 28, 2019 · <span class="reading-time">
+						<small class="ml-3">  <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Sep 08, 2023 · <span class="reading-time">
   
   
-    2 mins read
+    1 min read
   
 </span>
     </span>
@@ -392,7 +387,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/sidekiq.png" alt="Sidekiq By Example : Ruby's background worker">
+					<img class="rounded" src="/assets/images/railsexamples-com-self.png" alt="Test Post">
 				</div>
                 
 			</div>
@@ -434,112 +429,7 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>What is the best way of handling background jobs in Rails, (maybe) using sidekiq.</p>
-
-<p>Let’s take step by step look into creating a Rails App and making a request for Background job using sidekiq</p>
-
-<p>System Pre-requisite</p>
-<ul>
-  <li>Ruby</li>
-  <li>Rails</li>
-  <li>Redis</li>
-  <li>Sidekiq</li>
-</ul>
-
-<p>Note: The <a href="https://github.com/gourshete/sidekiq-example" target="_blank">repository</a>  of this project.</p>
-
-<p><br /></p>
-
-<h3 id="create-new-rails-project">Create new Rails Project</h3>
-<p>We will create a new rails project named <code class="highlighter-rouge">sidekiq-example</code></p>
-
-<p><img src="/assets/images/SS-sidekiq-new-project.png" alt="" /></p>
-
-<h3 id="add-sidekiq-gem">Add sidekiq gem</h3>
-<p>In <code class="highlighter-rouge">Gemfile</code> add gem ‘sidekiq’</p>
-
-<p><code class="highlighter-rouge">gem sidekiq</code></p>
-
-<p>Now run command <code class="highlighter-rouge">bundle install</code>. This will install gem sidekiq in our project.</p>
-
-<p><code class="highlighter-rouge">➜  sidekiq-example: bundle install</code></p>
-
-<p><br /></p>
-
-<h3 id="generate-model">Generate Model</h3>
-<p>Let’s create a model named <code class="highlighter-rouge">Team</code> for reference with fields <code class="highlighter-rouge">name</code>, <code class="highlighter-rouge">rating</code></p>
-
-<p><img src="/assets/images/SS-sidekiq-model.png" alt="" /></p>
-
-<p>Also add this in <code class="highlighter-rouge">seeds.rb</code></p>
-
-<p><img src="/assets/images/SS-sidekiq-seed.png" alt="" /></p>
-
-<p>Now Run <br />
-<code class="highlighter-rouge">➜  sidekiq-example: rails db:create &amp;&amp; rails db:migrate &amp;&amp; rails db:seed</code> <br />
-It will create new database <code class="highlighter-rouge">sidekiq_example_development</code> for our application and create a table called <code class="highlighter-rouge">teams</code> in this database.
-Running seed data will insert sample 5 records in it.</p>
-
-<p><br /></p>
-
-<h3 id="generate-a-controller">Generate a controller</h3>
-<p>Create a controller for our actions under namespace <code class="highlighter-rouge">api/v1/</code></p>
-
-<p><img src="/assets/images/SS-sidekiq-controller-1.png" alt="" /></p>
-
-<p><br /></p>
-
-<h3 id="add-routes">Add routes</h3>
-<p>Let’s add routes for our actions. Add this in <code class="highlighter-rouge">routes.rb</code>.</p>
-
-<p><img src="/assets/images/SS-sidekiq-routes.png" alt="" /></p>
-
-<p><br /></p>
-
-<h3 id="add-sidekiq-worker">Add Sidekiq worker</h3>
-<p>Now let’s work on Sidekiq part. To perform sidekiq jobs, add worker in <code class="highlighter-rouge">app/workers</code>. For our demo application
-it is <code class="highlighter-rouge">BuyTimeWorker</code>. And add method named perform in it. When a call to <code class="highlighter-rouge">BuyTimeWorker</code> made, it will be a
-asynchronous call to this method <code class="highlighter-rouge">perform</code>.</p>
-
-<p>The logic for background job will be in this method <code class="highlighter-rouge">perform</code>. To keep it simple for now, will just add sleep timer 
-in it.</p>
-
-<p><img src="/assets/images/SS-sidekiq-worker.png" alt="" /></p>
-
-<p>It simply sleeps for number of milliseconds passed to it. This job will run asynchronously when called.</p>
-
-<p>Let’s modify teams controller to make a call to this background job</p>
-
-<p><img src="/assets/images/SS-sidekiq-controller-2.png" alt="" /></p>
-
-<p>You can see action <code class="highlighter-rouge">show</code> is making call to <code class="highlighter-rouge">BuyTimeWorker</code>. What it means is when a url of kind <code class="highlighter-rouge">'/api/v1/teams/:id'</code>
-is hit, the controller action <code class="highlighter-rouge">show</code> will get called and background job <code class="highlighter-rouge">BuyTimeWorker</code> will be triggered. The action <code class="highlighter-rouge">show</code>
-will not wait for job <code class="highlighter-rouge">BuyTimeWorker</code> to complete though it is called from within its definition. This job will be 
-executed asynchronously with method <code class="highlighter-rouge">show</code>.</p>
-
-<p><br /></p>
-
-<h3 id="run">Run</h3>
-<ul>
-  <li>Start rails server</li>
-  <li>Start Redis</li>
-  <li>Start Sidekiq</li>
-</ul>
-
-<p>If you hit URL will found out something like this in sidekiq server log</p>
-
-<p><code class="highlighter-rouge">http://localhost:3001/api/v1/teams/2</code></p>
-
-<p><img src="/assets/images/SS-sidekiq-server-log.png" alt="" /></p>
-
-<ul>
-  <li>):</li>
-</ul>
-
-<p>Well this is very simple example of running background job in rails. You can write complex logic in Sidekiq workers.
-You can add multiple workers.</p>
-
-<p>Cheers! 🍻🍻</p>
+			<h1>Leetcode</h1>
                 
 			</article>
 			<div>
@@ -549,24 +439,12 @@ You can add multiple workers.</p>
 			<div class="mb-4">
 				<span class="taglist">
 				
-				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#rails_blogs">rails_blogs</a>
 				
 				</span>
 			</div>
             
              <!-- Author Box -->
-                				
-				<div class="row mt-5">
-					<div class="col-md-2 align-self-center">
-                         
-                        <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="90"/>
-                         
-					</div>
-					<div class="col-md-10">		
-                        <h5 class="font-weight-bold">Written by Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
-						Hi I am Swapnil, a Software Engineer and computer science enthusiastic					
-					</div>
-				</div>				
                 
             
             <!-- Comments -->
@@ -599,14 +477,6 @@ You can add multiple workers.</p>
     <div class="container">
         <div class="row prevnextlinks small font-weight-bold">
           
-            <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/run-migrations-on-first-docker-up/"> Run seed data only on first Docker instance up</a>
-            </div>
-          
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/postgresql-json/"> json and jsonb - Postgresql </a>
-            </div>
           
         </div>
     </div>
