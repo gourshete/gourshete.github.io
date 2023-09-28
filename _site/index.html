@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Ruby on Rails Examples" />
 <link rel="next" href="http://localhost:4000/page2" />
 <script type="application/ld+json">
-{"@type":"WebSite","headline":"Home","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"description":"A place to learn rails","url":"http://localhost:4000/","name":"Ruby on Rails Examples","@context":"http://schema.org"}</script>
+{"headline":"Home","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"@type":"WebSite","description":"A place to learn rails","url":"http://localhost:4000/","name":"Ruby on Rails Examples","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -74,6 +74,11 @@
 <li class="nav-item">
 <a class="nav-link" href="/index.html">Home</a>
 </li>
+
+<li class="nav-item">
+  <a class="nav-link" href="/leetcodes">Leetcodes</a>
+</li>
+
 <li class="nav-item">
 <a class="nav-link" href="/author.html">About</a>
 </li>
@@ -119,7 +124,7 @@ var documents = [{
     "id": 5,
     "url": "http://localhost:4000/leetcodes/",
     "title": "Leetcode",
-    "body": "Staff {% for author in site. leetcodes %}     {{ author. title }}:    {{ author. date }}:    {{ author. content | markdownify }}    {% endfor %}"
+    "body": "       {% assign latest_post = site. leetcodes[0] %}          &lt;div class= topfirstimage  style= background-image: url({% if latest_post. image contains  ://  %}{{ latest_post. image }}{% else %} {{site. baseurl}}/{{ latest_post. image}}{% endif %}); height: 200px;  background-size: cover;  background-repeat: no-repeat; &gt;&lt;/div&gt;           {{ latest_post. title }}  :       {{ latest_post. excerpt | strip_html | strip_newlines | truncate: 136 }}               In         {% for category in latest_post. categories %}        {{ category }},         {% endfor %}                                {{ latest_post. date | date: '%b %d, %Y' }}                            {%- assign second_post = site. leetcodes[1] -%}                        {% if second_post. image %}                         &lt;img class= w-100  src= {% if second_post. image contains  ://  %}{{ second_post. image }}{% else %}{{ second_post. image | absolute_url }}{% endif %}  alt= {{ second_post. title }} &gt;                        {% endif %}                                    {{ second_post. title }}          :                       In             {% for category in second_post. categories %}            {{ category }},             {% endfor %}                                                      {{ second_post. date | date: '%b %d, %Y' }}                                    {%- assign third_post = site. leetcodes[2] -%}                        {% if third_post. image %}                         &lt;img class= w-100  src= {% if third_post. image contains  ://  %}{{ third_post. image }}{% else %}{{site. baseurl}}/{{ third_post. image }}{% endif %}  alt= {{ third_post. title }} &gt;                        {% endif %}                                    {{ third_post. title }}          :                       In             {% for category in third_post. categories %}            {{ category }},             {% endfor %}                                                      {{ third_post. date | date: '%b %d, %Y' }}                                    {%- assign fourth_post = site. leetcodes[3] -%}                        {% if fourth_post. image %}                        &lt;img class= w-100  src= {% if fourth_post. image contains  ://  %}{{ fourth_post. image }}{% else %}{{site. baseurl}}/{{ fourth_post. image }}{% endif %}  alt= {{ fourth_post. title }} &gt;                        {% endif %}                                    {{ fourth_post. title }}          :                       In             {% for category in fourth_post. categories %}            {{ category }},             {% endfor %}                                                      {{ fourth_post. date | date: '%b %d, %Y' }}                                  {% for post in site. leetcodes %} {% if post. tags contains  sticky  %}                    {{post. title}}                  {{ post. excerpt | strip_html | strip_newlines | truncate: 136 }}                 Read More            	             {% endif %}{% endfor %}                  All Stories:         {% for post in paginator. leetcodes %}          {% include main-loop-card. html %}        {% endfor %}                   {% if paginator. total_pages &gt; 1 %}              {% if paginator. previous_page %}        &laquo; Prev       {% else %}        &laquo;       {% endif %}       {% for page in (1. . paginator. total_pages) %}        {% if page == paginator. page %}        {{ page }}        {% elsif page == 1 %}        {{ page }}        {% else %}        {{ page }}        {% endif %}       {% endfor %}       {% if paginator. next_page %}        Next &raquo;       {% else %}        &raquo;       {% endif %}            {% endif %}                     {% include sidebar-featured. html %}      "
     }, {
     "id": 6,
     "url": "http://localhost:4000/privacy-policy.html",
