@@ -12,7 +12,8 @@ description: "A place to learn rails"
 <!-- Begin post excerpts, let's highlight the first 4 posts on top -->
 <div class="row remove-site-content-margin">  
     <!-- latest post -->
-    {% assign latest_post = site.leetcodes[0] %}
+    {% assign sorted_posts = site.leetcodes | sort: 'date' | reverse %}
+    {% assign latest_post = sorted_posts[0] %}
     <div class="col-md-6">
     <div class="card border-0 mb-4 box-shadow">   
     <a href="{{site.baseurl}}{{latest_post.url}}">
@@ -44,7 +45,7 @@ description: "A place to learn rails"
     <div class="col-md-6">
         
         <!-- second latest post -->
-        {%- assign second_post = site.leetcodes[1] -%}        
+        {%- assign second_post = sorted_posts[1] -%}        
         <div class="mb-3 d-flex align-items-center">                
                 {% if second_post.image %}
                 <div class="col-md-4">
@@ -71,7 +72,7 @@ description: "A place to learn rails"
             </div>
         
         <!-- third latest post -->
-        {%- assign third_post = site.leetcodes[2] -%}        
+        {%- assign third_post = sorted_posts[2] -%}        
         <div class="mb-3 d-flex align-items-center">                
                 {% if third_post.image %}
                 <div class="col-md-4">
@@ -98,7 +99,7 @@ description: "A place to learn rails"
             </div>
         
         <!-- fourth latest post -->
-        {%- assign fourth_post = site.leetcodes[3] -%}        
+        {%- assign fourth_post = sorted_posts[3] -%}        
         <div class="mb-3 d-flex align-items-center">                
                 {% if fourth_post.image %}
                 <div class="col-md-4">

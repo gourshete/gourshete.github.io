@@ -3,7 +3,7 @@ layout: post
 title:  "Leetcode Valid Anagram Solution Ruby - 3"
 date:   2023-09-28
 keywords: "leetcode valid anagram ruby rails"
-image: assets/images/leetcode/leetcode-3-cover.png
+image: assets/images/leetcode/leetcode-3-cover-1.png
 categories: [ Ruby, Leetcode ]
 tags: 'leetcode'
 ---
