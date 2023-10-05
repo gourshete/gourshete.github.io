@@ -1,6 +1,6 @@
 # Site
-name: 'Ruby on Rails Examples'
-description: 'Exploring Rails'
+name: 'RailsExamples'
+description: 'A place to learn Ruby on Rails'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/ruby-on-rails.png'
 disqus: ''
