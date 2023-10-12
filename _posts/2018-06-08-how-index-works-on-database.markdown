@@ -55,12 +55,14 @@ Postgresql supports building indexes without locking with CONCURRENTLY option of
 CREATE INDEX CONCURRENTLY index_name ON table_name (column1, column2, ..);
 
 
-- Unique Indexes
+<h4>Unique Indexes</h4>
 A unique index guarantees that the table doesn’t have more than one row with the same value. It’s advantageous to create unique indexes for two reasons: data integrity and performance. Lookups on a unique index are very fast.
 
-*Note*
+**Note** -
 
+```ruby
 In terms of data integrity, using a validates_uniqueness_of validation on an ActiveModel class doesn’t really guarantee uniqueness because there can and are concurrent users creating invalid records. Therefore, always create the constraint at the database level - either with an index or a unique constraint.
+```
 
 <h4>Last Stop</h4>
 - Indexes does not store values of columns other than indexed ones.
