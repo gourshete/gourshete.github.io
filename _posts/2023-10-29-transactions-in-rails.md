@@ -14,12 +14,12 @@ Transaction is the smallest non-dividable piece of code. It can be described as 
 In terms of business logic, transaction can be described as a group of few operations which are necessarily need to be performed together at all cost. Let's try to understand through an example. In digital banking a transfer of money would be successful only if the money is debited from the sender's account and same amount of money is credited into receiver's bank account. The transaction would be incomplete if any of these two statements are not successful.
 
 
-How transactions are implemented rails?
+<h3>How transactions can be implemented rails?</h3>
 
 ActiveRecord has a method called 'transaction' which can be called like below space - 
 ```ruby
 ActiveRecord::Base.transaction do 
-  code block 
+  {code block}
 end
 ``` 
 As this is an ActiveRecord implementation, it ensures every write or update to the database is either completely committed or none of the database updates are committed.
@@ -40,9 +40,10 @@ Here we are trying to update the `User` and associated `Product` records in the 
 
 ![transaction1-log](../assets/images/transaction-1.png)
 
+We can see that both the database updates are sucessful.
 
 
-<h3>Now</h3> let's try to play with transaction block. As we previously said it will either save all changes or will not save any change. Let's test it.
+<h3>Now,</h3> let's try to play with transaction block. As we previously mentioned it will either save all changes or will not save any change. Let's test it.
 
 For this use case we will need a code which will throw an error and causes unsuccessful completion of code. We can make use of divide by 0 exception by simply putting a statement without complicating it. Here is how the updated code block will look like -
 
