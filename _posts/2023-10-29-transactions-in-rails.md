@@ -91,10 +91,43 @@ Let's try to execute this code block. And here is the result -
 Here you can see the value of food is equal to last update value within the transaction block. Foo has not rolled back its value to pre-transaction block value. By this example we can conclude local variable values are not ruled back even if transaction fails.
 
 
-Happy Coding!!!
+<h3>More on Transactions in Rails -</h3>
+
+- **Transactions are executed on a single database connection. Managing transaction in a fully distributed system is out of scope of the active record.**
+
+- They can be called on any Model or an instance of Model object. like -
+
+```ruby
+### 1. Model
+User.transaction do
+  user = User.first
+  user.update!(status: 0)
+end
+
+
+### 2. Model instance
+user = User.first
+user.transaction do
+  user.update!(status: 0)
+end
+```
+
+
+- It is not mandatory to update only records from the model which initiated the transaction block but we can also update records from other Models. e.g. -
+
+```ruby
+User.transaction do
+  user = User.first
+  user.update!(status: 0)
+
+  user.picture.update!(title: 'Lorem ipsum')
+end
+```
+
 
 
 ---
-References - 
+
+<h4>References</h4>
  
-- [keywords in Ruby](https://railsexamples.com/keywords-in-ruby/)
+- rails repo - activerecord/lib/active_record/

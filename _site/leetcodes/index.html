@@ -122,7 +122,7 @@ var documents = [{
     "id": 5,
     "url": "http://localhost:4000/leetcodes/",
     "title": "Leetcode",
-    "body": "                             Leetcode Valid Anagram Solution Ruby - 3  :       Problem Statement -               In                 Ruby,                 Leetcode,                                        Sep 28, 2023                                                                                                                             Leetcode Valid Parenthesis Solution Ruby - 2          :                       In                         Ruby,                         Leetcode,                                                                  Sep 27, 2023                                                                                                                                     Leetcode Valid Parenthesis Solution Ruby - 2          :                       In                         Ruby,                         Leetcode,                                                                  Sep 27, 2023                                                                                                                                    Leetcode Contains Duplicate Solution Ruby - 1          :                       In                         Ruby,                         Leetcode,                                                                  Sep 26, 2023                                                      All Stories:                                                  Featured:    				                                          Sidekiq By Example : Ruby's background worker                          In                     Rails,                     Sidekiq,                                                                                           Rails Request Lifecycle. . .                           In                     Rails,                                                                                           How Indexes on database works!                          In                     Rails,                     Database,                                                               "
+    "body": "                             Leetcode Valid Anagram Solution Ruby - 3  :       Problem Statement -               In                 Ruby,                 Leetcode,                                        Sep 28, 2023                                                                                                                             Leetcode Valid Parenthesis Solution Ruby - 2          :                       In                         Ruby,                         Leetcode,                                                                  Sep 27, 2023                                                                                                                                     Leetcode Contains Duplicate Solution Ruby - 1          :                       In                         Ruby,                         Leetcode,                                                                  Sep 26, 2023                                                                                              :                       In                                                                                                                       All Stories:                                                  Featured:    				                                          Sidekiq By Example : Ruby's background worker                          In                     Rails,                     Sidekiq,                                                                                           Rails Request Lifecycle. . .                           In                     Rails,                                                                                           How Indexes on database works!                          In                     Rails,                     Database,                                                               "
     }, {
     "id": 6,
     "url": "http://localhost:4000/privacy-policy.html",
@@ -152,7 +152,7 @@ var documents = [{
     "id": 11,
     "url": "http://localhost:4000/transactions-in-rails/",
     "title": "What is Transaction? How to do it in Rails?",
-    "body": "2023/10/29 - What is transaction? Transaction is the smallest non-dividable piece of code. It can be described as the entity which we cannot be modularised again into smaller modules such that it will be run in a binary form - either it is executed completely or it is not executed at all. In terms of business logic, transaction can be described as a group of few operations which are necessarily need to be performed together at all cost. Let’s try to understand through an example. In digital banking a transfer of money would be successful only if the money is debited from the sender’s account and same amount of money is credited into receiver’s bank account. The transaction would be incomplete if any of these two statements are not successful. How transactions are implemented rails? ActiveRecord has a method called ‘transaction’ which can be called like below space - ActiveRecord::Base. transaction do  code block endAs this is an ActiveRecord implementation, it ensures every write or update to the database is either completely committed or none of the database updates are committed. Let's see through an example. : ActiveRecord::Base. transaction do  user = User. first user. update!(status: 1) user. products. update_all(frozen: true) endHere we are trying to update the User and associated Product records in the database and these are wrapped inside a transaction. The console log for this code will be like this - Now: let’s try to play with transaction block. As we previously said it will either save all changes or will not save any change. Let’s test it. For this use case we will need a code which will throw an error and causes unsuccessful completion of code. We can make use of divide by 0 exception by simply putting a statement without complicating it. Here is how the updated code block will look like - ActiveRecord::Base. transaction do  user = User. first user. update!(status: 0) user. products. update_all(frozen: false) ### will throw ZeroDivisionError foo = 10/0endLet’s try to execute this code block. And here is the result - As you can see from the bottom of the log, this code has thrown divided by zero exception and as a result of which, database has rolled back the transaction. Meaning both the updates first to the users table and second to the products table are not saved to the database. So both the tables users and products are now at the same state they were before running the transaction block. Curious about foo? Variable vs DB save?: What happens to the value of foo? As it is not a database entity but a simple local very able how transaction deals with it? Let’s find out. foo = 1ActiveRecord::Base. transaction do  foo = 2 user = User. first user. update!(status: 0) user. products. update_all(frozen: false) ### will throw ZeroDivisionError foo = 10/0endfooLet’s try to execute this code block. And here is the result - Here you can see the value of food is equal to last update value within the transaction block. Foo has not rolled back its value to pre-transaction block value. By this example we can conclude local variable values are not ruled back even if transaction fails. Happy Coding!!! References -  keywords in Ruby"
+    "body": "2023/10/29 - What is transaction? Transaction is the smallest non-dividable piece of code. It can be described as the entity which we cannot be modularised again into smaller modules such that it will be run in a binary form - either it is executed completely or it is not executed at all. In terms of business logic, transaction can be described as a group of few operations which are necessarily need to be performed together at all cost. Let’s try to understand through an example. In digital banking a transfer of money would be successful only if the money is debited from the sender’s account and same amount of money is credited into receiver’s bank account. The transaction would be incomplete if any of these two statements are not successful. How transactions can be implemented rails?: ActiveRecord has a method called ‘transaction’ which can be called like below space - ActiveRecord::Base. transaction do  {code block}endAs this is an ActiveRecord implementation, it ensures every write or update to the database is either completely committed or none of the database updates are committed. Let's see through an example. : ActiveRecord::Base. transaction do  user = User. first user. update!(status: 1) user. products. update_all(frozen: true) endHere we are trying to update the User and associated Product records in the database and these are wrapped inside a transaction. The console log for this code will be like this - We can see that both the database updates are sucessful. Now,: let’s try to play with transaction block. As we previously mentioned it will either save all changes or will not save any change. Let’s test it. For this use case we will need a code which will throw an error and causes unsuccessful completion of code. We can make use of divide by 0 exception by simply putting a statement without complicating it. Here is how the updated code block will look like - ActiveRecord::Base. transaction do  user = User. first user. update!(status: 0) user. products. update_all(frozen: false) ### will throw ZeroDivisionError foo = 10/0endLet’s try to execute this code block. And here is the result - As you can see from the bottom of the log, this code has thrown divided by zero exception and as a result of which, database has rolled back the transaction. Meaning both the updates first to the users table and second to the products table are not saved to the database. So both the tables users and products are now at the same state they were before running the transaction block. Curious about foo? Variable vs DB save?: What happens to the value of foo? As it is not a database entity but a simple local very able how transaction deals with it? Let’s find out. foo = 1ActiveRecord::Base. transaction do  foo = 2 user = User. first user. update!(status: 0) user. products. update_all(frozen: false) ### will throw ZeroDivisionError foo = 10/0endfooLet’s try to execute this code block. And here is the result - Here you can see the value of food is equal to last update value within the transaction block. Foo has not rolled back its value to pre-transaction block value. By this example we can conclude local variable values are not ruled back even if transaction fails. More on Transactions in Rails -:    Transactions are executed on a single database connection. Managing transaction in a fully distributed system is out of scope of the active record.     They can be called on any Model or an instance of Model object. like -  ### 1. ModelUser. transaction do  user = User. first user. update!(status: 0)end### 2. Model instanceuser = User. firstuser. transaction do  user. update!(status: 0)end It is not mandatory to update only records from the model which initiated the transaction block but we can also update records from other Models. e. g. -User. transaction do  user = User. first user. update!(status: 0) user. picture. update!(title: 'Lorem ipsum')endReferences:  rails repo - activerecord/lib/active_record/"
     }, {
     "id": 12,
     "url": "http://localhost:4000/self-keyword-in-ruby/",
@@ -434,35 +434,8 @@ function lunr_search(term) {
         <!-- third latest post --><div class="mb-3 d-flex align-items-center">                
                 
                 <div class="col-md-4">
-                <a href="/leetcodes/valid_parenthesis%20copy/">
-                 <img class="w-100" src="/assets/images/leetcode/leetcode-2-cover.png" alt="Leetcode Valid Parenthesis Solution Ruby - 2">
-                </a>
-                </div>
-                                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="/leetcodes/valid_parenthesis%20copy/">Leetcode Valid Parenthesis Solution Ruby - 2</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        
-                        <a class="text-capitalize text-muted smoothscroll" href="/categories.html#ruby">Ruby</a><span class="sep">, </span>
-                        
-                        <a class="text-capitalize text-muted smoothscroll" href="/categories.html#leetcode">Leetcode</a><span class="sep">, </span>
-                        
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        Sep 27, 2023
-                    </small>
-                </div>
-            </div>
-        
-        <!-- fourth latest post --><div class="mb-3 d-flex align-items-center">                
-                
-                <div class="col-md-4">
                 <a href="/leetcodes/contains_duplicate/">
-                <img class="w-100" src="/assets/images/leetcode/leetcode-1-cover.png" alt="Leetcode Contains Duplicate Solution Ruby - 1">
+                 <img class="w-100" src="/assets/images/leetcode/leetcode-1-cover.png" alt="Leetcode Contains Duplicate Solution Ruby - 1">
                 </a>
                 </div>
                                 
@@ -485,13 +458,28 @@ function lunr_search(term) {
                 </div>
             </div>
         
+        <!-- fourth latest post --><div class="mb-3 d-flex align-items-center">                
+                                
+                <div>
+                    <h2 class="mb-2 h6 font-weight-bold">
+                    <a class="text-dark" href=""></a>
+                    </h2>
+                    <small class="d-block text-muted">
+                        In <span class="catlist">
+                        
+                        </span>                   
+                    </small>
+                    <small class="text-muted">
+                        
+                    </small>
+                </div>
+            </div>
+        
     </div>
     
 </div>
     
 <!-- Sticky - add sticky tag to the post you want to highlight here - tags: [sticky] -->
- 
-
  
 
  
