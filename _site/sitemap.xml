@@ -133,6 +133,10 @@
 <lastmod>2023-10-29T00:00:00+05:30</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/beautifying-htmls/</loc>
+<lastmod>2024-07-18T00:00:00+05:30</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/404/</loc>
 </url>
 <url>
@@ -161,6 +165,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page3/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page4/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/interview_kit.html</loc>

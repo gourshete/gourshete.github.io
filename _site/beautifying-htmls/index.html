@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Rails Request Lifecycle… | RailsExamples</title>
+<title>HAML - Beautifying HTMLs | RailsExamples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Rails Request Lifecycle…" />
+<meta property="og:title" content="HAML - Beautifying HTMLs" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out!" />
-<meta property="og:description" content="Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out!" />
-<link rel="canonical" href="http://localhost:4000/rails-request-lifecycle/" />
-<meta property="og:url" content="http://localhost:4000/rails-request-lifecycle/" />
+<meta name="description" content="Beautifying HTMLs using HAML" />
+<meta property="og:description" content="Beautifying HTMLs using HAML" />
+<link rel="canonical" href="http://localhost:4000/beautifying-htmls/" />
+<meta property="og:url" content="http://localhost:4000/beautifying-htmls/" />
 <meta property="og:site_name" content="RailsExamples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/dig.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/haml.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-06-12T00:00:00+05:30" />
+<meta property="article:published_time" content="2024-07-18T00:00:00+05:30" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","dateModified":"2019-06-12T00:00:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/rails-request-lifecycle/"},"image":"http://localhost:4000/assets/images/dig.png","datePublished":"2019-06-12T00:00:00+05:30","url":"http://localhost:4000/rails-request-lifecycle/","author":{"@type":"Person","name":"swapnil"},"description":"Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out!","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"headline":"Rails Request Lifecycle…","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","dateModified":"2024-07-18T00:00:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/beautifying-htmls/"},"image":"http://localhost:4000/assets/images/haml.png","datePublished":"2024-07-18T00:00:00+05:30","url":"http://localhost:4000/beautifying-htmls/","author":{"@type":"Person","name":"swapnil"},"description":"Beautifying HTMLs using HAML","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"headline":"HAML - Beautifying HTMLs","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -390,6 +390,8 @@ function lunr_search(term) {
 						
                           <a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
                         
+                          <a class="sscroll text-danger" href="/categories.html#markup">markup</a><span class="sep">, </span>
+                        
                         </span>
 					</p>
 					<div class="d-flex align-items-center">
@@ -397,10 +399,10 @@ function lunr_search(term) {
                         <img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
                         
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">Jun 12, 2019 · <span class="reading-time">
+                            <span class="text-muted d-block mt-1">Jul 18, 2024 · <span class="reading-time">
   
   
-    4 mins read
+    2 mins read
   
 </span>
     </span>
@@ -409,7 +411,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/dig.png" alt="Rails Request Lifecycle...">
+					<img class="rounded" src="/assets/images/haml.png" alt="HAML - Beautifying HTMLs">
 				</div>
                 
 			</div>
@@ -451,134 +453,70 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? 
-Who handles request at what level? Let’s dig it out!</p>
+			<p>Beautifying HTMLs using HAML</p>
 
-<p>Breakdown of request flow -</p>
+<p><br /></p>
+
+<h2>What?</h2>
+
+<p>HAML is HTML Abstract Markup Language. It is developed on one core principle - to beautify markup. But at the same time
+it also helps in maintaining DRY, well intended and structured code. Haml markup is similar to CSS in syntax. For example, Haml has the same dot . representation for classes as CSS does. It is around from 2006 and is still actively maintained.</p>
+
+<p><br /></p>
+
+<h2>Why?</h2>
+
 <ol>
-  <li>Browser generates HTTP/HTTPS request after a click or a event</li>
-  <li>Web server receives request, analyses it and passes to application server</li>
-  <li>Application server calls up proper controller-action after talking with router</li>
-  <li>The resulted output is sent back to browser and displayed on screen</li>
+  <li>
+    <p>Reduced repetition aka DRY
+HTML involves lot of repetition - once at the start and at the end of actual content. ERB also adds some repetition.<br />
+For example &lt;p&gt;Example Paragraph&lt;/p&gt;
+HAML reduces this repetition like - %p Example Paragraph. 
+To make this work HAML relies on indentation.</p>
+  </li>
+  <li>
+    <p>Indented &amp; structured code
+HAML forces use of strict indentation. The direct benefit of it is more structured code. For example look at this code.
+The mixture of these qualities make the code beautiful. However defining beautiful code is hard, but as mentioned in HAML documentation it is one of their core principle.</p>
+  </li>
+  <li>
+    <p>Executes ruby code
+It’s also possible to embed Ruby code into Haml documents. An equals sign, =, 
+will output the result of the code. A hyphen, -, will run the code but not output 
+the result. It also supports control statements like if, while.</p>
+  </li>
 </ol>
 
-<p>.</p>
+<p><br /></p>
 
-<h3>  Web Browser </h3>
-<p>Browser should direct request to a specific destination. For users it is a URL seen on web page, but
- computers need IP addresses, they do not understand these URLs.</p>
+<h2>How?</h2>
 
-<p>For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer
- understandable IP addresses. It is browser who starts finding out IP address.</p>
+<p>To get more out of this article, let’s convert a HTML code blog into HAML code.</p>
 
-<p>Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, 
- browser generally asks Internet Service Providers(ISP). If not found then
- it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like .com, .net, .org) –&gt; And then to Authoritative DNS Server. The
- chase ends here.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;&lt;</span><span class="err">%=</span> <span class="na">post</span><span class="err">.</span><span class="na">title</span> <span class="err">%</span><span class="nt">&gt;&lt;/h1&gt;</span>
+  <span class="nt">&lt;h2&gt;&lt;</span><span class="err">%=</span> <span class="na">post</span><span class="err">.</span><span class="na">subtitle</span> <span class="err">%</span><span class="nt">&gt;&lt;/h2&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">post</span><span class="err">.</span><span class="na">content</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
 
-<p>Yay! We get the required ip address.</p>
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">%section</span><span class="nc">.container</span>
+  <span class="nt">%h1</span><span class="p">=</span> <span class="n">post</span><span class="p">.</span><span class="nf">title</span>
+  <span class="nt">%h2</span><span class="p">=</span> <span class="n">post</span><span class="p">.</span><span class="nf">subtitle</span>
+  <span class="nc">.content</span>
+    <span class="p">=</span> <span class="n">post</span><span class="p">.</span><span class="nf">content</span>
+</code></pre></div></div>
 
-<p>Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name
- provider has not set up your domain information properly.</p>
+<p>Did you noticed the change? I know it is hard to miss. Imagine the impact it can have on large codebase. It can
+make them more maintainable and readable. Also its latest release supports ruby version &gt;= 2.1.0</p>
 
-<p>It is actually interesting to try on terminal with dig,
- <img src="/assets/images/dig.png" alt="" /></p>
-
-<p>..</p>
-
-<h3> Web Server </h3>
-
-<p>By now browser is successfully connected to server. The server here is web server. Some examples are Apache,
-Nginx, Passenger, Puma, Unicorn, Webrick. 
-These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice
- that request.</p>
-
-<p>For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any 
-assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose.
- With nginx it is like <script src="https://gist.github.com/gourshete/8c459576dc82eb38c62deb826e4ae20d.js"></script></p>
-
-<p>Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,
-for anything else than assets, it will get 404 not found response.</p>
-
-<p>But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript??</p>
-
-<p>Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be 
-complex to put it in web server configuration file. So what next?</p>
-
-<p>There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it.
- Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed
- this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion,
- there is a system in place called RACK</p>
-
-<p>...</p>
-
-<h4>RACK App</h4>
-
-<p>Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework,
- “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc.” 
- On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status
-  code, headers, and body.”</p>
-
-<p>In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. 
-It notifies the web framework using a method call, communicates the details as method arguments, and the web framework 
-communicates back by return values from the method call.</p>
-
-<p>In code it just looks like
-<script src="https://gist.github.com/gourshete/0a7a99300868b49c62ac87c895b923bc.js"></script></p>
-
-<p>Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, 
- http_method, parameters, rack_app_version, etc.</p>
-
-<p>And the call method responds in three variables - status, header and body. Status is http status, to tell about request completed
-successfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response.</p>
-
-<p>Coming to rails, the config.ru file will look something like 
-<script src="https://gist.github.com/gourshete/e424bec8a866824af57377bfff2d4807.js"></script></p>
-
-<p>It is supposed to pass Rack application to run keyword, this means Rails.application is a Rack app and must respond to call method.</p>
-
-<p>....</p>
-
-<h4>Our app</h4>
-
-<p>Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes.rb!!! Yes that’s 
-too muck Rack apps around. But Rails is always been that.</p>
-
-<p>config/routes.rb - 
-<script src="https://gist.github.com/gourshete/2492f1ff1731060f206701583f279c5b.js"></script></p>
-
-<p>This will ultimately generate these seven routes
-<script src="https://gist.github.com/gourshete/6909e997f7d11ed2b9ddb4b046d50c58.js"></script></p>
-
-<p>From here, most of us know how it works.</p>
-
-<p>If request is for <code class="highlighter-rouge">'/books'</code> and is of kind GET, it will go to <code class="highlighter-rouge">BooksController#index</code> action. Request GET for <code class="highlighter-rouge">'/books/:id'</code> will go 
-to <code class="highlighter-rouge">BooksController#show</code> and likewise!</p>
-
-<p>That’s it from the Rails Request Lifecycle.</p>
-
-<blockquote>
-  <p>Cheers!!!</p>
-</blockquote>
-
-<div id="disqus_thread"></div>
-<script>
-    var disqus_config = function () {
-      this.page.url = 'https://gryffindor.in/blog/2019/06/12/rails-request-lifecycle';
-      this.page.identifier = 'rails-request-lifecycle';
-    };
-  
-    (function() {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://gryffindor-1.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-
-<noscript>
-    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-  </noscript>
+<p>References -</p>
+<ol>
+  <li>https://haml.info</li>
+  <li>https://github.com/haml/haml</li>
+</ol>
                 
 			</article>
 			<div>
@@ -587,8 +525,6 @@ to <code class="highlighter-rouge">BooksController#show</code> and likewise!</p>
 			<!-- Tags -->
 			<div class="mb-4">
 				<span class="taglist">
-				
-				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
 				
 				</span>
 			</div>
@@ -639,13 +575,9 @@ to <code class="highlighter-rouge">BooksController#show</code> and likewise!</p>
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/how-index-works-on-database/"> <img height="30px" class="mr-1" src="/assets/images/how_index_works.gif">  How Indexes on database works!</a>
+                <a class="text-dark" href="/transactions-in-rails/"> <img height="30px" class="mr-1" src="/assets/images/transaction-logo.webp">  What is Transaction? How to do it in Rails?</a>
             </div>
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/modified-and-use-gem/"> Modify a gem and use it in Rails  <img height="30px" class="ml-1" src="/assets/images/kid_opening_gem.jpg"> </a>
-            </div>
           
         </div>
     </div>
