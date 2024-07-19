@@ -23,8 +23,18 @@ it also helps in maintaining DRY, well intended and structured code. Haml markup
 <strong> 1. Reduced repetition aka DRY</strong>
 
 HTML involves lot of repetition - once at the start and at the end of actual content. ERB also adds some repetition.<br>
-For example <p>Example Paragraph</p>
-HAML reduces this repetition like - %p Example Paragraph. 
+For example:
+
+```html
+<p>Example Paragraph</p>
+```
+
+HAML reduces this repetition like -
+
+```haml
+%p Example Paragraph.
+```
+
 To make this work HAML relies on indentation.
 
 <strong>2. Indented & structured code</strong>

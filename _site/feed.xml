@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-19T23:44:09+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">HAML - Beautifying HTMLs</title><link href="http://localhost:4000/beautifying-htmls/" rel="alternate" type="text/html" title="HAML - Beautifying HTMLs" /><published>2024-07-18T00:00:00+05:30</published><updated>2024-07-18T00:00:00+05:30</updated><id>http://localhost:4000/beautifying-htmls</id><content type="html" xml:base="http://localhost:4000/beautifying-htmls/">&lt;p&gt;Beautifying HTMLs using HAML&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-20T00:06:53+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">HAML - Beautifying HTMLs</title><link href="http://localhost:4000/beautifying-htmls/" rel="alternate" type="text/html" title="HAML - Beautifying HTMLs" /><published>2024-07-18T00:00:00+05:30</published><updated>2024-07-18T00:00:00+05:30</updated><id>http://localhost:4000/beautifying-htmls</id><content type="html" xml:base="http://localhost:4000/beautifying-htmls/">&lt;p&gt;Beautifying HTMLs using HAML&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -14,9 +14,17 @@ it also helps in maintaining DRY, well intended and structured code. Haml markup
 &lt;p&gt;&lt;strong&gt; 1. Reduced repetition aka DRY&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;HTML involves lot of repetition - once at the start and at the end of actual content. ERB also adds some repetition.&lt;br /&gt;
-For example &amp;lt;p&amp;gt;Example Paragraph&amp;lt;/p&amp;gt;
-HAML reduces this repetition like - %p Example Paragraph. 
-To make this work HAML relies on indentation.&lt;/p&gt;
+For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Example Paragraph&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;HAML reduces this repetition like -&lt;/p&gt;
+
+&lt;div class=&quot;language-haml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;%p&lt;/span&gt; Example Paragraph.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To make this work HAML relies on indentation.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2. Indented &amp;amp; structured code&lt;/strong&gt;&lt;/p&gt;
 
@@ -136,7 +144,7 @@ make them more maintainable and readable. Also its latest release supports ruby 
 &lt;ol&gt;
   &lt;li&gt;https://haml.info&lt;/li&gt;
   &lt;li&gt;https://github.com/haml/haml&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>swapnil</name></author><summary type="html">Beautifying HTMLs using HAML</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/haml.png" /></entry><entry><title type="html">What is Transaction? How to do it in Rails?</title><link href="http://localhost:4000/transactions-in-rails/" rel="alternate" type="text/html" title="What is Transaction? How to do it in Rails?" /><published>2023-10-29T00:00:00+05:30</published><updated>2023-10-29T00:00:00+05:30</updated><id>http://localhost:4000/transactions-in-rails</id><content type="html" xml:base="http://localhost:4000/transactions-in-rails/">&lt;p&gt;What is transaction?&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>swapnil</name></author><summary type="html">Beautifying HTMLs using HAML</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/haml.png" /></entry><entry><title type="html">Transaction by Example in Rails</title><link href="http://localhost:4000/transactions-in-rails/" rel="alternate" type="text/html" title="Transaction by Example in Rails" /><published>2023-10-29T00:00:00+05:30</published><updated>2023-10-29T00:00:00+05:30</updated><id>http://localhost:4000/transactions-in-rails</id><content type="html" xml:base="http://localhost:4000/transactions-in-rails/">&lt;p&gt;What is transaction?&lt;/p&gt;
 
 &lt;p&gt;Transaction is the smallest non-dividable piece of code. It can be described as the entity which we cannot be modularised again into smaller modules such that it will be run in a binary form - either it is executed completely or it is not executed at all.&lt;/p&gt;
 

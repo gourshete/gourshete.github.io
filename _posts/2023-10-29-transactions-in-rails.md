@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "What is Transaction? How to do it in Rails?"
+title:  "Transaction by Example in Rails"
 date:   2023-10-29
 keywords: "ruby rails github learning swapnil gourshete ruby on rails self keyword"
 image: assets/images/transaction-logo.webp
