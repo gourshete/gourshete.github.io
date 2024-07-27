@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Serializers in Ruby on Rails"
-date:   2024-07-28
+date:   2024-07-23
 keywords: "ruby rails github learning html haml markup_language ruby_on_rails"
 image: assets/images/serializer.jpg
 categories: [ Rails, Serializer ]
