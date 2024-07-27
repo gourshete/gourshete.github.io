@@ -7,8 +7,6 @@ image: assets/images/haml.png
 categories: [ Rails, Markup, HTML ]
 ---
 
-Beautifying HTMLs using HAML
-
 <br>
 
 <h2>What?</h2>
@@ -32,7 +30,7 @@ For example:
 HAML reduces this repetition like -
 
 ```haml
-%p Example Paragraph.
+%p Example Paragraph
 ```
 
 To make this work HAML relies on indentation.

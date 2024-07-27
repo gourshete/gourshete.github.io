@@ -1,6 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-21T01:16:12+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">HAML - Beautifying HTMLs</title><link href="http://localhost:4000/beautifying-htmls/" rel="alternate" type="text/html" title="HAML - Beautifying HTMLs" /><published>2024-07-18T00:00:00+05:30</published><updated>2024-07-18T00:00:00+05:30</updated><id>http://localhost:4000/beautifying-htmls</id><content type="html" xml:base="http://localhost:4000/beautifying-htmls/">&lt;p&gt;Beautifying HTMLs using HAML&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-28T00:11:05+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">Rails ActiveRecord Concerns</title><link href="http://localhost:4000/activerecord-concerns-rails/" rel="alternate" type="text/html" title="Rails ActiveRecord Concerns" /><published>2024-07-27T00:00:00+05:30</published><updated>2024-07-27T00:00:00+05:30</updated><id>http://localhost:4000/activerecord-concerns-rails</id><content type="html" xml:base="http://localhost:4000/activerecord-concerns-rails/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;ActiveRecord Concerns are a powerful feature in Ruby on Rails that allow you to extract common code from your models and share it across multiple classes. They provide a clean and modular way to organize your code, promoting the DRY (Don’t Repeat Yourself) principle. In this post, we’ll dive into what Concerns are, how to use them effectively, and some best practices.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;What are ActiveRecord Concerns?&lt;/h2&gt;
+
+&lt;p&gt;Concerns in Rails are modules that extend ActiveSupport::Concern. They allow you to encapsulate related methods, callbacks, and validations into reusable units that can be mixed into multiple models. This is particularly useful when you have functionality that spans across different models but doesn’t warrant a full-blown class inheritance.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Creating a Concern&lt;/h2&gt;
+
+&lt;p&gt;Let’s create a simple Concern to demonstrate. Imagine we have multiple models that need timestamping functionality:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app/models/concerns/timestampable.rb&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Timestampable&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Concern&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;included&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;before_save&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:set_timestamp&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;set_timestamp&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;current&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Using a Concern in Models&lt;/h2&gt;
+
+&lt;p&gt;To use this Concern in a model, you simply include it:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Article&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationRecord&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Timestampable&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Comment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationRecord&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Timestampable&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now both Article and Comment will have the set_timestamp method and the before_save callback.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Advanced Usage: Class Methods and Instance Methods&lt;/h2&gt;
+
+&lt;p&gt;Concerns can include both instance and class methods:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Searchable&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveSupport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Concern&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;included&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;title LIKE ?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;%&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;class_methods&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;top_results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;views: :desc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update_search_index&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Logic to update search index&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When included in a model, this Concern adds a search scope, a class method top_results, and an instance method update_search_index.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Best Practices for Using Concerns&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Keep Concerns Focused&lt;/strong&gt;: Each Concern should have a single, well-defined responsibility.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Name Concerns Descriptively&lt;/strong&gt;: Use names that clearly indicate the functionality, like &lt;code class=&quot;highlighter-rouge&quot;&gt;Searchable&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Archivable&lt;/code&gt;, or &lt;code class=&quot;highlighter-rouge&quot;&gt;Taggable&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;included&lt;/code&gt; Block Wisely&lt;/strong&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;included&lt;/code&gt; block is executed in the context of the including class, making it perfect for defining callbacks, scopes, and other class-level configurations.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Avoid Deep Nesting&lt;/strong&gt;: While Concerns can include other Concerns, be cautious about creating deep hierarchies that can become hard to understand.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Document Your Concerns&lt;/strong&gt;: Especially if they’re used across multiple models, good documentation can save time and prevent confusion.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;When to Use Concerns vs. Inheritance&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use Concerns when you have behavior that’s shared across unrelated models.&lt;/li&gt;
+  &lt;li&gt;Use inheritance when you have a clear “is-a” relationship between models.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Testing Concerns&lt;/h2&gt;
+
+&lt;p&gt;Don’t forget to test your Concerns! You can test them in isolation:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;RSpec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Timestampable&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:dummy_class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Timestampable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:dummy_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy_class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sets timestamp before save&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dummy_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:set_timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dummy_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run_callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;ActiveRecord Concerns are a powerful tool in the Rails developer’s toolkit. They allow for clean, modular, and reusable code across your models. By extracting common functionality into Concerns, you can keep your models lean and focused, while still benefiting from shared behavior where needed.&lt;/p&gt;
+
+&lt;p&gt;Concerns should be used judiciously. They’re excellent for sharing behavior across unrelated models, but shouldn’t be used as a catch-all for any shared code. When used correctly, they can significantly improve the organization and maintainability of your Rails application.&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/concern_1.jpg" /></entry><entry><title type="html">HAML - Beautifying HTMLs</title><link href="http://localhost:4000/beautifying-htmls/" rel="alternate" type="text/html" title="HAML - Beautifying HTMLs" /><published>2024-07-18T00:00:00+05:30</published><updated>2024-07-18T00:00:00+05:30</updated><id>http://localhost:4000/beautifying-htmls</id><content type="html" xml:base="http://localhost:4000/beautifying-htmls/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h2&gt;What?&lt;/h2&gt;
 
@@ -21,7 +137,7 @@ For example:&lt;/p&gt;
 
 &lt;p&gt;HAML reduces this repetition like -&lt;/p&gt;
 
-&lt;div class=&quot;language-haml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;%p&lt;/span&gt; Example Paragraph.
+&lt;div class=&quot;language-haml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;%p&lt;/span&gt; Example Paragraph
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To make this work HAML relies on indentation.&lt;/p&gt;
@@ -144,7 +260,7 @@ make them more maintainable and readable. Also its latest release supports ruby 
 &lt;ol&gt;
   &lt;li&gt;https://haml.info&lt;/li&gt;
   &lt;li&gt;https://github.com/haml/haml&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>swapnil</name></author><summary type="html">Beautifying HTMLs using HAML</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/haml.png" /></entry><entry><title type="html">Transaction by Example in Rails</title><link href="http://localhost:4000/transactions-in-rails/" rel="alternate" type="text/html" title="Transaction by Example in Rails" /><published>2023-10-29T00:00:00+05:30</published><updated>2023-10-29T00:00:00+05:30</updated><id>http://localhost:4000/transactions-in-rails</id><content type="html" xml:base="http://localhost:4000/transactions-in-rails/">&lt;p&gt;What is transaction?&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>swapnil</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/haml.png" /></entry><entry><title type="html">Transaction by Example in Rails</title><link href="http://localhost:4000/transactions-in-rails/" rel="alternate" type="text/html" title="Transaction by Example in Rails" /><published>2023-10-29T00:00:00+05:30</published><updated>2023-10-29T00:00:00+05:30</updated><id>http://localhost:4000/transactions-in-rails</id><content type="html" xml:base="http://localhost:4000/transactions-in-rails/">&lt;p&gt;What is transaction?&lt;/p&gt;
 
 &lt;p&gt;Transaction is the smallest non-dividable piece of code. It can be described as the entity which we cannot be modularised again into smaller modules such that it will be run in a binary form - either it is executed completely or it is not executed at all.&lt;/p&gt;
 
@@ -987,85 +1103,4 @@ otherwise EC2 instance would be still accessible via http to end user.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&quot; target=&quot;_blank&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/associate-acm-certificate-alb-nlb/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry><entry><title type="html">Rails 6 - Managing API keys using ‘credentials’</title><link href="http://localhost:4000/rails-6-credentials/" rel="alternate" type="text/html" title="Rails 6 - Managing API keys using 'credentials'" /><published>2020-07-04T00:00:00+05:30</published><updated>2020-07-04T00:00:00+05:30</updated><id>http://localhost:4000/rails-6-credentials</id><content type="html" xml:base="http://localhost:4000/rails-6-credentials/">&lt;p&gt;How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.&lt;/p&gt;
-
-&lt;p&gt;In the era of docker-kubernetes we make them available as environment variables using kubernetes secrets &amp;amp; then application
-code picks up from there. This way is okay but becomes lengthy when number of secrets keys goes up.&lt;/p&gt;
-
-&lt;p&gt;Let’s talk about rails credentials now - the way for managing secret keys in the rails eco system itself. How different
-this approach is? Well, it stores secret keys in application code itself, but those are encrypted and needs a master key to
-decrypt. So, we can place just one secret key i.e. master key outside of VCS. Isn’t it good?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Create/edit credentials&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'VIM'&lt;/span&gt; rails credentials:edit
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This will create two files &lt;code class=&quot;highlighter-rouge&quot;&gt;credentials.yml.enc&lt;/code&gt; &amp;amp; &lt;code class=&quot;highlighter-rouge&quot;&gt;master.key&lt;/code&gt; and open up decrypted &lt;code class=&quot;highlighter-rouge&quot;&gt;credentials.yml.enc&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;ss&quot;&gt;aws:
-   access_key_id: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;AWSACCESSKEYID&lt;/span&gt;
-   &lt;span class=&quot;ss&quot;&gt;secret_access_key: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;AWSSECRETACCESSKEY&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;secret_key_base:
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This file will be encrypted again before saving. Note do not commit &lt;code class=&quot;highlighter-rouge&quot;&gt;master.key&lt;/code&gt; file. The only key that would stored 
-out of VCS is master key. There are multiple ways to achieve it.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Accessing these in rails environment as&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;credentials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;
- &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:aws&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:access_key_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;AWSACCESSKEYID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secret_access_key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;AWSSECRETACCESSKEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;adding-environment-wise-credentials&quot;&gt;Adding Environment wise Credentials&lt;/h3&gt;
-
-&lt;p&gt;We can also keep dev, staging &amp;amp; production env wise separate credential files. Let’s create it for development environment as -&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;credentials&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:edit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;development&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It will open up in a default editor like&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;ss&quot;&gt;aws:
-   access_key_id: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;
-   &lt;span class=&quot;ss&quot;&gt;secret_access_key: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;456&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Put in secrets in here &amp;amp; then can be simply accessed in application as&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;credentials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;
- &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:aws&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:access_key_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;DEVELOPMENT_KEY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:secret_access_key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;DEVELOPMENT_ACCESS_KEY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The best thing I liked was this&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/development-credentials.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Even if you forget to remove secrets &lt;code class=&quot;highlighter-rouge&quot;&gt;key file&lt;/code&gt; it will no be added to VCS as rails has moved it to &lt;code class=&quot;highlighter-rouge&quot;&gt;gitignore&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Saeloun &lt;a href=&quot;https://blog.saeloun.com/2019/10/10/rails-6-adds-support-for-multi-environment-credentials.html&quot;&gt;Blog&lt;/a&gt; on rails credentials&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Medium &lt;a href=&quot;https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc&quot;&gt;Blog&lt;/a&gt; on environment wise credentials&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">How do you manage application secret keys? We cannot commit them in Version Control System (like github), it is too dangerous.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/lock5.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will achieve passing only https traffic to EC2 via application load balancer.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/aws-icon.png" /></entry></feed>
