@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Why Rails? Why Ruby? | RailsExamples</title>
+<title>Serializers in Ruby on Rails | RailsExamples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Why Rails? Why Ruby?" />
+<meta property="og:title" content="Serializers in Ruby on Rails" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has made it so worthy?" />
-<meta property="og:description" content="Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has made it so worthy?" />
-<link rel="canonical" href="http://localhost:4000/why-rails-why-ruby/" />
-<meta property="og:url" content="http://localhost:4000/why-rails-why-ruby/" />
+<meta name="description" content="A place to learn Ruby on Rails" />
+<meta property="og:description" content="A place to learn Ruby on Rails" />
+<link rel="canonical" href="http://localhost:4000/serializers-in-rails/" />
+<meta property="og:url" content="http://localhost:4000/serializers-in-rails/" />
 <meta property="og:site_name" content="RailsExamples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/why.jpg" />
+<meta property="og:image" content="http://localhost:4000/assets/images/serializer.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-02-28T00:00:00+05:30" />
+<meta property="article:published_time" content="2024-07-28T00:00:00+05:30" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","dateModified":"2018-02-28T00:00:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/why-rails-why-ruby/"},"image":"http://localhost:4000/assets/images/why.jpg","datePublished":"2018-02-28T00:00:00+05:30","url":"http://localhost:4000/why-rails-why-ruby/","author":{"@type":"Person","name":"swapnil"},"description":"Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has made it so worthy?","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"headline":"Why Rails? Why Ruby?","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","dateModified":"2024-07-28T00:00:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/serializers-in-rails/"},"image":"http://localhost:4000/assets/images/serializer.jpg","datePublished":"2024-07-28T00:00:00+05:30","url":"http://localhost:4000/serializers-in-rails/","author":{"@type":"Person","name":"swapnil"},"description":"A place to learn Ruby on Rails","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"headline":"Serializers in Ruby on Rails","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -301,7 +301,7 @@ var documents = [{
     "id": 40,
     "url": "http://localhost:4000/rails-request-lifecycle/",
     "title": "Rails Request Lifecycle...",
-    "body": "2019/06/12 - Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out! Breakdown of request flow -  Browser generates HTTP/HTTPS request after a click or a event Web server receives request, analyses it and passes to application server Application server calls up proper controller-action after talking with router The resulted output is sent back to browser and displayed on screen.  Web Browser : Browser should direct request to a specific destination. For users it is a URL seen on web page, but computers need IP addresses, they do not understand these URLs. For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser who starts finding out IP address. Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, browser generally asks Internet Service Providers(ISP). If not found then it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like . com, . net, . org) –&gt; And then to Authoritative DNS Server. The chase ends here. Yay! We get the required ip address. Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name provider has not set up your domain information properly. It is actually interesting to try on terminal with dig, . .  Web Server : By now browser is successfully connected to server. The server here is web server. Some examples are Apache,Nginx, Passenger, Puma, Unicorn, Webrick. These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice that request. For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose. With nginx it is like Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,for anything else than assets, it will get 404 not found response. But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript?? Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be complex to put it in web server configuration file. So what next? There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK . . . RACK App: Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework, “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc. ” On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status code, headers, and body. ” In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. It notifies the web framework using a method call, communicates the details as method arguments, and the web framework communicates back by return values from the method call. In code it just looks like Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, http_method, parameters, rack_app_version, etc. And the call method responds in three variables - status, header and body. Status is http status, to tell about request completedsuccessfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response. Coming to rails, the config. ru file will look something like It is supposed to pass Rack application to run keyword, this means Rails. application is a Rack app and must respond to call method. . . . . Our app: Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes. rb!!! Yes that’s too muck Rack apps around. But Rails is always been that. config/routes. rb - This will ultimately generate these seven routes From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go to BooksController#show and likewise! That’s it from the Rails Request Lifecycle.  Cheers!!! {% if page. comments %}   Please enable JavaScript to view the comments powered by Disqus.  {% endif %} "
+    "body": "2019/06/12 - Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out! Breakdown of request flow -  Browser generates HTTP/HTTPS request after a click or a event Web server receives request, analyses it and passes to application server Application server calls up proper controller-action after talking with router The resulted output is sent back to browser and displayed on screen.  Web Browser : Browser should direct request to a specific destination. For users it is a URL seen on web page, but computers need IP addresses, they do not understand these URLs. For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser who starts finding out IP address. Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, browser generally asks Internet Service Providers(ISP). If not found then it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like . com, . net, . org) –&gt; And then to Authoritative DNS Server. The chase ends here. Yay! We get the required ip address. Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name provider has not set up your domain information properly. It is actually interesting to try on terminal with dig, . .  Web Server : By now browser is successfully connected to server. The server here is web server. Some examples are Apache,Nginx, Passenger, Puma, Unicorn, Webrick. These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice that request. For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose. With nginx it is like Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,for anything else than assets, it will get 404 not found response. But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript?? Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be complex to put it in web server configuration file. So what next? There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK . . . RACK App: Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework, “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc. ” On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status code, headers, and body. ” In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. It notifies the web framework using a method call, communicates the details as method arguments, and the web framework communicates back by return values from the method call. In code it just looks like Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, http_method, parameters, rack_app_version, etc. And the call method responds in three variables - status, header and body. Status is http status, to tell about request completedsuccessfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response. Coming to rails, the config. ru file will look something like It is supposed to pass Rack application to run keyword, this means Rails. application is a Rack app and must respond to call method. . . . . Our app: Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes. rb!!! Yes that’s too muck Rack apps around. But Rails is always been that. config/routes. rb - This will ultimately generate these seven routes From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go to BooksController#show and likewise! That’s it from the Rails Request Lifecycle.  Cheers!!!   Please enable JavaScript to view the comments powered by Disqus.  "
     }, {
     "id": 41,
     "url": "http://localhost:4000/how-index-works-on-database/",
@@ -393,7 +393,7 @@ function lunr_search(term) {
 <div class="container">
 	<div>
 		<p class="text-uppercase h2 font-weight-bold text-center">
-			Why Rails? Why Ruby?
+			Serializers in Ruby on Rails
 		</p>
 	</div>
 
@@ -406,6 +406,8 @@ function lunr_search(term) {
 							
 								<a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
 							
+								<a class="sscroll text-danger" href="/categories.html#serializer">serializer</a><span class="sep">, </span>
+							
 						</span>
 					</p>
 					<div class="d-flex align-items-center">
@@ -413,10 +415,10 @@ function lunr_search(term) {
 							<img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
 						
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-							<span class="text-muted d-block mt-1">Feb 28, 2018 · <span class="reading-time">
+							<span class="text-muted d-block mt-1">Jul 28, 2024 · <span class="reading-time">
   
   
-    1 min read
+    12 mins read
   
 </span>
     </span>
@@ -425,7 +427,7 @@ function lunr_search(term) {
 				</div>
 				
 					<div class="col-md-6 pr-0 align-self-center">
-						<img class="rounded" src="/assets/images/why.jpg" alt="Why Rails? Why Ruby?">
+						<img class="rounded" src="/assets/images/serializer.jpg" alt="Serializers in Ruby on Rails">
 					</div>
 				
 			</div>
@@ -441,54 +443,474 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>Ruby on Rails has been a prominent framework for web applications for last couple of years. But what has made it so worthy?</p>
+			<p><br /></p>
 
-<p><img src="/assets/images/why.jpg" alt="" /></p>
+<p>When building APIs with Ruby on Rails, serializers play a pivotal role in data transformation and presentation. They serve as the crucial intermediary between your complex Ruby objects and the streamlined JSON (or other formats) that your API serves to clients. This comprehensive guide will delve deep into the world of serializers, exploring their purpose, implementation strategies, advanced techniques, and best practices.</p>
 
-<p>Here are some findings,</p>
+<p><br /></p>
+
+<h2 id="understanding-serialization-in-rails">Understanding Serialization in Rails</h2>
+
+<p>Serialization, at its core, is the process of converting complex data structures or object states into a format that can be easily stored, transmitted, and later reconstructed. In the context of web APIs, this typically involves converting Ruby objects into JSON or XML.</p>
+
+<p><br /></p>
+
+<h4>What are Serializers?</h4>
+
+<ol>
+  <li><strong>Data Control</strong>: Serializers allow precise control over which attributes of an object are exposed in your API.</li>
+  <li><strong>Relationship Management</strong>: They provide a clean way to handle and include associated objects in API responses.</li>
+  <li><strong>Custom Data Manipulation</strong>: Serializers enable the addition of computed properties or custom logic to API responses.</li>
+  <li><strong>Consistency</strong>: They ensure a uniform structure for API responses across your application.</li>
+  <li><strong>Security</strong>: By explicitly defining what’s exposed, serializers help prevent accidental data leaks.</li>
+</ol>
+
+<p><br /></p>
+
+<h4 id="rails-built-in-serialization">Rails’ Built-in Serialization</h4>
+
+<p>Before diving into dedicated serializer libraries, it’s worth noting that Rails provides basic serialization out of the box:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="k">def</span> <span class="nf">as_json</span><span class="p">(</span><span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+    <span class="k">super</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="nf">merge</span><span class="p">(</span><span class="ss">only: </span><span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span><span class="p">]))</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>While functional, this approach can become unwieldy for complex objects or when you need different serialization strategies for the same object.</p>
+
+<p><br /></p>
+
+<h3 id="activemodelserializer-a-deep-dive">ActiveModel::Serializer: A Deep Dive</h3>
+
+<p>ActiveModel::Serializer (AMS) is the most popular serialization library for Rails. Let’s explore its features and usage in depth.</p>
+
+<h4 id="1-setting-up-activemodelserializer">1. Setting Up ActiveModel::Serializer</h4>
+
+<p>Add to your Gemfile:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'active_model_serializers'</span><span class="p">,</span> <span class="s1">'~&gt; 0.10.0'</span>
+
+</code></pre></div></div>
+
+<p>Then run <code class="highlighter-rouge">bundle install</code>.</p>
+
+<h4 id="2-creating-and-customizing-serializers">2. Creating and Customizing Serializers</h4>
+
+<p>Generate a serializer:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate serializer User
+
+</code></pre></div></div>
+
+<p>This creates <code class="highlighter-rouge">app/serializers/user_serializer.rb</code>. Let’s examine a comprehensive example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:full_name</span><span class="p">,</span> <span class="ss">:account_status</span>
+
+  <span class="n">has_many</span> <span class="ss">:posts</span>
+  <span class="n">has_one</span> <span class="ss">:profile</span>
+  <span class="n">belongs_to</span> <span class="ss">:company</span>
+
+  <span class="k">def</span> <span class="nf">full_name</span>
+    <span class="s2">"</span><span class="si">#{</span><span class="n">object</span><span class="p">.</span><span class="nf">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">object</span><span class="p">.</span><span class="nf">last_name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">account_status</span>
+    <span class="n">object</span><span class="p">.</span><span class="nf">active?</span> <span class="p">?</span> <span class="s1">'Active'</span> <span class="p">:</span> <span class="s1">'Inactive'</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">posts</span>
+    <span class="n">object</span><span class="p">.</span><span class="nf">posts</span><span class="p">.</span><span class="nf">published</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">include_email?</span>
+    <span class="n">scope</span> <span class="o">&amp;&amp;</span> <span class="n">scope</span><span class="p">.</span><span class="nf">admin?</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p>This serializer demonstrates several key features:</p>
 
 <ul>
-  <li>Why Ruby?</li>
+  <li>Basic attribute inclusion</li>
+  <li>Association handling</li>
+  <li>Custom attribute methods</li>
+  <li>Conditional attribute inclusion</li>
 </ul>
 
-<p>Ruby provides large, rich set of features, is less syntactic than Java. It is created with developers 
-in mind, to make developers happy.</p>
+<h4 id="3-serializer-inheritance">3. Serializer Inheritance</h4>
 
-<ul>
-  <li>Convention over configuration</li>
-</ul>
+<p>Serializers can inherit from each other, allowing for DRY code:</p>
 
-<p>Rails prefers convention over configuration. You will build application in very less time, if continued with the standard rails follows. e.g. For User model, a table users will be created in database, unless you wish to change it some other name.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BasicUserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span>
+<span class="k">end</span>
 
-<ul>
-  <li>Easy to Learn</li>
-</ul>
+<span class="k">class</span> <span class="nc">DetailedUserSerializer</span> <span class="o">&lt;</span> <span class="no">BasicUserSerializer</span>
+  <span class="n">attributes</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:created_at</span>
 
-<p>If you know any programming language (like C, C++, Java, C#, Python), then you will find ruby very easy to understand.</p>
+  <span class="n">has_many</span> <span class="ss">:posts</span>
+<span class="k">end</span>
 
-<ul>
-  <li>Great Community</li>
-</ul>
+</code></pre></div></div>
 
-<p>Rails has large number of committers who make sure it is in top condition. Many projects goes down with age, but rails has grown vast due to great community support.</p>
+<h4 id="4-adapter-configuration">4. Adapter Configuration</h4>
 
-<ul>
-  <li>Compatibility with latest technologies</li>
-</ul>
+<p>AMS supports different adapters for generating JSON. The two main ones are <code class="highlighter-rouge">:attributes</code> and <code class="highlighter-rouge">:json_api</code>.</p>
 
-<p>Rails now can be used with any JS library, such as react. It also works with Angular JS. Rails community has maintained its compatibility with latest tech changes.</p>
+<p>In <code class="highlighter-rouge">config/initializers/active_model_serializers.rb</code>:</p>
 
-<p>…</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveModelSerializers</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">adapter</span> <span class="o">=</span> <span class="ss">:attributes</span> <span class="c1"># or :json_api</span>
 
-<p><img src="/assets/images/ruby.png" alt="" /></p>
+</code></pre></div></div>
 
-<dl>
-  <dt>Notes</dt>
-</dl>
+<p>The <code class="highlighter-rouge">:json_api</code> adapter follows the JSON:API spec, which provides a standardized way of formatting API responses.</p>
 
-<p>To build a good product, one should choose a proven, reliable and community supported framework. And Rails offers all of it.</p>
+<p><br /></p>
 
-<p>Rails is used by thousands of websites and some major tech companies such as GitHub, Airbnb, Netflix, Twitter.</p>
+<h2 id="advanced-serializer-techniques">Advanced Serializer Techniques</h2>
+
+<h4 id="1-nested-and-compound-documents">1. Nested and Compound Documents</h4>
+
+<p>For complex object graphs, you might need nested serializers:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span>
+  <span class="n">has_many</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">serializer: </span><span class="no">PostPreviewSerializer</span>
+  <span class="n">has_one</span> <span class="ss">:address</span><span class="p">,</span> <span class="ss">serializer: </span><span class="no">AddressSerializer</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">PostPreviewSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:excerpt</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">AddressSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:street</span><span class="p">,</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">:country</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="2-polymorphic-relationships">2. Polymorphic Relationships</h4>
+
+<p>Handling polymorphic relationships requires special attention:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CommentSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:content</span>
+  <span class="n">belongs_to</span> <span class="ss">:commentable</span><span class="p">,</span> <span class="ss">polymorphic: </span><span class="kp">true</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">PostSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:title</span>
+  <span class="n">has_many</span> <span class="ss">:comments</span><span class="p">,</span> <span class="ss">serializer: </span><span class="no">CommentSerializer</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">ImageSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:url</span>
+  <span class="n">has_many</span> <span class="ss">:comments</span><span class="p">,</span> <span class="ss">serializer: </span><span class="no">CommentSerializer</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="3-caching-strategies">3. Caching Strategies</h4>
+
+<p>Caching can significantly improve performance:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">cache</span> <span class="ss">key: </span><span class="s1">'user'</span><span class="p">,</span> <span class="ss">expires_in: </span><span class="mi">3</span><span class="p">.</span><span class="nf">hours</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span>
+
+  <span class="n">belongs_to</span> <span class="ss">:company</span>
+  <span class="n">has_many</span> <span class="ss">:posts</span>
+
+  <span class="k">def</span> <span class="nf">cache_key</span>
+    <span class="s2">"user/</span><span class="si">#{</span><span class="n">object</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">object</span><span class="p">.</span><span class="nf">updated_at</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="4-meta-information-and-links">4. Meta Information and Links</h4>
+
+<p>Adding meta information and links to your serialized output:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span>
+
+  <span class="n">link</span><span class="p">(</span><span class="ss">:self</span><span class="p">)</span> <span class="p">{</span> <span class="n">user_url</span><span class="p">(</span><span class="n">object</span><span class="p">)</span> <span class="p">}</span>
+
+  <span class="n">meta</span> <span class="k">do</span>
+    <span class="p">{</span>
+      <span class="ss">created_at: </span><span class="n">object</span><span class="p">.</span><span class="nf">created_at</span><span class="p">,</span>
+      <span class="ss">last_login: </span><span class="n">object</span><span class="p">.</span><span class="nf">last_login_at</span>
+    <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="performance-optimization">Performance Optimization</h2>
+
+<h4 id="1-n1-query-prevention">1. N+1 Query Prevention</h4>
+
+<p>Avoid N+1 queries by eager loading associations:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="n">users</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">includes</span><span class="p">(</span><span class="ss">:posts</span><span class="p">,</span> <span class="ss">:company</span><span class="p">).</span><span class="nf">all</span>
+    <span class="n">render</span> <span class="ss">json: </span><span class="n">users</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h4 id="2-selective-loading">2. Selective Loading</h4>
+
+<p>Load only what you need:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span>
+
+  <span class="n">has_many</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">if: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="n">should_include_posts?</span> <span class="p">}</span>
+
+  <span class="k">def</span> <span class="nf">should_include_posts?</span>
+    <span class="vi">@instance_options</span><span class="p">[</span><span class="ss">:include_posts</span><span class="p">]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># In your controller</span>
+<span class="n">render</span> <span class="ss">json: </span><span class="vi">@user</span><span class="p">,</span> <span class="ss">include_posts: </span><span class="n">params</span><span class="p">[</span><span class="ss">:include_posts</span><span class="p">]</span>
+
+</code></pre></div></div>
+
+<h4 id="3-fragment-caching">3. Fragment Caching</h4>
+
+<p>For parts of your JSON that change less frequently:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span>
+
+  <span class="n">has_many</span> <span class="ss">:posts</span> <span class="k">do</span>
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">fetch</span><span class="p">([</span><span class="s2">"user"</span><span class="p">,</span> <span class="n">object</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">])</span> <span class="k">do</span>
+      <span class="n">object</span><span class="p">.</span><span class="nf">posts</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span> <span class="no">PostSerializer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">post</span><span class="p">).</span><span class="nf">as_json</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="api-versioning-strategies">API Versioning Strategies</h2>
+
+<h4 id="1-namespace-based-versioning">1. Namespace-based Versioning</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">API</span>
+  <span class="k">module</span> <span class="nn">V1</span>
+    <span class="k">class</span> <span class="nc">UserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+      <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">V2</span>
+    <span class="k">class</span> <span class="nc">UserSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+      <span class="n">attributes</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:full_name</span><span class="p">,</span> <span class="ss">:email</span>
+
+      <span class="k">def</span> <span class="nf">full_name</span>
+        <span class="s2">"</span><span class="si">#{</span><span class="n">object</span><span class="p">.</span><span class="nf">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">object</span><span class="p">.</span><span class="nf">last_name</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h4 id="2-accept-header-versioning">2. Accept Header Versioning</h4>
+
+<p>Use different serializers based on the Accept header:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">show</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+    <span class="n">render</span> <span class="ss">json: </span><span class="n">user</span><span class="p">,</span> <span class="ss">serializer: </span><span class="n">serializer_for_version</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">serializer_for_version</span>
+    <span class="k">case</span> <span class="n">request</span><span class="p">.</span><span class="nf">headers</span><span class="p">[</span><span class="s1">'VERSION'</span><span class="p">]</span>
+    <span class="k">when</span> <span class="s1">'v1'</span>
+      <span class="no">API</span><span class="o">::</span><span class="no">V1</span><span class="o">::</span><span class="no">UserSerializer</span>
+    <span class="k">when</span> <span class="s1">'v2'</span>
+      <span class="no">API</span><span class="o">::</span><span class="no">V2</span><span class="o">::</span><span class="no">UserSerializer</span>
+    <span class="k">else</span>
+      <span class="no">API</span><span class="o">::</span><span class="no">V1</span><span class="o">::</span><span class="no">UserSerializer</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="testing-serializers">Testing Serializers</h2>
+
+<p>Thorough testing of serializers is crucial. Here’s an expanded RSpec example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">RSpec</span><span class="p">.</span><span class="nf">describe</span> <span class="no">UserSerializer</span> <span class="k">do</span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="n">create</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">first_name: </span><span class="s1">'John'</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s1">'Doe'</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:serializer</span><span class="p">)</span> <span class="p">{</span> <span class="n">described_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">user</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:serialization</span><span class="p">)</span> <span class="p">{</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">serializer</span><span class="p">.</span><span class="nf">to_json</span><span class="p">)</span> <span class="p">}</span>
+
+  <span class="n">it</span> <span class="s2">"includes the basic attributes"</span> <span class="k">do</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">serialization</span><span class="p">).</span><span class="nf">to</span> <span class="kp">include</span><span class="p">(</span>
+      <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+      <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span>
+      <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">.</span><span class="nf">email</span>
+    <span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="n">it</span> <span class="s2">"includes the full name"</span> <span class="k">do</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">serialization</span><span class="p">[</span><span class="s1">'full_name'</span><span class="p">]).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="s1">'John Doe'</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="n">it</span> <span class="s2">"includes active posts"</span> <span class="k">do</span>
+    <span class="n">active_post</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="ss">:post</span><span class="p">,</span> <span class="ss">user: </span><span class="n">user</span><span class="p">,</span> <span class="ss">status: </span><span class="s1">'published'</span><span class="p">)</span>
+    <span class="n">inactive_post</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="ss">:post</span><span class="p">,</span> <span class="ss">user: </span><span class="n">user</span><span class="p">,</span> <span class="ss">status: </span><span class="s1">'draft'</span><span class="p">)</span>
+
+    <span class="n">expect</span><span class="p">(</span><span class="n">serialization</span><span class="p">[</span><span class="s1">'posts'</span><span class="p">]).</span><span class="nf">to</span> <span class="kp">include</span><span class="p">(</span>
+      <span class="kp">include</span><span class="p">(</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="n">active_post</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">serialization</span><span class="p">[</span><span class="s1">'posts'</span><span class="p">]).</span><span class="nf">not_to</span> <span class="kp">include</span><span class="p">(</span>
+      <span class="kp">include</span><span class="p">(</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="n">inactive_post</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+    <span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="n">context</span> <span class="s2">"when serialized by an admin"</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:admin</span><span class="p">)</span> <span class="p">{</span> <span class="n">create</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">admin: </span><span class="kp">true</span><span class="p">)</span> <span class="p">}</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:serializer</span><span class="p">)</span> <span class="p">{</span> <span class="n">described_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="ss">scope: </span><span class="n">admin</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">it</span> <span class="s2">"includes the email"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="n">serialization</span><span class="p">).</span><span class="nf">to</span> <span class="n">have_key</span><span class="p">(</span><span class="s1">'email'</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="n">context</span> <span class="s2">"when serialized by a regular user"</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:regular_user</span><span class="p">)</span> <span class="p">{</span> <span class="n">create</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">admin: </span><span class="kp">false</span><span class="p">)</span> <span class="p">}</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:serializer</span><span class="p">)</span> <span class="p">{</span> <span class="n">described_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="ss">scope: </span><span class="n">regular_user</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">it</span> <span class="s2">"does not include the email"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="n">serialization</span><span class="p">).</span><span class="nf">not_to</span> <span class="n">have_key</span><span class="p">(</span><span class="s1">'email'</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="alternative-serialization-approaches">Alternative Serialization Approaches</h2>
+
+<p>While ActiveModel::Serializer is popular, there are other approaches worth considering:</p>
+
+<h4 id="1-jbuilder">1. Jbuilder</h4>
+
+<p>Jbuilder allows you to build JSON structures with a Ruby DSL:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/views/users/show.json.jbuilder</span>
+<span class="n">json</span><span class="p">.</span><span class="nf">extract!</span> <span class="vi">@user</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span>
+<span class="n">json</span><span class="p">.</span><span class="nf">posts</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">posts</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+  <span class="n">json</span><span class="p">.</span><span class="nf">extract!</span> <span class="n">post</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:title</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h4 id="2-fast-json-api">2. Fast JSON API</h4>
+
+<p>Developed by Netflix, Fast JSON API focuses on performance:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserSerializer</span>
+  <span class="kp">include</span> <span class="no">FastJsonapi</span><span class="o">::</span><span class="no">ObjectSerializer</span>
+
+  <span class="n">attributes</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span>
+
+  <span class="n">has_many</span> <span class="ss">:posts</span>
+
+  <span class="n">attribute</span> <span class="ss">:full_name</span> <span class="k">do</span> <span class="o">|</span><span class="n">object</span><span class="o">|</span>
+    <span class="s2">"</span><span class="si">#{</span><span class="n">object</span><span class="p">.</span><span class="nf">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">object</span><span class="p">.</span><span class="nf">last_name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h4 id="3-blueprinter">3. Blueprinter</h4>
+
+<p>Blueprinter offers a simple, declarative approach to serialization:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserBlueprint</span> <span class="o">&lt;</span> <span class="no">Blueprinter</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">identifier</span> <span class="ss">:id</span>
+  <span class="n">fields</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span>
+
+  <span class="n">association</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">blueprint: </span><span class="no">PostBlueprint</span>
+
+  <span class="n">field</span> <span class="ss">:full_name</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+    <span class="s2">"</span><span class="si">#{</span><span class="n">user</span><span class="p">.</span><span class="nf">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">user</span><span class="p">.</span><span class="nf">last_name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="real-world-considerations">Real-world Considerations</h2>
+
+<h4 id="1-handling-large-datasets">1. Handling Large Datasets</h4>
+
+<p>For large datasets, consider pagination and using background jobs for data preparation.</p>
+
+<h4 id="2-serializer-composition">2. Serializer Composition</h4>
+
+<p>For complex objects, consider composing serializers:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ComplexObjectSerializer</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serializer</span>
+  <span class="n">attributes</span> <span class="ss">:id</span>
+
+  <span class="n">has_one</span> <span class="ss">:user</span>
+  <span class="n">has_one</span> <span class="ss">:product</span>
+  <span class="n">has_many</span> <span class="ss">:orders</span>
+
+  <span class="k">def</span> <span class="nf">user</span>
+    <span class="no">UserSerializer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">object</span><span class="p">.</span><span class="nf">user</span><span class="p">).</span><span class="nf">as_json</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">product</span>
+    <span class="no">ProductSerializer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">object</span><span class="p">.</span><span class="nf">product</span><span class="p">).</span><span class="nf">as_json</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">orders</span>
+    <span class="n">object</span><span class="p">.</span><span class="nf">orders</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">order</span><span class="o">|</span> <span class="no">OrderSerializer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">order</span><span class="p">).</span><span class="nf">as_json</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Serializers are a powerful tool in the Rails ecosystem, offering a clean, maintainable way to shape your API responses. They provide a separation of concerns, allowing your models to focus on business logic while serializers handle data presentation.</p>
+
+<p>While ActiveModel::Serializer is a popular choice, it’s important to consider your specific needs. For simple APIs or performance-critical applications, you might opt for a lighter solution or even manual JSON construction. However, for most applications, the structure and flexibility that serializers provide make them an excellent choice.</p>
+
+<p>As with any tool, the key is to understand the trade-offs and choose the approach that best fits your application’s needs. Whether you’re building a small API or a complex system with multiple client applications, mastering serializers will help you create robust, efficient, and maintainable Rails APIs.</p>
                 
 			</article>
 			<div>
@@ -545,10 +967,10 @@ in mind, to make developers happy.</p>
     <div class="container">
         <div class="row prevnextlinks small font-weight-bold">
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/rails-includes-vs-joins/"> Rails Includes vs Joins </a>
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/activerecord-concerns-rails/"> <img height="30px" class="mr-1" src="/assets/images/concern_1.jpg">  Rails ActiveRecord Concerns</a>
             </div>
+          
           
         </div>
     </div>
