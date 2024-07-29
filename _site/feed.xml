@@ -1,4 +1,375 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-28T02:30:03+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">Serializers in Ruby on Rails</title><link href="http://localhost:4000/serializers-in-rails/" rel="alternate" type="text/html" title="Serializers in Ruby on Rails" /><published>2024-07-28T00:00:00+05:30</published><updated>2024-07-28T00:00:00+05:30</updated><id>http://localhost:4000/serializers-in-rails</id><content type="html" xml:base="http://localhost:4000/serializers-in-rails/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-29T23:03:01+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">HTTP Status Codes: An Overview</title><link href="http://localhost:4000/http-status-codes-in-rails/" rel="alternate" type="text/html" title="HTTP Status Codes: An Overview" /><published>2024-07-25T00:00:00+05:30</published><updated>2024-07-25T00:00:00+05:30</updated><id>http://localhost:4000/http-status-codes-in-rails</id><content type="html" xml:base="http://localhost:4000/http-status-codes-in-rails/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;HTTP status codes are an essential part of web communication, indicating the result of a client’s request to a server. Here’s an expanded list of status codes, their meanings, and how to use them in a Rails API.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1xx-informational&quot;&gt;1xx: Informational&lt;/h3&gt;
+
+&lt;h4 id=&quot;100&quot;&gt;100&lt;/h4&gt;
+&lt;p&gt;code - 100 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:continue&lt;/code&gt; &lt;br /&gt;
+Info - Continue&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# This is typically handled by the server automatically&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;101&quot;&gt;101&lt;/h4&gt;
+&lt;p&gt;code - 101 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:switching_protocols&lt;/code&gt; &lt;br /&gt;
+Info - Switching Protocols&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# This is typically handled by the server automatically&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;102&quot;&gt;102&lt;/h4&gt;
+&lt;p&gt;code - 102 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:processing&lt;/code&gt; &lt;br /&gt;
+Info - Processing&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# This is typically used in WebDAV&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2xx-success&quot;&gt;2xx: Success&lt;/h2&gt;
+
+&lt;h4 id=&quot;200&quot;&gt;200&lt;/h4&gt;
+&lt;p&gt;code - 200 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:ok&lt;/code&gt; &lt;br /&gt;
+Info - OK&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Success'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :ok&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;201&quot;&gt;201&lt;/h4&gt;
+&lt;p&gt;code - 201 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:created&lt;/code&gt; &lt;br /&gt;
+Info - Created&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Resource created'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :created&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;202&quot;&gt;202&lt;/h4&gt;
+&lt;p&gt;code - 202 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:accepted&lt;/code&gt; &lt;br /&gt;
+Info - Accepted&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Request accepted for processing'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :accepted&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;203&quot;&gt;203&lt;/h4&gt;
+&lt;p&gt;code - 203 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:non_authoritative_information&lt;/code&gt; &lt;br /&gt;
+Info - Non-Authoritative Information&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Information from a third-party source'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :non_authoritative_information&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;204&quot;&gt;204&lt;/h4&gt;
+&lt;p&gt;code - 204 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:no_content&lt;/code&gt; &lt;br /&gt;
+Info - No Content&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:no_content&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;205&quot;&gt;205&lt;/h4&gt;
+&lt;p&gt;code - 205 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:reset_content&lt;/code&gt; &lt;br /&gt;
+Info - Reset Content&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:reset_content&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;206&quot;&gt;206&lt;/h4&gt;
+&lt;p&gt;code - 206 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:partial_content&lt;/code&gt; &lt;br /&gt;
+Info - Partial Content&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;partial_data: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :partial_content&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;3xx-redirection&quot;&gt;3xx: Redirection&lt;/h2&gt;
+
+&lt;h4 id=&quot;300&quot;&gt;300&lt;/h4&gt;
+&lt;p&gt;code - 300 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:multiple_choices&lt;/code&gt; &lt;br /&gt;
+Info - Multiple Choices&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;choices: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :multiple_choices&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;301&quot;&gt;301&lt;/h4&gt;
+&lt;p&gt;code - 301 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:moved_permanently&lt;/code&gt; &lt;br /&gt;
+Info - Moved Permanently&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :moved_permanently&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;302&quot;&gt;302&lt;/h4&gt;
+&lt;p&gt;code - 302 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:found&lt;/code&gt; &lt;br /&gt;
+Info - Found&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :found&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;303&quot;&gt;303&lt;/h4&gt;
+&lt;p&gt;code - 303 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:see_other&lt;/code&gt; &lt;br /&gt;
+Info - See Other&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :see_other&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;304&quot;&gt;304&lt;/h4&gt;
+&lt;p&gt;code - 304 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:not_modified&lt;/code&gt; &lt;br /&gt;
+Info - Not Modified&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:not_modified&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;307&quot;&gt;307&lt;/h4&gt;
+&lt;p&gt;code - 307 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:temporary_redirect&lt;/code&gt; &lt;br /&gt;
+Info - Temporary Redirect&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :temporary_redirect&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;308&quot;&gt;308&lt;/h4&gt;
+&lt;p&gt;code - 308 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:permanent_redirect&lt;/code&gt; &lt;br /&gt;
+Info - Permanent Redirect&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_permanent_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :permanent_redirect&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;4xx-client-errors&quot;&gt;4xx: Client Errors&lt;/h2&gt;
+
+&lt;h4 id=&quot;400&quot;&gt;400&lt;/h4&gt;
+&lt;p&gt;code - 400 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:bad_request&lt;/code&gt; &lt;br /&gt;
+Info - Bad Request&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Invalid parameters'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :bad_request&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;401&quot;&gt;401&lt;/h4&gt;
+&lt;p&gt;code - 401 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:unauthorized&lt;/code&gt; &lt;br /&gt;
+Info - Unauthorized&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Authentication required'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :unauthorized&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;402&quot;&gt;402&lt;/h4&gt;
+&lt;p&gt;code - 402 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:payment_required&lt;/code&gt; &lt;br /&gt;
+Info - Payment Required&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Payment required to access this resource'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :payment_required&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;403&quot;&gt;403&lt;/h4&gt;
+&lt;p&gt;code - 403 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:forbidden&lt;/code&gt; &lt;br /&gt;
+Info - Forbidden&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Access denied'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :forbidden&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;404&quot;&gt;404&lt;/h4&gt;
+&lt;p&gt;code - 404 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:not_found&lt;/code&gt; &lt;br /&gt;
+Info - Not Found&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Resource not found'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :not_found&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;405&quot;&gt;405&lt;/h4&gt;
+&lt;p&gt;code - 405 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:method_not_allowed&lt;/code&gt; &lt;br /&gt;
+Info - Method Not Allowed&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Method not allowed'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :method_not_allowed&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;406&quot;&gt;406&lt;/h4&gt;
+&lt;p&gt;code - 406 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:not_acceptable&lt;/code&gt; &lt;br /&gt;
+Info - Not Acceptable&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Not acceptable'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :not_acceptable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;409&quot;&gt;409&lt;/h4&gt;
+&lt;p&gt;code - 409 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:conflict&lt;/code&gt; &lt;br /&gt;
+Info - Conflict&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Resource conflict'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :conflict&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;410&quot;&gt;410&lt;/h4&gt;
+&lt;p&gt;code - 410 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:gone&lt;/code&gt; &lt;br /&gt;
+Info - Gone&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Resource no longer available'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :gone&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;422&quot;&gt;422&lt;/h4&gt;
+&lt;p&gt;code - 422 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:unprocessable_entity&lt;/code&gt; &lt;br /&gt;
+Info - Unprocessable Entity&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;errors: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;errors&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :unprocessable_entity&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;429&quot;&gt;429&lt;/h4&gt;
+&lt;p&gt;code - 429 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:too_many_requests&lt;/code&gt; &lt;br /&gt;
+Info - Too Many Requests&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Rate limit exceeded'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :too_many_requests&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;5xx-server-errors&quot;&gt;5xx: Server Errors&lt;/h2&gt;
+
+&lt;h4 id=&quot;500&quot;&gt;500&lt;/h4&gt;
+&lt;p&gt;code - 500 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:internal_server_error&lt;/code&gt; &lt;br /&gt;
+Info - Internal Server Error&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Internal Server Error'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :internal_server_error&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;501&quot;&gt;501&lt;/h4&gt;
+&lt;p&gt;code - 501 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:not_implemented&lt;/code&gt; &lt;br /&gt;
+Info - Not Implemented&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Functionality not implemented'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :not_implemented&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;502&quot;&gt;502&lt;/h4&gt;
+&lt;p&gt;code - 502 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:bad_gateway&lt;/code&gt; &lt;br /&gt;
+Info - Bad Gateway&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Bad Gateway'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :bad_gateway&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;503&quot;&gt;503&lt;/h4&gt;
+&lt;p&gt;code - 503 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:service_unavailable&lt;/code&gt; &lt;br /&gt;
+Info - Service Unavailable&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Service Unavailable'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :service_unavailable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;504&quot;&gt;504&lt;/h4&gt;
+&lt;p&gt;code - 504 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:gateway_timeout&lt;/code&gt; &lt;br /&gt;
+Info - Gateway Timeout&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Gateway Timeout'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :gateway_timeout&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;507&quot;&gt;507&lt;/h4&gt;
+&lt;p&gt;code - 507 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:insufficient_storage&lt;/code&gt; &lt;br /&gt;
+Info - Insufficient Storage&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Insufficient storage'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :insufficient_storage&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;511&quot;&gt;511&lt;/h4&gt;
+&lt;p&gt;code - 511 &lt;br /&gt;
+status - &lt;code class=&quot;highlighter-rouge&quot;&gt;:network_authentication_required&lt;/code&gt; &lt;br /&gt;
+Info - Network Authentication Required&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Network authentication required'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: :network_authentication_required&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Note that while Rails provides symbols for many status codes, you can always use the numerical code directly if a symbol is not available:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;json: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Custom status'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;418&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When building APIs, using appropriate status codes helps clients understand and handle responses correctly, leading to more robust and maintainable applications. It’s important to choose the most specific and appropriate status code for each situation to provide clear and accurate information to API consumers.&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/status_codes.jpg" /></entry><entry><title type="html">Serializers in Ruby on Rails</title><link href="http://localhost:4000/serializers-in-rails/" rel="alternate" type="text/html" title="Serializers in Ruby on Rails" /><published>2024-07-23T00:00:00+05:30</published><updated>2024-07-23T00:00:00+05:30</updated><id>http://localhost:4000/serializers-in-rails</id><content type="html" xml:base="http://localhost:4000/serializers-in-rails/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;When building APIs with Ruby on Rails, serializers play a pivotal role in data transformation and presentation. They serve as the crucial intermediary between your complex Ruby objects and the streamlined JSON (or other formats) that your API serves to clients. This comprehensive guide will delve deep into the world of serializers, exploring their purpose, implementation strategies, advanced techniques, and best practices.&lt;/p&gt;
 
@@ -1375,55 +1746,4 @@ mulitple inheritance? &lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_in
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_inheritance&quot;&gt;The Diamond problem&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will learn about multiple inheritance in ruby.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/multiple-Inheritance-home-image.png" /></entry><entry><title type="html">Resolve early termination of worker in Rails</title><link href="http://localhost:4000/remove-stale-pid/" rel="alternate" type="text/html" title="Resolve early termination of worker in Rails" /><published>2022-12-12T00:00:00+05:30</published><updated>2022-12-12T00:00:00+05:30</updated><id>http://localhost:4000/remove-stale-pid</id><content type="html" xml:base="http://localhost:4000/remove-stale-pid/">&lt;p&gt;&lt;em&gt;In this post we will resolve the error - Early termination of puma worker&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note - The reason described below is one of the cause, it is quite possible to reproduce this issue due to another reason.&lt;/p&gt;
-
-&lt;p&gt;Let’s begin.&lt;/p&gt;
-
-&lt;p&gt;Few days ago, like every normal day I started dev environment rails server and suddenly server log flooded
-with error message - &lt;code class=&quot;highlighter-rouge&quot;&gt;early-termination-of-worker&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;I did not understand at the time why it has happened as I did nothing different. Oh, but there was one thing to note - 
-I had to abruptly shut down mac the day before. Was it even related?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Yes, it was!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;While shutting down mac, postgres server was also abruptly closed - leading to &lt;code class=&quot;highlighter-rouge&quot;&gt;stale postmaster.pid&lt;/code&gt; file in the
-system. And the other day when I was trying to start rails server, it was unable to connect to postgres server. The 
-reason was postgres server was unable to start as system had &lt;code class=&quot;highlighter-rouge&quot;&gt;stale postmaster.pid&lt;/code&gt; reference.&lt;/p&gt;
-
-&lt;p&gt;If you are stuck at how I find out the reason, here it is -&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/stale-postmaster-pid-error.png&quot; alt=&quot;postgres-stale-postmaster-pid-error&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So after knowing the problem, answer was straight forward - &lt;strong&gt;Go and delete postmaster.pid file&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;How to do it?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I use postgres desktop application, so these were steps for me -&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Open terminal &amp;amp; navigate to Postgres directory. You can find postgres directory by opening postgres app and clicking 
-on server settings option. My path was - &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;/Users/swapnil/Library/Application Support/Postgres/var-13&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;List all files in the directory and check if postmaster.pid file is present.
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Go ahead and remove postmaster.pid -
-    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;postmaster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pid&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;That’s it. After this step your postgres server should be running &amp;amp; so rails server will be able to connect to it.&lt;/p&gt;
-
-&lt;p&gt;P.S. - If you installed postgres via different method then solution steps would be different for you.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Thanks. Cheers!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will resolve the error - Early termination of puma worker.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/stale-postmaster-pid-error.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will learn about multiple inheritance in ruby.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/multiple-Inheritance-home-image.png" /></entry></feed>
