@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Sending Email from Rails | RailsExamples</title>
+<title>Database Partitioning | RailsExamples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Sending Email from Rails" />
+<meta property="og:title" content="Database Partitioning" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Sending email is integral part of every web application nowadays. In this post we will cover how to send emails from a rails application." />
-<meta property="og:description" content="Sending email is integral part of every web application nowadays. In this post we will cover how to send emails from a rails application." />
-<link rel="canonical" href="http://localhost:4000/send-email-from-rails/" />
-<meta property="og:url" content="http://localhost:4000/send-email-from-rails/" />
+<meta name="description" content="A place to learn Ruby on Rails" />
+<meta property="og:description" content="A place to learn Ruby on Rails" />
+<link rel="canonical" href="http://localhost:4000/database-partitioning/" />
+<meta property="og:url" content="http://localhost:4000/database-partitioning/" />
 <meta property="og:site_name" content="RailsExamples" />
-<meta property="og:image" content="http://localhost:4000/assets/images/send-email-1.jpg" />
+<meta property="og:image" content="http://localhost:4000/assets/images/db-partition.jpeg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-03-06T00:00:00+05:30" />
+<meta property="article:published_time" content="2024-08-02T00:00:00+05:30" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","dateModified":"2020-03-06T00:00:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/send-email-from-rails/"},"image":"http://localhost:4000/assets/images/send-email-1.jpg","datePublished":"2020-03-06T00:00:00+05:30","url":"http://localhost:4000/send-email-from-rails/","author":{"@type":"Person","name":"swapnil"},"description":"Sending email is integral part of every web application nowadays. In this post we will cover how to send emails from a rails application.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"headline":"Sending Email from Rails","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","dateModified":"2024-08-02T00:00:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/database-partitioning/"},"image":"http://localhost:4000/assets/images/db-partition.jpeg","datePublished":"2024-08-02T00:00:00+05:30","url":"http://localhost:4000/database-partitioning/","author":{"@type":"Person","name":"swapnil"},"description":"A place to learn Ruby on Rails","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"headline":"Database Partitioning","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -411,7 +411,7 @@ function lunr_search(term) {
 <div class="container">
 	<div>
 		<p class="text-uppercase h2 font-weight-bold text-center">
-			Sending Email from Rails
+			Database Partitioning
 		</p>
 	</div>
 
@@ -422,9 +422,9 @@ function lunr_search(term) {
 					<p class="text-uppercase font-weight-bold">
 						<span class="catlist">
 							
-								<a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
+								<a class="sscroll text-danger" href="/categories.html#database">database</a><span class="sep">, </span>
 							
-								<a class="sscroll text-danger" href="/categories.html#email">email</a><span class="sep">, </span>
+								<a class="sscroll text-danger" href="/categories.html#postgresql">postgresql</a><span class="sep">, </span>
 							
 						</span>
 					</p>
@@ -433,10 +433,10 @@ function lunr_search(term) {
 							<img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
 						
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-							<span class="text-muted d-block mt-1">Mar 06, 2020 · <span class="reading-time">
+							<span class="text-muted d-block mt-1">Aug 02, 2024 · <span class="reading-time">
   
   
-    2 mins read
+    7 mins read
   
 </span>
     </span>
@@ -445,7 +445,7 @@ function lunr_search(term) {
 				</div>
 				
 					<div class="col-md-6 pr-0 align-self-center">
-						<img class="rounded" src="/assets/images/send-email-1.jpg" alt="Sending Email from Rails">
+						<img class="rounded" src="/assets/images/db-partition.jpeg" alt="Database Partitioning">
 					</div>
 				
 			</div>
@@ -461,71 +461,171 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>Sending email is integral part of every web application nowadays. In this post we will cover how to send emails
-from a rails application.</p>
+			<p><br /></p>
 
-<p>First you need an active smtp server to send an email, because only SMTP servers are capable of sending or receiving emails.
-There are many providers such as gmail, sendgrid and more. For this post, we will consider using gmail.</p>
+<p>As name suggests it is way of dividing database table into smaller parts generally called as partitions. Partitioning logic can vary from use case to use case. For example, we might partition users table based on ID i.e. IDs from 1 to 1,000,000 will be in first partition, IDs from 1,000,001 to 2,000,000 would be second one and like this. Another example would be based on created date, for example - All entries from 2020 would go in one partition, entries from 2021 would go in another one and so on.</p>
 
-<p>Assuming you have a Rails application with User model.</p>
+<h3 id="when">When?</h3>
 
-<ol>
-  <li>We need to configure SMTP server. This can be set in config/environments/development.rb
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">config</span><span class="p">.</span><span class="nf">action_mailer</span><span class="p">.</span><span class="nf">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
-   <span class="n">host</span> <span class="o">=</span> <span class="s1">'example.com'</span> <span class="c1">#replace with your own url</span>
-   <span class="n">config</span><span class="p">.</span><span class="nf">action_mailer</span><span class="p">.</span><span class="nf">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">host: </span><span class="n">host</span> <span class="p">}</span>
+<p>It is fair to ask when to partition table in first place. The straight forward answer would be when table data grows to a fairly large size and querying on it becomes slow and painful for database, we should look into aspect of partitioning the table.</p>
+
+<h3 id="benefits-of-partitioning--">Benefits of partitioning -</h3>
+
+<p>As we are dividing table into smaller chunks, searching of data becomes relatively faster. Also in Postgres, database is smart enough to only look into particular partitions based on logic in where clause.
+Also maintenance operations like vacuuming are performed on relatively small and updated datasets.</p>
+
+<h5 id="a-bit-about-our-use-case-">A bit about our use case -</h5>
+
+<p>We have product_views table which stores information about views received on products across the platform. Over the time and by the nature of data, this table grew to a size of 20 GB, having over 50 million rows. The querying of data from this table was now relatively slow (even though we have proper indices maintained for this table) and it was sheerly because of volume of data. So what do we do now? Looking into data and size we decided to partition this table. </p>
+
+<p>Here is how we achieved it. Our tech stack is backend powered by Ruby on rails and Postgres database. We wanted to do it with minimal changes on rails part and more on Postgres part. Postgres supports partitioning from version 11 onwards. We divided the table by created_at column yearwise. A postgresql script to create partition is -</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="no">SERIAL</span><span class="p">,</span>
+    <span class="n">order_date</span> <span class="no">DATE</span> <span class="no">NOT</span> <span class="no">NULL</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="no">INTEGER</span><span class="p">,</span>
+    <span class="n">amount</span> <span class="no">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span> <span class="no">PARTITION</span> <span class="no">BY</span> <span class="no">RANGE</span> <span class="p">(</span><span class="n">order_date</span><span class="p">);</span>
+
+
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2019</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2019-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2020-01-01'</span><span class="p">);</span>
+
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2020</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2020-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2021-01-01'</span><span class="p">);</span>
+
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2021</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2021-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2022-01-01'</span><span class="p">);</span>
     
-   <span class="c1"># SMTP settings for gmail</span>
-   <span class="n">config</span><span class="p">.</span><span class="nf">action_mailer</span><span class="p">.</span><span class="nf">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
-       <span class="ss">:address</span>              <span class="o">=&gt;</span> <span class="s2">"smtp.gmail.com"</span><span class="p">,</span>
-       <span class="ss">:port</span>                 <span class="o">=&gt;</span> <span class="mi">587</span><span class="p">,</span>
-       <span class="ss">:user_name</span>            <span class="o">=&gt;</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'EMAIL'</span><span class="p">],</span>
-       <span class="ss">:password</span>             <span class="o">=&gt;</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'PASSWORD'</span><span class="p">],</span>
-       <span class="ss">:authentication</span>       <span class="o">=&gt;</span> <span class="s2">"plain"</span><span class="p">,</span>
-       <span class="ss">:enable_starttls_auto</span> <span class="o">=&gt;</span> <span class="kp">true</span>
-   <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Lets write the code now. What will be sent in the email? Let’s say we want to send a welcome mail when user signs up.
-We will generate a mailer named - 
-rails g mailer UserRegistration <br />
-This will generate 
-<img src="/assets/images/SS-send-email-1.png" alt="" /></p>
-  </li>
-  <li>Open app/mailers/user_registrations_mailer.rb and add method following method
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">registration</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
- <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
- <span class="n">mail</span><span class="p">(</span><span class="ss">to: </span><span class="n">user</span><span class="p">.</span><span class="nf">email</span><span class="p">,</span> <span class="ss">subject: </span><span class="s1">'Welcome to Rails learning'</span><span class="p">)</span>
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2022</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2022-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2023-01-01'</span><span class="p">);</span>
+
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2023</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2023-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2024-01-01'</span><span class="p">);</span>
+
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2024</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2024-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2025-01-01'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This will create the db schema discussed above. Now let’s put some data to play around. I have used this
+script to put random 1 million rows into database.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'benchmark'</span>
+<span class="nb">require</span> <span class="s1">'pg'</span>
+
+<span class="k">class</span> <span class="nc">OrderGenerator</span>
+  <span class="no">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">10_000</span>
+  <span class="no">TOTAL_RECORDS</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+  <span class="no">START_DATE</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="no">END_DATE</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+  <span class="no">TOTAL_DAYS</span> <span class="o">=</span> <span class="p">(</span><span class="no">END_DATE</span> <span class="o">-</span> <span class="no">START_DATE</span><span class="p">).</span><span class="nf">to_i</span> <span class="o">+</span> <span class="mi">1</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">generate_orders</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="no">PG</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="ss">dbname: </span><span class="s1">'your_database_name'</span><span class="p">)</span>
+
+    <span class="n">time</span> <span class="o">=</span> <span class="no">Benchmark</span><span class="p">.</span><span class="nf">measure</span> <span class="k">do</span>
+      <span class="p">(</span><span class="mi">0</span><span class="o">...</span><span class="no">TOTAL_RECORDS</span><span class="p">).</span><span class="nf">each_slice</span><span class="p">(</span><span class="no">BATCH_SIZE</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">batch</span><span class="o">|</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">batch</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span>
+          <span class="n">order_date</span> <span class="o">=</span> <span class="n">random_date</span>
+          <span class="n">customer_id</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">100_000</span><span class="p">)</span>
+          <span class="n">amount</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mf">10.0</span><span class="o">..</span><span class="mf">1000.0</span><span class="p">).</span><span class="nf">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+          <span class="s2">"(DATE '</span><span class="si">#{</span><span class="n">order_date</span><span class="si">}</span><span class="s2">', </span><span class="si">#{</span><span class="n">customer_id</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2">)"</span>
+        <span class="k">end</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">"INSERT INTO orders (order_date, customer_id, amount) VALUES </span><span class="si">#{</span><span class="n">values</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">conn</span><span class="p">.</span><span class="nf">exec</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">'.'</span> <span class="c1"># Progress indicator</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Time taken: </span><span class="si">#{</span><span class="n">time</span><span class="p">.</span><span class="nf">real</span><span class="p">.</span><span class="nf">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> seconds"</span>
+    <span class="nb">puts</span> <span class="s2">"Total records inserted: </span><span class="si">#{</span><span class="n">conn</span><span class="p">.</span><span class="nf">exec</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) FROM orders"</span><span class="p">).</span><span class="nf">getvalue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+  <span class="k">ensure</span>
+    <span class="n">conn</span><span class="p">.</span><span class="nf">close</span> <span class="k">if</span> <span class="n">conn</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">random_date</span>
+    <span class="no">START_DATE</span> <span class="o">+</span> <span class="nb">rand</span><span class="p">(</span><span class="no">TOTAL_DAYS</span><span class="p">)</span>
+  <span class="k">end</span>
 <span class="k">end</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Open <code class="highlighter-rouge">app/views/user_registrations_mailer</code> &amp; add a new .erb file whose name resembles with method name in 
-<code class="highlighter-rouge">app/mailers/user_registrations_mailer.rb</code>. In our case it is <code class="highlighter-rouge">registration.html.erb</code>, now put in whatever welcome message 
-you want a user to see in email. I will simply add
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="no">Hello</span> <span class="o">&lt;</span><span class="sx">%= @user.first_name%&gt; &lt;%=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">last_name</span> <span class="sx">%&gt;,
-    
- Welcome to Ruby on Rails learning.
-    
- Thanks for signing up.
-</span></code></pre></div>    </div>
-  </li>
-  <li>We need to trigger the action of sending emails. There are multiple ways to achieve this. Can call this from controller 
-action or a service call or activerecord callback. Will prefer last option here
-In <code class="highlighter-rouge">User</code> model register <code class="highlighter-rouge">after_create</code> callback
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">after_create</span> <span class="ss">:send_sign_up_email</span>
- <span class="p">.</span>
- <span class="nf">.</span>
- <span class="p">.</span>
- <span class="nf">private</span>
- <span class="k">def</span> <span class="nf">user_registration_email</span>
-   <span class="no">UserRegistrationsMailer</span><span class="p">.</span><span class="nf">registration</span><span class="p">(</span><span class="nb">self</span><span class="p">).</span><span class="nf">deliver_now</span>
- <span class="k">end</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
 
-<p>And now you are all set to send sign-up emails.</p>
+<span class="c1"># Generate orders</span>
+<span class="no">OrderGenerator</span><span class="p">.</span><span class="nf">generate_orders</span>
+</code></pre></div></div>
+
+<p>BOOM! It ran in <code class="highlighter-rouge">4.2 Seconds</code>.</p>
+
+<h3 id="running-queries">Running queries</h3>
+
+<p>Now we have all the setup needed, let’s jump to the exciting part.</p>
+
+<h4 id="finding-entries-from-same-year">Finding entries from same year</h4>
+
+<p>This would be the query to finding records from the year 2020 from the partitioned table.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">order_date</span> <span class="k">between</span> <span class="s1">'2020-07-11'</span> <span class="k">and</span> <span class="s1">'2020-08-11'</span>
+</code></pre></div></div>
+
+<p>But how will we assured that it is using partitioned table? Simple, analyze the query.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">explain</span> <span class="k">analyze</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">order_date</span> <span class="k">between</span> <span class="s1">'2020-07-11'</span> <span class="k">and</span> <span class="s1">'2020-08-11'</span>
+</code></pre></div></div>
+
+<p>And the output is -</p>
+
+<p><img src="/assets/images/db-partition-1.png" alt="db-partition-image" /></p>
+
+<p>You can see that the data is being pulled from orders_2020 table which confirms partition is working. I am
+just wondering if the execution time can be reduced. What can we do? Let’s try putting an index on these tables.</p>
+
+<p>Note - For PostgreSQL 11 and later:</p>
+
+<p>We can create a global index on the partitioned table, which will automatically propagate to all partitions:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_orders_order_date</span> <span class="k">ON</span> <span class="n">orders</span> <span class="p">(</span><span class="n">order_date</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This single command will create the index on the parent table and all existing and future partitions.</p>
+
+<p>Let’s rerun our query and see the result -</p>
+
+<p><img src="/assets/images/db-partition-2.png" alt="db-partition-image" /></p>
+
+<p>Wow the time is reduced by <code class="highlighter-rouge">61%</code>. This is just awesome.</p>
+
+<p><br /></p>
+
+<h4 id="finding-entries-from-different-years">Finding entries from different years</h4>
+
+<p>Let’s find out records from different years.</p>
+
+<p>Query -</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">explain</span> <span class="k">analyze</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">order_date</span> <span class="k">between</span> <span class="s1">'2020-12-11'</span> <span class="k">and</span> <span class="s1">'2021-01-11'</span>
+</code></pre></div></div>
+
+<p>And it is executed around 10ms, which is good. Also we can see the Bitmap Heap Scan used by query planner.</p>
+
+<p><img src="/assets/images/db-partition-3.png" alt="db-partition-image" /></p>
+
+<h4 id="did-index-made-any-difference-here">Did index made any difference here?</h4>
+
+<p>To find out answer to this question, let’s drop the index &amp; run query again -</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">INDEX</span> <span class="n">idx_orders_order_date</span>
+
+<span class="k">explain</span> <span class="k">analyze</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">order_date</span> <span class="k">between</span> <span class="s1">'2020-12-11'</span> <span class="k">and</span> <span class="s1">'2021-01-11'</span>
+</code></pre></div></div>
+
+<p>And no surprise here. The execution time is increased by 4x.</p>
+
+<p><img src="/assets/images/db-partition-4.png" alt="db-partition-image" /></p>
+
+<p>That’s it from this post. I hope this was interesting!</p>
                 
 			</article>
 			<div>
@@ -583,13 +683,9 @@ In <code class="highlighter-rouge">User</code> model register <code class="highl
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/ruby-date-formatting/"> <img height="30px" class="mr-1" src="/assets/images/date-format.png">  Ruby date formatting</a>
+                <a class="text-dark" href="/http-status-codes-in-rails/"> <img height="30px" class="mr-1" src="/assets/images/status_codes.jpg">  HTTP Status Codes: An Overview</a>
             </div>
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/reset_pk_sequence/"> Reset primary key sequence  <img height="30px" class="ml-1" src="/assets/images/reset_pk.jpg"> </a>
-            </div>
           
         </div>
     </div>

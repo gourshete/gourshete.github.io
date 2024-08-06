@@ -9,7 +9,7 @@ categories: [ Database, Postgresql]
 
 <br>
 
-As name suggests it is process of dividing database table into sub-tables generally called as partitions. Partitioning logic can vary from use case to use case. For example, we might partition users table based on id i.e. ids from 1 to 1,000,000 will be in first partition, ids from 1,000,001 to 2,000,000 would be second one and like this. Another example would be based on created date, for example - All entries from 2020 would go in one partition, entries from 2021 would go in another one and so on.
+As name suggests it is way of dividing database table into smaller parts generally called as partitions. Partitioning logic can vary from use case to use case. For example, we might partition users table based on ID i.e. IDs from 1 to 1,000,000 will be in first partition, IDs from 1,000,001 to 2,000,000 would be second one and like this. Another example would be based on created date, for example - All entries from 2020 would go in one partition, entries from 2021 would go in another one and so on.
 
 ### When?
 
@@ -133,8 +133,7 @@ And the output is -
 You can see that the data is being pulled from orders_2020 table which confirms partition is working. I am
 just wondering if the execution time can be reduced. What can we do? Let's try putting an index on these tables.
 
-Note - 
-1. For PostgreSQL 11 and later:
+Note - For PostgreSQL 11 and later:
 
 We can create a global index on the partitioned table, which will automatically propagate to all partitions:
 
@@ -148,8 +147,9 @@ Let's rerun our query and see the result -
 
 <img src="{{ '/assets/images/db-partition-2.png' | prepend: site.baseurl }}" alt="db-partition-image">
 
-Wow the time is reduced by `61%`.
+Wow the time is reduced by `61%`. This is just awesome.
 
+<br>
 
 #### Finding entries from different years
 

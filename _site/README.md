@@ -2,7 +2,7 @@
 
 <h2>Description</h2>
 
-This repo holds code for a blog website running on [railsexamples.com](railsexamples.com)
+This repo holds code for a blog website running on [railsexamples.com](railsexamples.com).
 
 <h3>Technologies used</h3>
 
