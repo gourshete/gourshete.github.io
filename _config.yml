@@ -19,7 +19,7 @@ plugins:
   
 authors:
     swapnil:
-      name:           Swapnil Gourshete
+      name:           'Swapnil Gourshete'
       site:           '/'
       avatar:         /assets/images/swapnil.jpg
       bio:            "Hi I am Swapnil, a Software Engineer and computer science enthusiastic"
@@ -35,7 +35,7 @@ defaults:
       path: "_posts"
     values:
       layout: post
-      author: "Swapnil Gourshete"
+      author: 'Swapnil Gourshete'
       avatar: /assets/images/avatar1.jpg
       
   # all pages

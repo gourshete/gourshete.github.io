@@ -83,6 +83,4 @@ Thanks for reading.
 
   References - 
  
-- Saeloun [Blog](https://blog.saeloun.com/2019/10/10/rails-6-adds-support-for-multi-environment-credentials.html) on rails credentials
-
 - Medium [Blog](https://medium.com/@kirill_shevch/encrypted-secrets-credentials-in-rails-6-rails-5-1-5-2-f470accd62fc) on environment wise credentials
