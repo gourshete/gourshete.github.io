@@ -35,7 +35,7 @@ defaults:
       path: "_posts"
     values:
       layout: post
-      author: swapnil
+      author: "Swapnil Gourshete"
       avatar: /assets/images/avatar1.jpg
       
   # all pages
