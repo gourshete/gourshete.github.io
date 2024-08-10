@@ -1,4 +1,168 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-29T23:03:01+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">HTTP Status Codes: An Overview</title><link href="http://localhost:4000/http-status-codes-in-rails/" rel="alternate" type="text/html" title="HTTP Status Codes: An Overview" /><published>2024-07-25T00:00:00+05:30</published><updated>2024-07-25T00:00:00+05:30</updated><id>http://localhost:4000/http-status-codes-in-rails</id><content type="html" xml:base="http://localhost:4000/http-status-codes-in-rails/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-07T01:07:00+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">Database Partitioning Example</title><link href="http://localhost:4000/database-partitioning/" rel="alternate" type="text/html" title="Database Partitioning Example" /><published>2024-08-02T00:00:00+05:30</published><updated>2024-08-02T00:00:00+05:30</updated><id>http://localhost:4000/database-partitioning</id><content type="html" xml:base="http://localhost:4000/database-partitioning/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;As name suggests it is way of dividing database table into smaller parts generally called as partitions. Partitioning logic can vary from use case to use case. For example, we might partition users table based on ID i.e. IDs from 1 to 1,000,000 will be in first partition, IDs from 1,000,001 to 2,000,000 would be second one and like this. Another example would be based on created date, for example - All entries from 2020 would go in one partition, entries from 2021 would go in another one and so on.&lt;/p&gt;
+
+&lt;h3 id=&quot;when&quot;&gt;When?&lt;/h3&gt;
+
+&lt;p&gt;It is fair to ask when to partition table in first place. The straight forward answer would be when table data grows to a fairly large size and querying on it becomes slow and painful for database, we should look into aspect of partitioning the table.&lt;/p&gt;
+
+&lt;h3 id=&quot;benefits-of-partitioning--&quot;&gt;Benefits of partitioning -&lt;/h3&gt;
+
+&lt;p&gt;As we are dividing table into smaller chunks, searching of data becomes relatively faster. Also in Postgres, database is smart enough to only look into particular partitions based on logic in where clause.
+Also maintenance operations like vacuuming are performed on relatively small and updated datasets.&lt;/p&gt;
+
+&lt;h5 id=&quot;a-bit-about-our-use-case-&quot;&gt;A bit about our use case -&lt;/h5&gt;
+
+&lt;p&gt;We have product_views table which stores information about views received on products across the platform. Over the time and by the nature of data, this table grew to a size of 20 GB, having over 50 million rows. The querying of data from this table was now relatively slow (even though we have proper indices maintained for this table) and it was sheerly because of volume of data. So what do we do now? Looking into data and size we decided to partition this table. &lt;/p&gt;
+
+&lt;p&gt;Here is how we achieved it. Our tech stack is backend powered by Ruby on rails and Postgres database. We wanted to do it with minimal changes on rails part and more on Postgres part. Postgres supports partitioning from version 11 onwards. We divided the table by created_at column yearwise. A postgresql script to create partition is -&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SERIAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DATE&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INTEGER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DECIMAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;RANGE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+
+&lt;span class=&quot;no&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders_2019&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;VALUES&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2019-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2020-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders_2020&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;VALUES&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2020-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2021-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders_2021&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;VALUES&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2021-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2022-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+&lt;span class=&quot;no&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders_2022&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;VALUES&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2022-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2023-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders_2023&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;VALUES&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2023-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2024-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders_2024&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;VALUES&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2024-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'2025-01-01'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will create the db schema discussed above. Now let’s put some data to play around. I have used this
+script to put random 1 million rows into database.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'benchmark'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'pg'&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;OrderGenerator&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;BATCH_SIZE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10_000&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;TOTAL_RECORDS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1_000_000&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;START_DATE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;END_DATE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;TOTAL_DAYS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;END_DATE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;START_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;generate_orders&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;dbname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'your_database_name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Benchmark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;measure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TOTAL_RECORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each_slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BATCH_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_date&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100_000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;10.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1000.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;s2&quot;&gt;&quot;(DATE '&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;', &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;customer_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;','&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;INSERT INTO orders (order_date, customer_id, amount) VALUES &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'.'&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Progress indicator&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Time taken: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;real&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; seconds&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Total records inserted: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SELECT COUNT(*) FROM orders&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;getvalue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;random_date&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;START_DATE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TOTAL_DAYS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Generate orders&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;OrderGenerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;generate_orders&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;BOOM! It ran in &lt;code class=&quot;highlighter-rouge&quot;&gt;4.2 Seconds&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;running-queries&quot;&gt;Running queries&lt;/h3&gt;
+
+&lt;p&gt;Now we have all the setup needed, let’s jump to the exciting part.&lt;/p&gt;
+
+&lt;h4 id=&quot;finding-entries-from-same-year&quot;&gt;Finding entries from same year&lt;/h4&gt;
+
+&lt;p&gt;This would be the query to finding records from the year 2020 from the partitioned table.&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;between&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2020-07-11'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2020-08-11'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;But how will we assured that it is using partitioned table? Simple, analyze the query.&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;explain&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;analyze&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;between&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2020-07-11'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2020-08-11'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And the output is -&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/db-partition-1.png&quot; alt=&quot;db-partition-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see that the data is being pulled from orders_2020 table which confirms partition is working. I am
+just wondering if the execution time can be reduced. What can we do? Let’s try putting an index on these tables.&lt;/p&gt;
+
+&lt;p&gt;Note - For PostgreSQL 11 and later:&lt;/p&gt;
+
+&lt;p&gt;We can create a global index on the partitioned table, which will automatically propagate to all partitions:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INDEX&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx_orders_order_date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This single command will create the index on the parent table and all existing and future partitions.&lt;/p&gt;
+
+&lt;p&gt;Let’s rerun our query and see the result -&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/db-partition-2.png&quot; alt=&quot;db-partition-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Wow the time is reduced by &lt;code class=&quot;highlighter-rouge&quot;&gt;61%&lt;/code&gt;. This is just awesome.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;finding-entries-from-different-years&quot;&gt;Finding entries from different years&lt;/h4&gt;
+
+&lt;p&gt;Let’s find out records from different years.&lt;/p&gt;
+
+&lt;p&gt;Query -&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;explain&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;analyze&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;between&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2020-12-11'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2021-01-11'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And it is executed around 10ms, which is good. Also we can see the Bitmap Heap Scan used by query planner.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/db-partition-3.png&quot; alt=&quot;db-partition-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;did-index-made-any-difference-here&quot;&gt;Did index made any difference here?&lt;/h4&gt;
+
+&lt;p&gt;To find out answer to this question, let’s drop the index &amp;amp; run query again -&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INDEX&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx_orders_order_date&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;explain&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;analyze&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order_date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;between&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2020-12-11'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2021-01-11'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And no surprise here. The execution time is increased by 4x.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/db-partition-4.png&quot; alt=&quot;db-partition-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s it from this post. I hope this was interesting!&lt;/p&gt;</content><author><name>swapnil</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/db-partition.jpeg" /></entry><entry><title type="html">HTTP Status Codes: An Overview</title><link href="http://localhost:4000/http-status-codes-in-rails/" rel="alternate" type="text/html" title="HTTP Status Codes: An Overview" /><published>2024-07-25T00:00:00+05:30</published><updated>2024-07-25T00:00:00+05:30</updated><id>http://localhost:4000/http-status-codes-in-rails</id><content type="html" xml:base="http://localhost:4000/http-status-codes-in-rails/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;HTTP status codes are an essential part of web communication, indicating the result of a client’s request to a server. Here’s an expanded list of status codes, their meanings, and how to use them in a Rails API.&lt;/p&gt;
 
@@ -1704,46 +1868,4 @@ storing same attributes in two tables except &lt;code class=&quot;highlighter-ro
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://guides.rubyonrails.org/association_basics.html#polymorphic-associations&quot;&gt;Rails documentation&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/rspec/rspec-rails&quot;&gt;rspec-rails&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">. What is the usecase? Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Product, because user will have self image and product will have descriptive images of product. This can be achieved with Polymorphic associations - Two or more models can be associated to third model using single association.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/poly-main.png" /></entry><entry><title type="html">Multiple Inheritance in Ruby</title><link href="http://localhost:4000/ruby-modules-mixins-inheritance/" rel="alternate" type="text/html" title="Multiple Inheritance in Ruby" /><published>2023-05-09T00:00:00+05:30</published><updated>2023-05-09T00:00:00+05:30</updated><id>http://localhost:4000/ruby-modules-mixins-inheritance</id><content type="html" xml:base="http://localhost:4000/ruby-modules-mixins-inheritance/">&lt;p&gt;&lt;em&gt;In this post we will learn about multiple inheritance in ruby&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;What is Multiple Inheritance?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;It is property of code to inherit from multiple parent classes. Ruby supports inheriting only from one parent class.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/class-1.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So what is the way for inheriting from multiple classes? By the way are you aware of classic diamond problem in
-mulitple inheritance? &lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_inheritance&quot;&gt;If not, read more about it here.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Here comes in play modules in Ruby. Modules are somewhat different than classes -&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Modules can’t be instantiated, class can be instantiated&lt;/li&gt;
-  &lt;li&gt;Can’t create object of Modules, but can create object of class&lt;/li&gt;
-  &lt;li&gt;We can include multiple modules in a single class, but can’t include classes&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;To achieve multiple inheritance, we can include as many modules in a class. The same methods will be overriden by latest implementation. Let’s take a example -&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/class-modules-2.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here module A is included in &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt; and so when method &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; is called upon &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt; it results printing &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;A&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Now let’s consider this example -&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/class-modules-3.png&quot; alt=&quot;class-inheritance-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here we have two modules &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;. And when these two are included in &lt;code class=&quot;highlighter-rouge&quot;&gt;class C&lt;/code&gt;, because both define same method &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; and module &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt; is included after A - the program output is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;B&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And that’s how we can include multiple modules in same class.&lt;/p&gt;
-
-&lt;p&gt;I hope this was useful!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;References -&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Multiple_inheritance&quot;&gt;The Diamond problem&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">In this post we will learn about multiple inheritance in ruby.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/multiple-Inheritance-home-image.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>swapnil</name></author><summary type="html">. What is the usecase? Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Product, because user will have self image and product will have descriptive images of product. This can be achieved with Polymorphic associations - Two or more models can be associated to third model using single association.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/poly-main.png" /></entry></feed>

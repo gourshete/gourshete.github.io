@@ -6,20 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Rails Includes vs Joins | RailsExamples</title>
+<title>Database Partitioning Example | RailsExamples</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Rails Includes vs Joins" />
+<meta property="og:title" content="Database Partitioning Example" />
 <meta name="author" content="swapnil" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="When I started learning Rails, I was always in a state of confusion about using includes or joins, because both are used in almost same scenario. Includes uses eager loading whereas joins uses lazy loading. Both are used when certain operations are meant to be performed on associated tables. And here comes the difference." />
-<meta property="og:description" content="When I started learning Rails, I was always in a state of confusion about using includes or joins, because both are used in almost same scenario. Includes uses eager loading whereas joins uses lazy loading. Both are used when certain operations are meant to be performed on associated tables. And here comes the difference." />
-<link rel="canonical" href="http://localhost:4000/rails-includes-vs-joins/" />
-<meta property="og:url" content="http://localhost:4000/rails-includes-vs-joins/" />
+<meta name="description" content="A place to learn Ruby on Rails" />
+<meta property="og:description" content="A place to learn Ruby on Rails" />
+<link rel="canonical" href="http://localhost:4000/database-partitioning/" />
+<meta property="og:url" content="http://localhost:4000/database-partitioning/" />
 <meta property="og:site_name" content="RailsExamples" />
+<meta property="og:image" content="http://localhost:4000/assets/images/db-partition.jpeg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-03-08T00:00:00+05:30" />
+<meta property="article:published_time" content="2024-08-02T00:00:00+05:30" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","dateModified":"2018-03-08T00:00:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/rails-includes-vs-joins/"},"datePublished":"2018-03-08T00:00:00+05:30","url":"http://localhost:4000/rails-includes-vs-joins/","author":{"@type":"Person","name":"swapnil"},"description":"When I started learning Rails, I was always in a state of confusion about using includes or joins, because both are used in almost same scenario. Includes uses eager loading whereas joins uses lazy loading. Both are used when certain operations are meant to be performed on associated tables. And here comes the difference.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"headline":"Rails Includes vs Joins","@context":"http://schema.org"}</script>
+{"@type":"BlogPosting","dateModified":"2024-08-02T00:00:00+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/database-partitioning/"},"image":"http://localhost:4000/assets/images/db-partition.jpeg","datePublished":"2024-08-02T00:00:00+05:30","url":"http://localhost:4000/database-partitioning/","author":{"@type":"Person","name":"swapnil"},"description":"A place to learn Ruby on Rails","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"swapnil"},"headline":"Database Partitioning Example","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -318,7 +319,7 @@ var documents = [{
     "id": 42,
     "url": "http://localhost:4000/rails-request-lifecycle/",
     "title": "Rails Request Lifecycle...",
-    "body": "2019/06/12 - Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out! Breakdown of request flow -  Browser generates HTTP/HTTPS request after a click or a event Web server receives request, analyses it and passes to application server Application server calls up proper controller-action after talking with router The resulted output is sent back to browser and displayed on screen.  Web Browser : Browser should direct request to a specific destination. For users it is a URL seen on web page, but computers need IP addresses, they do not understand these URLs. For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser who starts finding out IP address. Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, browser generally asks Internet Service Providers(ISP). If not found then it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like . com, . net, . org) –&gt; And then to Authoritative DNS Server. The chase ends here. Yay! We get the required ip address. Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name provider has not set up your domain information properly. It is actually interesting to try on terminal with dig, . .  Web Server : By now browser is successfully connected to server. The server here is web server. Some examples are Apache,Nginx, Passenger, Puma, Unicorn, Webrick. These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice that request. For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose. With nginx it is like Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,for anything else than assets, it will get 404 not found response. But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript?? Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be complex to put it in web server configuration file. So what next? There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK . . . RACK App: Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework, “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc. ” On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status code, headers, and body. ” In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. It notifies the web framework using a method call, communicates the details as method arguments, and the web framework communicates back by return values from the method call. In code it just looks like Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, http_method, parameters, rack_app_version, etc. And the call method responds in three variables - status, header and body. Status is http status, to tell about request completedsuccessfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response. Coming to rails, the config. ru file will look something like It is supposed to pass Rack application to run keyword, this means Rails. application is a Rack app and must respond to call method. . . . . Our app: Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes. rb!!! Yes that’s too muck Rack apps around. But Rails is always been that. config/routes. rb - This will ultimately generate these seven routes From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go to BooksController#show and likewise! That’s it from the Rails Request Lifecycle.  Cheers!!! {% if page. comments %}   Please enable JavaScript to view the comments powered by Disqus.  {% endif %} "
+    "body": "2019/06/12 - Have you ever wondered how a request is processed in its lifecycle? What happens with request at each stage? Who handles request at what level? Let’s dig it out! Breakdown of request flow -  Browser generates HTTP/HTTPS request after a click or a event Web server receives request, analyses it and passes to application server Application server calls up proper controller-action after talking with router The resulted output is sent back to browser and displayed on screen.  Web Browser : Browser should direct request to a specific destination. For users it is a URL seen on web page, but computers need IP addresses, they do not understand these URLs. For this purpose, there is a system in place called Domain Name System(DNS) which maps URLs to computer understandable IP addresses. It is browser who starts finding out IP address. Search begins from local cache, of both browser and computer. If local cache does not have IP address of requested site, browser generally asks Internet Service Providers(ISP). If not found then it goes up the hierarchy LIKE Root DNS –&gt; Extension wise Name Servers(like . com, . net, . org) –&gt; And then to Authoritative DNS Server. The chase ends here. Yay! We get the required ip address. Authoritative DNS Server must have IP address for requested site, if not there are high chances that your domain name provider has not set up your domain information properly. It is actually interesting to try on terminal with dig, . .  Web Server : By now browser is successfully connected to server. The server here is web server. Some examples are Apache,Nginx, Passenger, Puma, Unicorn, Webrick. These servers are meant to talk only in http. Their job is to understand the request and make decision on how to sevice that request. For simpler request, we can configure web server easily. Suppose we need to tell web server that if browser asks for any assets then serve it from ‘/public/assets’ folder. There are a list of different web servers you can use for this purpose. With nginx it is like Okay then. We are set to serve requests for assets. If browser asks for assets it will receive an expected response in output,for anything else than assets, it will get 404 not found response. But what if browser asks for latest 10 blog posts from xyz author with some amazing styling and javascript?? Our current configuration does not support this kind of request. Even if we decide to handle it at this level, it will be complex to put it in web server configuration file. So what next? There comes Rails! Web server passes request to Rails application. But there can be many ways for web server to do it. Just to understand, it can call a method with argument or declare variables or use global variables. Even if we managed this, another question arises, in what format should Rails sends data back to web server? To reduce this confusion, there is a system in place called RACK . . . RACK App: Rack is a simple Ruby protocol/convention that does a few things. The web server needs to tell the web framework, “Hey, here a request for you to handle. By the way, here are the deets for the request: paths, http verb, headers, etc. ” On the other hand, the framework needs to tell the server, “Hey, that’s cool, I’ve handled it. Here is the result… the status code, headers, and body. ” In order to remain lightweight and framework agnostic, Rack picked the simplest possible way to do this in Ruby. It notifies the web framework using a method call, communicates the details as method arguments, and the web framework communicates back by return values from the method call. In code it just looks like Web server creates env hash to pass it to Rack’s call method. This env hash has information like http_verb, http_method, parameters, rack_app_version, etc. And the call method responds in three variables - status, header and body. Status is http status, to tell about request completedsuccessfully or whatever happened with it. Headers is a hash of http headers, and Body is an array of response. Coming to rails, the config. ru file will look something like It is supposed to pass Rack application to run keyword, this means Rails. application is a Rack app and must respond to call method. . . . . Our app: Finally request reaches our app. It is evaluated by again a Rack app generated by Rails using routes. rb!!! Yes that’s too muck Rack apps around. But Rails is always been that. config/routes. rb - This will ultimately generate these seven routes From here, most of us know how it works. If request is for '/books' and is of kind GET, it will go to BooksController#index action. Request GET for '/books/:id' will go to BooksController#show and likewise! That’s it from the Rails Request Lifecycle.  Cheers!!!   Please enable JavaScript to view the comments powered by Disqus.  "
     }, {
     "id": 43,
     "url": "http://localhost:4000/how-index-works-on-database/",
@@ -410,20 +411,20 @@ function lunr_search(term) {
 <div class="container">
 	<div>
 		<p class="text-uppercase h2 font-weight-bold text-center">
-			Rails Includes vs Joins
+			Database Partitioning Example
 		</p>
 	</div>
 
 	<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
 		<div class="h-100 tofront">
-			<div class="row  justify-content-center ">
-				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
 					<p class="text-uppercase font-weight-bold">
 						<span class="catlist">
 							
-								<a class="sscroll text-danger" href="/categories.html#rails">rails</a><span class="sep">, </span>
+								<a class="sscroll text-danger" href="/categories.html#database">database</a><span class="sep">, </span>
 							
-								<a class="sscroll text-danger" href="/categories.html#query">query</a><span class="sep">, </span>
+								<a class="sscroll text-danger" href="/categories.html#postgresql">postgresql</a><span class="sep">, </span>
 							
 						</span>
 					</p>
@@ -432,16 +433,20 @@ function lunr_search(term) {
 							<img class="rounded-circle" src="/assets/images/swapnil.jpg" alt="Swapnil Gourshete" width="70"/>
 						
 						<small class="ml-3"> Swapnil Gourshete <span><a target="_blank" href="https://twitter.com/gourshete" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-							<span class="text-muted d-block mt-1">Mar 08, 2018 · <span class="reading-time">
+							<span class="text-muted d-block mt-1">Aug 02, 2024 · <span class="reading-time">
   
   
-    2 mins read
+    7 mins read
   
 </span>
     </span>
 						</small>
 					</div>
 				</div>
+				
+					<div class="col-md-6 pr-0 align-self-center">
+						<img class="rounded" src="/assets/images/db-partition.jpeg" alt="Database Partitioning Example">
+					</div>
 				
 			</div>
 		</div>
@@ -456,64 +461,171 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p>When I started learning Rails, I was always in a state of confusion about using includes or joins,
-because both are used in almost same scenario. Includes uses eager loading whereas joins uses lazy 
-loading. Both are used when certain operations are meant to be performed on associated tables. And 
-here comes the difference.</p>
+			<p><br /></p>
 
-<h4>What is the problem with Joins?</h4>
+<p>As name suggests it is way of dividing database table into smaller parts generally called as partitions. Partitioning logic can vary from use case to use case. For example, we might partition users table based on ID i.e. IDs from 1 to 1,000,000 will be in first partition, IDs from 1,000,001 to 2,000,000 would be second one and like this. Another example would be based on created date, for example - All entries from 2020 would go in one partition, entries from 2021 would go in another one and so on.</p>
 
-<p><img src="/assets/images/joins_all.png" alt="" /></p>
+<h3 id="when">When?</h3>
 
-<p>Here, we retrieved users in the first line and data is formatted in the each do loop. Here is interesting thing, to retrieve user.company.name, each time a call to database is made. It means, if there are 10k users then 10k separate queries would be fired up.
-And this will overkill system when scaled up. Isn’t there is efficient way? Yes, it is Includes.</p>
+<p>It is fair to ask when to partition table in first place. The straight forward answer would be when table data grows to a fairly large size and querying on it becomes slow and painful for database, we should look into aspect of partitioning the table.</p>
 
-<p>And this will overkill system when scaled up. Isn’t there a more efficient way? Yes, it is Includes.</p>
+<h3 id="benefits-of-partitioning--">Benefits of partitioning -</h3>
 
-<h3>INCLUDES</h3>
-<p>If we go through Rails documenting, it clearly says - ’With includes, Active Record ensures that all of the
-specified associations are loaded using the minimum possible number of queries’. When we need data to be used
-from associated tables, includes must be used.</p>
+<p>As we are dividing table into smaller chunks, searching of data becomes relatively faster. Also in Postgres, database is smart enough to only look into particular partitions based on logic in where clause.
+Also maintenance operations like vacuuming are performed on relatively small and updated datasets.</p>
 
-<p>Here is an example,</p>
+<h5 id="a-bit-about-our-use-case-">A bit about our use case -</h5>
 
-<p><img src="/assets/images/includes.png" alt="" /></p>
+<p>We have product_views table which stores information about views received on products across the platform. Over the time and by the nature of data, this table grew to a size of 20 GB, having over 50 million rows. The querying of data from this table was now relatively slow (even though we have proper indices maintained for this table) and it was sheerly because of volume of data. So what do we do now? Looking into data and size we decided to partition this table. </p>
 
-<p>Here, the data from table companies is brought right in the first line, since it says includes companies.
-No additional query is fired from the do loop for ‘user.company.name’. Size of users table does not matter now.
-It is scalable to any size.</p>
+<p>Here is how we achieved it. Our tech stack is backend powered by Ruby on rails and Postgres database. We wanted to do it with minimal changes on rails part and more on Postgres part. Postgres supports partitioning from version 11 onwards. We divided the table by created_at column yearwise. A postgresql script to create partition is -</p>
 
-<p>Isn’t it fantastic? Yes, it is. It saves hell lot of time. And it proves to be very efficient, when application
-contains huge data.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders</span> <span class="p">(</span>
+    <span class="nb">id</span> <span class="no">SERIAL</span><span class="p">,</span>
+    <span class="n">order_date</span> <span class="no">DATE</span> <span class="no">NOT</span> <span class="no">NULL</span><span class="p">,</span>
+    <span class="n">customer_id</span> <span class="no">INTEGER</span><span class="p">,</span>
+    <span class="n">amount</span> <span class="no">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span> <span class="no">PARTITION</span> <span class="no">BY</span> <span class="no">RANGE</span> <span class="p">(</span><span class="n">order_date</span><span class="p">);</span>
 
-<ul>
-  <li>So, does includes always preferred over joins?</li>
-</ul>
 
-<p>Hopefully not, there are some cases when includes does not exceed joins in terms of efficiency.</p>
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2019</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2019-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2020-01-01'</span><span class="p">);</span>
 
-<p><img src="/assets/images/includes_3.png" alt="" />
-Here, we used tables users and companies, but companies is only for some sort of filter. We did not actually 
-used data from companies later in the code. So no need to bring data from companies along with users. This is
- why join is efficient in this case.</p>
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2020</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2020-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2021-01-01'</span><span class="p">);</span>
 
-<p>…</p>
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2021</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2021-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2022-01-01'</span><span class="p">);</span>
+    
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2022</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2022-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2023-01-01'</span><span class="p">);</span>
 
-<h4>Eager Loading</h4>
-<p>It joins everything in a single query. Sometimes the query may result in a huge sql call with too many joins 
-left joins.</p>
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2023</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2023-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2024-01-01'</span><span class="p">);</span>
 
-<p><code class="highlighter-rouge">User.eager_load(:posts)</code><br /></p>
+<span class="no">CREATE</span> <span class="no">TABLE</span> <span class="n">orders_2024</span> <span class="no">PARTITION</span> <span class="no">OF</span> <span class="n">orders</span>
+    <span class="no">FOR</span> <span class="no">VALUES</span> <span class="no">FROM</span> <span class="p">(</span><span class="s1">'2024-01-01'</span><span class="p">)</span> <span class="no">TO</span> <span class="p">(</span><span class="s1">'2025-01-01'</span><span class="p">);</span>
+</code></pre></div></div>
 
-<p>…</p>
+<p>This will create the db schema discussed above. Now let’s put some data to play around. I have used this
+script to put random 1 million rows into database.</p>
 
-<h4>Pre Loading</h4>
-<p>Preload works in same way as Includes. It brings up the data normally in two queries.<br />
-<code class="highlighter-rouge">User.pre_load(:posts)</code><br />
-–&gt; <code class="highlighter-rouge">SELECT "users".* FROM "users"
- SELECT "posts".* FROM "posts"  WHERE "posts"."user_id" IN (1)</code></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'benchmark'</span>
+<span class="nb">require</span> <span class="s1">'pg'</span>
 
-<p>Cheers!!!</p>
+<span class="k">class</span> <span class="nc">OrderGenerator</span>
+  <span class="no">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">10_000</span>
+  <span class="no">TOTAL_RECORDS</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+  <span class="no">START_DATE</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="no">END_DATE</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+  <span class="no">TOTAL_DAYS</span> <span class="o">=</span> <span class="p">(</span><span class="no">END_DATE</span> <span class="o">-</span> <span class="no">START_DATE</span><span class="p">).</span><span class="nf">to_i</span> <span class="o">+</span> <span class="mi">1</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">generate_orders</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="no">PG</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="ss">dbname: </span><span class="s1">'your_database_name'</span><span class="p">)</span>
+
+    <span class="n">time</span> <span class="o">=</span> <span class="no">Benchmark</span><span class="p">.</span><span class="nf">measure</span> <span class="k">do</span>
+      <span class="p">(</span><span class="mi">0</span><span class="o">...</span><span class="no">TOTAL_RECORDS</span><span class="p">).</span><span class="nf">each_slice</span><span class="p">(</span><span class="no">BATCH_SIZE</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">batch</span><span class="o">|</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">batch</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span>
+          <span class="n">order_date</span> <span class="o">=</span> <span class="n">random_date</span>
+          <span class="n">customer_id</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">100_000</span><span class="p">)</span>
+          <span class="n">amount</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mf">10.0</span><span class="o">..</span><span class="mf">1000.0</span><span class="p">).</span><span class="nf">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+          <span class="s2">"(DATE '</span><span class="si">#{</span><span class="n">order_date</span><span class="si">}</span><span class="s2">', </span><span class="si">#{</span><span class="n">customer_id</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2">)"</span>
+        <span class="k">end</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">"INSERT INTO orders (order_date, customer_id, amount) VALUES </span><span class="si">#{</span><span class="n">values</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">conn</span><span class="p">.</span><span class="nf">exec</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">'.'</span> <span class="c1"># Progress indicator</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Time taken: </span><span class="si">#{</span><span class="n">time</span><span class="p">.</span><span class="nf">real</span><span class="p">.</span><span class="nf">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> seconds"</span>
+    <span class="nb">puts</span> <span class="s2">"Total records inserted: </span><span class="si">#{</span><span class="n">conn</span><span class="p">.</span><span class="nf">exec</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) FROM orders"</span><span class="p">).</span><span class="nf">getvalue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+  <span class="k">ensure</span>
+    <span class="n">conn</span><span class="p">.</span><span class="nf">close</span> <span class="k">if</span> <span class="n">conn</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">random_date</span>
+    <span class="no">START_DATE</span> <span class="o">+</span> <span class="nb">rand</span><span class="p">(</span><span class="no">TOTAL_DAYS</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># Generate orders</span>
+<span class="no">OrderGenerator</span><span class="p">.</span><span class="nf">generate_orders</span>
+</code></pre></div></div>
+
+<p>BOOM! It ran in <code class="highlighter-rouge">4.2 Seconds</code>.</p>
+
+<h3 id="running-queries">Running queries</h3>
+
+<p>Now we have all the setup needed, let’s jump to the exciting part.</p>
+
+<h4 id="finding-entries-from-same-year">Finding entries from same year</h4>
+
+<p>This would be the query to finding records from the year 2020 from the partitioned table.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">order_date</span> <span class="k">between</span> <span class="s1">'2020-07-11'</span> <span class="k">and</span> <span class="s1">'2020-08-11'</span>
+</code></pre></div></div>
+
+<p>But how will we assured that it is using partitioned table? Simple, analyze the query.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">explain</span> <span class="k">analyze</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">order_date</span> <span class="k">between</span> <span class="s1">'2020-07-11'</span> <span class="k">and</span> <span class="s1">'2020-08-11'</span>
+</code></pre></div></div>
+
+<p>And the output is -</p>
+
+<p><img src="/assets/images/db-partition-1.png" alt="db-partition-image" /></p>
+
+<p>You can see that the data is being pulled from orders_2020 table which confirms partition is working. I am
+just wondering if the execution time can be reduced. What can we do? Let’s try putting an index on these tables.</p>
+
+<p>Note - For PostgreSQL 11 and later:</p>
+
+<p>We can create a global index on the partitioned table, which will automatically propagate to all partitions:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_orders_order_date</span> <span class="k">ON</span> <span class="n">orders</span> <span class="p">(</span><span class="n">order_date</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This single command will create the index on the parent table and all existing and future partitions.</p>
+
+<p>Let’s rerun our query and see the result -</p>
+
+<p><img src="/assets/images/db-partition-2.png" alt="db-partition-image" /></p>
+
+<p>Wow the time is reduced by <code class="highlighter-rouge">61%</code>. This is just awesome.</p>
+
+<p><br /></p>
+
+<h4 id="finding-entries-from-different-years">Finding entries from different years</h4>
+
+<p>Let’s find out records from different years.</p>
+
+<p>Query -</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">explain</span> <span class="k">analyze</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">order_date</span> <span class="k">between</span> <span class="s1">'2020-12-11'</span> <span class="k">and</span> <span class="s1">'2021-01-11'</span>
+</code></pre></div></div>
+
+<p>And it is executed around 10ms, which is good. Also we can see the Bitmap Heap Scan used by query planner.</p>
+
+<p><img src="/assets/images/db-partition-3.png" alt="db-partition-image" /></p>
+
+<h4 id="did-index-made-any-difference-here">Did index made any difference here?</h4>
+
+<p>To find out answer to this question, let’s drop the index &amp; run query again -</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">INDEX</span> <span class="n">idx_orders_order_date</span>
+
+<span class="k">explain</span> <span class="k">analyze</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">orders</span> <span class="k">where</span> <span class="n">order_date</span> <span class="k">between</span> <span class="s1">'2020-12-11'</span> <span class="k">and</span> <span class="s1">'2021-01-11'</span>
+</code></pre></div></div>
+
+<p>And no surprise here. The execution time is increased by 4x.</p>
+
+<p><img src="/assets/images/db-partition-4.png" alt="db-partition-image" /></p>
+
+<p>That’s it from this post. I hope this was interesting!</p>
                 
 			</article>
 			<div>
@@ -571,13 +683,9 @@ left joins.</p>
         <div class="row prevnextlinks small font-weight-bold">
           
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/why-rails-why-ruby/"> <img height="30px" class="mr-1" src="/assets/images/why.jpg">  Why Rails? Why Ruby?</a>
+                <a class="text-dark" href="/http-status-codes-in-rails/"> <img height="30px" class="mr-1" src="/assets/images/status_codes.jpg">  HTTP Status Codes: An Overview</a>
             </div>
           
-          
-            <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/api-in-rails-5/"> APIs in Rails 5.0 - overview  <img height="30px" class="ml-1" src="/assets/images/web_api.png"> </a>
-            </div>
           
         </div>
     </div>
