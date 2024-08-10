@@ -3,7 +3,7 @@ layout: post
 title:  "Rails ActiveRecord Concerns"
 date:   2024-07-21
 keywords: "ruby rails github learning html haml markup_language ruby_on_rails"
-image: assets/images/concern.jpg
+image: assets/images/concern.jpeg
 categories: [ Rails, ActiveRecord ]
 ---
 

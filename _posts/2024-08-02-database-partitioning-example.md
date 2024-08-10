@@ -3,7 +3,7 @@ layout: post
 title:  "Database Partitioning by Example"
 date:   2024-08-02
 keywords: "ruby rails database partitioning"
-image: assets/images/db-partition.jpeg
+image: assets/images/db-partition.jpg
 categories: [ Database, Postgresql]
 ---
 
