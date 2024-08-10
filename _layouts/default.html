@@ -7,6 +7,10 @@
 
     {% seo %}
 
+    {% if page.keywords %}
+        <meta name="keywords" content="{{ page.keywords }}">
+    {% endif %}
+
     <link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}/{{site.favicon}}">
 
     <!-- Font Awesome Icons -->
