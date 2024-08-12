@@ -2,7 +2,7 @@
 layout: post
 title:  "HTTP Status Codes: An Overview"
 date:   2024-07-25
-keywords: "ruby rails github learning http status codes ruby_on_rails"
+keywords: "ruby rails http status codes ruby_on_rails example"
 image: assets/images/status_codes.jpeg
 categories: [ Rails]
 ---
