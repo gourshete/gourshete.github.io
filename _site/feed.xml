@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-25T15:08:49+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">Setting up Vite with Rails and React</title><link href="http://localhost:4000/seetting_up_vite_with_rails_and_react/" rel="alternate" type="text/html" title="Setting up Vite with Rails and React" /><published>2025-05-22T00:00:00+05:30</published><updated>2025-05-22T00:00:00+05:30</updated><id>http://localhost:4000/seetting_up_vite_with_rails_and_react</id><content type="html" xml:base="http://localhost:4000/seetting_up_vite_with_rails_and_react/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-25T17:21:40+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">Setting up Vite with Rails and React</title><link href="http://localhost:4000/seetting_up_vite_with_rails_and_react/" rel="alternate" type="text/html" title="Setting up Vite with Rails and React" /><published>2025-05-22T00:00:00+05:30</published><updated>2025-05-22T00:00:00+05:30</updated><id>http://localhost:4000/seetting_up_vite_with_rails_and_react</id><content type="html" xml:base="http://localhost:4000/seetting_up_vite_with_rails_and_react/"><![CDATA[<p><br /></p>
 
 <h1 id="setting-up-vite-with-rails-8-and-react-a-complete-setup-guide">Setting up Vite with Rails 8 and React: A Complete Setup Guide</h1>
 
@@ -404,372 +404,154 @@ just wondering if the execution time can be reduced. What can we do? Let’s try
 
 <hr />
 
-<h3 id="1xx-informational">1xx: Informational</h3>
-
-<h4 id="100">100</h4>
-<p>code - 100 <br />
-status - <code class="language-plaintext highlighter-rouge">:continue</code> <br />
-Info - Continue</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This is typically handled by the server automatically</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="101">101</h4>
-<p>code - 101 <br />
-status - <code class="language-plaintext highlighter-rouge">:switching_protocols</code> <br />
-Info - Switching Protocols</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This is typically handled by the server automatically</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="102">102</h4>
-<p>code - 102 <br />
-status - <code class="language-plaintext highlighter-rouge">:processing</code> <br />
-Info - Processing</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This is typically used in WebDAV</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="2xx-success">2xx: Success</h2>
-
-<h4 id="200">200</h4>
-<p>code - 200 <br />
-status - <code class="language-plaintext highlighter-rouge">:ok</code> <br />
-Info - OK</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">message: </span><span class="s1">'Success'</span> <span class="p">},</span> <span class="ss">status: :ok</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="201">201</h4>
-<p>code - 201 <br />
-status - <code class="language-plaintext highlighter-rouge">:created</code> <br />
-Info - Created</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">message: </span><span class="s1">'Resource created'</span> <span class="p">},</span> <span class="ss">status: :created</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="202">202</h4>
-<p>code - 202 <br />
-status - <code class="language-plaintext highlighter-rouge">:accepted</code> <br />
-Info - Accepted</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">message: </span><span class="s1">'Request accepted for processing'</span> <span class="p">},</span> <span class="ss">status: :accepted</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="203">203</h4>
-<p>code - 203 <br />
-status - <code class="language-plaintext highlighter-rouge">:non_authoritative_information</code> <br />
-Info - Non-Authoritative Information</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">message: </span><span class="s1">'Information from a third-party source'</span> <span class="p">},</span> <span class="ss">status: :non_authoritative_information</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="204">204</h4>
-<p>code - 204 <br />
-status - <code class="language-plaintext highlighter-rouge">:no_content</code> <br />
-Info - No Content</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">head</span> <span class="ss">:no_content</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="205">205</h4>
-<p>code - 205 <br />
-status - <code class="language-plaintext highlighter-rouge">:reset_content</code> <br />
-Info - Reset Content</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">head</span> <span class="ss">:reset_content</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="206">206</h4>
-<p>code - 206 <br />
-status - <code class="language-plaintext highlighter-rouge">:partial_content</code> <br />
-Info - Partial Content</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">partial_data: </span><span class="n">data</span> <span class="p">},</span> <span class="ss">status: :partial_content</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="3xx-redirection">3xx: Redirection</h2>
-
-<h4 id="300">300</h4>
-<p>code - 300 <br />
-status - <code class="language-plaintext highlighter-rouge">:multiple_choices</code> <br />
-Info - Multiple Choices</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">choices: </span><span class="n">options</span> <span class="p">},</span> <span class="ss">status: :multiple_choices</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="301">301</h4>
-<p>code - 301 <br />
-status - <code class="language-plaintext highlighter-rouge">:moved_permanently</code> <br />
-Info - Moved Permanently</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">redirect_to</span> <span class="n">new_url</span><span class="p">,</span> <span class="ss">status: :moved_permanently</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="302">302</h4>
-<p>code - 302 <br />
-status - <code class="language-plaintext highlighter-rouge">:found</code> <br />
-Info - Found</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">redirect_to</span> <span class="n">other_url</span><span class="p">,</span> <span class="ss">status: :found</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="303">303</h4>
-<p>code - 303 <br />
-status - <code class="language-plaintext highlighter-rouge">:see_other</code> <br />
-Info - See Other</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">redirect_to</span> <span class="n">other_url</span><span class="p">,</span> <span class="ss">status: :see_other</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="304">304</h4>
-<p>code - 304 <br />
-status - <code class="language-plaintext highlighter-rouge">:not_modified</code> <br />
-Info - Not Modified</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">head</span> <span class="ss">:not_modified</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="307">307</h4>
-<p>code - 307 <br />
-status - <code class="language-plaintext highlighter-rouge">:temporary_redirect</code> <br />
-Info - Temporary Redirect</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">redirect_to</span> <span class="n">temp_url</span><span class="p">,</span> <span class="ss">status: :temporary_redirect</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="308">308</h4>
-<p>code - 308 <br />
-status - <code class="language-plaintext highlighter-rouge">:permanent_redirect</code> <br />
-Info - Permanent Redirect</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">redirect_to</span> <span class="n">new_permanent_url</span><span class="p">,</span> <span class="ss">status: :permanent_redirect</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="4xx-client-errors">4xx: Client Errors</h2>
-
-<h4 id="400">400</h4>
-<p>code - 400 <br />
-status - <code class="language-plaintext highlighter-rouge">:bad_request</code> <br />
-Info - Bad Request</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Invalid parameters'</span> <span class="p">},</span> <span class="ss">status: :bad_request</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="401">401</h4>
-<p>code - 401 <br />
-status - <code class="language-plaintext highlighter-rouge">:unauthorized</code> <br />
-Info - Unauthorized</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Authentication required'</span> <span class="p">},</span> <span class="ss">status: :unauthorized</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="402">402</h4>
-<p>code - 402 <br />
-status - <code class="language-plaintext highlighter-rouge">:payment_required</code> <br />
-Info - Payment Required</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Payment required to access this resource'</span> <span class="p">},</span> <span class="ss">status: :payment_required</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="403">403</h4>
-<p>code - 403 <br />
-status - <code class="language-plaintext highlighter-rouge">:forbidden</code> <br />
-Info - Forbidden</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Access denied'</span> <span class="p">},</span> <span class="ss">status: :forbidden</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="404">404</h4>
-<p>code - 404 <br />
-status - <code class="language-plaintext highlighter-rouge">:not_found</code> <br />
-Info - Not Found</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Resource not found'</span> <span class="p">},</span> <span class="ss">status: :not_found</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="405">405</h4>
-<p>code - 405 <br />
-status - <code class="language-plaintext highlighter-rouge">:method_not_allowed</code> <br />
-Info - Method Not Allowed</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Method not allowed'</span> <span class="p">},</span> <span class="ss">status: :method_not_allowed</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="406">406</h4>
-<p>code - 406 <br />
-status - <code class="language-plaintext highlighter-rouge">:not_acceptable</code> <br />
-Info - Not Acceptable</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Not acceptable'</span> <span class="p">},</span> <span class="ss">status: :not_acceptable</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="409">409</h4>
-<p>code - 409 <br />
-status - <code class="language-plaintext highlighter-rouge">:conflict</code> <br />
-Info - Conflict</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Resource conflict'</span> <span class="p">},</span> <span class="ss">status: :conflict</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="410">410</h4>
-<p>code - 410 <br />
-status - <code class="language-plaintext highlighter-rouge">:gone</code> <br />
-Info - Gone</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Resource no longer available'</span> <span class="p">},</span> <span class="ss">status: :gone</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="422">422</h4>
-<p>code - 422 <br />
-status - <code class="language-plaintext highlighter-rouge">:unprocessable_entity</code> <br />
-Info - Unprocessable Entity</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">errors: </span><span class="n">resource</span><span class="p">.</span><span class="nf">errors</span> <span class="p">},</span> <span class="ss">status: :unprocessable_entity</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="429">429</h4>
-<p>code - 429 <br />
-status - <code class="language-plaintext highlighter-rouge">:too_many_requests</code> <br />
-Info - Too Many Requests</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Rate limit exceeded'</span> <span class="p">},</span> <span class="ss">status: :too_many_requests</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="5xx-server-errors">5xx: Server Errors</h2>
-
-<h4 id="500">500</h4>
-<p>code - 500 <br />
-status - <code class="language-plaintext highlighter-rouge">:internal_server_error</code> <br />
-Info - Internal Server Error</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Internal Server Error'</span> <span class="p">},</span> <span class="ss">status: :internal_server_error</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="501">501</h4>
-<p>code - 501 <br />
-status - <code class="language-plaintext highlighter-rouge">:not_implemented</code> <br />
-Info - Not Implemented</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Functionality not implemented'</span> <span class="p">},</span> <span class="ss">status: :not_implemented</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="502">502</h4>
-<p>code - 502 <br />
-status - <code class="language-plaintext highlighter-rouge">:bad_gateway</code> <br />
-Info - Bad Gateway</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Bad Gateway'</span> <span class="p">},</span> <span class="ss">status: :bad_gateway</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="503">503</h4>
-<p>code - 503 <br />
-status - <code class="language-plaintext highlighter-rouge">:service_unavailable</code> <br />
-Info - Service Unavailable</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Service Unavailable'</span> <span class="p">},</span> <span class="ss">status: :service_unavailable</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="504">504</h4>
-<p>code - 504 <br />
-status - <code class="language-plaintext highlighter-rouge">:gateway_timeout</code> <br />
-Info - Gateway Timeout</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Gateway Timeout'</span> <span class="p">},</span> <span class="ss">status: :gateway_timeout</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="507">507</h4>
-<p>code - 507 <br />
-status - <code class="language-plaintext highlighter-rouge">:insufficient_storage</code> <br />
-Info - Insufficient Storage</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Insufficient storage'</span> <span class="p">},</span> <span class="ss">status: :insufficient_storage</span>
-</code></pre></div></div>
-
-<p><strong>—</strong></p>
-
-<h4 id="511">511</h4>
-<p>code - 511 <br />
-status - <code class="language-plaintext highlighter-rouge">:network_authentication_required</code> <br />
-Info - Network Authentication Required</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s1">'Network authentication required'</span> <span class="p">},</span> <span class="ss">status: :network_authentication_required</span>
-</code></pre></div></div>
-
-<hr />
-
-<p>Note that while Rails provides symbols for many status codes, you can always use the numerical code directly if a symbol is not available:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">message: </span><span class="s1">'Custom status'</span> <span class="p">},</span> <span class="ss">status: </span><span class="mi">418</span>
-</code></pre></div></div>
-
-<p>When building APIs, using appropriate status codes helps clients understand and handle responses correctly, leading to more robust and maintainable applications. It’s important to choose the most specific and appropriate status code for each situation to provide clear and accurate information to API consumers.</p>]]></content><author><name>swapnil</name></author><category term="Rails" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/status_codes.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/images/status_codes.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Serializers in Ruby on Rails</title><link href="http://localhost:4000/serializers-in-rails/" rel="alternate" type="text/html" title="Serializers in Ruby on Rails" /><published>2024-07-23T00:00:00+05:30</published><updated>2024-07-23T00:00:00+05:30</updated><id>http://localhost:4000/serializers-in-rails</id><content type="html" xml:base="http://localhost:4000/serializers-in-rails/"><![CDATA[<p><br /></p>
+<h1 id="-http-status-code-cheat-sheet">✅ HTTP Status Code Cheat Sheet</h1>
+
+<p><br /></p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th style="padding-left: 10px;">Category</th>
+      <th style="padding-left: 10px;">Code</th>
+      <th style="padding-left: 10px;">Symbol</th>
+      <th style="padding-left: 10px;">Meaning</th>
+      <th style="padding-left: 10px;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding-left: 10px;">1xx – Informational</td>
+      <td style="padding-left: 10px;">100</td>
+      <td style="padding-left: 10px;">:continue</td>
+      <td style="padding-left: 10px;">Continue</td>
+      <td style="padding-left: 10px;">Request received, continue processing</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">1xx – Informational</td>
+      <td style="padding-left: 10px;">101</td>
+      <td style="padding-left: 10px;">:switching_protocols</td>
+      <td style="padding-left: 10px;">Switching Protocols</td>
+      <td style="padding-left: 10px;">Protocol switch accepted</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">2xx – Success</td>
+      <td style="padding-left: 10px;">200</td>
+      <td style="padding-left: 10px;">:ok</td>
+      <td style="padding-left: 10px;">OK</td>
+      <td style="padding-left: 10px;">Request succeeded</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">2xx – Success</td>
+      <td style="padding-left: 10px;">201</td>
+      <td style="padding-left: 10px;">:created</td>
+      <td style="padding-left: 10px;">Created</td>
+      <td style="padding-left: 10px;">Resource created successfully</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">2xx – Success</td>
+      <td style="padding-left: 10px;">204</td>
+      <td style="padding-left: 10px;">:no_content</td>
+      <td style="padding-left: 10px;">No Content</td>
+      <td style="padding-left: 10px;">Success, no content returned</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">3xx – Redirection</td>
+      <td style="padding-left: 10px;">301</td>
+      <td style="padding-left: 10px;">:moved_permanently</td>
+      <td style="padding-left: 10px;">Moved Permanently</td>
+      <td style="padding-left: 10px;">Resource moved to a new URI</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">3xx – Redirection</td>
+      <td style="padding-left: 10px;">302</td>
+      <td style="padding-left: 10px;">:found</td>
+      <td style="padding-left: 10px;">Found</td>
+      <td style="padding-left: 10px;">Resource temporarily moved</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">3xx – Redirection</td>
+      <td style="padding-left: 10px;">304</td>
+      <td style="padding-left: 10px;">:not_modified</td>
+      <td style="padding-left: 10px;">Not Modified</td>
+      <td style="padding-left: 10px;">Use cached version</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">4xx – Client Error</td>
+      <td style="padding-left: 10px;">400</td>
+      <td style="padding-left: 10px;">:bad_request</td>
+      <td style="padding-left: 10px;">Bad Request</td>
+      <td style="padding-left: 10px;">Malformed request syntax</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">4xx – Client Error</td>
+      <td style="padding-left: 10px;">401</td>
+      <td style="padding-left: 10px;">:unauthorized</td>
+      <td style="padding-left: 10px;">Unauthorized</td>
+      <td style="padding-left: 10px;">Auth required</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">4xx – Client Error</td>
+      <td style="padding-left: 10px;">403</td>
+      <td style="padding-left: 10px;">:forbidden</td>
+      <td style="padding-left: 10px;">Forbidden</td>
+      <td style="padding-left: 10px;">Access denied</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">4xx – Client Error</td>
+      <td style="padding-left: 10px;">404</td>
+      <td style="padding-left: 10px;">:not_found</td>
+      <td style="padding-left: 10px;">Not Found</td>
+      <td style="padding-left: 10px;">Resource not found</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">4xx – Client Error</td>
+      <td style="padding-left: 10px;">405</td>
+      <td style="padding-left: 10px;">:method_not_allowed</td>
+      <td style="padding-left: 10px;">Method Not Allowed</td>
+      <td style="padding-left: 10px;">HTTP method not supported</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">4xx – Client Error</td>
+      <td style="padding-left: 10px;">422</td>
+      <td style="padding-left: 10px;">:unprocessable_entity</td>
+      <td style="padding-left: 10px;">Unprocessable Entity</td>
+      <td style="padding-left: 10px;">Validation errors</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">5xx – Server Error</td>
+      <td style="padding-left: 10px;">500</td>
+      <td style="padding-left: 10px;">:internal_server_error</td>
+      <td style="padding-left: 10px;">Internal Server Error</td>
+      <td style="padding-left: 10px;">Generic server error</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">5xx – Server Error</td>
+      <td style="padding-left: 10px;">502</td>
+      <td style="padding-left: 10px;">(no symbol)</td>
+      <td style="padding-left: 10px;">Bad Gateway</td>
+      <td style="padding-left: 10px;">Invalid upstream response</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">5xx – Server Error</td>
+      <td style="padding-left: 10px;">503</td>
+      <td style="padding-left: 10px;">:service_unavailable</td>
+      <td style="padding-left: 10px;">Service Unavailable</td>
+      <td style="padding-left: 10px;">Server temporarily overloaded</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 10px;">5xx – Server Error</td>
+      <td style="padding-left: 10px;">504</td>
+      <td style="padding-left: 10px;">(no symbol)</td>
+      <td style="padding-left: 10px;">Gateway Timeout</td>
+      <td style="padding-left: 10px;">Upstream timeout</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+<br /></p>
+
+<p>ℹ️ For the full list of symbols supported by Rails, visit the <a href="https://api.rubyonrails.org/classes/ActionDispatch/Response.html#method-c-status_code">Rails Response Status Documentation</a>.</p>]]></content><author><name>swapnil</name></author><category term="Rails" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/status_codes.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/images/status_codes.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Serializers in Ruby on Rails</title><link href="http://localhost:4000/serializers-in-rails/" rel="alternate" type="text/html" title="Serializers in Ruby on Rails" /><published>2024-07-23T00:00:00+05:30</published><updated>2024-07-23T00:00:00+05:30</updated><id>http://localhost:4000/serializers-in-rails</id><content type="html" xml:base="http://localhost:4000/serializers-in-rails/"><![CDATA[<p><br /></p>
 
 <p>When building APIs with Ruby on Rails, serializers play a pivotal role in data transformation and presentation. They serve as the crucial intermediary between your complex Ruby objects and the streamlined JSON (or other formats) that your API serves to clients. This comprehensive guide will delve deep into the world of serializers, exploring their purpose, implementation strategies, advanced techniques, and best practices.</p>
 
