@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Setting up Vite with Rails and React"
+title:  "Setting up Vite with Rails 8 and React"
 date:   2025-05-22
 keywords: "ruby rails react vite"
 image: assets/images/vite-rails.png
