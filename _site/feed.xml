@@ -1,240 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-28T14:43:04+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">Setting up Vite with Rails 8 and React</title><link href="http://localhost:4000/setting_up_vite_with_rails_8_and_react/" rel="alternate" type="text/html" title="Setting up Vite with Rails 8 and React" /><published>2025-05-22T00:00:00+05:30</published><updated>2025-05-22T00:00:00+05:30</updated><id>http://localhost:4000/setting_up_vite_with_rails_8_and_react</id><content type="html" xml:base="http://localhost:4000/setting_up_vite_with_rails_8_and_react/"><![CDATA[<p><br /></p>
-
-<h1 id="setting-up-vite-with-rails-8-and-react-a-complete-setup-guide">Setting up Vite with Rails 8 and React: A Complete Setup Guide</h1>
-
-<p>In this guide, we’ll go <strong>step by step</strong> from creating a new Rails app to rendering a simple “Hello from React” text in the browser using Vite for frontend tooling.</p>
-
-<hr />
-
-<h2 id="prerequisites">Prerequisites</h2>
-
-<p>Before diving into setting up Vite with Rails and React, ensure your system has the following tools installed. These are essential to create and run the application smoothly.</p>
-
-<hr />
-
-<h4 id="1-ruby-version-31-or-higher-recommended">1. Ruby (Version 3.1 or higher recommended)</h4>
-<p>Ruby is the core language for Rails. You can check your installed version using:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">-v</span>
-</code></pre></div></div>
-
-<p>If Ruby is not installed, consider using a version manager like <a href="https://github.com/rbenv/rbenv"><code class="language-plaintext highlighter-rouge">rbenv</code></a> or <a href="https://rvm.io/"><code class="language-plaintext highlighter-rouge">rvm</code></a> to manage versions:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>rbenv
-rbenv <span class="nb">install </span>3.2.2
-rbenv global 3.2.2
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="2-rails-version-71-or-higher-recommended">2. Rails (Version 7.1 or higher recommended)</h4>
-<p>Rails is the web framework we’ll be using. Make sure it’s installed:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>rails
-</code></pre></div></div>
-
-<p>Confirm the installation with:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails <span class="nt">-v</span>
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="3-nodejs-version-18-required-by-vite">3. Node.js (Version 18+ required by Vite)</h4>
-<p>Vite requires a recent version of Node (v18 or newer). You can check the current version:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node <span class="nt">-v</span>
-</code></pre></div></div>
-
-<p>If you’re not on the right version, use <strong>nvm</strong> to manage Node versions easily.</p>
-
-<p><a href="https://github.com/nvm-sh/nvm"><code class="language-plaintext highlighter-rouge">nvm</code></a> allows you to switch between multiple Node.js versions easily. This is useful if you’re working on multiple projects with different requirements.</p>
-
-<p>Install <code class="language-plaintext highlighter-rouge">nvm</code>:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-</code></pre></div></div>
-
-<p>Reload your shell (<code class="language-plaintext highlighter-rouge">.zshrc</code>, <code class="language-plaintext highlighter-rouge">.bashrc</code>, or <code class="language-plaintext highlighter-rouge">.bash_profile</code>), then install Node 18:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm <span class="nb">install </span>18
-nvm use 18
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="4-yarn-package-manager-for-node">4. Yarn (Package Manager for Node)</h4>
-<p>Yarn is used to manage JavaScript dependencies like React and Vite plugins. Install it via Homebrew (on macOS):</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>yarn
-</code></pre></div></div>
-
-<p>Verify the installation:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn <span class="nt">-v</span>
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="5-postgresql-or-another-preferred-db">5. PostgreSQL (or another preferred DB)</h4>
-<p>Rails supports several databases, but PostgreSQL is widely used in production. You can install it in simple steps using <a href="https://postgresapp.com/">postgresapp.com</a></p>
-
-<p>Ensure it’s running correctly:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql <span class="nt">--version</span>
-</code></pre></div></div>
-
-<p>You may also use SQLite (the Rails default), but PostgreSQL is recommended for most setups.</p>
-
-<hr />
-
-<h2 id="step-by-step-setup">Step-by-Step Setup</h2>
-
-<h3 id="1-create-a-new-rails-8-app-with-vite">1. Create a New Rails 8 App with Vite</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails new vite-rails-app <span class="nt">--javascript</span> vite
-<span class="nb">cd </span>vite-rails-app
-</code></pre></div></div>
-
-<p>This sets up your Rails app with Vite instead of the default import maps or Webpacker.</p>
-
-<h3 id="2-add-react-to-your-project">2. Add React to Your Project</h3>
-
-<p>Install React and ReactDOM using Yarn:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn add react react-dom
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="set-up-react-with-vite">Set Up React with Vite</h2>
-
-<h3 id="3-update-viteconfigts">3. Update <code class="language-plaintext highlighter-rouge">vite.config.ts</code></h3>
-
-<p>Edit <code class="language-plaintext highlighter-rouge">vite.config.ts</code> to enable JSX support and React plugin:</p>
-
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">defineConfig</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vite</span><span class="dl">'</span>
-<span class="k">import</span> <span class="nx">RubyPlugin</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vite-plugin-ruby</span><span class="dl">'</span>
-<span class="k">import</span> <span class="nx">react</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@vitejs/plugin-react</span><span class="dl">'</span>
-
-<span class="k">export</span> <span class="k">default</span> <span class="nf">defineConfig</span><span class="p">({</span>
-  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
-    <span class="nc">RubyPlugin</span><span class="p">({</span>
-      <span class="na">additionalEntrypoints</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">**/*.jsx</span><span class="dl">'</span><span class="p">],</span>
-    <span class="p">}),</span>
-    <span class="nf">react</span><span class="p">(),</span>
-  <span class="p">],</span>
-  <span class="na">server</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">port</span><span class="p">:</span> <span class="mi">3001</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="set-up-rails-view-and-controller">Set Up Rails View and Controller</h2>
-
-<h3 id="4-generate-a-controller">4. Generate a Controller</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate controller Welcome index
-</code></pre></div></div>
-
-<p>This creates a <code class="language-plaintext highlighter-rouge">WelcomeController</code> with an <code class="language-plaintext highlighter-rouge">index</code> action and view.</p>
-
-<h3 id="5-set-root-route">5. Set Root Route</h3>
-
-<p>Edit <code class="language-plaintext highlighter-rouge">config/routes.rb</code>:</p>
-
-<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span> <span class="s2">"welcome#index"</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="create-react-entry-point">Create React Entry Point</h2>
-
-<h3 id="6-create-appjsx">6. Create <code class="language-plaintext highlighter-rouge">app.jsx</code></h3>
-
-<p>Create the file: <code class="language-plaintext highlighter-rouge">app/frontend/entrypoints/app.jsx</code></p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span>
-<span class="k">import</span> <span class="nx">ReactDOM</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-dom/client</span><span class="dl">"</span>
-
-<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello from React!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-
-<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">)</span>
-<span class="k">if </span><span class="p">(</span><span class="nx">root</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nx">root</span><span class="p">).</span><span class="nf">render</span><span class="p">(&lt;</span><span class="nc">App</span> <span class="p">/&gt;)</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p>⚠️ Ensure the file has a <code class="language-plaintext highlighter-rouge">.jsx</code> extension so Vite can parse it correctly.</p>
-</blockquote>
-
-<hr />
-
-<h2 id="update-rails-view-to-load-react">Update Rails View to Load React</h2>
-
-<p>Edit <code class="language-plaintext highlighter-rouge">app/views/welcome/index.html.erb</code>:</p>
-
-<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">vite_client_tag</span> <span class="cp">%&gt;</span>
-<span class="cp">&lt;%=</span> <span class="n">vite_javascript_tag</span> <span class="s1">'app'</span> <span class="cp">%&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"root"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<p>This sets up the HTML and loads your React component inside the <code class="language-plaintext highlighter-rouge">#root</code> div.</p>
-
-<hr />
-
-<h2 id="run-the-app">Run the App</h2>
-
-<h3 id="7-start-rails-and-vite-dev-servers">7. Start Rails and Vite Dev Servers</h3>
-
-<p>In <strong>one terminal</strong>, run:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/rails server
-</code></pre></div></div>
-
-<p>In a <strong>second terminal</strong>, run:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/vite dev
-</code></pre></div></div>
-
-<p>Visit <a href="http://localhost:3000">http://localhost:3000</a> — you should see:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello from React!
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="issues-you-might-face--">Issues you might face -</h3>
-
-<h4 id="vitejsplugin-react-cant-detect-preamble"><code class="language-plaintext highlighter-rouge">@vitejs/plugin-react can't detect preamble</code></h4>
-<ul>
-  <li>Ensure you’re using <code class="language-plaintext highlighter-rouge">.jsx</code> extension.</li>
-  <li>Verify correct entrypoint name in <code class="language-plaintext highlighter-rouge">vite_javascript_tag</code>.</li>
-</ul>
-
-<h4 id="file-not-found-in-manifests">File not found in manifests</h4>
-<ul>
-  <li>Double-check file is inside <code class="language-plaintext highlighter-rouge">app/frontend/entrypoints</code>.</li>
-  <li>File extension should be <code class="language-plaintext highlighter-rouge">.jsx</code>.</li>
-</ul>
-
-<hr />
-
-<h2 id="summary">Summary</h2>
-
-<p>You now have:</p>
-
-<ul>
-  <li>A Rails 8 app</li>
-  <li>React integrated via Vite</li>
-  <li>Working React component rendered from a Rails view</li>
-</ul>
-
-<p>This setup gives you the best of both worlds: Rails’ robust backend and Vite’s lightning-fast front-end tooling.</p>]]></content><author><name>swapnil</name></author><category term="Rails" /><category term="React" /><category term="Vite" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/vite-rails.png" /><media:content medium="image" url="http://localhost:4000/assets/images/vite-rails.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Database Partitioning by Example</title><link href="http://localhost:4000/database-partitioning-example/" rel="alternate" type="text/html" title="Database Partitioning by Example" /><published>2024-08-02T00:00:00+05:30</published><updated>2024-08-02T00:00:00+05:30</updated><id>http://localhost:4000/database-partitioning-example</id><content type="html" xml:base="http://localhost:4000/database-partitioning-example/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-07-21T22:14:33+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">RailsExamples</title><subtitle>A place to learn Ruby on Rails</subtitle><entry><title type="html">Database Partitioning by Example</title><link href="http://localhost:4000/database-partitioning-example/" rel="alternate" type="text/html" title="Database Partitioning by Example" /><published>2024-08-02T00:00:00+05:30</published><updated>2024-08-02T00:00:00+05:30</updated><id>http://localhost:4000/database-partitioning-example</id><content type="html" xml:base="http://localhost:4000/database-partitioning-example/"><![CDATA[<p><br /></p>
 
 <p>As name suggests it is way of dividing database table into smaller parts generally called as partitions. Partitioning logic can vary from use case to use case. For example, we might partition users table based on ID i.e. IDs from 1 to 1,000,000 will be in first partition, IDs from 1,000,001 to 2,000,000 would be second one and like this. Another example would be based on created date, for example - All entries from 2020 would go in one partition, entries from 2021 would go in another one and so on.</p>
 
@@ -1812,4 +1576,78 @@ false	False here means boolean false
 <ul>
   <li><a href="https://www.postgresql.org/docs/current/libpq.html">Postgresql libpq documentation</a></li>
   <li><a href="https://pgpedia.info/l/libpq.html">Code reference</a></li>
-</ul>]]></content><author><name>swapnil</name></author><category term="Postgres" /><summary type="html"><![CDATA[You might have heard about libpq while installing/operating postgresql. But what is libpq? Let’s understand.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/libpq.png" /><media:content medium="image" url="http://localhost:4000/assets/images/libpq.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</ul>]]></content><author><name>swapnil</name></author><category term="Postgres" /><summary type="html"><![CDATA[You might have heard about libpq while installing/operating postgresql. But what is libpq? Let’s understand.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/libpq.png" /><media:content medium="image" url="http://localhost:4000/assets/images/libpq.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Polymorphic Associations in Rails</title><link href="http://localhost:4000/polymorphic-associations/" rel="alternate" type="text/html" title="Polymorphic Associations in Rails" /><published>2023-06-19T00:00:00+05:30</published><updated>2023-06-19T00:00:00+05:30</updated><id>http://localhost:4000/polymorphic-associations</id><content type="html" xml:base="http://localhost:4000/polymorphic-associations/"><![CDATA[<!--- Define -->
+<p>.</p>
+<h2 id="what-is-the-usecase">What is the usecase?</h2>
+<p>Suppose two models can be associated to a third model with a common attribute. For example, <code class="language-plaintext highlighter-rouge">Image</code> can belong to <code class="language-plaintext highlighter-rouge">User</code> as well as <code class="language-plaintext highlighter-rouge">Product</code>, because user will have self image and product will have descriptive images of product.
+This can be achieved with Polymorphic associations - Two or more models can be associated to third model using single association.</p>
+
+<h2 id="how-to-use-it">How to use it?</h2>
+<p>Let’s understand how to use it. There are two parts -</p>
+<ol>
+  <li>Migration defining two fields on the model which will have work as base model. It will have <code class="language-plaintext highlighter-rouge">association_id</code> -&gt; <code class="language-plaintext highlighter-rouge">int</code> and <code class="language-plaintext highlighter-rouge">association_type</code> -&gt; <code class="language-plaintext highlighter-rouge">string</code>.</li>
+  <li>Defining associations in models.</li>
+</ol>
+
+<p>And we are ready to use it.</p>
+
+<p>Lets understand through code example.</p>
+
+<h2 id="code-example">Code Example</h2>
+<p>Suppose we have three models - Picture, User, Product. We need specify polymorphic association at
+<code class="language-plaintext highlighter-rouge">pictures</code> table creation</p>
+
+<h4 id="1-migration">1. Migration</h4>
+<p>We will add two fields <code class="language-plaintext highlighter-rouge">imageable_type</code> and <code class="language-plaintext highlighter-rouge">imageable_id</code>.
+<img src="/assets/images/poly-1.png" alt="class-inheritance-example" /></p>
+
+<h4 id="2-model-associations-changes">2. Model associations changes</h4>
+<p><img src="/assets/images/poly-2.png" alt="class-inheritance-example" /></p>
+
+<h2 id="what-if-we-do-not-use-polymorphic">What if we do not use Polymorphic?</h2>
+<p>We will have to create two tables representing <code class="language-plaintext highlighter-rouge">User-Image</code> and <code class="language-plaintext highlighter-rouge">Product-Image</code> associations. That will be
+storing same attributes in two tables except <code class="language-plaintext highlighter-rouge">user_id</code> and <code class="language-plaintext highlighter-rouge">product_id</code>.</p>
+
+<h2 id="benefits">Benefits</h2>
+<p>The setup provides easy access to associated models.</p>
+<ul>
+  <li>From an instance of the User model, you can retrieve a collection of pictures: <code class="language-plaintext highlighter-rouge">@user.pictures</code></li>
+  <li>Similarly, you can retrieve <code class="language-plaintext highlighter-rouge">@product.pictures</code></li>
+  <li>If you have an instance of the Picture model, you can get to its parent via <code class="language-plaintext highlighter-rouge">@picture.imageable</code></li>
+  <li>Polymorphic association helps in making your code DRY(Do not Repeat Yourself)</li>
+</ul>
+
+<h2 id="can-we-test-polymorphic-associations">Can we test polymorphic associations?</h2>
+<p>Yes, of course. I am using <code class="language-plaintext highlighter-rouge">rspec</code> for unit testing instead of <code class="language-plaintext highlighter-rouge">minitest</code>. It can be installed from here
+<a href="https://github.com/rspec/rspec-rails" target="_blank">install rails rspec</a>.</p>
+
+<p>If you had not installed rspec previously, run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rails generate rspec:model user
+      create  spec/models/user_spec.rb
+
+<span class="nv">$ </span>rails generate rspec:model product
+      create  spec/models/product_spec.rb
+
+<span class="nv">$ </span>rails generate rspec:model picture
+      create  spec/models/picture_spec.rb
+</code></pre></div></div>
+
+<p>Now we have empty rspec files for models. Let’s add following code to picture model rspec file
+<img src="/assets/images/poly-rspec.png" alt="polymorphic-rspec-example" /></p>
+
+<p>And when we run this spec file
+<img src="/assets/images/poly-run-rspec.png" alt="polymorphic-rspec-example" /></p>
+
+<p>It will pass with flying colors!</p>
+
+<hr />
+
+<p><br /></p>
+
+<p>References -</p>
+
+<ul>
+  <li><a href="https://guides.rubyonrails.org/association_basics.html#polymorphic-associations">Rails documentation</a></li>
+  <li><a href="https://github.com/rspec/rspec-rails">rspec-rails</a>.</li>
+</ul>]]></content><author><name>swapnil</name></author><category term="Ruby" /><category term="Rails" /><category term="Activerecord" /><summary type="html"><![CDATA[. What is the usecase? Suppose two models can be associated to a third model with a common attribute. For example, Image can belong to User as well as Product, because user will have self image and product will have descriptive images of product. This can be achieved with Polymorphic associations - Two or more models can be associated to third model using single association.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/poly-main.png" /><media:content medium="image" url="http://localhost:4000/assets/images/poly-main.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
